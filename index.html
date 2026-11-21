@@ -233,10 +233,10 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .rk{background:#04061a}.rk.on{animation:none}
 .rkst{position:absolute;left:50%;top:50%;width:1100px;height:614px;margin:-318px 0 0 -540px;transform:scale(var(--k,.4));transform-origin:540px 318px}
 .rkst>*{position:absolute}
-.rkbgd{left:-3000px;right:-3000px;top:-3000px;bottom:-3000px;background:linear-gradient(180deg,#04061a 0,#04061a 3200px,#0b1032 3340px,#101645 3412px)}
-.rkcol{left:108px;width:265px;top:-3000px;bottom:-3000px;background:linear-gradient(180deg,#323cb0 0,#2f38a0 3200px,#3240b0 3600px)}
-.rkband{left:-3000px;right:-3000px;top:412px;height:116px;background:#1b70a0}
-.rklow{left:-3000px;right:-3000px;top:528px;bottom:-3000px;background:#2d3f94}
+.rkbgd{left:-3000px;right:-3000px;top:-3000px;bottom:-3000px;background:linear-gradient(180deg,rgba(24,28,60,.94) 0,rgba(26,30,64,.94) 3180px,rgba(36,46,90,.93) 3330px,rgba(46,60,110,.93) 3412px)}
+.rkcol{left:108px;width:265px;top:-3000px;bottom:-3000px;background:linear-gradient(180deg,#4040a2 0,#4040a2 3200px,#4a52ac 3412px)}
+.rkband{left:-3000px;right:-3000px;top:412px;height:116px;background:#377099}
+.rklow{left:-3000px;right:-3000px;top:528px;bottom:-3000px;background:#44629a}
 .rksh{background:#01009d;transform-origin:50% 100%;animation:rksh .42s cubic-bezier(.2,.75,.3,1) both}
 @keyframes rksh{from{transform:translateY(520px) rotate(14deg)}}
 .rkcw{left:90px;top:132px;width:236px;height:340px;z-index:3;transform-origin:0 0;transform:matrix(.996,-.093,.428,1.077,0,0)}
@@ -297,7 +297,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 @keyframes rkwp{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
 .rkbar span{font-family:'Archivo',Arial,sans-serif!important;font-weight:500!important}
 .rkmax{font-family:'Archivo',Arial,sans-serif!important;font-weight:900!important;font-style:normal!important;font-variation-settings:'wdth' 80}
-.rkcard::after{background:linear-gradient(115deg,transparent 35%,rgba(170,230,255,.55) 48%,transparent 60%) no-repeat!important;background-size:60% 100%!important;background-position:-80% 0;animation:rkcs 3.2s 1.2s ease-in-out infinite}
+.rkcard::after{background:linear-gradient(115deg,transparent 40%,rgba(200,225,255,.22) 50%,transparent 58%) no-repeat!important;background-size:60% 100%!important;background-position:-80% 0;animation:rkcs 3.2s 1.2s ease-in-out infinite}
 @keyframes rkcs{0%{background-position:-80% 0}45%,100%{background-position:220% 0}}
 .rks.w{animation:rks .35s var(--d) cubic-bezier(.2,1.5,.4,1) forwards,rksf 5s calc(var(--d) + .35s) ease-in-out infinite alternate,rkw .3s var(--w) forwards}
 .rks.nw{animation:rks .35s var(--d) cubic-bezier(.2,1.5,.4,1) forwards,rksf 5s calc(var(--d) + .35s) ease-in-out infinite alternate,rkw .3s var(--w) forwards,rknw .7s var(--w) cubic-bezier(.2,1.6,.4,1) both}
@@ -309,18 +309,54 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .rkwipe{z-index:20;left:-1400px;top:-900px;width:1100px;height:2400px;background:linear-gradient(90deg,#0b1ab8,#1c3cff 70%,#8fe6ff);transform:skewX(-18deg);display:none}
 /* outro: card flies off, text slides away, stars scatter, a blue sweep wipes back to the stats screen */
 .rk.out{animation:none!important;opacity:1}
-.rk.out .rkcw{transition:transform .5s cubic-bezier(.6,0,.8,.4),opacity .5s;transform:matrix(.996,-.093,.428,1.077,0,0) translate(-260px,-700px) rotate(-30deg)!important;opacity:0}
+
 .rk.out .rkup,.rk.out .rkup::after{display:none!important}.rk.out .rknum,.rk.out .rkinfo,.rk.out .rkbar,.rk.out .rkmax{animation:rkoR .45s cubic-bezier(.6,0,.8,.4) forwards!important}
 @keyframes rkoR{from{opacity:1}to{opacity:0;translate:900px 0}}
 .rk.out .rks,.rk.out .rkburst,.rk.out .rkp,.rk.out .rkd,.rk.out .rkflash{animation:rkoS .35s ease-in forwards!important}
 @keyframes rkoS{from{opacity:1}to{opacity:0;scale:0}}
 .rk.out .rksh{animation:rkoD .5s cubic-bezier(.6,0,.8,.4) forwards!important}
 @keyframes rkoD{to{translate:0 700px}}
-.rk.out .rkok{animation:rkoS .2s forwards!important}
+.rk.out .rkok{animation:rkoF .46s linear forwards!important}
 .rk.out .rkwipe{display:block;animation:rkwipe .62s .18s cubic-bezier(.7,0,.3,1) both}
 @keyframes rkwipe{0%{translate:0 0}100%{translate:3800px 0}}
 .rk.out .rkbgd,.rk.out .rkcol,.rk.out .rkband,.rk.out .rklow{transition:opacity .25s .45s;opacity:0}
 .rk.skip .rkup::after,.rk.skip .rkflash,.rk.skip .rkburst{display:none}.rk.skip .rkinfo,.rk.skip .rkbar,.rk.skip .rknum{animation-delay:0s!important;animation-duration:.01s!important}.rk.skip .rks.w,.rk.skip .rks.nw{animation-delay:0s,.35s,0s,0s!important}
+/* ===== rank screen, matched to the game capture ===== */
+.rksh{animation-name:rksh,rkflow!important;animation-timing-function:cubic-bezier(.2,.75,.3,1),linear!important;animation-iteration-count:1,infinite!important;animation-fill-mode:both,both!important}
+@keyframes rkflow{0%{translate:0 0;rotate:var(--r0);scale:.35}14%{scale:1}100%{translate:1450px var(--dy);rotate:var(--r1);scale:1.1}}
+/* stars: thick grey outline, dark fill, no inner star; earned ones solid white */
+.rks{fill:#262a66;stroke:#b4b5c6;stroke-width:2.7;stroke-linejoin:round}
+.rks path+path{display:none}
+@keyframes rkw{to{fill:#eeeef4;stroke:#eeeef4;filter:drop-shadow(0 0 5px rgba(255,255,255,.55))}}
+/* the star you just earned: a big ghost star flashes over it and shrinks into place */
+.rkghost{position:absolute;z-index:6;width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);fill:#fff;opacity:0;animation:rkgh .5s var(--w) cubic-bezier(.3,.6,.4,1) forwards}
+@keyframes rkgh{0%{opacity:.85;scale:3.2;rotate:-25deg}100%{opacity:0;scale:1;rotate:0deg}}
+.rkburst{display:none!important}
+/* sparkles: cyan four-point twinkles and soft glowing dots, drifting right */
+.rkp{background:none!important;animation:rkp2 var(--t,2.2s) var(--d) ease-in-out infinite!important}
+.rkp::before{background:#7ff3ef!important;clip-path:polygon(50% 0,53.5% 46.5%,100% 50%,53.5% 53.5%,50% 100%,46.5% 53.5%,0 50%,46.5% 46.5%)!important;filter:drop-shadow(0 0 3px #39e0e6) drop-shadow(0 0 7px rgba(60,200,230,.7))!important}
+.rkp::after{inset:42%!important;background:#eaffff!important;box-shadow:0 0 6px #9ff}
+@keyframes rkp2{0%,100%{opacity:0;transform:scale(.25) translateX(0)}45%,55%{opacity:1;transform:scale(1) translateX(6px)}}
+.rkd{width:13px!important;height:13px!important;background:radial-gradient(circle,#c8fffb 0,#5fe6de 35%,rgba(70,220,210,0) 70%)!important;box-shadow:none!important;animation:rkd2 4.5s var(--d) linear infinite!important}
+@keyframes rkd2{0%{opacity:0;transform:none}20%{opacity:.9}80%{opacity:.7}100%{opacity:0;transform:translate(46px,-60px)}}
+/* card: silver foil with a slow holographic sheen, no tint */
+.rkcard .arc{filter:none!important;box-shadow:0 0 0 1.5px rgba(205,210,228,.9),0 0 10px rgba(150,170,230,.35),0 14px 34px rgba(0,0,0,.45)!important}
+.rkcard::before{content:'';position:absolute;inset:6%;z-index:1;pointer-events:none;mix-blend-mode:overlay;opacity:.22;background:linear-gradient(125deg,rgba(255,120,200,.5),rgba(120,255,220,.45) 30%,rgba(140,170,255,.5) 55%,rgba(255,240,150,.45) 80%,rgba(255,120,200,.5));background-size:300% 300%;animation:rkholo 4s linear infinite}
+@keyframes rkholo{to{background-position:300% 300%}}
+/* text in the game's light grey-white */
+.rkup,.rknum,.rkinfo b,.rkinfo span{color:#ececf0!important}
+/* OK prompt: the game's cross button */
+.rkx{width:34px!important;height:34px!important;border:0!important;border-radius:0!important;background:none!important;box-shadow:none!important;margin-right:0!important}
+.rkx::before,.rkx::after{content:''!important;position:absolute;left:50%;top:-1px;width:4px;height:36px;margin-left:-2px;background:#f2f2f6;border:1.5px solid #1a1f4a;border-radius:1px;transform:rotate(45deg);display:block!important;inset:auto!important;left:50%!important;top:-1px!important;font:0/0 a!important}
+.rkx::after{transform:rotate(-45deg)}
+.rkok{color:#f2f2f6!important;-webkit-text-stroke:1.5px #1a1f4a!important;font-size:46px!important}.rkok .rkx{width:40px!important;height:40px!important;margin-right:-8px!important}.rkok .rkx::before,.rkok .rkx::after{height:44px!important;top:-2px!important}
+/* outro (like the game): fragments fly off right, stars and sparkles fade, the card flips and drops away, everything fades to the stats screen */
+.rk.out .rkwipe{display:none!important}
+.rk.out .rksh{margin-left:1900px;opacity:0!important;transition:margin-left .24s cubic-bezier(.3,0,.7,.6),opacity .1s .14s}
+.rk.out .rks,.rk.out .rkghost,.rk.out .rkflash{opacity:0!important;transition:opacity .22s}.rk.out .rkp,.rk.out .rkd{opacity:0!important;transition:opacity .45s}
+.rk.out .rkcard{animation:rkoC .4s .08s cubic-bezier(.55,0,.85,.5) forwards!important}@keyframes rkoC{from{transform:none}to{transform:perspective(900px) translate(-50px,720px) rotateY(115deg) rotate(10deg)}}
+.rk.out .rknum,.rk.out .rkinfo,.rk.out .rkbar,.rk.out .rkmax{animation:rkoF .44s linear forwards!important}@keyframes rkoF{from{opacity:1}to{opacity:0}}
+.rk.out .rkbgd,.rk.out .rkcol,.rk.out .rkband,.rk.out .rklow{opacity:0!important;transition:opacity .3s .1s}
 .pflash{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 47%,rgba(140,235,255,.9) 52%,transparent 60%);transform:translateX(-110%);opacity:0}
 .pflash.go{animation:pfl .32s cubic-bezier(.4,0,.2,1)}@keyframes pfl{0%{transform:translateX(-110%);opacity:1}100%{transform:translateX(110%);opacity:1}}
 .pmn.sub .pitems{transform:translateX(-50%) rotate(-11deg) translateX(-60%);opacity:0;pointer-events:none}.pmn.sub .pwal{opacity:0;pointer-events:none}
@@ -1022,18 +1058,19 @@ const SLQ=[];let slT=0;
 /* Social Link sounds: each Arcana's own "I am thou" voice, Strength of Heart under both screens,
    the rank-up sound effect, and the confirm sound when the player presses OK */
 const SLV=a=>a>=0&&a<=21?{id:'sl-v'+a,url:'snd/sl/iat/'+a+'.mp3'}:null;
-const SLC={rk:{id:'sl-rk',url:'snd/sl/rk.mp3'},bgm:{id:'sl-bgm',url:'snd/sl/bgm.mp3'}};const SLP={id:'slpress',url:'snd/sl/press.mp3'};
+const SLC={rk:{id:'sl-rk',url:'snd/sl/rk.mp3'},bgm:{id:'sl-bgm',url:'snd/sl/bgm.mp3'},star:{id:'sl-star',url:'snd/sl/star.mp3'}};let slStarT=0;const SLP={id:'slpress',url:'snd/sl/press.mp3'};
 let slSrc=null,slBgm=null,slBgmT=0;
-function slPreload(a){if(!actx())return;[SLC.rk,SLC.bgm,SLP,SLV(a)].forEach(sn=>{if(sn)decodeSnd(sn).catch(()=>{})})}
+function slPreload(a){if(!actx())return;[SLC.rk,SLC.bgm,SLC.star,SLP,SLV(a)].forEach(sn=>{if(sn)decodeSnd(sn).catch(()=>{})})}
 function slPlayBuf(sn,vol,loop,when){const c=actx();if(!c||!sn)return Promise.resolve(null);try{c.resume()}catch(e){}return decodeSnd(sn).then(buf=>{const g=c.createGain();g.gain.value=vol;g.connect(OUT(c));const src=c.createBufferSource();src.buffer=buf;src.loop=!!loop;src.connect(g);src.start(when?c.currentTime+when:0);return {src,g,c}}).catch(()=>null)}
 /* music: starts with the scene (or later, after a delay) and keeps playing from I am thou into the rank screen */
 function slBgmStart(delay){if(slBgm||!S.dv.sfx)return;clearTimeout(slBgmT);slBgm={pending:1};const go=()=>{if(!slBgm||!slBgm.pending)return;slPlayBuf(SLC.bgm,.36,true).then(o=>{if(slBgm&&slBgm.pending){slBgm=o}else if(o){o.src.stop()}})};if(delay)slBgmT=setTimeout(go,delay);else go()}
 function slBgmStop(){clearTimeout(slBgmT);const o=slBgm;slBgm=null;if(!o||o.pending)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+1.2);o.src.stop(t+1.3)}catch(e){}}
 function slSound(k,a){slStop();if(!S.dv.sfx)return;
  slBgmStart(0);   /* music starts with the screen (and carries on from I am thou into the rank screen) */
+ clearTimeout(slStarT);if(k=='rk')slStarT=setTimeout(()=>{if(slSrc)slPlayBuf(SLC.star,.9)},3440);   /* the chime as the new star lights up */
  const sn=k=='iat'?SLV(a):SLC.rk;if(!sn)return;const me={};slSrc=me;slPlayBuf(sn,1).then(o=>{if(slSrc===me&&o)Object.assign(me,o);else if(o)o.src.stop()})}
 function slPress(){if(!S.dv.sfx)return;slPlayBuf(SLP,1)}
-function slStop(){const o=slSrc;slSrc=null;if(!o||!o.src)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+.25);o.src.stop(t+.3)}catch(e){}}
+function slStop(){clearTimeout(slStarT);const o=slSrc;slSrc=null;if(!o||!o.src)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+.25);o.src.stop(t+.3)}catch(e){}}
 function slQ(x){SLQ.push(x);try{const pr=RF.prof[x.uid];slPreload(pr&&arcOk(pr.arc)?pr.arc:22)}catch(e){}slTick()}
 function slTick(){clearTimeout(slT);if(!SLQ.length)return;if(busy||document.querySelector('.ov')||$('#iat').classList.contains('on')||$('#onb').classList.contains('on')){slT=setTimeout(slTick,700);return}slPlay(SLQ.shift())}
 function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk(pr.arc)?pr.arc:22,an=a<22?ARCN[a]:'Unknown',nm=esc(pr.name||'your friend'),E=$('#iat');
@@ -1062,21 +1099,21 @@ function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk
   const mx=x.rank>=10;T0=0;need=4900;
   const SH=[[0,300,250,330,-12,'#0100df',.05],[150,250,200,280,8,'#02008d',.1],[460,520,230,140,-6,'#0100df',.12],[505,212,200,230,26,'#01009d',.08],[690,300,190,260,-10,'#01009d',.14],[850,300,140,230,14,'#02008d',.1],[930,430,220,190,-18,'#0100df',.16],[600,470,170,150,22,'#02008d',.18],[300,470,190,150,-26,'#01009d',.12]];
   /* 10 stars = 10 ranks, laid out like the game: from the big one at the bottom, up the left side, over the top, down the right */
-  const ST=[[290,522,84,-8,.45,4,6],[146,474,58,-4,.5,-6,6],[66,375,56,10,.55,-8,0],[54,258,56,-18,.6,-10,-6],[84,172,54,20,.65,-8,-10],[165,110,54,-12,.7,-6,-14],[257,98,54,14,.75,4,-16],[362,141,52,-6,.8,8,-12],[430,203,52,8,.85,10,-8],[463,277,50,-14,.9,10,-4]];
-  const SP=[[110,40,30,.3],[255,48,22,.5],[338,70,34,.2],[412,80,30,.9],[490,158,40,.4],[483,180,26,1.2],[420,232,34,.7],[540,236,26,1.5],[60,180,22,1],[40,236,24,.6],[85,325,30,1.3],[60,415,28,.8],[215,494,24,1.1],[395,385,36,.35],[160,200,22,1.7]];
-  const DT=Array.from({length:30},(_,k)=>[30+((k*97)%470),20+((k*61)%460),(k*.37%4).toFixed(2)]);
+  const ST=[[288,522,100,-8,.45,4,6],[146,474,58,-4,.5,-6,6],[66,375,56,10,.55,-8,0],[54,258,56,-18,.6,-10,-6],[84,172,54,20,.65,-8,-10],[165,110,54,-12,.7,-6,-14],[257,98,54,14,.75,4,-16],[362,141,52,-6,.8,8,-12],[430,203,52,8,.85,10,-8],[463,277,50,-14,.9,10,-4]];
+  const SP=[[401,72,52,.3],[322,148,40,.5],[377,180,46,.2],[450,213,34,.9],[19,163,52,.4],[47,213,62,1.2],[44,292,46,.7],[120,250,38,1.5],[100,58,34,1],[480,140,40,.6],[230,40,32,1.3],[30,520,42,.8],[200,560,36,1.1],[395,385,44,.35],[160,200,30,1.7],[300,30,34,2.1],[60,420,32,1.9],[520,300,28,2.4],[250,300,40,.15],[180,120,36,2.6],[340,250,30,1.05],[90,480,34,2.2]];
+  const DT=Array.from({length:34},(_,k)=>[10+((k*97)%500),10+((k*61)%540),(k*.37%4.5).toFixed(2)]);
   const starSVG=(x,y,sz,r,d,dx,dy)=>`<svg class="rks" viewBox="-12 -12 24 24" style="left:${x}px;top:${y}px;--s:${sz}px;--r:${r}deg;--d:${d}s;--dx:${dx}px;--dy:${dy}px"><path d="M0,-10.5 L2.6,-3.6 10,-3.3 4.2,1.3 6.2,8.5 0,4.4 -6.2,8.5 -4.2,1.3 -10,-3.3 -2.6,-3.6Z"/><path d="M0,-6 L1.5,-2 5.7,-1.9 2.4,.8 3.5,4.9 0,2.5 -3.5,4.9 -2.4,.8 -5.7,-1.9 -1.5,-2Z" style="fill:none;stroke-width:1.2"/></svg>`;
   const PT=false;
   if(PT){const q=v=>[Math.round(v[0]*1.25-50),Math.round(v[1]*1.25+75)];ST.forEach(v=>{[v[0],v[1]]=q(v);v[2]=Math.round(v[2]*1.2)});SP.forEach(v=>{[v[0],v[1]]=q(v)});DT.forEach(v=>{[v[0],v[1]]=q(v)});
    SH.length=0;SH.push([-40,640,260,300,-12,'#0100df',.05],[170,600,220,260,10,'#02008d',.1],[330,680,240,200,-8,'#0100df',.12],[440,560,200,240,24,'#01009d',.08],[-20,860,250,220,16,'#01009d',.14],[220,880,230,200,-14,'#02008d',.1],[420,860,220,230,18,'#0100df',.16],[100,980,260,200,-22,'#02008d',.18],[380,1000,240,180,12,'#01009d',.12])}
   E.className='iat rk'+(mx?' max':'');
   E.innerHTML=`<div class="rkst${PT?' pt':''}"><i class="rkwipe"></i><i class="rkbgd"></i><i class="rkcol"></i><i class="rkband"></i><i class="rklow"></i>
-  ${SH.map(([x,y,w,h,r,c,d])=>`<i class="rksh" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${c};rotate:${r}deg;animation-delay:${d}s"></i>`).join('')}
+  ${Array.from({length:34},(_,k)=>{const C=['#3a1ed6','#4318e4','#2c1398','#3f20cf','#5232f0','#33169f'],y=200+((k*83)%380),w=170+((k*53)%170),h=130+((k*71)%190),du=5.2+((k*37)%30)/10,ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="left:${40+(k%5)*45}px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?40:-40)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${du.toFixed(1)}s"></i>`}).join('')}
   ${mx?'<div class="rkmax">MAX</div>':''}
   ${DT.map(([x,y,d])=>`<i class="rkd" style="left:${x}px;top:${y}px;--d:${d}s"></i>`).join('')}
   <div class="rkcw"><div class="rkcard">${arcCard(a,236)}</div></div>
-  ${ST.map((v,k)=>{const h=starSVG(...v),n=Math.min(10,x.rank),nw=k==n-1;if(k>=n)return h;const w=nw?3.45:2.95+k*.07;return h.replace('class="rks"','class="rks w'+(nw?' nw':'')+'"').replace('style="','style="--w:'+w.toFixed(2)+'s;')+(nw?`<i class="rkburst" style="left:${v[0]}px;top:${v[1]}px;--w:${w}s"></i>`:'')}).join('')}
-  ${SP.map(([x,y,sz,d])=>`<i class="rkp" style="left:${x}px;top:${y}px;--s:${sz}px;--d:${d}s"></i>`).join('')}
+  ${ST.map((v,k)=>{const h=starSVG(...v),n=Math.min(10,x.rank),nw=k==n-1;if(k>=n)return h;const w=nw?3.45:2.95+k*.07;return h.replace('class="rks"','class="rks w'+(nw?' nw':'')+'"').replace('style="','style="--w:'+w.toFixed(2)+'s;')+(nw?`<svg class="rkghost" viewBox="-12 -12 24 24" style="left:${v[0]}px;top:${v[1]}px;--s:${v[2]}px;--w:${w}s"><path d="M0,-10.5 L2.6,-3.6 10,-3.3 4.2,1.3 6.2,8.5 0,4.4 -6.2,8.5 -4.2,1.3 -10,-3.3 -2.6,-3.6Z"/></svg>`:'')}).join('')}
+  ${SP.map(([x,y,sz,d],k)=>`<i class="rkp" style="left:${x}px;top:${y}px;--s:${sz}px;--d:${d}s;--t:${(1.8+(k*.23%1.2)).toFixed(2)}s"></i>`).join('')}
   <div class="rkup" data-t="RANK UP!">RANK UP!</div><i class="rkflash"></i>
   <div class="rkbar"><span><em>${esc((pr.name||'?')[0])}</em>${esc((pr.name||'your friend').slice(1))}</span></div>
   <div class="rknum${x.rank>=10?' two':''}">${x.rank}</div>
@@ -1087,7 +1124,7 @@ function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk
  }
  slSound(x.kind=='new'?'iat':'rk',a);
  E.classList.remove('on');void E.offsetWidth;E.classList.add('on');document.body.classList.add('lock');try{if(S.dv.vib&&navigator.vibrate)navigator.vibrate(x.kind=='new'?[30,60,30]:[20,40,60])}catch(e){}
- let fin=0;const done=()=>{if(fin)return;fin=1;slStop();slPress();if(x.kind!='new'&&!SLQ.length)slBgmStop();E.classList.add('out');if(x.kind=='new')SLQ.unshift({kind:'rank',uid:x.uid,rank:1});setTimeout(()=>{E.className='iat';E.innerHTML='';E._fit=null;document.body.classList.remove('lock');slTick()},x.kind=='new'?700:820)};
+ let fin=0;const done=()=>{if(fin)return;fin=1;slStop();slPress();if(x.kind!='new'&&!SLQ.length)slBgmStop();E.classList.add('out');if(x.kind=='new')SLQ.unshift({kind:'rank',uid:x.uid,rank:1});setTimeout(()=>{E.className='iat';E.innerHTML='';E._fit=null;document.body.classList.remove('lock');slTick()},x.kind=='new'?700:520)};
  const ok=E.querySelector('.iatok'),t0=Date.now();
  /* tap anywhere: skip to the end (the voice / sound stops too). Only the OK button closes the screen */
  const skip=()=>{if(E.classList.contains('skip'))return;E.classList.add('skip');slStop()};
@@ -1267,7 +1304,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.21-2341';
+var APPVER='2026.11.22-0000';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
