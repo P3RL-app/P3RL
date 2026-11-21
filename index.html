@@ -22,7 +22,8 @@ body.lock{overflow:hidden}
 button,input,select,textarea{font:inherit;color:inherit}
 .hub{position:relative;height:clamp(320px,min(60vh,108vw),760px);overflow:hidden;background:linear-gradient(135deg,#3a3f78,#1a1b33)}
 .hot{position:absolute;left:0;top:env(safe-area-inset-top,0px);width:96px;height:96px;z-index:4;touch-action:manipulation;-webkit-touch-callout:none}   /* below the iPhone status bar; no double-tap zoom eating the taps */
-.un{position:absolute;right:12px;top:10px;z-index:3;background:#000;border:0;min-height:40px;padding:8px 16px;transform:skewX(-12deg);font-size:14px}
+.mnb{position:absolute;right:10px;top:calc(8px + env(safe-area-inset-top,0px));z-index:5;width:46px;height:44px;border:0;background:#000;color:#fff;font-size:22px;font-style:normal;transform:skewX(-12deg);display:flex;align-items:center;justify-content:center}.mnb span{transform:skewX(12deg)}
+.un{position:absolute;right:66px;top:calc(10px + env(safe-area-inset-top,0px));z-index:3;background:#000;border:0;min-height:40px;padding:8px 16px;transform:skewX(-12deg);font-size:14px}
 .sv{display:block;position:absolute;inset:0;width:100%;height:100%}
 .sv text{font-family:'Montserrat','Arial Black',Arial,sans-serif;font-style:italic;fill:#fff}
 .nu{fill:#fff}.yl .nu{fill:var(--ye)}.nm{font-weight:800}
@@ -75,6 +76,16 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 #sv2{background:var(--cy)!important;color:#000}
 .pkc{max-width:420px}.pkc input{text-align:center;font-size:28px;letter-spacing:.5em}.pkm{min-height:1.2em;margin:10px 0 0;color:#ff7aa8;font-style:normal;font-size:14px}.pkc.bad{animation:pksh .35s}@keyframes pksh{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
 #pko{background:var(--cy)!important;color:#000}
+.mnc{max-height:86vh;display:flex;flex-direction:column;padding-top:12px}#mnb2{overflow:auto;flex:1;-webkit-overflow-scrolling:touch}
+.mtab{display:flex;gap:8px;margin-bottom:12px}.mtab button{flex:1;background:#2e3157!important;color:#cfd3ff;transform:skewX(-10deg);font-weight:900!important;font-size:16px}.mtab button.on{background:var(--cy)!important;color:#000}.mtab .mx2{flex:0 0 52px}
+.hd{font:900 italic 13px 'Barlow',sans-serif;color:#8f96d8;letter-spacing:.08em;text-transform:uppercase;margin:14px 0 6px}
+.hs{display:flex;gap:6px;margin-bottom:6px}.hs b{flex:1;background:#12131f;padding:8px 6px;text-align:center;font-size:13px}.hs b i{display:block;font-style:normal;font-size:20px;font-weight:900}
+.hi{display:flex;align-items:center;gap:10px;padding:10px 8px;border-bottom:1px solid #2a2d45;font-style:normal;font-size:15px}.hi .t{opacity:.55;font-size:12px;min-width:44px}.hi .n{flex:1}.hi .p{font-weight:900;font-size:13px;white-space:nowrap}.hi .p.c{color:var(--c)}.hi .p.g{color:#7fb0ff}.hi .p.a{color:#6f83ff}
+.hi .del{background:none!important;border:0;color:#aab;padding:8px 10px;min-height:0!important;font-size:15px}
+.st2{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 4px;border-bottom:1px solid #2a2d45;font-style:normal}.st2 small{display:block;opacity:.6;font-size:12px;margin-top:2px}
+.tg{position:relative;flex:none;width:56px;height:32px;border-radius:16px;background:#3a3d63;border:0!important;padding:0!important;min-height:0!important}.tg:after{content:'';position:absolute;left:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .2s}.tg.on{background:var(--cy)}.tg.on:after{transform:translateX(24px)}
+.st2 input[type=range]{width:140px;padding:0;accent-color:var(--cy)}.sg{display:flex;gap:4px}.sg button{padding:8px 10px!important;min-height:0!important;font-size:13px;background:#2e3157}.sg button.on{background:var(--cy)!important;color:#000}
+.bk{display:flex;gap:8px;margin-top:10px}.bk button{flex:1}.danger{background:#5a1830!important;color:#ffb3c8}
 .dvc{max-height:88vh;overflow:auto;border-top-color:#ff4fd8}
 .dvc h4{margin:16px 0 6px;font:900 italic 14px 'Barlow',sans-serif;color:#ff9be9;letter-spacing:.06em;text-transform:uppercase}
 .r2{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:6px}.r2>button,.r2>label{flex:1 1 auto}
@@ -131,12 +142,6 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .yt{font-style:normal;font-size:11px;font-weight:900;letter-spacing:.08em;background:#ff9be9;color:#000;padding:2px 6px;margin-left:8px;vertical-align:2px}.fc button.c.on{background:var(--c)}.fc button.g.on{background:var(--g)}.fc button.a.on{background:#6f83ff}
 .sc[hidden]{display:none}
 .nores{text-align:center;opacity:.7;margin:30px 0;font-style:normal}.nores[hidden]{display:none}
-.pvb{position:fixed;right:16px;top:14px;z-index:80;background:#000;color:#fff;border:2px solid var(--cy);padding:9px 14px;font-weight:800;font-size:14px;transform:skewX(-10deg);cursor:pointer}
-.pvb[hidden],.pvw[hidden]{display:none}
-.pvw{position:fixed;inset:0;z-index:100;background:rgba(6,7,18,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
-.pvbar{display:flex;gap:8px;align-items:center;font-style:normal}.pvbar select{width:auto;padding:8px 10px;font-size:14px}.pvbar button{background:var(--cy);color:#000;border:0;padding:9px 16px;font-weight:800;cursor:pointer}
-.pvf{position:relative;flex:none;background:#000;border:12px solid #0b0b0f;border-radius:46px;box-shadow:0 0 0 2px #2b2d40,0 30px 80px #000;overflow:hidden;transform-origin:center center}
-.pvf iframe{display:block;width:100%;height:100%;border:0;background:#14152a}
 @media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important}}
 </style>
 </head>
@@ -159,11 +164,11 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 <div class="row"><button id="lg">Log once</button><button id="sv2">Save as button</button></div>
 </div></div>
 <div class="sh" id="pks"><div class="card pkc"><h3>Owner passkey</h3><input id="pki" type="password" inputmode="numeric" autocomplete="off" enterkeyhint="go" maxlength="12" placeholder="••••"><p class="pkm" id="pkm"></p><div class="row"><button id="pkx">Cancel</button><button id="pko">Unlock</button></div></div></div>
+<div class="sh" id="mns"><div class="card mnc"><div class="mtab" id="mtab"><button data-t="h" class="on">History</button><button data-t="s">Settings</button><button class="mx2" id="mnx" aria-label="Close">✕</button></div><div id="mnb2"></div></div></div>
 <div class="sh" id="dvs"><div class="card dvc" id="dvc"></div></div>
-<button class="pvb" id="pvb" hidden>📱 Phone view</button>
-<div class="pvw" id="pvw" hidden><div class="pvbar"><select id="pvd"><option value="393x852">iPhone 15 / 16</option><option value="430x932">iPhone Pro Max</option><option value="375x667">iPhone SE</option><option value="412x915">Pixel 8</option><option value="360x800">Small Android</option></select><button id="pvr">↻ Rotate</button><button id="pvx">✕ Close</button></div><div class="pvf" id="pvf"><iframe id="pvi" name="p3phone" allow="autoplay" title="Phone preview"></iframe></div></div>
+
 <script>
-const SRC0='<!doctype html>'+document.documentElement.outerHTML,IN_PV=window.name==='p3phone';   /* snapshot of the page before it renders = what the phone preview loads */
+const IN_PV=false;
 const $=s=>document.querySelector(s),RM=matchMedia('(prefers-reduced-motion:reduce)').matches,NS='http://www.w3.org/2000/svg';
 const ST={c:{n:'Charm',r:['Plain','Unpolished','Confident','Smooth','Popular','Charismatic'],t:[0,15,30,45,70,100]},
 g:{n:'Courage',r:['Timid','Ordinary','Determined','Tough','Fearless','Badass'],t:[0,15,30,45,60,80]},
@@ -172,8 +177,8 @@ const P=[['c','Charm',['Hung out with friends|c2','Met someone new|c2','Went on 
 ['g','Courage',['Talked to a stranger|g3','Did something that scared me|g3','Asked someone out|g3','Gave a presentation or spoke in public|g3','Spoke up in a meeting or class|g2','Set a boundary or said no|g2','Had a hard, honest conversation|g3','Hit the gym|g2','Ran or did cardio|g2','Took a cold shower|g1','Tried something new|g2','Went somewhere new alone|g2','Sang karaoke|g2','Asked for something I wanted|g2','Watched a horror movie|g1','Tried an unusual food|g1','Applied for something I might not get|g3']],
 ['a','Academics',['Studied 30+ minutes|a1','Deep study session (2 hrs)|a3','Studied at the library|a2','Finished homework or an assignment|a2','Paid attention the whole class|a1','Reviewed my notes|a1','Read a chapter|a1','Finished a book|a3','Watched a lecture or documentary|a1','Practiced a language|a1','Practiced a skill (code, music, craft)|a2','Wrote an essay or report|a2','Aced a test or quiz|a3','Visited a museum or library|a2','Learned something and wrote it down|a1']],
 ['m','Combos',['Study group at a café|a2c1','Part-time job shift|g1c1','Group workout|g2c1','Joined a club meeting|c2g1','Volunteered|g1c2','Taught someone something|a2c1']]];
-let S={p:{c:0,g:0,a:0},u:[],prev:null,h:[],dev:0,dv:{clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game'}},busy=0,R={},CL=[],SN=[],UID=0,lastTest=null,rsArm=0;
-try{const j=JSON.parse(localStorage.getItem('p3s')||'{}');Object.assign(S,j);S.dv=Object.assign({clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game'},j.dv||{});if(!S.h)S.h=[];(S.u||[]).forEach(u=>(u.a||[]).forEach(x=>x[1]=Math.min(3,x[1])))}catch(e){}
+let S={p:{c:0,g:0,a:0},u:[],prev:null,h:[],dev:0,dv:{clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1}},busy=0,R={},CL=[],SN=[],UID=0,lastTest=null,rsArm=0;
+try{const j=JSON.parse(localStorage.getItem('p3s')||'{}');Object.assign(S,j);S.dv=Object.assign({clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1},j.dv||{});if(!S.h)S.h=[];(S.u||[]).forEach(u=>(u.a||[]).forEach(x=>x[1]=Math.min(3,x[1])))}catch(e){}
 let CREF=null,cBusy=0,cDirty=0,cTm=0;   /* account copy of the save (only when signed in to Claude) */
 const save=()=>{S.t=Date.now();try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}cloudPush()};
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist().catch(()=>{})}catch(e){}   /* ask the phone not to wipe it */
@@ -227,7 +232,8 @@ function svg(p,hub,bt,fin,vb){
  if(bt){const L=bt[0]=='R'?820:800;h+=`<g transform="translate(${pt?1090:461} ${pt?-92:266})"><g class="bnw"><path class="bn" d="${bt[0]=='R'?WP.rank:WP.stats}" fill-rule="evenodd" transform="translate(-461 -266)"/></g></g><g class="ok" transform="translate(${vx+vw-250} ${vy+vh-115})"><path d="M-62 -62 L-8 -4 M-8 -62 L-62 -4" stroke="#d6d7dc" stroke-width="9"/><text x="10" y="0" font-size="70" font-weight="900">OK</text></g>`}
  return h+'</svg>'}
 function hub(){const el=$('#hub'),W=el.clientWidth||innerWidth,H=el.clientHeight||Math.round(innerHeight*.56);
- el.innerHTML=svg(S.p,1,0,0,fitVB(W,H))+'<div class="hot" id="hot"></div>'+(S.prev?'<button class="un" id="un">Undo last</button>':'');
+ el.innerHTML=svg(S.p,1,0,0,fitVB(W,H))+'<div class="hot" id="hot"></div><button class="mnb" id="mnb" aria-label="Menu"><span>☰</span></button>'+(S.prev?'<button class="un" id="un">Undo last</button>':'');
+ $('#mnb').onclick=()=>menu('h');
  const u=$('#un');if(u)u.onclick=()=>{S.p=S.prev;S.prev=null;if(S.h.length)S.h.pop();save();hub()}}
 function parse(x){const [t,g]=x.split('|'),a=[];g.replace(/([cga])(\d)/g,(m,s,n)=>a.push([s,+n]));return{t,a}}
 function btn(id,sc,cu){R[id]=sc;const q=(sc.t+' '+sc.a.map(([s,n])=>'+'+n+' '+ST[s].n).join(' ')).toLowerCase();return `<button class="sc" data-id="${id}" data-q="${esc(q)}" data-s="${sc.a.map(x=>x[0]).join('')}" data-v="${sc.a.map(x=>x[1]).join('')}" data-u="${cu?1:''}" style="--k:var(--${sc.a[0][0]})"><span>${esc(sc.t)}${cu?'<i class="yt">YOURS</i>':''}</span><span class="ch">${sc.a.map(([s,n])=>`<b class="${s}">+${n} ${ST[s].n}</b>`).join('')}${cu?'<i class="x">✕</i>':''}</span></button>`}
@@ -295,23 +301,24 @@ let lastHit=null;
 /* ring impact: starts exactly on the hit; a sound still ringing from the previous ring fades out over 0.12s (no hard cut, no pile-up) */
 function hit(k){if(!S.dv.sfx||RM||!BS[k])return;const sn=BS[k],c=actx();
  const fadePrev=()=>{const L=lastHit;if(!L)return;lastHit=null;if(c&&L.aEnd&&c.currentTime>=L.aEnd-.25)return;   /* only a short tail left: let it ring out naturally */try{if(L.g&&c){const t=c.currentTime;L.g.gain.cancelScheduledValues(t);L.g.gain.setValueAtTime(L.g.gain.value,t);L.g.gain.linearRampToValueAtTime(0,t+.25);L.src.stop(t+.27)}else if(L.au){const a=L.au;let v=a.volume;const iv=setInterval(()=>{v-=.25;if(v<=0){clearInterval(iv);try{a.pause()}catch(e){}}else a.volume=v},30)}}catch(e){}};
- if(c&&sn.buf&&c.state==='running'){fadePrev();const src=c.createBufferSource(),g=c.createGain();src.buffer=sn.buf;src.connect(g);g.connect(c.destination);src.start(0);const me={src,g,aEnd:c.currentTime+(sn.aud||sn.buf.duration)};lastHit=me;src.onended=()=>{if(lastHit===me)lastHit=null}}
- else{try{fadePrev();const au=new Audio(sn.url);const p=au.play();if(p&&p.catch)p.catch(()=>{});const me={au};lastHit=me;au.onended=()=>{if(lastHit===me)lastHit=null}}catch(e){}}}
+ if(c&&sn.buf&&c.state==='running'){fadePrev();const src=c.createBufferSource(),g=c.createGain();src.buffer=sn.buf;src.connect(g);g.connect(OUT(c));src.start(0);const me={src,g,aEnd:c.currentTime+(sn.aud||sn.buf.duration)};lastHit=me;src.onended=()=>{if(lastHit===me)lastHit=null}}
+ else{try{fadePrev();const au=new Audio(sn.url);au.volume=(S.dv.vol??80)/100;const p=au.play();if(p&&p.catch)p.catch(()=>{});const me={au};lastHit=me;au.onended=()=>{if(lastHit===me)lastHit=null}}catch(e){}}}
 function preloadSounds(){try{if(!window.fetch)return;Object.values(BS).forEach(sn=>decodeSnd(sn).catch(()=>{}))}catch(e){}}
 try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}   /* iPhone: play even with the silent switch on */
-const actx=()=>{if(!AC){const C=window.AudioContext||window.webkitAudioContext;if(C)try{AC=new C()}catch(e){}}return AC};
+let MG=null;const actx=()=>{if(!AC){const C=window.AudioContext||window.webkitAudioContext;if(C)try{AC=new C();MG=AC.createGain();MG.gain.value=(S.dv.vol??80)/100;MG.connect(AC.destination)}catch(e){}}return AC};
+const OUT=c=>MG||c.destination,setVol=v=>{S.dv.vol=v;if(MG)MG.gain.value=v/100};
 function decodeSnd(sn){if(sn.buf)return Promise.resolve(sn.buf);if(sn.dec)return sn.dec;const c=actx();if(!c)return Promise.reject(new Error('no web audio'));
  sn.dec=(sn.blob?(sn.blob.arrayBuffer?sn.blob.arrayBuffer():new Response(sn.blob).arrayBuffer()):fetch(sn.url).then(r=>{if(!r.ok)throw new Error('missing');return r.arrayBuffer()})).then(ab=>new Promise((res,rej)=>{const p=c.decodeAudioData(ab,res,rej);if(p&&p.then)p.then(res,rej)})).then(b=>{sn.buf=b;return b});
  sn.dec.catch(()=>{sn.dec=null});return sn.dec}
 /* plays one owner sound; must be called straight from a tap. o.started -> duration (s); o.done resolves when it ends, rejects if it can't play */
 function sound(sn){const o={err:''};let src=null,au=null,stopped=0,resD,rejD,resS;
  o.done=new Promise((a,b)=>{resD=a;rejD=b});o.started=new Promise(a=>resS=a);o.done.catch(()=>{});
- const html=()=>{if(stopped)return;try{au=new Audio();au.preload='auto';au.src=sn.url;au.onended=()=>resD();au.onerror=()=>{o.err='the file could not be read';rejD()};
+ const html=()=>{if(stopped)return;try{au=new Audio();au.preload='auto';au.src=sn.url;au.volume=(S.dv.vol??80)/100;au.onended=()=>resD();au.onerror=()=>{o.err='the file could not be read';rejD()};
   au.onloadedmetadata=()=>{if(isFinite(au.duration))resS(au.duration)};const p=au.play();if(p&&p.catch)p.catch(e=>{o.err=(e&&e.name)||'playback blocked';rejD()})}catch(e){o.err='playback blocked';rejD()}};
  const c=actx();
  if(!c)html();
  else{try{const r=c.resume();if(r&&r.catch)r.catch(()=>{})}catch(e){}
-  decodeSnd(sn).then(buf=>{if(stopped)return;src=c.createBufferSource();src.buffer=buf;src.connect(c.destination);src.onended=()=>{if(!stopped)resD()};src.start(0);resS(buf.duration)}).catch(()=>html())}
+  decodeSnd(sn).then(buf=>{if(stopped)return;src=c.createBufferSource();src.buffer=buf;src.connect(OUT(c));src.onended=()=>{if(!stopped)resD()};src.start(0);resS(buf.duration)}).catch(()=>html())}
  o.stop=()=>{stopped=1;try{src&&src.stop()}catch(e){}try{au&&au.pause()}catch(e){}resD()};return o}
 /* the moment between tapping an activity and the stat screen: the clip-matched notes (+ the transition sound; the screen opens once both are done) */
 function pre(el,go,tier){const sn=S.dv.sfx?BS.tr:null;
@@ -326,7 +333,7 @@ function pre(el,go,tier){const sn=S.dv.sfx?BS.tr:null;
  so.done.then(()=>fin(),()=>fin(1))}
 function apply(sc,el){if(busy)return;busy=1;const b={...S.p};S.prev=b;sc.a.forEach(([s,n])=>S.p[s]+=n);
  S.h.push({t:Date.now(),n:sc.t,a:sc.a});if(S.h.length>200)S.h.shift();save();
- try{navigator.vibrate&&navigator.vibrate(15)}catch(e){}
+ try{S.dv.vib&&navigator.vibrate&&navigator.vibrate(15)}catch(e){}
  pre(el,()=>play(b,{...S.p},sc),Math.min(3,sc.a.reduce((m,x)=>m+x[1],0)))}
 /* ---- the stat screen: closing-in circles -> rank flip -> slow pulses + rings ---- */
 const GO=1000,C0=1280,GAP=650,CD=520;
@@ -374,7 +381,7 @@ function play(b,a,sc){
     nu.dataset.n=l+1;nu.setAttribute('d',DGT[l+1].p);nu.setAttribute('transform',dgT(s,l+1));
     rw.innerHTML=rtH(s,l+1);
     sv.querySelectorAll(`.lbl.${s},.stp.${s}`).forEach(e=>e.classList.add('yl'));
-    try{navigator.vibrate&&navigator.vibrate([30,50,30])}catch(x){}},Lc+660);   /* new rank + yellow text appear as the gold ring fades (like the game) */
+    try{S.dv.vib&&navigator.vibrate&&navigator.vibrate([30,50,30])}catch(x){}},Lc+660);   /* new rank + yellow text appear as the gold ring fades (like the game) */
    T(()=>{q(s,'.dot').classList.remove('fy')},Lc+700)}
   T(()=>{const g=q(s,'.glo');g.classList.remove('lf');if(S.dv.pm=='game')g.classList.add('gm');g.classList.add('pu')},P0);
   ring(s,Lc+650);RS=Math.min(RS,Lc+650);   /* rings start ~0.65 s after the last hit (as in the game) */
@@ -470,23 +477,43 @@ function pkTry(){const v=$('#pki').value.trim(),m=$('#pkm'),c=document.querySele
    if(pkFails>=5){pkLock=Date.now()+30000;pkFails=0;m.textContent='Wrong passkey. Locked for 30 seconds.'}else m.textContent='Wrong passkey.'}},30)}
 $('#pko').onclick=pkTry;$('#pkx').onclick=pkClose;$('#pks').onclick=e=>{if(e.target.id=='pks'&&Date.now()-pkT>600)pkClose()};   /* ignore the click that belongs to the 6th tap */
 $('#pki').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();pkTry()}});
+/* ---- menu: history + settings ---- */
+let mTab='h',delArm=null,rstArm=0;
+const fmtT=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),dayK=t=>new Date(t).toDateString();
+function dayLabel(t){const d=new Date(t),n=new Date(),y=new Date(Date.now()-864e5);if(d.toDateString()==n.toDateString())return 'Today';if(d.toDateString()==y.toDateString())return 'Yesterday';return d.toLocaleDateString([],{weekday:'short',day:'numeric',month:'short'})}
+function menu(t){mTab=t||mTab;delArm=null;rstArm=0;renderMenu();$('#mns').classList.add('on')}
+function renderMenu(){[...$('#mtab').querySelectorAll('[data-t]')].forEach(b=>b.classList.toggle('on',b.dataset.t==mTab));const B=$('#mnb2');
+ if(mTab=='h'){const H=S.h.map((h,i)=>({...h,i})).reverse();if(!H.length){B.innerHTML='<p class="nores">Nothing logged yet. Tap an activity to start.</p>';return}
+  const tot={c:0,g:0,a:0},td=dayK(Date.now());S.h.forEach(h=>{if(dayK(h.t)==td)h.a.forEach(([s,n])=>tot[s]+=n)});
+  let o=`<div class="hd">Today\u2019s points</div><div class="hs">${S3.map(s=>`<b>${ST[s].n}<i>+${tot[s]}</i></b>`).join('')}</div>`,last='';
+  H.forEach(h=>{const k=dayK(h.t);if(k!=last){last=k;o+=`<div class="hd">${dayLabel(h.t)}</div>`}
+   o+=`<div class="hi"><span class="t">${fmtT(h.t)}</span><span class="n">${esc(h.n)}</span>${h.a.map(([s,n])=>`<span class="p ${s}">+${n} ${ST[s].n}</span>`).join(' ')}<button class="del" data-del="${h.i}">${delArm===h.i?'Remove?':'✕'}</button></div>`});
+  B.innerHTML=o+'<p style="opacity:.6;font-size:12px;font-style:normal;margin:14px 4px">Removing an entry also takes its points back.</p>'}
+ else{const d=S.dv,tg=(k,on,t,sub)=>`<div class="st2"><div>${t}${sub?`<small>${sub}</small>`:''}</div><button class="tg${on?' on':''}" data-tg="${k}" aria-label="${t}"></button></div>`;
+  B.innerHTML=tg('sfx',d.sfx,'Sound','Music, ring hits and rank-up sounds')+
+  `<div class="st2"><div>Volume<small>${d.vol??80}%</small></div><input type="range" min="0" max="100" step="5" value="${d.vol??80}" id="vol"></div>`+
+  tg('vib',d.vib,'Vibration','Buzz when you log and rank up (Android)')+
+  `<div class="st2"><div>Cyan pulse<small>The glow on the circle you raised</small></div><div class="sg"><button data-pm="smooth" class="${d.pm!='game'?'on':''}">Smooth</button><button data-pm="game" class="${d.pm=='game'?'on':''}">Game</button></div></div>`+
+  `<div class="hd">Backup</div><div class="bk"><button data-bk="exp">Copy backup</button><button data-bk="imp">Paste backup</button></div><textarea id="bkt" rows="3" placeholder="Copy this text somewhere safe, or paste a backup here and tap Paste backup." style="margin-top:8px;font-size:12px"></textarea>`+
+  `<div class="hd">Progress</div><div class="bk"><button class="danger" data-bk="rst">${rstArm?'Tap again to erase everything':'Reset all progress'}</button></div>`}}
+$('#mtab').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.id=='mnx')return $('#mns').classList.remove('on');mTab=b.dataset.t;delArm=null;rstArm=0;renderMenu()};
+$('#mns').onclick=e=>{if(e.target.id=='mns')$('#mns').classList.remove('on')};
+$('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t)return;
+ if(t.dataset.del!==undefined){const i=+t.dataset.del;if(delArm!==i){delArm=i;return renderMenu()}const h=S.h[i];h.a.forEach(([s,n])=>S.p[s]=Math.max(0,S.p[s]-n));S.h.splice(i,1);S.prev=null;delArm=null;save();hub();renderMenu();return toast('Entry removed')}
+ if(t.dataset.tg){S.dv[t.dataset.tg]=S.dv[t.dataset.tg]?0:1;save();return renderMenu()}
+ if(t.dataset.pm){S.dv.pm=t.dataset.pm;save();return renderMenu()}
+ const k=t.dataset.bk;
+ if(k=='exp'){const x=JSON.stringify({p:S.p,u:S.u,h:S.h});$('#bkt').value=x;try{$('#bkt').select();navigator.clipboard&&navigator.clipboard.writeText(x).then(()=>toast('Backup copied'),()=>{})}catch(z){}}
+ else if(k=='imp'){try{const j=JSON.parse($('#bkt').value);if(!j.p)throw 0;S.p=j.p;S.u=j.u||[];S.h=j.h||[];S.prev=null;save();hub();lst();renderMenu();toast('Backup restored')}catch(z){toast('That is not a valid backup')}}
+ else if(k=='rst'){if(!rstArm){rstArm=1;return renderMenu()}rstArm=0;S.p={c:0,g:0,a:0};S.h=[];S.prev=null;save();hub();renderMenu();toast('Progress reset')}};
+$('#mnb2').addEventListener('input',e=>{if(e.target.id=='vol'){setVol(+e.target.value);const sm=e.target.parentNode.querySelector('small');if(sm)sm.textContent=e.target.value+'%'}});
+$('#mnb2').addEventListener('change',e=>{if(e.target.id=='vol'){save();try{actx()&&AC.resume();hit('big')}catch(z){}}});
 let hotN=0,hotT=0;
 document.addEventListener('pointerup',e=>{if(e.target.id!=='hot')return;const n=Date.now();hotN=n-hotT<1500?hotN+1:1;hotT=n;
  if(hotN>=6){hotN=0;if(S.dev){S.dev=0;save();ownerUI();toast('Owner tools off')}else pkOpen()}});
 let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!busy)hub()},150)});
-/* ---- phone view: the real app running inside a phone-sized screen, for checking the layout from a PC ---- */
-let pvRot=0;
-function pvFit(){const [w0,h0]=($('#pvd').value||'393x852').split('x').map(Number),w=pvRot?h0:w0,h=pvRot?w0:h0,f=$('#pvf');f.style.width=w+24+'px';f.style.height=h+24+'px';
- const k=Math.min(1,(innerHeight-90)/(h+24),(innerWidth-40)/(w+24));f.style.transform=`scale(${k})`;f.style.margin=`${-(1-k)*(h+24)/2}px ${-(1-k)*(w+24)/2}px`}
-function pvShow(){if(IN_PV||busy)return;$('#pvw').hidden=false;$('#pvi').srcdoc=SRC0;pvFit()}
-function pvHide(){$('#pvw').hidden=true;$('#pvi').srcdoc='';
- try{const j=JSON.parse(localStorage.getItem('p3s')||'{}');S.p=j.p||S.p;S.u=j.u||S.u;S.h=j.h||S.h;S.prev=j.prev===undefined?S.prev:j.prev;S.dev=j.dev||0;S.dv=Object.assign(S.dv,j.dv||{})}catch(e){}
- CL=[];SN=[];hub();lst();ownerUI();loadClips()}
-function pvBtn(){$('#pvb').hidden=IN_PV||innerWidth<760}
-$('#pvb').onclick=pvShow;$('#pvx').onclick=pvHide;$('#pvd').onchange=pvFit;$('#pvr').onclick=()=>{pvRot^=1;pvFit()};
-addEventListener('resize',()=>{pvBtn();if(!$('#pvw').hidden)pvFit()});
 /* ---- account save: newest copy wins (this phone vs. your Claude account) ---- */
-const cPack=()=>({p:S.p,u:S.u,h:S.h.slice(-200),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
+const cPack=()=>({p:S.p,u:S.u,h:S.h.slice(-200),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
 function cloudPush(now){if(!CREF)return;cDirty=1;clearTimeout(cTm);cTm=setTimeout(async()=>{if(cBusy){cloudPush();return}cBusy=1;cDirty=0;try{await CREF.set(cPack())}catch(e){}cBusy=0;if(cDirty)cloudPush()},now?0:700)}
 async function cloudInit(){try{if(IN_PV||!window.claude||!claude.use)return;const [db,us]=await Promise.all([claude.use('db'),claude.use('user')]);if(!db||!us)return;
  const id=await us.id();if(!id)return;const ref=db.doc('data/users/'+id+'/save');const snap=await ref.get();CREF=ref;const c=snap.exists?snap.data():null;
@@ -494,7 +521,7 @@ async function cloudInit(){try{if(IN_PV||!window.claude||!claude.use)return;cons
   try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}if(!busy){hub();lst();ownerUI()}}
  else if(!c||(S.t||0)>(c.t||0))cloudPush(1)}catch(e){}}
 addEventListener('pagehide',()=>{if(cDirty)cloudPush(1)});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&cDirty)cloudPush(1)});
-hub();lst();ownerUI();loadClips();pvBtn();cloudInit();preloadSounds();
+hub();lst();ownerUI();loadClips();cloudInit();preloadSounds();
 </script>
 </body>
 </html>
