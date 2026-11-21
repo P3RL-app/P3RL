@@ -583,7 +583,7 @@ function renderMenu(){[...$('#mtab').querySelectorAll('[data-t]')].forEach(b=>b.
    o+=`<div class="hi"><span class="t">${fmtT(h.t)}</span><span class="n">${esc(h.n)}</span>${h.a.map(([s,n])=>`<span class="p ${s}">+${n} ${ST[s].n}</span>`).join(' ')}<button class="del" data-del="${h.i}">${delArm===h.i?'Remove?':'✕'}</button></div>`});
   B.innerHTML=o+'<p style="opacity:.6;font-size:12px;font-style:normal;margin:14px 4px">Removing an entry also takes its points back.</p>'}
  else{const d=S.dv,tg=(k,on,t,sub)=>`<div class="st2"><div>${t}${sub?`<small>${sub}</small>`:''}</div><button class="tg${on?' on':''}" data-tg="${k}" aria-label="${t}"></button></div>`;
-  B.innerHTML=tg('sfx',d.sfx,'Sound','Music, ring hits and rank-up sounds')+
+  B.innerHTML=accountHTML()+'<div class="hd">Sound</div>'+tg('sfx',d.sfx,'Sound','Music, ring hits and rank-up sounds')+
   `<div class="st2"><div>Volume<small>${d.vol??80}%</small></div><input type="range" min="0" max="100" step="5" value="${d.vol??80}" id="vol"></div>`+
   tg('vib',d.vib,'Vibration','Buzz when you log and rank up (Android)')+
   `<div class="st2"><div>Cyan pulse<small>The glow on the circle you raised</small></div><div class="sg"><button data-pm="smooth" class="${d.pm!='game'?'on':''}">Smooth</button><button data-pm="game" class="${d.pm=='game'?'on':''}">Game</button></div></div>`+
@@ -603,6 +603,8 @@ $('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t)return;
  const k=t.dataset.bk;
  if(k=='exp'){const x=JSON.stringify({p:S.p,u:S.u,h:S.h});$('#bkt').value=x;try{$('#bkt').select();navigator.clipboard&&navigator.clipboard.writeText(x).then(()=>toast('Backup copied'),()=>{})}catch(z){}}
  else if(k=='imp'){try{const j=JSON.parse($('#bkt').value);if(!j.p)throw 0;S.p=j.p;S.u=j.u||[];S.h=j.h||[];S.prev=null;save();hub();lst();renderMenu();toast('Backup restored')}catch(z){toast('That is not a valid backup')}}
+ else if(k=='gin'){fbSignIn()}
+ else if(k=='gout'){fbSignOut()}
  else if(k=='zr'){S.dv.hz=S.dv.oz=S.dv.lz=100;save();applyLZ();hub();renderMenu()}
  else if(k=='zp'){$('#mns').classList.remove('on');testPlay(['c'],2,false)}
  else if(k=='rst'){if(!rstArm){rstArm=1;return renderMenu()}rstArm=0;S.p={c:0,g:0,a:0};S.h=[];S.prev=null;save();hub();renderMenu();toast('Progress reset')}};
@@ -616,12 +618,29 @@ let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!
 const cPack=()=>({p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
 function cloudPush(now){if(!CREF)return;cDirty=1;clearTimeout(cTm);cTm=setTimeout(async()=>{if(cBusy){cloudPush();return}cBusy=1;cDirty=0;try{await CREF.set(cPack())}catch(e){}cBusy=0;if(cDirty)cloudPush()},now?0:700)}
 async function cloudInit(){try{if(IN_PV||!window.claude||!claude.use)return;const [db,us]=await Promise.all([claude.use('db'),claude.use('user')]);if(!db||!us)return;
- const id=await us.id();if(!id)return;const ref=db.doc('data/users/'+id+'/save');const snap=await ref.get();CREF=ref;const c=snap.exists?snap.data():null;
+ const id=await us.id();if(!id)return;await cloudUse(db.doc('data/users/'+id+'/save'))}catch(e){}}
+/* newest copy wins: this phone vs. the online save */
+async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=snap.exists?snap.data():null;
  if(c&&c.p&&(c.t||0)>(S.t||0)){S.p={...c.p};S.u=(c.u||[]).map(x=>({...x}));S.h=(c.h||[]).map(x=>({...x}));S.f=(c.f||S.f||[]).map(x=>({...x}));S.bu=[...(c.bu||S.bu||[])];S.prev=c.prev?{...c.prev}:null;S.dev=c.dev||0;S.dv=Object.assign(S.dv,c.dv||{});S.t=c.t;
   try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}if(!busy){hub();lst();ownerUI()}}
  else if(!c||(S.t||0)>(c.t||0))cloudPush(1)}catch(e){}}
+/* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
+const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
+const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
+let FBU=null,FBE='',fbReady=null;
+function fbLoad(){if(fbReady)return fbReady;const V='10.12.2',L=n=>new Promise((ok,no)=>{const x=document.createElement('script');x.src=`https://cdn.jsdelivr.net/npm/firebase@${V}/${n}-compat.js`;x.onload=ok;x.onerror=no;document.head.appendChild(x)});
+ fbReady=(window.firebase&&firebase.auth?Promise.resolve():L('firebase-app').then(()=>Promise.all([L('firebase-auth'),L('firebase-firestore')]))).then(()=>{if(!firebase.apps.length)firebase.initializeApp(FBC);
+  firebase.auth().onAuthStateChanged(u=>{FBU=u;if(u){FBE='';cloudUse(firebase.firestore().collection('users').doc(u.uid))}else if(CREF&&CREF.__fb)CREF=null;if($('#mns').classList.contains('on')&&mTab=='s')renderMenu()});
+  firebase.auth().getRedirectResult().catch(e=>{FBE=e.code||e.message})});return fbReady}
+function fbSignIn(){fbLoad().then(()=>{const a=firebase.auth(),pr=new firebase.auth.GoogleAuthProvider();pr.setCustomParameters({prompt:'select_account'});
+ const standalone=navigator.standalone||matchMedia('(display-mode: standalone)').matches;
+ (standalone?a.signInWithRedirect(pr):a.signInWithPopup(pr).catch(e=>{if(/popup/.test(e.code||''))return a.signInWithRedirect(pr);throw e})).catch(e=>{FBE=e.code||e.message;renderMenu()})}).catch(()=>{FBE='offline';renderMenu()})}
+function fbSignOut(){if(window.firebase&&firebase.auth)firebase.auth().signOut().then(()=>{CREF=null;toast('Signed out. Your progress stays on this phone.');renderMenu()})}
+function accountHTML(){if(!FB_ON)return '<div class="hd">Account</div><p style="opacity:.6;font-size:13px;font-style:normal;margin:4px">Here your progress backs up to your Claude account automatically.</p>';
+ if(FBU)return `<div class="hd">Account</div><div class="st2"><div>${esc(FBU.displayName||'Signed in')}<small>${esc(FBU.email||'')} · progress is saved to your Google account</small></div><button data-bk="gout" style="flex:none;background:#2e3157;padding:10px 14px;font-weight:800">Sign out</button></div>`;
+ return `<div class="hd">Account</div><div class="bk"><button data-bk="gin" style="background:#fff;color:#000">Sign in with Google</button></div><p style="opacity:.6;font-size:12px;font-style:normal;margin:6px 4px">Saves your progress to your Google account so you never lose it.${FBE?`<br><b style="color:#ff7aa8">Sign-in failed (${esc(FBE)})</b>`:''}</p>`}
 addEventListener('pagehide',()=>{if(cDirty)cloudPush(1)});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&cDirty)cloudPush(1)});
-applyLZ();hub();lst();ownerUI();loadClips();cloudInit();preloadSounds();
+applyLZ();hub();lst();ownerUI();loadClips();cloudInit();if(FB_ON)fbLoad().catch(()=>{});preloadSounds();
 </script>
 </body>
 </html>
