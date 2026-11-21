@@ -9,7 +9,7 @@ enough points you **RANK UP!!** just like in the game.
 
 Everything is one file: `index.html` (the sounds are built into it).
 
-**Open the app:** [[https://yanaiben22-dev.github.io/P3RL/](https://p3rl-app.github.io/P3RL/)](https://p3rl-app.github.io/P3RL/)
+**Open the app:** https://p3rl-app.github.io/P3RL/)](https://p3rl-app.github.io/P3RL/)
 
 ## 📱 Phone only
 
