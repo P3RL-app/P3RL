@@ -972,7 +972,7 @@ const SLC={iat:{id:'sl-iat',url:'snd/sl/iat.mp3'},rk:{id:'sl-rk',url:'snd/sl/rk.
 function slPreload(){if(!actx())return;Object.values(SLC).forEach(sn=>decodeSnd(sn).catch(()=>{}));decodeSnd(SLP).catch(()=>{})}
 function slPlayBuf(sn,vol,loop){const c=actx();if(!c)return Promise.resolve(null);try{c.resume()}catch(e){}return decodeSnd(sn).then(buf=>{const g=c.createGain();g.gain.value=vol;g.connect(OUT(c));const src=c.createBufferSource();src.buffer=buf;src.loop=!!loop;src.connect(g);src.start();return {src,g,c}}).catch(()=>null)}
 function slSound(k){slStop();if(!S.dv.sfx)return;
- if(!slBgm){slBgm={pending:1};slPlayBuf(SLC.bgm,.55,true).then(o=>{if(slBgm&&slBgm.pending){slBgm=o}else if(o){o.src.stop()}})}
+ if(!slBgm){slBgm={pending:1};slPlayBuf(SLC.bgm,.36,true).then(o=>{if(slBgm&&slBgm.pending){slBgm=o}else if(o){o.src.stop()}})}
  const me={};slSrc=me;slPlayBuf(SLC[k],1).then(o=>{if(slSrc===me&&o)Object.assign(me,o);else if(o)o.src.stop()})}
 function slBgmStop(){const o=slBgm;slBgm=null;if(!o||o.pending)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+1.2);o.src.stop(t+1.3)}catch(e){}}
 const SLP={id:'slpress',url:'snd/sl/press.mp3'};
@@ -1207,7 +1207,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.21-2052';
+var APPVER='2026.11.21-2058';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
