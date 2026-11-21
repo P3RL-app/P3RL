@@ -410,6 +410,10 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .rkup,.rknum,.rkinfo,.rkbar{backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .iat .iatt p{backface-visibility:hidden;-webkit-backface-visibility:hidden}
 .rksh{will-change:translate}
+.rk .rkok2{width:clamp(96px,19vmin,190px)!important;height:auto!important;font-size:0!important;padding:0!important;gap:0!important}
+.rk .rkok2 svg{display:block;width:100%;height:auto;overflow:visible}
+.rkok2 text{font:900 italic 104px 'Archivo','Arial Black','Helvetica Neue',Arial,sans-serif;font-variation-settings:'wdth' 100;letter-spacing:-5px}
+.rkok2 .oka{fill:#8ff03c}.rkok2 .okk{fill:#fff;letter-spacing:-6px}
 .pflash{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 47%,rgba(140,235,255,.9) 52%,transparent 60%);transform:translateX(-110%);opacity:0}
 .pflash.go{animation:pfl .32s cubic-bezier(.4,0,.2,1)}@keyframes pfl{0%{transform:translateX(-110%);opacity:1}100%{transform:translateX(110%);opacity:1}}
 .pmn.sub .pitems{transform:translateX(-50%) rotate(-11deg) translateX(-60%);opacity:0;pointer-events:none}.pmn.sub .pwal{opacity:0;pointer-events:none}
@@ -851,7 +855,7 @@ function dvAct(e){const t=e.target.closest('[data-act]');if(!t)return;const act=
  else if(act=='ts'){d.tsrc=t.dataset.v}
  else if(act=='sln'||act=='slrk'){try{const sf=$('#slf'),sa=$('#sla'),sr=$('#slr'),f=sf?sf.value:'',ar=sa?+sa.value:0,rk=sr?+sr.value:1;let u=f;if(!u||!RF.prof[u]){u='__test';RF.prof[u]={name:'Test Friend',arc:ar}}
   $('#dvs').classList.remove('on');document.body.classList.remove('dvon');try{menuClose(true)}catch(z){}busy=0;document.querySelectorAll('.ov').forEach(o=>o.remove());const E=$('#iat');if(E.classList.contains('on')){E.className='iat';E.innerHTML='';E.style.background=''}SLQ.length=0;try{slStop();slBgmStop()}catch(z){}
-  setTimeout(()=>slQ(act=='sln'?{kind:'new',uid:u}:{kind:'rank',uid:u,rank:Math.max(1,Math.min(10,rk||1))}),60)}catch(err){toast('Test didn\u2019t start: '+(err&&err.message||err))}return}
+  try{const c=actx();if(c)c.resume()}catch(z){}slQ(act=='sln'?{kind:'new',uid:u}:{kind:'rank',uid:u,rank:Math.max(1,Math.min(10,rk||1))})}catch(err){toast('Test didn\u2019t start: '+(err&&err.message||err))}return}
  else if(act=='sldel'){const u=t.dataset.u;if(RF.sldel!=u){RF.sldel=u;return renderDev()}RF.sldel=null;$('#dvs').classList.remove('on');slDelete(u);return}
  else if(act=='test'){const st=[...document.querySelectorAll('.tc:checked')].map(x=>x.value);return testPlay(st,+$('#tn').value,$('#tf').checked)}
  else if(act=='replay'){if(lastTest)return testPlay(...lastTest);toast('Nothing to replay yet')}
@@ -1143,7 +1147,7 @@ function slPlay(x){try{const E0=$('#iat');E0.classList.remove('xf','out');setTim
   const LT=[5870,10670,15720,19340];T0=LT[0];need=23000;
   E.className='iat';
   E.innerHTML=`<div class="iatbg"></div>
-  <div class="iatc iflp"><div class="iatcard"><div class="iatf iatb">${arcCard(22,150)}</div><div class="iatf iata">${arcCard(a,150)}<i class="wtr"></i></div></div>${Array.from({length:44},(_,k)=>{const dot=k>=26,th=k*2.399,rr=dot?.62+(k*.37%1)*.55:.5+(k*.61%1)*.42,x=50+Math.cos(th)*rr*100,y=50+Math.sin(th)*rr*78,sz=dot?3:(11+(k*7%17)),d=(1.75+(k*.29%2.4)).toFixed(2),t=(1.1+(k*.13%1.1)).toFixed(2);return `<i class="spk${dot?' dt':''}" style="left:${x.toFixed(1)}%;top:${y.toFixed(1)}%;--s:${sz}px;--d:${d}s;--t:${dot?2.6:t}s;--dx:${((k%5)-2)*6}px"></i>`}).join('')}</div>
+  <div class="iatc iflp"><div class="iatcard"><div class="iatf iatb">${arcCard(22,150)}</div><div class="iatf iata">${arcCard(a,150)}<i class="wtr"></i></div></div></div>
   <div class="iatt">${lines.map((l,k)=>`<p style="animation-delay:${LT[k]}ms" class="l${k}"><i>${l}</i></p>`).join('')}</div>
   <button class="iatok rkok" style="animation-delay:${need}ms"><i class="rkx"></i>OK</button>`;
   /* fit: long Arcana names (Temperance, Hanged Man) move the last line left, then the whole block is scaled to the screen */
@@ -1168,19 +1172,19 @@ function slPlay(x){try{const E0=$('#iat');E0.classList.remove('xf','out');setTim
   E.innerHTML=`<div class="rkst${PT?' pt':''}"><i class="rkwipe"></i><i class="rkbgd"></i><i class="rkcol"></i><i class="rkband"></i><i class="rklow"></i>
   <div class="rkshw">${Array.from({length:24},(_,k)=>{const C=['#0a14e0','#0610c4','#1426f0','#0508a6','#0c1ad6','#1a2cff'],y=200+((k*83)%380),w=170+((k*53)%170),h=130+((k*71)%190),du=46+((k*37)%30),ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="left:-1100px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?40:-40)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${du.toFixed(1)}s"></i>`}).join('')}</div>
   ${mx?'<div class="rkmax">MAX</div>':''}
-  ${DT.map(([x,y,d],k)=>`<i class="rkd" style="left:${x}px;top:${y}px;--d:${d}s;--z:${[5,8,11,14,7,9][k%6]}px;--t:${(5+(k*.7)%3).toFixed(1)}s"></i>`).join('')}
+  
   <div class="rkcw"><div class="rkcard">${arcCard(a,236)}<i class="wtr"></i></div></div>
   ${ST.map((v,k)=>{const h=starSVG(...v),n=Math.min(10,x.rank),nw=k==n-1;if(k>=n)return h;const w=nw?3.45:2.95+k*.07;return h.replace('class="rks"','class="rks w'+(nw?' nw':'')+'"').replace('style="','style="--w:'+w.toFixed(2)+'s;')+(nw?`<svg class="rkghost" viewBox="-12 -12 24 24" style="left:${v[0]}px;top:${v[1]}px;--s:${v[2]}px;--w:${w}s"><path d="M0,-10.5 L2.6,-3.6 10,-3.3 4.2,1.3 6.2,8.5 0,4.4 -6.2,8.5 -4.2,1.3 -10,-3.3 -2.6,-3.6Z"/></svg>`:'')}).join('')}
-  ${SP.map(([x,y,sz,d],k)=>`<i class="rkp" style="left:${x}px;top:${y}px;--s:${sz}px;--d:${d}s;--t:${(2.6+(k*.37%1.6)).toFixed(2)}s"></i>`).join('')}
+  
   <div class="rkup" data-t="RANK UP!">RANK UP!</div><i class="rkflash"></i>
   <div class="rkbar"><span><em>${esc((pr.name||'?')[0])}</em>${esc((pr.name||'your friend').slice(1))}</span></div>
   <div class="rknum${x.rank>=10?' two':''}">${x.rank}</div>
   <div class="rkinfo"><b>RANK</b><span>${esc(an)}</span></div></div>
-  <button class="iatok rkok" style="animation-delay:${need}ms"><i class="rkx"></i>OK</button>`;
+  <button class="iatok rkok rkok2" style="animation-delay:${need}ms" aria-label="OK"><svg viewBox="0 0 270 135" aria-hidden="true"><circle cx="68" cy="67" r="57" fill="none" stroke="#8ff03c" stroke-width="5.5"/><text x="31" y="98" class="oka">A</text><text x="104" y="98" class="okk">OK</text></svg></button>`;
   const fit=()=>{const st=E.querySelector('.rkst'),pt=false,k=Math.min(innerWidth/1010,innerHeight/600);st.style.setProperty('--k',k.toFixed(4));if(window.CSS&&CSS.supports('zoom','2')){st.style.zoom=k;st.style.transform='none';st.style.margin='0';st.style.left=(innerWidth/2/k-540).toFixed(1)+'px';st.style.top=(innerHeight/2/k-318).toFixed(1)+'px'}
    const sp=E.querySelector('.rkinfo span');if(sp){const vis=Math.min(1060,540+innerWidth/2/k-20),w=sp.scrollWidth,mw=Math.min(420,vis-620);sp.style.transform=w>mw?`scaleX(${(mw/w).toFixed(3)})`:''}};fit();E._fit=fit;setTimeout(()=>{if(E._fit===fit)fit()},250);try{document.fonts.ready.then(()=>{if(E._fit===fit)fit()})}catch(e){}
  }
- try{E.querySelectorAll('.wtr').forEach(w=>fxWater(w));if(x.kind=='new')fxSparkles(E,()=>E.querySelector('.iatc'),{delay:1.55,rate:30,drate:12,pad:.45,scale:.9});else fxSparkles(E,()=>E.querySelector('.rkcw'),{delay:.35,rate:28,drate:16,pad:.55,area:.75,scale:1.1})}catch(e){}
+ try{E.querySelectorAll('.wtr').forEach(w=>fxWater(w));if(x.kind=='new')fxSparkles(E,()=>E.querySelector('.iatc'),{delay:1.5,until:5.25,rate:26,drate:12,pad:.4,scale:1});else fxSparkles(E,()=>E.querySelector('.rkcw'),{delay:.35,rate:24,drate:14,pad:.55,area:.75,scale:1.3})}catch(e){}
  slSound(x.kind=='new'?'iat':'rk',a);
  E.classList.remove('on');void E.offsetWidth;E.classList.add('on');document.body.classList.add('lock');try{if(S.dv.vib&&navigator.vibrate)navigator.vibrate(x.kind=='new'?[30,60,30]:[20,40,60])}catch(e){}
  let fin=0;const done=()=>{if(fin)return;fin=1;slStop();slPress();if(x.kind!='new'&&!SLQ.length)slBgmStop();if(x.kind=='new'){E.style.background='rgba(24,28,60,.96)';E.classList.add('xf');SLQ.unshift({kind:'rank',uid:x.uid,rank:1});setTimeout(()=>{E.innerHTML='';E._fit=null;slPlay(SLQ.shift())},420);return}
@@ -1206,12 +1210,12 @@ function fxWaterTex(){if(FX.wt)return FX.wt;const N=256,c=document.createElement
  for(let j=0;j<N;j++)for(let i=0;i<N;i++){const u=i/N,v=j/N,n=o1(u,v)*.6+o2(u,v)*.3+o3(u,v)*.1;
   const band=1-Math.abs(Math.sin(n*9.5));let a=Math.max(0,(band-.62)/.38);a=a*a;const k=(j*N+i)*4;d[k]=170;d[k+1]=215;d[k+2]=255;d[k+3]=Math.round(a*255)}
  x.putImageData(im,0,0);FX.wt=c;return c}
-function fxWater(host){const cv=document.createElement('canvas');cv.className='wtrc';host.appendChild(cv);const g=cv.getContext('2d'),T=fxWaterTex(),t0=performance.now();
- const size=()=>{const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return false;const W=Math.round(w*FX.dpr),H=Math.round(h*FX.dpr);if(cv.width!=W||cv.height!=H){cv.width=W;cv.height=H}return true};
- const layer=(t,sp,sc,ph,amp,al)=>{const W=cv.width,H=cv.height,S=256*sc*FX.dpr,ox=((t*sp)%S+S)%S,step=Math.max(2,Math.round(2*FX.dpr));g.globalAlpha=al;
-  for(let y=0;y<H;y+=step){const wob=Math.sin(y/(26*FX.dpr)+t*1.7+ph)*amp*FX.dpr+Math.sin(y/(61*FX.dpr)-t*.9)*amp*.6*FX.dpr,sy=((y+t*sp*.55)%S+S)%S/S*256;
+function fxWater(host){const cv=document.createElement('canvas');cv.className='wtrc';host.appendChild(cv);const g=cv.getContext('2d'),T=fxWaterTex(),t0=performance.now(),WD=1;let lastF=0;
+ const size=()=>{const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return false;const W=Math.round(w*WD),H=Math.round(h*WD);if(cv.width!=W||cv.height!=H){cv.width=W;cv.height=H}return true};
+ const layer=(t,sp,sc,ph,amp,al)=>{const W=cv.width,H=cv.height,S=256*sc*WD,ox=((t*sp)%S+S)%S,step=6;g.globalAlpha=al;
+  for(let y=0;y<H;y+=step){const wob=Math.sin(y/26+t*1.7+ph)*amp+Math.sin(y/61-t*.9)*amp*.6,sy=((y+t*sp*.55)%S+S)%S/S*256;
    for(let x=-((ox+wob)%S+S)%S;x<W;x+=S)g.drawImage(T,0,sy,256,Math.max(1,step/S*256),x,y,S,step)}};
- const fr=now=>{if(!cv.isConnected)return;if(size()){const t=(now-t0)/1000;g.clearRect(0,0,cv.width,cv.height);layer(t,38,1.1,0,7,.75);layer(-t*.7+40,-26,.8,2.1,5,.5)}requestAnimationFrame(fr)};requestAnimationFrame(fr)}
+ const fr=now=>{if(!cv.isConnected)return;if(now-lastF<32){requestAnimationFrame(fr);return}lastF=now;if(size()){const t=(now-t0)/1000;g.clearRect(0,0,cv.width,cv.height);layer(t,38,1.1,0,7,.75);layer(-t*.7+40,-26,.8,2.1,5,.5)}requestAnimationFrame(fr)};requestAnimationFrame(fr)}
 /* sparkle sprites: concave four-point flare (white core, cyan rays, soft glow) and a soft round mote */
 function fxSprite(kind,col){const k=kind+col;FX.sp=FX.sp||{};if(FX.sp[k])return FX.sp[k];const N=96,c=document.createElement('canvas');c.width=c.height=N;const x=c.getContext('2d'),m=N/2;
  if(kind=='star'){const gl=x.createRadialGradient(m,m,0,m,m,m*.55);gl.addColorStop(0,col=='b'?'rgba(120,170,255,.55)':'rgba(110,235,255,.55)');gl.addColorStop(1,'rgba(40,140,255,0)');x.fillStyle=gl;x.fillRect(0,0,N,N);
@@ -1228,11 +1232,11 @@ function fxSparkles(E,target,opt){opt=opt||{};const cv=document.createElement('c
   if(opt.area){x=r.left-px+Math.random()*(r.width+2*px);y=r.top-py+Math.random()*(r.height*(opt.area)+py)}
   else{/* mostly along the card's edges, some further out */const e=Math.random()*4|0,u=Math.random(),o=(Math.random()**1.6)*px;
    if(e==0){x=r.left+u*r.width;y=r.top-o*.7}else if(e==1){x=r.right+o;y=r.top+u*r.height}else if(e==2){x=r.left+u*r.width;y=r.bottom+o*.7}else{x=r.left-o;y=r.top+u*r.height}}
-  const big=Math.random()<.18,base=(dot?(4+Math.random()*9):(big?26+Math.random()*16:9+Math.random()*13))*(opt.scale||1);
+  const big=Math.random()<.12,hh=r.height,base=(dot?hh*(.012+Math.random()*.018):(big?hh*(.05+Math.random()*.02):hh*(.022+Math.random()*.024)))*(opt.scale||1);
   P.push({x,y,vx:(Math.random()-.3)*10,vy:-(8+Math.random()*(dot?22:14)),s:base,life:dot?1.6+Math.random()*1.8:.55+Math.random()*.95,t:0,dot,col:Math.random()<.22?'b':'c',ph:Math.random()*6,fq:9+Math.random()*9})};
  const fr=now=>{if(!cv.isConnected)return;const W=Math.round(innerWidth*FX.dpr),H=Math.round(innerHeight*FX.dpr);if(cv.width!=W||cv.height!=H){cv.width=W;cv.height=H}
   const dt=Math.min(.05,(now-last)/1000);last=now;g.setTransform(FX.dpr,0,0,FX.dpr,0,0);g.clearRect(0,0,innerWidth,innerHeight);
-  if(now-t0>start&&!E.classList.contains('out')){acc+=dt*rate;accd+=dt*drate;while(acc>=1){acc--;spawn(false)}while(accd>=1){accd--;spawn(true)}}
+  if(now-t0>start&&(!opt.until||now-t0<opt.until*1000)&&!E.classList.contains('out')&&!E.classList.contains('xf')){acc+=dt*rate;accd+=dt*drate;while(acc>=1){acc--;spawn(false)}while(accd>=1){accd--;spawn(true)}}
   g.globalCompositeOperation='lighter';
   P=P.filter(p=>{p.t+=dt;if(p.t>=p.life)return false;p.x+=p.vx*dt;p.y+=p.vy*dt;const k=p.t/p.life;
    let a,sc;if(p.dot){a=Math.sin(Math.PI*k)*.8;sc=1}else{const grow=Math.min(1,k/.16);a=(k<.16?grow:Math.max(0,1-(k-.55)/.45))*(.72+.28*Math.sin(p.t*p.fq+p.ph));sc=(.25+.75*grow)*(k>.6?1-(k-.6)*.9:1)*(.85+.15*Math.sin(p.t*p.fq*.7+p.ph))}
@@ -1413,7 +1417,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-0054';
+var APPVER='2026.11.22-0105';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
