@@ -872,6 +872,13 @@ function slHTML(){if(!FB_ON)return '<p class="nores">Social Links work on the P3
  if(RF.slv){const i=L.findIndex(x=>x.uid==RF.slv);if(i<0)RF.slv=null;else return warn+slDetail(L,i)}
  if(!L.length)return warn+'<div class="sltag">LIST</div><p class="nores">No Social Links yet. Add a friend in Menu → Friends to forge your first bond.</p>';
  return warn+'<div class="slside" aria-hidden="true">SOCIAL LINK</div><div class="sltag">LIST</div><div class="sll">'+L.map(x=>{const nm=x.a<99?ARCN[x.a]:'Unknown';return `<button class="slr${RF.sls==x.uid?' on':''}" data-slv="${x.uid}"><span class="slt"><span class="slno">${x.a<99?ROM[x.a]:'?'}</span><span class="sla">${esc(nm)}</span><span class="slk">${x.r>=10?'<b>MAX</b>':`<small>RANK</small><b>${x.r}</b>`}</span></span><span class="slsub">${esc(x.pr.name||'…')}</span></button>`}).join('')+'</div>'}
+/* owner: remove a Social Link completely so the animations can be tested again */
+async function slDelete(uid){const me=myId(),pr=pairId(me,uid),db=fdb();toast('Deleting Social Link…');
+ try{const hs=[...RF.hgIn,...RF.hgOut].filter(h=>h.pair==pr&&h.status=='ok');for(const h of hs)await db.collection('hangouts').doc(h.id).update({status:'reset'});
+  await db.collection('friendships').doc(pr).delete();
+  [me+'_'+uid,uid+'_'+me].forEach(id=>db.collection('friendReqs').doc(id).delete().catch(()=>{}));
+  if(S.sl)delete S.sl[uid];S.slT0=S.slT0||Date.now();save();RF.slv=null;RF.sls=null;toast('Social Link deleted');renderMenu()}
+ catch(e){toast('Couldn’t delete: '+errMsg(e))}}
 function slDetail(L,i){const x=L[i],pr=x.pr,nm=x.a<99?ARCN[x.a]:'Unknown',need=x.r>=10?0:SLT[x.r]-x.n;
  const txt=x.r>=10?`Your bond with ${pr.name||'your friend'} is at its strongest. Every moment together still counts.`:(x.n?`You’ve hung out ${x.n} time${x.n==1?'':'s'}. ${need} more hangout${need==1?'':'s'} to reach Rank ${x.r+1}.`:`A new bond. Hang out together (+ Friend) to grow this Social Link.`);
  return `<div class="sld in${RF.sldir<0?' nx':''}"><div class="slnav"><button data-sln="${(i-1+L.length)%L.length}" data-dir="-1" aria-label="Previous"><svg class="slar" viewBox="0 0 30 34" aria-hidden="true"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4" stroke-linejoin="miter"/></svg><span>L</span></button><button data-sln="${(i+1)%L.length}" data-dir="1" aria-label="Next"><span>R</span><svg class="slar slarr" viewBox="0 0 30 34" aria-hidden="true"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4" stroke-linejoin="miter"/></svg></button></div>
@@ -879,7 +886,7 @@ function slDetail(L,i){const x=L[i],pr=x.pr,nm=x.a<99?ARCN[x.a]:'Unknown',need=x
  <p class="sltx">${esc(txt)}</p>
  <div class="slvis"><div class="slcw">${arcCard(x.a<99?x.a:22,118,'slcard')}</div><div class="slav">${avHTML(pr,96)}</div></div>
  <div class="slfp"><b>${esc(pr.name||'')}</b><p>${esc(pr.bio||'A friend of yours on P3RL.')}</p></div>
- <div class="bk"><button data-fhang="${x.uid}" style="background:var(--cy);color:#000">Hang out</button></div></div>`}
+ <div class="bk"><button data-fhang="${x.uid}" style="background:var(--cy);color:#000">Hang out</button></div>${S.dev?`<div class="hd">Owner \u00b7 Testing</div><div class="bk" style="margin-top:0"><button data-slt="new" data-u="${x.uid}">Play \u201cI am thou\u201d</button><button data-slt="rank" data-u="${x.uid}">Play rank up</button></div><div class="bk" style="margin-top:0"><button data-slt="max" data-u="${x.uid}">Play MAX</button><button class="danger" data-sldel="${x.uid}">${RF.sldel==x.uid?'Tap again to delete':'Delete Social Link'}</button></div><p style="opacity:.6;font-size:12px;margin:6px 4px">Only you see this. Delete removes the friendship and resets its rank for both of you. Add each other again to see the new-bond scene.</p>`:''}</div>`}
 function friendsHTML(){if(!FB_ON)return '<p class="nores">Friends work on the P3RL app at p3rl-app.github.io.</p>';
  if(!FBU&&FBW&&ACC.get())return waitHTML();if(!FBU)return signInHTML('Sign in to add real friends.');
  if(!RF.me)return '<p class="nores">Make your profile first, so friends can find you.</p><div class="bk"><button data-pf="go" style="background:var(--cy);color:#000">Set up my profile</button></div>';
@@ -1010,7 +1017,7 @@ let mTab='m',delArm=null,rstArm=0;
 const fmtT=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),dayK=t=>new Date(t).toDateString();
 function dayLabel(t){const d=new Date(t),n=new Date(),y=new Date(Date.now()-864e5);if(d.toDateString()==n.toDateString())return 'Today';if(d.toDateString()==y.toDateString())return 'Yesterday';return d.toLocaleDateString([],{weekday:'short',day:'numeric',month:'short'})}
 const MD={a:['Announcements','Read the latest news'],p:['Profile','View and edit your profile'],l:['Social Link','Whose S. Link do you want to view?'],f:['Friends','Find friends and hang out'],h:['History','See everything you logged'],s:['Settings','Sound, size and your account']};let mSel='a';
-function menu(t){mTab=t||'m';$('#mnb2').scrollTop=0;delArm=null;rstArm=0;RF.edit=0;renderMenu();const m=$('#mns');const an=(mvOK||!mvBad)?'vid':menuAnim(),oc={splash:'op',slide:'op2',fade:'op3',vid:'op4'}[an];clearTimeout(m._cl);m.classList.remove('on','op','op2','op3','op4','pclose');void m.offsetWidth;m.classList.add('on');mvShow(mTab=='m');if(oc&&mTab=='m')m.classList.add(oc);clearTimeout(m._op);m._op=setTimeout(()=>m.classList.remove('op','op2','op3','op4'),1000);document.body.classList.add('lock')}
+function menu(t){mTab=t||'m';try{RF.slv=null;RF.sldel=null}catch(e){}$('#mnb2').scrollTop=0;delArm=null;rstArm=0;RF.edit=0;renderMenu();const m=$('#mns');const an=(mvOK||!mvBad)?'vid':menuAnim(),oc={splash:'op',slide:'op2',fade:'op3',vid:'op4'}[an];clearTimeout(m._cl);m.classList.remove('on','op','op2','op3','op4','pclose');void m.offsetWidth;m.classList.add('on');mvShow(mTab=='m');if(oc&&mTab=='m')m.classList.add(oc);clearTimeout(m._op);m._op=setTimeout(()=>m.classList.remove('op','op2','op3','op4'),1000);document.body.classList.add('lock')}
 /* menu opening animation: the owner picks it; the pick is shared with everyone through config/app */
 var CFG={};const MANIMS=[['splash','P3R splash'],['slide','Slide'],['fade','Fade'],['none','None']];
 function menuAnim(){const v=S.dv.man||'splash';return MANIMS.some(x=>x[0]==v)?v:'splash'}
@@ -1098,6 +1105,8 @@ bindPF($('#mnb2'));bindPF($('#onbc'));
 
 $('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t){const r=e.target.closest('[data-view]');if(r&&RF.prof[r.dataset.view])viewFriend(r.dataset.view);return}
    if(t.dataset.fhang){menuClose();return hgOpen(t.dataset.fhang)}
+ if(t.dataset.slt){const u=t.dataset.u,k=t.dataset.slt,r=slRank(slCount(u));menuClose(true);slQ(k=='new'?{kind:'new',uid:u}:{kind:'rank',uid:u,rank:k=='max'?10:Math.min(10,Math.max(1,r+1))});return}
+ if(t.dataset.sldel){const u=t.dataset.sldel;if(RF.sldel!=u){RF.sldel=u;return renderMenu()}RF.sldel=null;slDelete(u);return}
  if(t.dataset.slv){const u=t.dataset.slv;RF.sls=u;t.classList.add('on');setTimeout(()=>{RF.slv=u;RF.sldir=1;$('#mnb2').scrollTop=0;renderMenu()},140);return}
  if(t.dataset.sln!==undefined){RF.sldir=+t.dataset.dir||1;const L=[...$('#mnb2').querySelectorAll('[data-sln]')];const i=+t.dataset.sln;const us=RF.fr.map(f=>{const pr=RF.prof[f.uid]||{};return{uid:f.uid,a:arcOk(pr.arc)?pr.arc:99,r:slRank(slCount(f.uid))}}).sort((x,y)=>x.a-y.a||y.r-x.r);if(us[i]){RF.slv=us[i].uid;RF.sls=us[i].uid;renderMenu()}return}
  if(t.dataset.fs!==undefined)return findFriend($('#fsq').value);
