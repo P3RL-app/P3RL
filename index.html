@@ -248,7 +248,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .rks{z-index:4;width:var(--s);height:var(--s);margin:calc(var(--s)/-2) 0 0 calc(var(--s)/-2);fill:#141a52;stroke:#c2c4d2;stroke-width:2.3;stroke-linejoin:miter;opacity:0;transform:rotate(var(--r)) scale(0);animation:rks .35s var(--d) cubic-bezier(.2,1.5,.4,1) forwards,rksf 5s calc(var(--d) + .35s) ease-in-out infinite alternate}
 @keyframes rks{to{opacity:1;transform:rotate(var(--r)) scale(1)}}
 @keyframes rksf{from{opacity:1;transform:rotate(var(--r)) scale(1)}to{opacity:1;transform:translate(var(--dx),var(--dy)) rotate(calc(var(--r) + 12deg)) scale(1)}}
-.rkbig{z-index:5;left:285px;top:520px;width:96px;height:96px;margin:-48px;fill:#fff;opacity:0;filter:drop-shadow(0 0 8px rgba(255,255,255,.8));animation:rkbig .4s 2.7s cubic-bezier(.2,1.6,.4,1) forwards}
+.rkbig{z-index:5;left:285px;top:520px;width:96px;height:96px;margin:-48px;fill:#fff;opacity:0;filter:drop-shadow(0 0 8px rgba(255,255,255,.8));animation:rkbig .4s 3.25s cubic-bezier(.2,1.6,.4,1) forwards}
 @keyframes rkbig{from{opacity:0;transform:scale(0) rotate(-60deg)}to{opacity:1;transform:rotate(-8deg)}}
 .rkp{z-index:4;width:var(--s);height:var(--s);margin:calc(var(--s)/-2);background:radial-gradient(circle,#fff 0 7%,transparent 9%),conic-gradient(from 0deg,transparent 0 0);opacity:0;animation:rkp 1.8s var(--d) ease-in-out infinite}
 .rkp::before{content:'';position:absolute;inset:0;background:#3ad8ff;clip-path:polygon(50% 0,56% 44%,100% 50%,56% 56%,50% 100%,44% 56%,0 50%,44% 44%);filter:drop-shadow(0 0 4px #2fc8ff)}
@@ -256,17 +256,17 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 @keyframes rkp{0%,100%{opacity:0;transform:scale(.3)}40%,60%{opacity:1;transform:scale(1)}}
 .rkd{z-index:4;width:5px;height:5px;border-radius:50%;background:#8fe9ff;box-shadow:0 0 6px #4fd6ff;opacity:0;animation:rkd 5s var(--d) linear infinite}
 @keyframes rkd{0%{opacity:0;transform:none}20%{opacity:.9}100%{opacity:0;transform:translate(-20px,-90px)}}
-.rkup{z-index:6;left:372px;top:322px;font:900 166px/1 'Montserrat','Arial Black',sans-serif;letter-spacing:-.045em;color:#fff;white-space:nowrap;transform:scaleX(.8);transform-origin:0 50%;opacity:0;animation:rkup 1.4s 1.0s both}
-@keyframes rkup{0%{opacity:0;filter:blur(4px);text-shadow:0 16px 0 rgba(255,255,255,.45),0 -12px 0 rgba(255,255,255,.3)}14%{opacity:1;filter:none;text-shadow:none}86%{opacity:1}100%{opacity:0}}
-.rkbar{z-index:5;left:440px;top:478px;width:620px;height:54px;background:linear-gradient(90deg,rgba(3,18,28,.95) 0,rgba(3,18,28,.92) 70%,rgba(3,18,28,0));animation:rkin .3s 2.35s both}
+.rkup{z-index:6;left:372px;top:322px;font:900 166px/1 'Montserrat','Arial Black',sans-serif;letter-spacing:-.045em;color:#fff;white-space:nowrap;transform:scaleX(.8);transform-origin:0 50%;opacity:0;animation:rkup 1.75s 1.45s both}
+@keyframes rkup{0%{opacity:0;filter:blur(4px);text-shadow:0 16px 0 rgba(255,255,255,.45),0 -12px 0 rgba(255,255,255,.3)}12%{opacity:1;filter:none;text-shadow:none}82%{opacity:1}100%{opacity:0}}
+.rkbar{z-index:5;left:440px;top:478px;width:620px;height:54px;background:linear-gradient(90deg,rgba(3,18,28,.95) 0,rgba(3,18,28,.92) 70%,rgba(3,18,28,0));animation:rkin .35s 2.9s both}
 .rkbar span{position:absolute;left:192px;top:12px;font:500 24px/1.2 'Montserrat',sans-serif;color:#fff;white-space:nowrap}.rkbar em{font-style:normal;color:#43d3ff}
-.rknum{z-index:6;left:466px;top:300px;font:700 266px/.82 'Montserrat',sans-serif;letter-spacing:-.06em;color:#fff;animation:rkin .3s 2.35s both}
+.rknum{z-index:6;left:466px;top:300px;font:700 266px/.82 'Montserrat',sans-serif;letter-spacing:-.06em;color:#fff;animation:rkin .35s 2.9s both}
 .rknum.two{left:318px;letter-spacing:-.09em}
-.rkinfo{z-index:6;left:620px;top:354px;white-space:nowrap;animation:rkin .3s 2.35s both}
+.rkinfo{z-index:6;left:620px;top:354px;white-space:nowrap;animation:rkin .35s 2.9s both}
 .rkinfo b{display:block;font:700 31px/1 'Montserrat',sans-serif;letter-spacing:-.01em}
 .rkinfo span{display:block;margin-top:2px;font:500 86px/1 'Montserrat',sans-serif;letter-spacing:-.035em;transform-origin:0 50%}
 @keyframes rkin{from{opacity:0}}
-.rkmax{z-index:2;left:600px;top:220px;font:900 italic 260px/1 'Montserrat',sans-serif;color:#1f39ff;opacity:0;letter-spacing:-.05em;animation:rkmx .4s 2.35s forwards}@keyframes rkmx{to{opacity:.75}}
+.rkmax{z-index:2;left:600px;top:220px;font:900 italic 260px/1 'Montserrat',sans-serif;color:#1f39ff;opacity:0;letter-spacing:-.05em;animation:rkmx .4s 2.9s forwards}@keyframes rkmx{to{opacity:.75}}
 .rkok{z-index:7;right:calc(18px + env(safe-area-inset-right,0px))!important;bottom:calc(18px + env(safe-area-inset-bottom,0px))!important;display:flex!important;align-items:center;gap:2px!important;font:900 italic 38px/1 'Montserrat','Barlow',sans-serif!important;color:#fff;-webkit-text-stroke:1.5px #0a1a6a;paint-order:stroke}
 .rkx{position:relative;width:34px;height:34px;margin-right:-2px}.rkx::before,.rkx::after{content:'';position:absolute;left:50%;top:-2px;width:7px;height:38px;margin-left:-3.5px;background:#3c8cff;border:2px solid #cfe2ff;border-radius:2px;transform:rotate(45deg)}.rkx::after{transform:rotate(-45deg)}
 .rkst.pt{width:600px;height:1066px;margin:-533px 0 0 -300px;transform-origin:300px 533px}
@@ -966,19 +966,22 @@ $('#hask').onclick=e=>{const t=e.target.closest('button');if(!t||!RF.ask)return;
 /* both phones: an accepted hangout is logged once (S.hd remembers which ones were already counted) */
 /* queue of card scenes, played when nothing else is on screen */
 const SLQ=[];let slT=0;
-/* scene sounds (taken from your clips): I am thou plays from the card, rank up from the rank screen */
-/* Social Link sounds: the scene sound effects (music removed) + "Strength of Heart" playing underneath both screens */
-const SLC={iat:{id:'sl-iat',url:'snd/sl/iat.mp3'},rk:{id:'sl-rk',url:'snd/sl/rk.mp3'},bgm:{id:'sl-bgm',url:'snd/sl/bgm.mp3'}};let slSrc=null,slBgm=null;
-function slPreload(){return;if(!actx())return;Object.values(SLC).forEach(sn=>decodeSnd(sn).catch(()=>{}));decodeSnd(SLP).catch(()=>{})}
-function slPlayBuf(sn,vol,loop){const c=actx();if(!c)return Promise.resolve(null);try{c.resume()}catch(e){}return decodeSnd(sn).then(buf=>{const g=c.createGain();g.gain.value=vol;g.connect(OUT(c));const src=c.createBufferSource();src.buffer=buf;src.loop=!!loop;src.connect(g);src.start();return {src,g,c}}).catch(()=>null)}
-function slSound(k){slStop();return;slStop();if(!S.dv.sfx)return;
- if(!slBgm){slBgm={pending:1};slPlayBuf(SLC.bgm,.36,true).then(o=>{if(slBgm&&slBgm.pending){slBgm=o}else if(o){o.src.stop()}})}
- const me={};slSrc=me;slPlayBuf(SLC[k],1).then(o=>{if(slSrc===me&&o)Object.assign(me,o);else if(o)o.src.stop()})}
-function slBgmStop(){const o=slBgm;slBgm=null;if(!o||o.pending)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+1.2);o.src.stop(t+1.3)}catch(e){}}
-const SLP={id:'slpress',url:'snd/sl/press.mp3'};
-function slPress(){return;if(!S.dv.sfx)return;slPlayBuf(SLP,1)}
+/* Social Link sounds: each Arcana's own "I am thou" voice, Strength of Heart under both screens,
+   the rank-up sound effect, and the confirm sound when the player presses OK */
+const SLV=a=>a>=1&&a<=21?{id:'sl-v'+a,url:'snd/sl/iat/'+a+'.mp3'}:null;
+const SLC={rk:{id:'sl-rk',url:'snd/sl/rk.mp3'},bgm:{id:'sl-bgm',url:'snd/sl/bgm.mp3'}};const SLP={id:'slpress',url:'snd/sl/press.mp3'};
+let slSrc=null,slBgm=null,slBgmT=0;
+function slPreload(a){if(!actx())return;[SLC.rk,SLC.bgm,SLP,SLV(a)].forEach(sn=>{if(sn)decodeSnd(sn).catch(()=>{})})}
+function slPlayBuf(sn,vol,loop,when){const c=actx();if(!c||!sn)return Promise.resolve(null);try{c.resume()}catch(e){}return decodeSnd(sn).then(buf=>{const g=c.createGain();g.gain.value=vol;g.connect(OUT(c));const src=c.createBufferSource();src.buffer=buf;src.loop=!!loop;src.connect(g);src.start(when?c.currentTime+when:0);return {src,g,c}}).catch(()=>null)}
+/* music: starts with the scene (or later, after a delay) and keeps playing from I am thou into the rank screen */
+function slBgmStart(delay){if(slBgm||!S.dv.sfx)return;clearTimeout(slBgmT);slBgm={pending:1};const go=()=>{if(!slBgm||!slBgm.pending)return;slPlayBuf(SLC.bgm,.36,true).then(o=>{if(slBgm&&slBgm.pending){slBgm=o}else if(o){o.src.stop()}})};if(delay)slBgmT=setTimeout(go,delay);else go()}
+function slBgmStop(){clearTimeout(slBgmT);const o=slBgm;slBgm=null;if(!o||o.pending)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+1.2);o.src.stop(t+1.3)}catch(e){}}
+function slSound(k,a){slStop();if(!S.dv.sfx)return;
+ if(k=='iat')slBgmStart(0);else slBgmStart(3880);   /* rank screen on its own: the music comes in as the number appears, like the game */
+ const sn=k=='iat'?SLV(a):SLC.rk;if(!sn)return;const me={};slSrc=me;slPlayBuf(sn,1).then(o=>{if(slSrc===me&&o)Object.assign(me,o);else if(o)o.src.stop()})}
+function slPress(){if(!S.dv.sfx)return;slPlayBuf(SLP,1)}
 function slStop(){const o=slSrc;slSrc=null;if(!o||!o.src)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+.25);o.src.stop(t+.3)}catch(e){}}
-function slQ(x){SLQ.push(x);try{slPreload()}catch(e){}slTick()}
+function slQ(x){SLQ.push(x);try{const pr=RF.prof[x.uid];slPreload(pr&&arcOk(pr.arc)?pr.arc:22)}catch(e){}slTick()}
 function slTick(){clearTimeout(slT);if(!SLQ.length)return;if(busy||document.querySelector('.ov')||$('#iat').classList.contains('on')||$('#onb').classList.contains('on')){slT=setTimeout(slTick,700);return}slPlay(SLQ.shift())}
 function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk(pr.arc)?pr.arc:22,an=a<22?ARCN[a]:'Unknown',nm=esc(pr.name||'your friend'),E=$('#iat');
  let lines=[],T0,need;
@@ -1003,7 +1006,7 @@ function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk
   /* one ring per line, where the game puts it: start of lines 1 and 3, end of lines 2 and 4 */
   requestAnimationFrame(()=>{fitT();T.querySelectorAll('p').forEach((pp,k)=>{const wd=pp.firstChild.scrollWidth*.82*(parseFloat(pp.style.scale)||1),x=pp.offsetLeft+(k%2?wd-30:20),y=pp.offsetTop+pp.offsetHeight*.5;const g=document.createElement('i');g.className='iring';g.style.left=x+'px';g.style.top=y+'px';g.style.animationDelay=(LT[k]+700)+'ms';T.appendChild(g)})});
  }else{
-  const mx=x.rank>=10;T0=0;need=3000;
+  const mx=x.rank>=10;T0=0;need=4900;
   const SH=[[0,300,250,330,-12,'#0100df',.05],[150,250,200,280,8,'#02008d',.1],[460,520,230,140,-6,'#0100df',.12],[505,212,200,230,26,'#01009d',.08],[690,300,190,260,-10,'#01009d',.14],[850,300,140,230,14,'#02008d',.1],[930,430,220,190,-18,'#0100df',.16],[600,470,170,150,22,'#02008d',.18],[300,470,190,150,-26,'#01009d',.12]];
   const ST=[[160,105,52,-12,.45,-6,-14],[262,92,50,14,.52,4,-16],[360,128,52,-6,.58,8,-12],[78,158,50,20,.5,-8,-10],[40,250,54,-18,.62,-10,-6],[428,195,50,8,.66,10,-8],[463,272,48,-14,.72,10,-4],[58,362,54,10,.7,-8,0],[140,458,58,-4,.78,-6,6],[300,455,46,18,.85,4,8]];
   const SP=[[110,40,30,.3],[255,48,22,.5],[338,70,34,.2],[412,80,30,.9],[490,158,40,.4],[483,180,26,1.2],[420,232,34,.7],[540,236,26,1.5],[60,180,22,1],[40,236,24,.6],[85,325,30,1.3],[60,415,28,.8],[215,494,24,1.1],[395,385,36,.35],[160,200,22,1.7]];
@@ -1029,7 +1032,7 @@ function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk
   const fit=()=>{const st=E.querySelector('.rkst'),pt=false,k=Math.min(innerWidth/1010,innerHeight/600);st.style.setProperty('--k',k.toFixed(4));
    const sp=E.querySelector('.rkinfo span');if(sp){const vis=Math.min(1060,540+innerWidth/2/k-20),w=sp.scrollWidth,mw=Math.min(420,vis-620);sp.style.transform=w>mw?`scaleX(${(mw/w).toFixed(3)})`:''}};fit();E._fit=fit;setTimeout(()=>{if(E._fit===fit)fit()},250);try{document.fonts.ready.then(()=>{if(E._fit===fit)fit()})}catch(e){}
  }
- slSound(x.kind=='new'?'iat':'rk');
+ slSound(x.kind=='new'?'iat':'rk',a);
  E.classList.remove('on');void E.offsetWidth;E.classList.add('on');document.body.classList.add('lock');try{if(S.dv.vib&&navigator.vibrate)navigator.vibrate(x.kind=='new'?[30,60,30]:[20,40,60])}catch(e){}
  let fin=0;const done=()=>{if(fin)return;fin=1;slStop();slPress();if(x.kind!='new'&&!SLQ.length)slBgmStop();E.classList.add('out');if(x.kind=='new')SLQ.unshift({kind:'rank',uid:x.uid,rank:1});setTimeout(()=>{E.className='iat';E.innerHTML='';E._fit=null;document.body.classList.remove('lock');slTick()},x.kind=='new'?700:380)};
  const ok=E.querySelector('.iatok'),t0=Date.now();
@@ -1207,7 +1210,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.21-2102';
+var APPVER='2026.11.21-2229';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
