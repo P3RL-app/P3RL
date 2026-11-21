@@ -323,7 +323,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .rk.skip .rkup::after,.rk.skip .rkflash,.rk.skip .rkburst{display:none}.rk.skip .rkinfo,.rk.skip .rkbar,.rk.skip .rknum{animation-delay:0s!important;animation-duration:.01s!important}.rk.skip .rks.w,.rk.skip .rks.nw{animation-delay:0s,.35s,0s,0s!important}
 /* ===== rank screen, matched to the game capture ===== */
 .rksh{animation-name:rksh,rkflow!important;animation-timing-function:cubic-bezier(.2,.75,.3,1),linear!important;animation-iteration-count:1,infinite!important;animation-fill-mode:both,both!important}
-@keyframes rkflow{0%{translate:0 0;rotate:var(--ax) var(--r0)}100%{translate:2900px var(--dy);rotate:var(--ax) var(--r1)}}
+@keyframes rkflow{0%{translate:0 0;rotate:var(--r0);scale:.35}14%{scale:1}100%{translate:1450px var(--dy);rotate:var(--r1);scale:1.1}}
 /* stars: thick grey outline, dark fill, no inner star; earned ones solid white */
 .rks{fill:#262a66;stroke:#b4b5c6;stroke-width:2.7;stroke-linejoin:round}
 .rks path+path{display:none}
@@ -357,24 +357,6 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .rk.out .rkcard{animation:rkoC .4s .08s cubic-bezier(.55,0,.85,.5) forwards!important}@keyframes rkoC{from{transform:none}to{transform:perspective(900px) translate(-50px,720px) rotateY(115deg) rotate(10deg)}}
 .rk.out .rknum,.rk.out .rkinfo,.rk.out .rkbar,.rk.out .rkmax{animation:rkoF .44s linear forwards!important}@keyframes rkoF{from{opacity:1}to{opacity:0}}
 .rk.out .rkbgd,.rk.out .rkcol,.rk.out .rkband,.rk.out .rklow{opacity:0!important;transition:opacity .3s .1s}
-.rkst{perspective:1600px}
-/* shaded fragments: lit edge, darker far side, a second facet and a thin highlight line */
-.rksh{background:linear-gradient(135deg,color-mix(in srgb,var(--c) 70%,#a99cff) 0,var(--c) 38%,color-mix(in srgb,var(--c) 75%,#0a0640) 100%)!important;opacity:.96;backface-visibility:visible}
-.rksh::before{content:'';position:absolute;inset:0;background:linear-gradient(200deg,rgba(255,255,255,.16),rgba(255,255,255,0) 45%);clip-path:polygon(0 0,62% 0,30% 58%,0 40%)}
-.rksh::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0,rgba(190,180,255,.35) 48%,transparent 52%);opacity:.5;clip-path:polygon(0 0,100% 0,100% 6%,0 6%)}
-/* background detail: soft glow behind the card, slow light streaks, drifting haze, vignette, band highlights */
-.rkbgd::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(150,160,255,.035) 0 40px,transparent 40px 140px);background-size:300px 100%;animation:rkstreak 14s linear infinite}
-@keyframes rkstreak{to{background-position:900px 0}}
-.rkglow{z-index:0;left:-60px;top:20px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(150,140,255,.28),rgba(90,90,220,.10) 45%,transparent 70%);animation:rkglow 4s ease-in-out infinite alternate}
-@keyframes rkglow{to{opacity:.65;scale:1.08}}
-.rkhaze{z-index:0;width:var(--s);height:var(--s);border-radius:50%;background:radial-gradient(circle,rgba(170,160,255,.12),transparent 70%);animation:rkhz var(--t) var(--d) linear infinite}
-@keyframes rkhz{from{translate:-900px 0}to{translate:1900px 0}}
-.rkband{background:linear-gradient(180deg,#4a86ad 0,#377099 10%,#336a93 85%,#2b5b86 100%)!important;box-shadow:inset 0 2px 0 rgba(170,220,240,.35),inset 0 -2px 0 rgba(20,40,80,.4)}
-.rkband::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 2px,transparent 2px 22px);animation:rkstreak 10s linear infinite}
-.rklow{background:linear-gradient(180deg,#44629a,#3b5590)!important}
-.rkvig{z-index:19;left:-3000px;right:-3000px;top:-3000px;bottom:-3000px;pointer-events:none;background:radial-gradient(ellipse 900px 520px at 3540px 3318px,transparent 60%,rgba(5,6,25,.45) 100%)}
-.rk.out .rkglow,.rk.out .rkhaze,.rk.out .rkvig{opacity:0!important;transition:opacity .3s}
-/* I am thou -> rank: the words dissolve into the dark */
 .iat.xf>*{transition:opacity .38s ease-in;opacity:0!important}
 .pflash{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 47%,rgba(140,235,255,.9) 52%,transparent 60%);transform:translateX(-110%);opacity:0}
 .pflash.go{animation:pfl .32s cubic-bezier(.4,0,.2,1)}@keyframes pfl{0%{transform:translateX(-110%);opacity:1}100%{transform:translateX(110%);opacity:1}}
@@ -1128,8 +1110,8 @@ function slPlay(x){try{const E0=$('#iat');E0.classList.remove('xf','out');setTim
   if(PT){const q=v=>[Math.round(v[0]*1.25-50),Math.round(v[1]*1.25+75)];ST.forEach(v=>{[v[0],v[1]]=q(v);v[2]=Math.round(v[2]*1.2)});SP.forEach(v=>{[v[0],v[1]]=q(v)});DT.forEach(v=>{[v[0],v[1]]=q(v)});
    SH.length=0;SH.push([-40,640,260,300,-12,'#0100df',.05],[170,600,220,260,10,'#02008d',.1],[330,680,240,200,-8,'#0100df',.12],[440,560,200,240,24,'#01009d',.08],[-20,860,250,220,16,'#01009d',.14],[220,880,230,200,-14,'#02008d',.1],[420,860,220,230,18,'#0100df',.16],[100,980,260,200,-22,'#02008d',.18],[380,1000,240,180,12,'#01009d',.12])}
   E.className='iat rk'+(mx?' max':'');
-  E.innerHTML=`<div class="rkst${PT?' pt':''}"><i class="rkwipe"></i><i class="rkvig"></i><i class="rkbgd"></i><i class="rkglow"></i>${Array.from({length:7},(_,k)=>`<i class="rkhaze" style="top:${40+k*80}px;left:0;--s:${260+(k*97)%240}px;--t:${26+k*3}s;--d:-${(k*7.3)%26}s"></i>`).join('')}<i class="rkcol"></i><i class="rkband"></i><i class="rklow"></i>
-  ${Array.from({length:26},(_,k)=>{const C=['#3a1ed6','#4318e4','#2c1398','#3f20cf','#5232f0','#33169f'],y=170+((k*89)%430),w=120+((k*53)%190),h=90+((k*71)%200),du=15+((k*37)%60)/10,ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="--c:${C[k%6]};--ax:${['1 .3 0','.4 1 0','1 -.5 .2','-.3 1 .3'][k%4]};left:-900px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?40:-40)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${du.toFixed(1)}s"></i>`}).join('')}
+  E.innerHTML=`<div class="rkst${PT?' pt':''}"><i class="rkwipe"></i><i class="rkbgd"></i><i class="rkcol"></i><i class="rkband"></i><i class="rklow"></i>
+  ${Array.from({length:34},(_,k)=>{const C=['#3a1ed6','#4318e4','#2c1398','#3f20cf','#5232f0','#33169f'],y=200+((k*83)%380),w=170+((k*53)%170),h=130+((k*71)%190),du=12+((k*37)%60)/10,ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="left:${40+(k%5)*45}px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?40:-40)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${du.toFixed(1)}s"></i>`}).join('')}
   ${mx?'<div class="rkmax">MAX</div>':''}
   ${DT.map(([x,y,d])=>`<i class="rkd" style="left:${x}px;top:${y}px;--d:${d}s"></i>`).join('')}
   <div class="rkcw"><div class="rkcard">${arcCard(a,236)}</div></div>
@@ -1326,7 +1308,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-0009';
+var APPVER='2026.11.22-0013';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
