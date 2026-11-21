@@ -9,7 +9,7 @@ enough points you **RANK UP!!** just like in the game.
 
 Everything is one file: `index.html` (the sounds are built into it).
 
-**Open the app:** [https://yanaiben22-dev.github.io/P3RL/](https://p3rl-app.github.io/P3RL/)
+**Open the app:** [[https://yanaiben22-dev.github.io/P3RL/](https://p3rl-app.github.io/P3RL/)](https://p3rl-app.github.io/P3RL/)
 
 ## 📱 Phone only
 
@@ -40,7 +40,7 @@ After that, P3RL opens from its own icon, full screen, like a normal app.
 **Step 1 – Open the link on your phone**
 On your phone, open **Safari** (iPhone) or **Chrome** (Android).
 Tap the address bar at the top and type exactly:
- [https://yanaiben22-dev.github.io/P3RL/](https://p3rl-app.github.io/P3RL/)
+[ [https://yanaiben22-dev.github.io/P3RL/](https://p3rl-app.github.io/P3RL/)](https://p3rl-app.github.io/P3RL/)
 ⚠️ The **P3RL** part must be in CAPITAL letters, or you will get a "404" error page.
 
 **Step 2 – Add it to your home screen**
