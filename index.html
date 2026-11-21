@@ -969,14 +969,14 @@ const SLQ=[];let slT=0;
 /* scene sounds (taken from your clips): I am thou plays from the card, rank up from the rank screen */
 /* Social Link sounds: the scene sound effects (music removed) + "Strength of Heart" playing underneath both screens */
 const SLC={iat:{id:'sl-iat',url:'snd/sl/iat.mp3'},rk:{id:'sl-rk',url:'snd/sl/rk.mp3'},bgm:{id:'sl-bgm',url:'snd/sl/bgm.mp3'}};let slSrc=null,slBgm=null;
-function slPreload(){if(!actx())return;Object.values(SLC).forEach(sn=>decodeSnd(sn).catch(()=>{}));decodeSnd(SLP).catch(()=>{})}
+function slPreload(){return;if(!actx())return;Object.values(SLC).forEach(sn=>decodeSnd(sn).catch(()=>{}));decodeSnd(SLP).catch(()=>{})}
 function slPlayBuf(sn,vol,loop){const c=actx();if(!c)return Promise.resolve(null);try{c.resume()}catch(e){}return decodeSnd(sn).then(buf=>{const g=c.createGain();g.gain.value=vol;g.connect(OUT(c));const src=c.createBufferSource();src.buffer=buf;src.loop=!!loop;src.connect(g);src.start();return {src,g,c}}).catch(()=>null)}
-function slSound(k){slStop();if(!S.dv.sfx)return;
+function slSound(k){slStop();return;slStop();if(!S.dv.sfx)return;
  if(!slBgm){slBgm={pending:1};slPlayBuf(SLC.bgm,.36,true).then(o=>{if(slBgm&&slBgm.pending){slBgm=o}else if(o){o.src.stop()}})}
  const me={};slSrc=me;slPlayBuf(SLC[k],1).then(o=>{if(slSrc===me&&o)Object.assign(me,o);else if(o)o.src.stop()})}
 function slBgmStop(){const o=slBgm;slBgm=null;if(!o||o.pending)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+1.2);o.src.stop(t+1.3)}catch(e){}}
 const SLP={id:'slpress',url:'snd/sl/press.mp3'};
-function slPress(){if(!S.dv.sfx)return;slPlayBuf(SLP,1)}
+function slPress(){return;if(!S.dv.sfx)return;slPlayBuf(SLP,1)}
 function slStop(){const o=slSrc;slSrc=null;if(!o||!o.src)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+.25);o.src.stop(t+.3)}catch(e){}}
 function slQ(x){SLQ.push(x);try{slPreload()}catch(e){}slTick()}
 function slTick(){clearTimeout(slT);if(!SLQ.length)return;if(busy||document.querySelector('.ov')||$('#iat').classList.contains('on')||$('#onb').classList.contains('on')){slT=setTimeout(slTick,700);return}slPlay(SLQ.shift())}
@@ -1207,7 +1207,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.21-2058';
+var APPVER='2026.11.21-2102';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
