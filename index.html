@@ -502,8 +502,11 @@ $('#pki').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();
    1) each phone shows its own random code, each person types the other's  2) both phones show the same 3 emojis (from both codes)
    3) bump the phones together (motion sensor) or press-and-hold BUMP.  Then: the activity + a +2 Charm bonus. */
 const BA='ABCDEFGHJKMNPQRSTUVWXYZ23456789',EMO=['🍜','🎸','🌙','⚡','🎧','🍙','🌸','🔥','🎮','🍀','🐟','⭐','🎲','🍩','🚲','🌊','🦊','🎈','🧩','🍓','🐱','🎯','🌈','🍕','🦋','🎹','🍉','🐼','🛸','🍒','🎨','🐧'];
-const newCode=()=>{let c='';const r=new Uint32Array(4);try{crypto.getRandomValues(r)}catch(e){for(let i=0;i<4;i++)r[i]=Math.random()*4e9}for(let i=0;i<4;i++)c+=BA[r[i]%BA.length];return c};
-const normCode=v=>v.toUpperCase().replace(/[^A-Z0-9]/g,'').replace(/O/g,'0').replace(/I|L/g,'1').slice(0,4);
+/* codes = 3 random characters + 2 check characters worked out from them, so a made-up code is rejected (a random guess passes ~1 in 961) */
+const codeChk=r=>{const h=sha256('p3rl-bump-v1|'+r);return BA[parseInt(h.slice(0,4),16)%BA.length]+BA[parseInt(h.slice(4,8),16)%BA.length]};
+const validCode=c=>c.length==5&&[...c].every(x=>BA.includes(x))&&codeChk(c.slice(0,3))==c.slice(3);
+const newCode=()=>{let c='';const r=new Uint32Array(3);try{crypto.getRandomValues(r)}catch(e){for(let i=0;i<3;i++)r[i]=Math.random()*4e9}for(let i=0;i<3;i++)c+=BA[r[i]%BA.length];return c+codeChk(c)};
+const normCode=v=>v.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,5);
 function addFriend(name){const n=name.trim().slice(0,24);if(!n)return null;let f=S.f.find(x=>x.name.toLowerCase()==n.toLowerCase());if(!f){f={i:'f'+Date.now().toString(36),name:n,n:0,t:0};S.f.push(f);save()}return f}
 function friendsHTML(){const fl=[...S.f].sort((a,b)=>(b.t||0)-(a.t||0));
  return `<div class="bk" style="margin-top:0"><input id="fadd" placeholder="Friend's name" maxlength="24" enterkeyhint="done"><button data-fa="" style="flex:0 0 90px">Add</button></div>`+
@@ -524,7 +527,7 @@ function hgRender(){const C=$('#hgc'),st=HG.st,bar=`<div class="stepn">${[1,2].m
   <div class="row"><button data-h="x">Cancel</button><button data-h="n1" style="background:var(--cy);color:#000">Next</button></div>`}
  else if(st==2){C.innerHTML=`<h3>Swap codes<small>Show your code to ${esc(f.name)}, type theirs, then tap Done.</small></h3>${bar}
   <div class="bc"><small>Your code</small><b>${HG.my}</b></div>
-  <div class="hd">${esc(f.name)}\u2019s code</div><input id="hgcode" maxlength="4" autocomplete="off" autocapitalize="characters" value="${HG.their}" placeholder="····">
+  <div class="hd">${esc(f.name)}\u2019s code</div><input id="hgcode" maxlength="5" autocomplete="off" autocapitalize="characters" value="${HG.their}" placeholder="·····">
   <p class="pkm" id="hgm"></p><div class="row"><button data-h="b1">Back</button><button data-h="n2" style="background:var(--cy);color:#000">Done</button></div>`;setTimeout(()=>{const i=$('#hgcode');i&&i.focus()},60)}
  else if(st==3){C.innerHTML=`<h3>Check the emojis<small>Both phones must show exactly the same three.</small></h3>${bar}
   <div class="emo">${hgEmo()}</div><div class="row"><button data-h="b2">They\u2019re different</button><button data-h="n3" style="background:var(--cy);color:#000">Same on both</button></div>`}
@@ -540,8 +543,9 @@ $('#hgs').onclick=e=>{if(e.target.id=='hgs')return hgClose();const t=e.target.cl
  if(h=='n1'){if(!HG.fid){const v=$('#hgnew').value.trim();const f=v&&addFriend(v);if(f)HG.fid=f.i;else return toast('Pick or add a friend first')}HG.st=2;return hgRender()}
  if(h=='b1'){HG.st=1;return hgRender()}
  if(h=='n2'){const v=normCode($('#hgcode').value),m=$('#hgm');HG.their=v;
-  if(v.length<4)return m.textContent='Type all 4 characters of their code.';
+  if(v.length<5)return m.textContent='Type all 5 characters of their code.';
   if(v==HG.my)return m.textContent='That\u2019s your own code. Type the code on your friend\u2019s phone.';
+  if(!validCode(v))return m.textContent='That code isn\u2019t valid. Check it on your friend\u2019s phone.';
   if(S.bu.includes([HG.my,v].sort().join('|')))return m.textContent='That code pair was already used.';
   return hgFinish()}
  if(h=='b2'){HG.st=2;HG.their='';return hgRender()}
