@@ -80,7 +80,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .pkc{max-width:420px}.pkc input{text-align:center;font-size:28px;letter-spacing:.5em}.pkm{min-height:1.2em;margin:10px 0 0;color:#ff7aa8;font-style:normal;font-size:14px}.pkc.bad{animation:pksh .35s}@keyframes pksh{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
 #pko{background:var(--cy)!important;color:#000}
 .mnc{max-height:86vh;display:flex;flex-direction:column;padding-top:12px}#mnb2{overflow:auto;flex:1;-webkit-overflow-scrolling:touch}
-.mtab{display:flex;gap:8px;margin-bottom:12px}.mtab button{flex:1;background:#2e3157!important;color:#cfd3ff;transform:skewX(-10deg);font-weight:900!important;font-size:16px}.mtab button.on{background:var(--cy)!important;color:#000}.mtab .mx2{flex:0 0 52px}
+.mtab{display:flex;gap:8px;margin-bottom:12px}.mtab button{flex:1;font-size:14px!important;padding:12px 4px!important;background:#2e3157!important;color:#cfd3ff;transform:skewX(-10deg);font-weight:900!important;font-size:16px}.mtab button.on{background:var(--cy)!important;color:#000}.mtab .mx2{flex:0 0 52px}
 .hd{font:900 italic 13px 'Barlow',sans-serif;color:#8f96d8;letter-spacing:.08em;text-transform:uppercase;margin:14px 0 6px}
 .hs{display:flex;gap:6px;margin-bottom:6px}.hs b{flex:1;background:#12131f;padding:8px 6px;text-align:center;font-size:13px}.hs b i{display:block;font-style:normal;font-size:20px;font-weight:900}
 .hi{display:flex;align-items:center;gap:10px;padding:10px 8px;border-bottom:1px solid #2a2d45;font-style:normal;font-size:15px}.hi .t{opacity:.55;font-size:12px;min-width:44px}.hi .n{flex:1}.hi .p{font-weight:900;font-size:13px;white-space:nowrap}.hi .p.c{color:var(--c)}.hi .p.g{color:#7fb0ff}.hi .p.a{color:#6f83ff}
@@ -89,7 +89,16 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .tg{position:relative;flex:none;width:56px;height:32px;border-radius:16px;background:#3a3d63;border:0!important;padding:0!important;min-height:0!important}.tg:after{content:'';position:absolute;left:4px;top:4px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .2s}.tg.on{background:var(--cy)}.tg.on:after{transform:translateX(24px)}
 .st2 input[type=range]{width:140px;padding:0;accent-color:var(--cy)}.sg{display:flex;gap:4px}.sg button{padding:8px 10px!important;min-height:0!important;font-size:13px;background:#2e3157}.sg button.on{background:var(--cy)!important;color:#000}
 .bk{display:flex;gap:8px;margin-top:10px}.bk button{flex:1}.danger{background:#5a1830!important;color:#ffb3c8}
-.hgc{max-height:90vh;overflow:auto}.hgc h3 small{display:block;font:600 normal 13px 'Barlow',sans-serif;opacity:.65;margin-top:4px}
+.hgc{max-height:90vh;overflow:auto}
+.av{display:inline-flex;flex:none;align-items:center;justify-content:center;border-radius:50%;background:#2e3157;overflow:hidden;font-weight:900;font-style:normal;color:#fff;vertical-align:middle}.av img{width:100%;height:100%;object-fit:cover}
+.pcard{position:relative;background:#12131f;margin-bottom:12px}.pban{height:110px}.pav{position:absolute;left:16px;top:64px;border:4px solid #12131f;border-radius:50%;line-height:0}
+.pinfo{padding:44px 16px 14px;font-style:normal}.pinfo b{display:block;font:900 italic 22px 'Barlow',sans-serif}.pinfo .hdl{opacity:.6;font-size:14px}.pinfo p{margin:8px 0 2px;line-height:1.35}
+.prk{display:flex;gap:6px;margin-top:12px}.prk span{flex:1;background:#1b1d33;padding:7px 4px;text-align:center;font-size:12px;font-weight:700}.prk b{display:block;font:900 italic 22px 'Barlow',sans-serif}.prk i{display:block;font-size:11px;opacity:.65;font-style:normal}
+.prk .c b{color:var(--c)}.prk .g b{color:#7fb0ff}.prk .a b{color:#6f83ff}
+.bns{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.bns button{height:44px;border:3px solid transparent!important;padding:0!important;min-height:0!important}.bns button.on{border-color:var(--cy)!important}
+.fr[data-view]{cursor:pointer}.fch button .av{margin-right:4px}
+.hgw{text-align:center;padding:10px 0}.hgw .av{margin:0 auto 10px}.hgw h3{margin:0}
+.spin{width:34px;height:34px;margin:16px auto 4px;border:4px solid #3a3d63;border-top-color:var(--cy);border-radius:50%;animation:spn 1s linear infinite}@keyframes spn{to{transform:rotate(360deg)}}.hgc h3 small{display:block;font:600 normal 13px 'Barlow',sans-serif;opacity:.65;margin-top:4px}
 .stepn{display:flex;gap:6px;margin:-4px 0 12px}.stepn i{flex:1;height:4px;background:#3a3d63}.stepn i.on{background:var(--cy)}
 .fch{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 10px}.fch button{background:#2e3157!important;min-height:44px!important;padding:10px 14px!important;transform:skewX(-8deg)}.fch button.on{background:var(--cy)!important;color:#000}
 .bc{text-align:center;margin:10px 0}.bc b{display:block;font:900 normal 54px 'Barlow',monospace;letter-spacing:.18em;color:var(--cy)}.bc small{opacity:.65;font-style:normal}
@@ -181,7 +190,9 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 <div class="row"><button id="lg">Log once</button><button id="sv2">Save as button</button></div>
 </div></div>
 <div class="sh" id="pks"><div class="card pkc"><h3>Owner passkey</h3><input id="pki" type="password" inputmode="numeric" autocomplete="off" enterkeyhint="go" maxlength="12" placeholder="••••"><p class="pkm" id="pkm"></p><div class="row"><button id="pkx">Cancel</button><button id="pko">Unlock</button></div></div></div>
-<div class="sh" id="mns"><div class="card mnc"><div class="mtab" id="mtab"><button data-t="h" class="on">History</button><button data-t="f">Friends</button><button data-t="s">Settings</button><button class="mx2" id="mnx" aria-label="Close">✕</button></div><div id="mnb2"></div></div></div>
+<div class="sh" id="mns"><div class="card mnc"><div class="mtab" id="mtab"><button data-t="h" class="on">History</button><button data-t="p">Profile</button><button data-t="f">Friends</button><button data-t="s">Settings</button><button class="mx2" id="mnx" aria-label="Close">✕</button></div><div id="mnb2"></div></div></div>
+<div class="sh" id="pfs"><div class="card hgc" id="pfc"></div></div>
+<div class="sh" id="hask"><div class="card hgc" id="haskc"></div></div>
 <div class="sh" id="hgs"><div class="card hgc" id="hgc"></div></div>
 <div class="sh" id="dvs"><div class="card dvc" id="dvc"></div></div>
 
@@ -199,7 +210,7 @@ let S={p:{c:0,g:0,a:0},u:[],prev:null,h:[],f:[],bu:[],dev:0,dv:{clip:null,bg:1,p
 try{const j=JSON.parse(localStorage.getItem('p3s')||'{}');Object.assign(S,j);S.dv=Object.assign({clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1,hz:100,oz:100,lz:100},j.dv||{});if(!S.h)S.h=[];if(!S.f)S.f=[];if(!S.bu)S.bu=[];(S.u||[]).forEach(u=>(u.a||[]).forEach(x=>x[1]=Math.min(3,x[1])))}catch(e){}
 let CREF=null,cBusy=0,cDirty=0,cTm=0;   /* account copy of the save (only when signed in to Claude) */
 const applyLZ=()=>document.documentElement.style.setProperty('--lz',(S.dv.lz||100)/100);
-const save=()=>{S.t=Date.now();try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}cloudPush()};
+const save=()=>{S.t=Date.now();try{typeof pushRanks=='function'&&pushRanks()}catch(e){}try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}cloudPush()};
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist().catch(()=>{})}catch(e){}   /* ask the phone not to wipe it */
 const rank=(s,p)=>{let r=0;ST[s].t.forEach((v,i)=>{if(p>=v)r=i});return r};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -508,67 +519,109 @@ const validCode=c=>c.length==5&&[...c].every(x=>BA.includes(x))&&codeChk(c.slice
 const newCode=()=>{let c='';const r=new Uint32Array(3);try{crypto.getRandomValues(r)}catch(e){for(let i=0;i<3;i++)r[i]=Math.random()*4e9}for(let i=0;i<3;i++)c+=BA[r[i]%BA.length];return c+codeChk(c)};
 const normCode=v=>v.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,5);
 function addFriend(name){const n=name.trim().slice(0,24);if(!n)return null;let f=S.f.find(x=>x.name.toLowerCase()==n.toLowerCase());if(!f){f={i:'f'+Date.now().toString(36),name:n,n:0,t:0};S.f.push(f);save()}return f}
-function friendsHTML(){const fl=[...S.f].sort((a,b)=>(b.t||0)-(a.t||0));
- return `<div class="bk" style="margin-top:0"><input id="fadd" placeholder="Friend's name" maxlength="24" enterkeyhint="done"><button data-fa="" style="flex:0 0 90px">Add</button></div>`+
- (fl.length?fl.map(f=>`<div class="fr"><div class="n">${esc(f.name)}<small>${f.n?`${f.n} hangout${f.n>1?'s':''} · last ${dayLabel(f.t)}`:'No hangouts yet'}</small></div><button data-fh="${f.i}">Hang out</button><button data-fd="${f.i}">${delArm==='f'+f.i?'Remove?':'✕'}</button></div>`).join(''):'<p class="nores">No friends yet. Add someone above.</p>')+
- '<p style="opacity:.6;font-size:12px;font-style:normal;margin:14px 4px">A hangout needs both of you, each with P3RL open: swap codes and it counts the activity plus a +2 Charm bonus.</p>'}
+/* ======== REAL FRIENDS, PROFILES, SYNCED HANGOUTS (Google sign-in / Firebase) ======== */
+const BAN={dark:['Dark Hour','linear-gradient(135deg,#0b1f17,#1d4d3a 55%,#0a1210)'],tart:['Tartarus','linear-gradient(135deg,#16132e,#3a2a6b 50%,#0d0b1e)'],
+ velvet:['Velvet','linear-gradient(135deg,#0a2a6b,#1f6fe6 55%,#08163a)'],moon:['Full Moon','radial-gradient(circle at 75% 35%,#fff7c2 0 14%,#f6d508 15% 17%,#1b2244 18%,#0c1024)'],
+ cyan:['SEES','linear-gradient(120deg,#12f7fd,#1f6fe6 60%,#14152a)'],gold:['Rank Up','linear-gradient(135deg,#f6d508,#f2a10f 55%,#3a2a05)'],
+ rose:['Rose','linear-gradient(135deg,#ff4fd8,#7a1f6b 60%,#1a0a18)'],mono:['Midnight','linear-gradient(135deg,#21242f,#3a3f78 60%,#14152a)']};
+let RF={me:null,meLoaded:0,reqIn:[],reqOut:[],fr:[],prof:{},hgIn:[],hgOut:[],unsub:[],found:null,msg:'',edit:0,waiting:null,ask:null};
+const fdb=()=>firebase.firestore(),myId=()=>FBU&&FBU.uid,pairId=(a,b)=>[a,b].sort().join('_');
+const lvls=()=>({c:rank('c',S.p.c)+1,g:rank('g',S.p.g)+1,a:rank('a',S.p.a)+1});
+const avHTML=(pr,sz)=>{const ph=pr&&pr.photo,n=(pr&&pr.name||'?').trim();return `<span class="av" style="width:${sz}px;height:${sz}px;font-size:${sz*.42}px">${ph?`<img src="${esc(ph)}" referrerpolicy="no-referrer" alt="">`:esc(n[0]||'?').toUpperCase()}</span>`};
+const rkHTML=r=>`<div class="prk">${S3.map(s=>`<span class="${s}"><b>${(r&&r[s])||1}</b>${ST[s].n}<i>${ST[s].r[((r&&r[s])||1)-1]}</i></span>`).join('')}</div>`;
+function cardHTML(pr,own){const bn=(BAN[pr.banner]||BAN.velvet)[1];
+ return `<div class="pcard"><div class="pban" style="background:${bn}"></div><div class="pav">${avHTML(pr,84)}</div><div class="pinfo"><b>${esc(pr.name||'')}</b><span class="hdl">@${esc(pr.handle||'')}</span>${pr.bio?`<p>${esc(pr.bio)}</p>`:''}${rkHTML(pr.ranks)}</div></div>`}
+function rr(){if($('#mns').classList.contains('on')&&(mTab=='f'||mTab=='p'))renderMenu();if(HG)hgRender();showAsk()}
+function fbStop(){RF.unsub.forEach(u=>{try{u()}catch(e){}});RF={...RF,me:null,meLoaded:0,reqIn:[],reqOut:[],fr:[],prof:{},hgIn:[],hgOut:[],unsub:[],found:null,waiting:null,ask:null};rr()}
+function getProf(uid){if(RF.prof[uid])return;RF.prof[uid]={name:'…'};fdb().collection('profiles').doc(uid).get().then(d=>{RF.prof[uid]=d.exists?d.data():{name:'(no profile)'};rr()}).catch(()=>{})}
+function fbStart(u){fbStop();const db=fdb(),me=u.uid,L=(q,f)=>RF.unsub.push(q.onSnapshot(f,()=>{}));
+ db.collection('profiles').doc(me).get().then(d=>{RF.me=d.exists?d.data():null;RF.meLoaded=1;if(RF.me)pushRanks(1);rr()}).catch(()=>{RF.meLoaded=1;rr()});
+ L(db.collection('friendReqs').where('to','==',me),q=>{RF.reqIn=q.docs.map(d=>({id:d.id,...d.data()}));RF.reqIn.forEach(r=>getProf(r.from));rr()});
+ L(db.collection('friendReqs').where('from','==',me),q=>{RF.reqOut=q.docs.map(d=>({id:d.id,...d.data()}));RF.reqOut.forEach(r=>getProf(r.to));rr()});
+ L(db.collection('friendships').where('members','array-contains',me),q=>{RF.fr=q.docs.map(d=>({id:d.id,uid:d.data().members.find(x=>x!=me),t:d.data().t}));RF.fr.forEach(f=>{delete RF.prof[f.uid];getProf(f.uid)});rr()});
+ L(db.collection('hangouts').where('to','==',me),q=>{RF.hgIn=q.docs.map(d=>({id:d.id,...d.data()}));hgCheck()});
+ L(db.collection('hangouts').where('from','==',me),q=>{RF.hgOut=q.docs.map(d=>({id:d.id,...d.data()}));hgCheck()})}
+let rkT=0;function pushRanks(now){if(!FBU||!RF.me)return;clearTimeout(rkT);rkT=setTimeout(()=>{const r=lvls();RF.me.ranks=r;fdb().collection('profiles').doc(myId()).set({ranks:r,t:Date.now()},{merge:true}).catch(()=>{})},now?0:3000)}
+/* profile */
+async function saveProfile(f){const db=fdb(),me=myId(),h=f.handle.toLowerCase();
+ if(!/^[a-z0-9_]{3,15}$/.test(h))throw 'Username: 3-15 letters, numbers or _';
+ if(!f.name.trim())throw 'Pick a display name';
+ const data={name:f.name.trim().slice(0,24),handle:h,bio:f.bio.trim().slice(0,150),banner:f.banner,photo:FBU.photoURL||'',ranks:lvls(),t:Date.now()};
+ await db.runTransaction(async tx=>{const ref=db.collection('usernames').doc(h),d=await tx.get(ref);if(d.exists&&d.data().uid!=me)throw 'That username is taken';
+  tx.set(ref,{uid:me});const old=RF.me&&RF.me.handle;if(old&&old!=h)tx.delete(db.collection('usernames').doc(old));tx.set(db.collection('profiles').doc(me),data)});RF.me=data}
+function profileHTML(){if(!FB_ON)return '<p class="nores">Profiles and friends work on the P3RL app at p3rl-app.github.io.</p>';
+ if(!FBU)return `<p class="nores">Sign in with Google to make your profile and add friends.</p><div class="bk"><button data-bk="gin" style="background:#fff;color:#000">Sign in with Google</button></div>`;
+ if(!RF.meLoaded)return '<p class="nores">Loading…</p>';
+ if(!RF.me||RF.edit){const m=RF.me||{name:FBU.displayName||'',handle:'',bio:'',banner:'velvet'};const b=RF.eb||m.banner;
+  return `<div class="hd">${RF.me?'Edit profile':'Create your profile'}</div>
+  <div class="pcard"><div class="pban" style="background:${BAN[b][1]}"></div><div class="pav">${avHTML({photo:FBU.photoURL,name:m.name},84)}</div><div class="pinfo" style="padding-top:52px"></div></div>
+  <div class="hd">Banner</div><div class="bns">${Object.entries(BAN).map(([k,[n,g]])=>`<button data-ban="${k}" class="${k==b?'on':''}" style="background:${g}" title="${n}"></button>`).join('')}</div>
+  <div class="hd">Display name</div><input id="pfn" maxlength="24" value="${esc(m.name)}">
+  <div class="hd">Username</div><input id="pfh" maxlength="15" autocapitalize="none" placeholder="e.g. yanai_22" value="${esc(m.handle)}"><small style="opacity:.6;font-style:normal">Friends find you by this. Letters, numbers, _</small>
+  <div class="hd">Description</div><textarea id="pfb" rows="3" maxlength="150" placeholder="A few words about you">${esc(m.bio)}</textarea>
+  <p class="pkm">${esc(RF.msg)}</p><div class="bk">${RF.me?'<button data-pf="cancel">Cancel</button>':''}<button data-pf="save" style="background:var(--cy);color:#000">Save profile</button></div>`}
+ return cardHTML(RF.me,1)+`<div class="bk"><button data-pf="edit">Edit profile</button></div><p style="opacity:.6;font-size:12px;font-style:normal;margin:10px 4px">Friends see your photo, name, @username, description and ranks. ${RF.fr.length} friend${RF.fr.length==1?'':'s'}.</p>`}
+/* friends */
+function friendsHTML(){if(!FB_ON)return '<p class="nores">Friends work on the P3RL app at p3rl-app.github.io.</p>';
+ if(!FBU)return `<p class="nores">Sign in with Google to add real friends.</p><div class="bk"><button data-bk="gin" style="background:#fff;color:#000">Sign in with Google</button></div>`;
+ if(!RF.me)return '<p class="nores">Make your profile first, so friends can find you.</p><div class="bk"><button data-pf="go">Create profile</button></div>';
+ const row=(uid,btns,sub)=>{const pr=RF.prof[uid]||{name:'…'};return `<div class="fr" data-view="${uid}">${avHTML(pr,44)}<div class="n">${esc(pr.name||'')}<small>@${esc(pr.handle||'')}${sub?' · '+sub:''}</small></div>${btns}</div>`};
+ let o=`<div class="hd">Add a friend</div><div class="bk" style="margin-top:0"><input id="fsq" placeholder="@username" autocapitalize="none" maxlength="16" enterkeyhint="search"><button data-fs="" style="flex:0 0 96px">Search</button></div>`;
+ if(RF.found)o+=RF.found.err?`<p class="pkm">${esc(RF.found.err)}</p>`:row(RF.found.uid,RF.fr.some(f=>f.uid==RF.found.uid)?'<small>Friends ✓</small>':RF.reqOut.some(r=>r.to==RF.found.uid)?'<small>Requested</small>':`<button data-freq="${RF.found.uid}" style="background:var(--cy)!important;color:#000">Add</button>`);
+ if(RF.reqIn.length)o+='<div class="hd">Friend requests</div>'+RF.reqIn.map(r=>row(r.from,`<button data-acc="${r.id}" style="background:var(--cy)!important;color:#000">Accept</button><button data-dec="${r.id}">✕</button>`)).join('');
+ o+=`<div class="hd">Friends (${RF.fr.length})</div>`+(RF.fr.length?RF.fr.map(f=>row(f.uid,`<button data-fhang="${f.uid}">Hang out</button>`,ST.c.n+' '+((RF.prof[f.uid]&&RF.prof[f.uid].ranks&&RF.prof[f.uid].ranks.c)||1))).join(''):'<p class="nores" style="margin:10px 0">No friends yet. Search their @username above.</p>');
+ if(RF.reqOut.length)o+='<div class="hd">Sent requests</div>'+RF.reqOut.map(r=>row(r.to,`<button data-dec="${r.id}">Cancel</button>`)).join('');
+ return o}
+async function findFriend(q){const h=q.trim().replace(/^@/,'').toLowerCase();RF.found=null;if(!h)return rr();
+ try{const d=await fdb().collection('usernames').doc(h).get();if(!d.exists){RF.found={err:'No one has the username @'+h}}else if(d.data().uid==myId()){RF.found={err:'That’s you!'}}else{const uid=d.data().uid;delete RF.prof[uid];getProf(uid);RF.found={uid}}}catch(e){RF.found={err:'Couldn’t search right now. Check your internet.'}}rr()}
+async function sendReq(uid){const me=myId(),back=RF.reqIn.find(r=>r.from==uid);if(back)return acceptReq(back.id);
+ try{await fdb().collection('friendReqs').doc(me+'_'+uid).set({from:me,to:uid,t:Date.now()});toast('Friend request sent')}catch(e){toast('Couldn’t send the request')}}
+async function acceptReq(id){const r=RF.reqIn.find(x=>x.id==id);if(!r)return;const me=myId();
+ try{await fdb().collection('friendships').doc(pairId(me,r.from)).set({members:[r.from,me],from:r.from,t:Date.now()});await fdb().collection('friendReqs').doc(id).delete();toast('You’re now friends')}catch(e){toast('Couldn’t accept right now')}}
+function delReq(id){fdb().collection('friendReqs').doc(id).delete().catch(()=>{})}
+function viewFriend(uid){const pr=RF.prof[uid];if(!pr)return;const isF=RF.fr.some(f=>f.uid==uid);$('#pfc').innerHTML=cardHTML(pr)+`<div class="bk">${isF?`<button data-fhang="${uid}" style="background:var(--cy);color:#000">Hang out</button><button data-unf="${uid}">${RF.unf==uid?'Tap again to remove':'Remove friend'}</button>`:''}<button data-pclose="">Close</button></div>`;$('#pfs').classList.add('on')}
+$('#pfs').onclick=e=>{const t=e.target.closest('button');if(e.target.id=='pfs'||(t&&t.dataset.pclose!==undefined)){RF.unf=null;return $('#pfs').classList.remove('on')}if(!t)return;
+ if(t.dataset.fhang){$('#pfs').classList.remove('on');return hgOpen(t.dataset.fhang)}
+ if(t.dataset.unf){const u=t.dataset.unf;if(RF.unf!=u){RF.unf=u;return viewFriend(u)}RF.unf=null;fdb().collection('friendships').doc(pairId(myId(),u)).delete().then(()=>toast('Friend removed')).catch(()=>{});$('#pfs').classList.remove('on')}};
+/* synced hangout: you send it, your friend confirms on their phone, then both phones get the activity + 2 Charm */
 let HG=null;
-function hgActs(){const o=[];const add=(id,sc)=>o.push({id,sc});
- S.u.forEach(u=>add('u'+u.i,u));P.forEach(([k,n,rows])=>rows.forEach((x,i)=>add(k+i,parse(x))));return o}
-function hgOpen(fid){HG={st:1,fid:fid||null,act:'c0',my:newCode(),their:''};hgRender();$('#hgs').classList.add('on')}
-function hgClose(){bumpStop();HG=null;$('#hgs').classList.remove('on')}
-function hgEmo(){const k=[HG.my,HG.their].sort().join('|'),h=sha256('p3rl-bump|'+k);return [0,1,2].map(j=>EMO[parseInt(h.slice(j*2,j*2+2),16)%EMO.length]).join(' ')}
-function hgRender(){const C=$('#hgc'),st=HG.st,bar=`<div class="stepn">${[1,2].map(i=>`<i class="${i<=st?'on':''}"></i>`).join('')}</div>`,f=S.f.find(x=>x.i==HG.fid);
- if(st==1){const acts=hgActs(),grp=[['u','Yours'],['c','Charm'],['g','Courage'],['a','Academics'],['m','Combos']];
-  C.innerHTML=`<h3>Hang out with a friend<small>Both of you need P3RL open on your own phones.</small></h3>${bar}
-  <div class="hd">Who are you with?</div><div class="fch" id="hgf">${S.f.map(x=>`<button data-f="${x.i}" class="${x.i==HG.fid?'on':''}">${esc(x.name)}</button>`).join('')}</div>
-  <div class="bk" style="margin-top:0"><input id="hgnew" placeholder="${S.f.length?'Or add a new friend':'Friend\u2019s name'}" maxlength="24"><button data-h="addf" style="flex:0 0 80px">Add</button></div>
+function hgActs(){const o=[];const add=(id,sc)=>o.push({id,sc});S.u.forEach((u,i)=>add('u'+i,u));P.forEach(([k,n,rows])=>rows.forEach((x,i)=>add(k+i,parse(x))));return o}
+function hgOpen(uid){if(!FB_ON||!FBU||!RF.me){menu(FB_ON&&FBU?'p':'f');return toast(FB_ON&&FBU?'Make your profile first':'Sign in with Google to hang out with friends')}
+ HG={st:1,uid:uid||(RF.fr.length==1?RF.fr[0].uid:null),act:'c0'};hgRender();$('#hgs').classList.add('on')}
+function hgClose(){HG=null;$('#hgs').classList.remove('on')}
+const actById=id=>(hgActs().find(x=>x.id==id)||{sc:parse('Hung out with friends|c2')}).sc;
+function hgRender(){if(!HG)return;const C=$('#hgc');
+ if(HG.st==1){const acts=hgActs(),grp=[['u','Yours'],['c','Charm'],['g','Courage'],['a','Academics'],['m','Combos']];
+  C.innerHTML=`<h3>Hang out with a friend<small>They confirm it on their phone, then you both get it, plus +2 Charm.</small></h3>
+  <div class="hd">Who are you with?</div>${RF.fr.length?`<div class="fch">${RF.fr.map(f=>{const pr=RF.prof[f.uid]||{};return `<button data-u="${f.uid}" class="${f.uid==HG.uid?'on':''}">${avHTML(pr,26)} ${esc(pr.name||'…')}</button>`}).join('')}</div>`:'<p class="nores" style="margin:8px 0">Add friends first in ☰ → Friends.</p>'}
   <div class="hd">What did you do together?</div><select id="hgact" style="width:100%">${grp.map(([k,n])=>{const it=acts.filter(a=>a.id[0]==k);return it.length?`<optgroup label="${n}">${it.map(a=>`<option value="${a.id}" ${a.id==HG.act?'selected':''}>${esc(a.sc.t)} (${a.sc.a.map(([s,v])=>'+'+v+' '+ST[s].n).join(', ')})</option>`).join('')}</optgroup>`:''}).join('')}</select>
-  <div class="row"><button data-h="x">Cancel</button><button data-h="n1" style="background:var(--cy);color:#000">Next</button></div>`}
- else if(st==2){C.innerHTML=`<h3>Swap codes<small>Show your code to ${esc(f.name)}, type theirs, then tap Done.</small></h3>${bar}
-  <div class="bc"><small>Your code</small><b>${HG.my}</b></div>
-  <div class="hd">${esc(f.name)}\u2019s code</div><input id="hgcode" maxlength="5" autocomplete="off" autocapitalize="characters" value="${HG.their}" placeholder="·····">
-  <p class="pkm" id="hgm"></p><div class="row"><button data-h="b1">Back</button><button data-h="n2" style="background:var(--cy);color:#000">Done</button></div>`;setTimeout(()=>{const i=$('#hgcode');i&&i.focus()},60)}
- else if(st==3){C.innerHTML=`<h3>Check the emojis<small>Both phones must show exactly the same three.</small></h3>${bar}
-  <div class="emo">${hgEmo()}</div><div class="row"><button data-h="b2">They\u2019re different</button><button data-h="n3" style="background:var(--cy);color:#000">Same on both</button></div>`}
- else if(st==4){C.innerHTML=`<h3>Bump!<small>Hold your phones and knock them together. No luck? Press and hold the circle.</small></h3>${bar}
-  <button class="bump wait" id="bumpb"><i></i><span>BUMP</span></button><p class="pkm" id="hgm" style="text-align:center;color:#cfd3ff">${HG.motion?'Waiting for the bump…':'Tap the circle once to use the motion sensor.'}</p>
-  <div class="row"><button data-h="b3">Back</button></div>`;bumpWire()}}
-$('#hgb').onclick=()=>{if(busy)return;hgOpen(S.f.length==1?S.f[0].i:null)};
-$('#hgs').onclick=e=>{if(e.target.id=='hgs')return hgClose();const t=e.target.closest('button');if(!t||!HG)return;
- if(t.dataset.f){HG.fid=t.dataset.f;return hgRender()}
- const h=t.dataset.h;if(!h)return;const a=$('#hgact');if(a)HG.act=a.value;
+  <div class="row"><button data-h="x">Cancel</button><button data-h="send" style="background:var(--cy);color:#000">Send</button></div>`}
+ else{const pr=RF.prof[HG.uid]||{},h=RF.hgOut.find(x=>x.id==HG.id),st=h&&h.status;
+  C.innerHTML=`<div class="hgw">${avHTML(pr,72)}<h3>${st=='no'?`${esc(pr.name||'Your friend')} said no`:`Waiting for ${esc(pr.name||'your friend')}…`}<small>${st=='no'?'Nothing was logged.':'Ask them to open P3RL and tap Confirm.'}</small></h3>${st=='no'?'':'<div class="spin"></div>'}</div>
+  <div class="row"><button data-h="${st=='no'?'x':'cancel'}">${st=='no'?'Close':'Cancel'}</button></div>`}}
+$('#hgb').onclick=()=>{if(busy)return;hgOpen()};
+$('#hgs').onclick=async e=>{if(e.target.id=='hgs'&&HG&&HG.st==1)return hgClose();const t=e.target.closest('button');if(!t||!HG)return;
+ if(t.dataset.u){HG.uid=t.dataset.u;return hgRender()}const a=$('#hgact');if(a)HG.act=a.value;const h=t.dataset.h;
  if(h=='x')return hgClose();
- if(h=='addf'){const f=addFriend($('#hgnew').value);if(f)HG.fid=f.i;return hgRender()}
- if(h=='n1'){if(!HG.fid){const v=$('#hgnew').value.trim();const f=v&&addFriend(v);if(f)HG.fid=f.i;else return toast('Pick or add a friend first')}HG.st=2;return hgRender()}
- if(h=='b1'){HG.st=1;return hgRender()}
- if(h=='n2'){const v=normCode($('#hgcode').value),m=$('#hgm');HG.their=v;
-  if(v.length<5)return m.textContent='Type all 5 characters of their code.';
-  if(v==HG.my)return m.textContent='That\u2019s your own code. Type the code on your friend\u2019s phone.';
-  if(!validCode(v))return m.textContent='That code isn\u2019t valid. Check it on your friend\u2019s phone.';
-  if(S.bu.includes([HG.my,v].sort().join('|')))return m.textContent='That code pair was already used.';
-  return hgFinish()}
- if(h=='b2'){HG.st=2;HG.their='';return hgRender()}
- if(h=='n3'){HG.st=4;return hgRender()}
- if(h=='b3'){bumpStop();HG.st=3;return hgRender()}};
-$('#hgc').addEventListener('input',e=>{if(e.target.id=='hgcode'){const v=normCode(e.target.value);if(v!==e.target.value)e.target.value=v}});
-$('#hgc').addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.id=='hgcode'){e.preventDefault();$('#hgc').querySelector('[data-h="n2"]').click()}});
-/* bump detection: a sharp knock on the motion sensor, or press-and-hold (1.2 s) */
-let bmH=null,hdT=0,hdR=0;
-function bumpStop(){if(bmH){removeEventListener('devicemotion',bmH);bmH=null}clearInterval(hdR);hdT=0}
-function bumpWire(){const b=$('#bumpb'),bar=b.querySelector('i');
- const go=()=>{bumpStop();if(!HG||HG.done)return;HG.done=1;try{S.dv.vib&&navigator.vibrate&&navigator.vibrate([60,40,60])}catch(e){}hgFinish()};
- const listen=()=>{if(bmH)return;let last=null;bmH=e=>{const a=e.acceleration&&e.acceleration.x!=null?e.acceleration:null,g=e.accelerationIncludingGravity;
-   if(a){if(Math.hypot(a.x,a.y,a.z)>16)go()}else if(g&&g.x!=null){const m=Math.hypot(g.x,g.y,g.z);if(last!=null&&Math.abs(m-last)>14)go();last=m}};addEventListener('devicemotion',bmH);HG.motion=1;const m=$('#hgm');if(m)m.textContent='Waiting for the bump…'};
- b.addEventListener('click',()=>{if(HG&&!HG.motion){const D=window.DeviceMotionEvent;if(D&&typeof D.requestPermission=='function')D.requestPermission().then(r=>{if(r=='granted')listen();else{const m=$('#hgm');if(m)m.textContent='Motion sensor not allowed. Press and hold the circle instead.'}}).catch(()=>{});else if(D)listen()}});
- b.addEventListener('pointerdown',e=>{e.preventDefault();hdT=Date.now();clearInterval(hdR);hdR=setInterval(()=>{const p=Math.min(1,(Date.now()-hdT)/1200);bar.style.height=(p*100)+'%';if(p>=1)go()},30)});
- const up=()=>{if(hdT&&!HG?.done){clearInterval(hdR);hdT=0;bar.style.height='0'}};b.addEventListener('pointerup',up);b.addEventListener('pointerleave',up);b.addEventListener('pointercancel',up);
- if(HG.motion)listen()}
-function hgFinish(){const f=S.f.find(x=>x.i==HG.fid),A=hgActs().find(x=>x.id==HG.act)||{sc:parse('Hung out with friends|c2')};
- const a=A.sc.a.map(x=>[...x]),c=a.find(x=>x[0]=='c');if(c)c[1]+=2;else a.push(['c',2]);   /* +2 Charm bonus for a verified hangout */
- const sc={t:`${A.sc.t} with ${f?f.name:'a friend'}`,a};
- S.bu.push([HG.my,HG.their].sort().join('|'));if(S.bu.length>60)S.bu.shift();if(f){f.n=(f.n||0)+1;f.t=Date.now()}
- hgClose();const el={getBoundingClientRect:()=>({left:innerWidth/2-1,top:innerHeight*.62,width:2,height:2})};apply(sc,el)}
+ if(h=='cancel'){if(HG.id)fdb().collection('hangouts').doc(HG.id).update({status:'cancel'}).catch(()=>{});return hgClose()}
+ if(h=='send'){if(!HG.uid)return toast('Pick a friend first');const sc=actById(HG.act),ref=fdb().collection('hangouts').doc();
+  try{await ref.set({from:myId(),to:HG.uid,pair:pairId(myId(),HG.uid),act:{t:sc.t,a:sc.a.map(x=>x[0]+x[1]).join(',')},fromName:RF.me.name,status:'pending',t:Date.now()});HG.st=2;HG.id=ref.id;hgRender()}
+  catch(e){toast('Couldn’t send. Check your internet.')}}};
+/* the friend's phone: confirm popup */
+function showAsk(){const now=Date.now(),q=RF.hgIn.filter(h=>h.status=='pending'&&now-h.t<15*60e3&&!(S.hd||[]).includes(h.id)).sort((a,b)=>a.t-b.t)[0],box=$('#hask');
+ if(!q){box.classList.remove('on');RF.ask=null;return}if(RF.ask==q.id&&box.classList.contains('on'))return;RF.ask=q.id;const pr=RF.prof[q.from]||{name:q.fromName};getProf(q.from);
+ const pts=q.act.a.split(',').map(x=>'+'+x.slice(1)+' '+ST[x[0]].n).join(', ');
+ $('#haskc').innerHTML=`<div class="hgw">${avHTML(pr,72)}<h3>${esc(pr.name||q.fromName)} says you hung out<small>${esc(q.act.t)} · ${pts} + 2 Charm bonus</small></h3></div><div class="row"><button data-ask="no">Not me</button><button data-ask="ok" style="background:var(--cy);color:#000">Confirm</button></div>`;box.classList.add('on')}
+$('#hask').onclick=e=>{const t=e.target.closest('button');if(!t||!RF.ask)return;const id=RF.ask;$('#hask').classList.remove('on');
+ fdb().collection('hangouts').doc(id).update({status:t.dataset.ask=='ok'?'ok':'no'}).catch(()=>toast('Couldn’t reach your friend’s request'));if(t.dataset.ask=='no'){(S.hd=S.hd||[]).push(id);save()}};
+/* both phones: an accepted hangout is logged once (S.hd remembers which ones were already counted) */
+function hgCheck(){const mine=myId();S.hd=S.hd||[];
+ [...RF.hgIn,...RF.hgOut].filter(h=>h.status=='ok'&&!S.hd.includes(h.id)&&Date.now()-h.t<24*3600e3).forEach(h=>{
+  if(busy)return setTimeout(hgCheck,1500);S.hd.push(h.id);if(S.hd.length>200)S.hd.shift();
+  const other=h.from==mine?h.to:h.from,pr=RF.prof[other]||{name:h.from==mine?'a friend':h.fromName},a=h.act.a.split(',').map(x=>[x[0],+x.slice(1)]),c=a.find(x=>x[0]=='c');
+  if(c)c[1]+=2;else a.push(['c',2]);if(HG&&HG.id==h.id)hgClose();['#mns','#pfs','#hask'].forEach(q=>$(q).classList.remove('on'));
+  apply({t:`${h.act.t} with ${pr.name||'a friend'}`,a},{getBoundingClientRect:()=>({left:innerWidth/2-1,top:innerHeight*.62,width:2,height:2})})});
+ rr()}
 /* ---- menu: history + settings ---- */
 let mTab='h',delArm=null,rstArm=0;
 const fmtT=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),dayK=t=>new Date(t).toDateString();
@@ -576,6 +629,7 @@ function dayLabel(t){const d=new Date(t),n=new Date(),y=new Date(Date.now()-864e
 function menu(t){mTab=t||mTab;delArm=null;rstArm=0;renderMenu();$('#mns').classList.add('on')}
 function renderMenu(){[...$('#mtab').querySelectorAll('[data-t]')].forEach(b=>b.classList.toggle('on',b.dataset.t==mTab));const B=$('#mnb2');
  if(mTab=='f'){B.innerHTML=friendsHTML();return}
+ if(mTab=='p'){B.innerHTML=profileHTML();return}
  if(mTab=='h'){const H=S.h.map((h,i)=>({...h,i})).reverse();if(!H.length){B.innerHTML='<p class="nores">Nothing logged yet. Tap an activity to start.</p>';return}
   const tot={c:0,g:0,a:0},td=dayK(Date.now());S.h.forEach(h=>{if(dayK(h.t)==td)h.a.forEach(([s,n])=>tot[s]+=n)});
   let o=`<div class="hd">Today\u2019s points</div><div class="hs">${S3.map(s=>`<b>${ST[s].n}<i>+${tot[s]}</i></b>`).join('')}</div>`,last='';
@@ -593,10 +647,19 @@ function renderMenu(){[...$('#mtab').querySelectorAll('[data-t]')].forEach(b=>b.
   `<div class="hd">Progress</div><div class="bk"><button class="danger" data-bk="rst">${rstArm?'Tap again to erase everything':'Reset all progress'}</button></div>`}}
 $('#mtab').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.id=='mnx')return $('#mns').classList.remove('on');mTab=b.dataset.t;delArm=null;rstArm=0;renderMenu()};
 $('#mns').onclick=e=>{if(e.target.id=='mns')$('#mns').classList.remove('on')};
-$('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t)return;
- if(t.dataset.fd!==undefined){const i=t.dataset.fd;if(delArm!=='f'+i){delArm='f'+i;return renderMenu()}S.f=S.f.filter(f=>f.i!=i);delArm=null;save();return renderMenu()}
- if(t.dataset.fa!==undefined){const v=$('#fadd').value.trim();if(v){addFriend(v);renderMenu()}return}
- if(t.dataset.fh!==undefined){$('#mns').classList.remove('on');return hgOpen(t.dataset.fh)}
+$('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t){const r=e.target.closest('[data-view]');if(r&&RF.prof[r.dataset.view])viewFriend(r.dataset.view);return}
+   if(t.dataset.fhang){$('#mns').classList.remove('on');return hgOpen(t.dataset.fhang)}
+ if(t.dataset.fs!==undefined)return findFriend($('#fsq').value);
+ if(t.dataset.freq)return sendReq(t.dataset.freq);
+ if(t.dataset.acc)return acceptReq(t.dataset.acc);
+ if(t.dataset.dec)return delReq(t.dataset.dec);
+ if(t.dataset.ban){RF.eb=t.dataset.ban;const v={n:$('#pfn').value,h:$('#pfh').value,b:$('#pfb').value};renderMenu();$('#pfn').value=v.n;$('#pfh').value=v.h;$('#pfb').value=v.b;return}
+ if(t.dataset.pf){const k=t.dataset.pf;RF.msg='';
+  if(k=='go'){mTab='p';return renderMenu()}
+  if(k=='edit'){RF.edit=1;RF.eb=RF.me.banner;return renderMenu()}
+  if(k=='cancel'){RF.edit=0;RF.eb=null;return renderMenu()}
+  if(k=='save'){const f={name:$('#pfn').value,handle:$('#pfh').value,bio:$('#pfb').value,banner:RF.eb||(RF.me&&RF.me.banner)||'velvet'};t.disabled=true;
+   saveProfile(f).then(()=>{RF.edit=0;RF.eb=null;toast('Profile saved');renderMenu()}).catch(er=>{RF.msg=typeof er=='string'?er:'Couldn\u2019t save. Check your internet.';renderMenu()});return}}
  if(t.dataset.del!==undefined){const i=+t.dataset.del;if(delArm!==i){delArm=i;return renderMenu()}const h=S.h[i];h.a.forEach(([s,n])=>S.p[s]=Math.max(0,S.p[s]-n));S.h.splice(i,1);S.prev=null;delArm=null;save();hub();renderMenu();return toast('Entry removed')}
  if(t.dataset.tg){S.dv[t.dataset.tg]=S.dv[t.dataset.tg]?0:1;save();return renderMenu()}
  if(t.dataset.pm){S.dv.pm=t.dataset.pm;save();return renderMenu()}
@@ -608,6 +671,7 @@ $('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t)return;
  else if(k=='zr'){S.dv.hz=S.dv.oz=S.dv.lz=100;save();applyLZ();hub();renderMenu()}
  else if(k=='zp'){$('#mns').classList.remove('on');testPlay(['c'],2,false)}
  else if(k=='rst'){if(!rstArm){rstArm=1;return renderMenu()}rstArm=0;S.p={c:0,g:0,a:0};S.h=[];S.prev=null;save();hub();renderMenu();toast('Progress reset')}};
+$('#mnb2').addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.id=='fsq'){e.preventDefault();findFriend(e.target.value)}});
 $('#mnb2').addEventListener('input',e=>{const z=e.target.dataset&&e.target.dataset.z;if(z){S.dv[z]=+e.target.value;$('#zv'+z).textContent=e.target.value+'%';if(z=='hz')hub();if(z=='lz')applyLZ();return}if(e.target.id=='vol'){setVol(+e.target.value);const sm=e.target.parentNode.querySelector('small');if(sm)sm.textContent=e.target.value+'%'}});
 $('#mnb2').addEventListener('change',e=>{if(e.target.dataset&&e.target.dataset.z){save();return}if(e.target.id=='vol'){save();try{actx()&&AC.resume();hit('big')}catch(z){}}});
 let hotN=0,hotT=0;
@@ -615,13 +679,13 @@ document.addEventListener('pointerup',e=>{if(e.target.id!=='hot')return;const n=
  if(hotN>=6){hotN=0;if(S.dev){S.dev=0;save();ownerUI();toast('Owner tools off')}else pkOpen()}});
 let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!busy)hub()},150)});
 /* ---- account save: newest copy wins (this phone vs. your Claude account) ---- */
-const cPack=()=>({p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
+const cPack=()=>({p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,hd:(S.hd||[]).slice(-200),bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
 function cloudPush(now){if(!CREF)return;cDirty=1;clearTimeout(cTm);cTm=setTimeout(async()=>{if(cBusy){cloudPush();return}cBusy=1;cDirty=0;try{await CREF.set(cPack())}catch(e){}cBusy=0;if(cDirty)cloudPush()},now?0:700)}
 async function cloudInit(){try{if(IN_PV||!window.claude||!claude.use)return;const [db,us]=await Promise.all([claude.use('db'),claude.use('user')]);if(!db||!us)return;
  const id=await us.id();if(!id)return;await cloudUse(db.doc('data/users/'+id+'/save'))}catch(e){}}
 /* newest copy wins: this phone vs. the online save */
 async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=snap.exists?snap.data():null;
- if(c&&c.p&&(c.t||0)>(S.t||0)){S.p={...c.p};S.u=(c.u||[]).map(x=>({...x}));S.h=(c.h||[]).map(x=>({...x}));S.f=(c.f||S.f||[]).map(x=>({...x}));S.bu=[...(c.bu||S.bu||[])];S.prev=c.prev?{...c.prev}:null;S.dev=c.dev||0;S.dv=Object.assign(S.dv,c.dv||{});S.t=c.t;
+ if(c&&c.p&&(c.t||0)>(S.t||0)){S.p={...c.p};S.u=(c.u||[]).map(x=>({...x}));S.h=(c.h||[]).map(x=>({...x}));S.f=(c.f||S.f||[]).map(x=>({...x}));S.bu=[...(c.bu||S.bu||[])];S.hd=[...new Set([...(S.hd||[]),...(c.hd||[])])];S.prev=c.prev?{...c.prev}:null;S.dev=c.dev||0;S.dv=Object.assign(S.dv,c.dv||{});S.t=c.t;
   try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}if(!busy){hub();lst();ownerUI()}}
  else if(!c||(S.t||0)>(c.t||0))cloudPush(1)}catch(e){}}
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
@@ -630,7 +694,7 @@ const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.
 let FBU=null,FBE='',fbReady=null;
 function fbLoad(){if(fbReady)return fbReady;const V='10.12.2',L=n=>new Promise((ok,no)=>{const x=document.createElement('script');x.src=`https://cdn.jsdelivr.net/npm/firebase@${V}/${n}-compat.js`;x.onload=ok;x.onerror=no;document.head.appendChild(x)});
  fbReady=(window.firebase&&firebase.auth?Promise.resolve():L('firebase-app').then(()=>Promise.all([L('firebase-auth'),L('firebase-firestore')]))).then(()=>{if(!firebase.apps.length)firebase.initializeApp(FBC);
-  firebase.auth().onAuthStateChanged(u=>{FBU=u;if(u){FBE='';cloudUse(firebase.firestore().collection('users').doc(u.uid))}else if(CREF&&CREF.__fb)CREF=null;if($('#mns').classList.contains('on')&&mTab=='s')renderMenu()});
+  firebase.auth().onAuthStateChanged(u=>{FBU=u;if(u){FBE='';cloudUse(firebase.firestore().collection('users').doc(u.uid));fbStart(u)}else{fbStop();if(CREF&&CREF.__fb)CREF=null};if($('#mns').classList.contains('on')&&mTab=='s')renderMenu()});
   firebase.auth().getRedirectResult().catch(e=>{FBE=e.code||e.message})});return fbReady}
 function fbSignIn(){fbLoad().then(()=>{const a=firebase.auth(),pr=new firebase.auth.GoogleAuthProvider();pr.setCustomParameters({prompt:'select_account'});
  const standalone=navigator.standalone||matchMedia('(display-mode: standalone)').matches;
