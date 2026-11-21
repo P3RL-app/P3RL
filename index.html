@@ -21,7 +21,7 @@ button,.sc,.chip,.ci,label{touch-action:manipulation;cursor:pointer}
 body.lock{overflow:hidden}
 button,input,select,textarea{font:inherit;color:inherit}
 .hub{position:relative;height:clamp(320px,min(60vh,108vw),760px);overflow:hidden;background:linear-gradient(135deg,#3a3f78,#1a1b33)}
-.hot{position:absolute;left:0;top:0;width:72px;height:72px;z-index:4}
+.hot{position:absolute;left:0;top:env(safe-area-inset-top,0px);width:96px;height:96px;z-index:4;touch-action:manipulation;-webkit-touch-callout:none}   /* below the iPhone status bar; no double-tap zoom eating the taps */
 .un{position:absolute;right:12px;top:10px;z-index:3;background:#000;border:0;min-height:40px;padding:8px 16px;transform:skewX(-12deg);font-size:14px}
 .sv{display:block;position:absolute;inset:0;width:100%;height:100%}
 .sv text{font-family:'Montserrat','Arial Black',Arial,sans-serif;font-style:italic;fill:#fff}
@@ -461,17 +461,17 @@ function sha256(str){const K=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956
 function pkHash(pin){let h='p3rl-owner|'+pin;for(let i=0;i<20000;i++)h=sha256(h+'|'+i);return h}
 /* owner passkey: only a salted, slowed-down fingerprint is stored here, never the passkey itself */
 const PKH='c95b2bec7486e6009c0050a5280bccffd29a3fc52c466716f3be108982e9a4cd';let pkFails=0,pkLock=0;
-function pkOpen(){$('#pki').value='';$('#pkm').textContent='';$('#pks').classList.add('on');setTimeout(()=>$('#pki').focus(),60)}
+let pkT=0;function pkOpen(){pkT=Date.now();$('#pki').value='';$('#pkm').textContent='';$('#pks').classList.add('on');setTimeout(()=>$('#pki').focus(),60)}
 function pkClose(){$('#pks').classList.remove('on')}
 function pkTry(){const v=$('#pki').value.trim(),m=$('#pkm'),c=document.querySelector('.pkc');if(!v)return;
  if(Date.now()<pkLock){m.textContent='Too many tries. Wait a moment.';return}
  m.textContent='Checking…';setTimeout(()=>{if(pkHash(v)===PKH){pkFails=0;pkClose();S.dev=1;save();ownerUI();toast('Owner tools on')}
   else{pkFails++;$('#pki').value='';c.classList.remove('bad');void c.offsetWidth;c.classList.add('bad');
    if(pkFails>=5){pkLock=Date.now()+30000;pkFails=0;m.textContent='Wrong passkey. Locked for 30 seconds.'}else m.textContent='Wrong passkey.'}},30)}
-$('#pko').onclick=pkTry;$('#pkx').onclick=pkClose;$('#pks').onclick=e=>{if(e.target.id=='pks')pkClose()};
+$('#pko').onclick=pkTry;$('#pkx').onclick=pkClose;$('#pks').onclick=e=>{if(e.target.id=='pks'&&Date.now()-pkT>600)pkClose()};   /* ignore the click that belongs to the 6th tap */
 $('#pki').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();pkTry()}});
 let hotN=0,hotT=0;
-document.addEventListener('click',e=>{if(e.target.id!=='hot')return;const n=Date.now();hotN=n-hotT<2500?hotN+1:1;hotT=n;
+document.addEventListener('pointerup',e=>{if(e.target.id!=='hot')return;const n=Date.now();hotN=n-hotT<1500?hotN+1:1;hotT=n;
  if(hotN>=6){hotN=0;if(S.dev){S.dev=0;save();ownerUI();toast('Owner tools off')}else pkOpen()}});
 let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!busy)hub()},150)});
 /* ---- phone view: the real app running inside a phone-sized screen, for checking the layout from a PC ---- */
