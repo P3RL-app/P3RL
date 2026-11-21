@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="apple-touch-icon.png">
 <title>P3RL</title>
 <meta name="theme-color" content="#21242f">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,600;0,700;1,600;1,700;1,800;1,900&family=Barlow+Condensed:ital,wght@1,700;1,800;1,900&family=EB+Garamond:wght@600;700&family=Montserrat:ital,wght@0,600;1,700;1,800;1,900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,600;0,700;1,600;1,700;1,800;1,900&family=Barlow+Condensed:ital,wght@1,700;1,800;1,900&family=EB+Garamond:wght@600;700&family=Montserrat:ital,wght@0,600;1,700;1,800;1,900&family=Archivo:wdth,wght@62..125,400..900&display=swap">
 <style>
 :root{--ink:#14152a;background:#14152a;--pn:#21242f;--cy:#12f7fd;--ye:#f6d508;--c:#66bdf9;--g:#568ff7;--a:#4a63ff;--sp:1;color-scheme:dark;box-sizing:border-box}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -280,6 +280,47 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .pt .rkbar{left:0;top:936px;width:600px;height:60px}.pt .rkbar span{left:56px;top:14px;font-size:27px}
 .pt .rkmax{left:150px;top:470px;font-size:240px}
 .rk.skip .rkup{display:none}.rk.skip *{animation-delay:0s!important}.rk.skip .rkcard,.rk.skip .rksh,.rk.skip .rkbar,.rk.skip .rknum,.rk.skip .rkinfo,.rk.skip .rkmax,.rk.skip .rkbig,.rk.skip .rkok{animation-duration:.01s!important}
+/* ===== rank screen: game typography (Archivo grotesque) + extra motion ===== */
+.rkup{font-family:'Archivo','Arial Black',sans-serif!important;font-weight:900!important;font-variation-settings:'wdth' 82;letter-spacing:-.035em!important;font-size:176px!important;top:318px!important;left:360px!important;transform:scaleX(.9)!important;animation:rkup2 1.75s 1.45s both!important}
+@keyframes rkup2{0%{opacity:0;translate:90px 0;filter:blur(6px);text-shadow:24px 0 0 rgba(255,255,255,.4),48px 0 0 rgba(255,255,255,.18)}12%{opacity:1;translate:0 0;filter:none;text-shadow:none}16%{translate:-6px 0}22%,80%{opacity:1;translate:0 0}100%{opacity:0;translate:-70px 0;filter:blur(4px)}}
+.rkup::after{content:attr(data-t);position:absolute;inset:0;color:transparent;background:linear-gradient(100deg,transparent 35%,rgba(140,230,255,.95) 48%,transparent 60%) no-repeat;background-size:40% 100%;background-position:-60% 0;-webkit-background-clip:text;background-clip:text;animation:rkshine .7s 1.75s ease-out both}
+@keyframes rkshine{to{background-position:180% 0}}
+.rkflash{z-index:5;left:420px;top:280px;width:560px;height:300px;margin:0;border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,255,.85),rgba(120,210,255,.35) 40%,transparent 70%);opacity:0;animation:rkfl .5s 2.85s ease-out both}
+@keyframes rkfl{0%{opacity:0;scale:.4}30%{opacity:1}100%{opacity:0;scale:1.25}}
+.rknum{font-family:'Archivo',Arial,sans-serif!important;font-weight:800!important;font-variation-settings:'wdth' 100;letter-spacing:-.05em!important;animation:rknp .45s 2.9s cubic-bezier(.2,1.4,.4,1) both!important}
+@keyframes rknp{0%{opacity:0;scale:1.7;filter:blur(8px)}60%{opacity:1;filter:none}100%{opacity:1;scale:1}}
+.rkinfo{animation:rkslide .45s 3.02s cubic-bezier(.2,.8,.3,1) both!important}
+@keyframes rkslide{from{opacity:0;translate:70px 0}}
+.rkinfo b{font-family:'Archivo',Arial,sans-serif!important;font-weight:800!important;letter-spacing:0!important}
+.rkinfo span{font-family:'Archivo',Arial,sans-serif!important;font-weight:500!important;font-variation-settings:'wdth' 94;letter-spacing:-.02em!important}
+.rkbar{animation:rkwp .4s 3.1s cubic-bezier(.2,.8,.3,1) both!important}
+@keyframes rkwp{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
+.rkbar span{font-family:'Archivo',Arial,sans-serif!important;font-weight:500!important}
+.rkmax{font-family:'Archivo',Arial,sans-serif!important;font-weight:900!important;font-style:normal!important;font-variation-settings:'wdth' 80}
+.rkcard::after{background:linear-gradient(115deg,transparent 35%,rgba(170,230,255,.55) 48%,transparent 60%) no-repeat!important;background-size:60% 100%!important;background-position:-80% 0;animation:rkcs 3.2s 1.2s ease-in-out infinite}
+@keyframes rkcs{0%{background-position:-80% 0}45%,100%{background-position:220% 0}}
+.rks.w{animation:rks .35s var(--d) cubic-bezier(.2,1.5,.4,1) forwards,rksf 5s calc(var(--d) + .35s) ease-in-out infinite alternate,rkw .3s var(--w) forwards}
+.rks.nw{animation:rks .35s var(--d) cubic-bezier(.2,1.5,.4,1) forwards,rksf 5s calc(var(--d) + .35s) ease-in-out infinite alternate,rkw .3s var(--w) forwards,rknw .7s var(--w) cubic-bezier(.2,1.6,.4,1) both}
+@keyframes rknw{0%{scale:1}35%{scale:1.9}100%{scale:1}}
+.rkburst{position:absolute;z-index:5;width:40px;height:40px;margin:-20px;border-radius:50%;border:4px solid #fff;box-shadow:0 0 18px #8fe6ff,inset 0 0 12px #8fe6ff;opacity:0;animation:rkbu .7s var(--w) ease-out both}
+@keyframes rkbu{0%{opacity:1;scale:.2}100%{opacity:0;scale:4.5;border-width:1px}}
+.rksh{animation:rksh .42s cubic-bezier(.2,.75,.3,1) both,rkdr 6s 1s ease-in-out infinite alternate}
+@keyframes rkdr{to{translate:0 -10px}}
+.rkwipe{z-index:20;left:-1400px;top:-900px;width:1100px;height:2400px;background:linear-gradient(90deg,#0b1ab8,#1c3cff 70%,#8fe6ff);transform:skewX(-18deg);display:none}
+/* outro: card flies off, text slides away, stars scatter, a blue sweep wipes back to the stats screen */
+.rk.out{animation:none!important;opacity:1}
+.rk.out .rkcw{transition:transform .5s cubic-bezier(.6,0,.8,.4),opacity .5s;transform:matrix(.996,-.093,.428,1.077,0,0) translate(-260px,-700px) rotate(-30deg)!important;opacity:0}
+.rk.out .rkup,.rk.out .rkup::after{display:none!important}.rk.out .rknum,.rk.out .rkinfo,.rk.out .rkbar,.rk.out .rkmax{animation:rkoR .45s cubic-bezier(.6,0,.8,.4) forwards!important}
+@keyframes rkoR{from{opacity:1}to{opacity:0;translate:900px 0}}
+.rk.out .rks,.rk.out .rkburst,.rk.out .rkp,.rk.out .rkd,.rk.out .rkflash{animation:rkoS .35s ease-in forwards!important}
+@keyframes rkoS{from{opacity:1}to{opacity:0;scale:0}}
+.rk.out .rksh{animation:rkoD .5s cubic-bezier(.6,0,.8,.4) forwards!important}
+@keyframes rkoD{to{translate:0 700px}}
+.rk.out .rkok{animation:rkoS .2s forwards!important}
+.rk.out .rkwipe{display:block;animation:rkwipe .62s .18s cubic-bezier(.7,0,.3,1) both}
+@keyframes rkwipe{0%{translate:0 0}100%{translate:3800px 0}}
+.rk.out .rkbgd,.rk.out .rkcol,.rk.out .rkband,.rk.out .rklow{transition:opacity .25s .45s;opacity:0}
+.rk.skip .rkup::after,.rk.skip .rkflash,.rk.skip .rkburst{display:none}.rk.skip .rkinfo,.rk.skip .rkbar,.rk.skip .rknum{animation-delay:0s!important;animation-duration:.01s!important}.rk.skip .rks.w,.rk.skip .rks.nw{animation-delay:0s,.35s,0s,0s!important}
 .pflash{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 47%,rgba(140,235,255,.9) 52%,transparent 60%);transform:translateX(-110%);opacity:0}
 .pflash.go{animation:pfl .32s cubic-bezier(.4,0,.2,1)}@keyframes pfl{0%{transform:translateX(-110%);opacity:1}100%{transform:translateX(110%);opacity:1}}
 .pmn.sub .pitems{transform:translateX(-50%) rotate(-11deg) translateX(-60%);opacity:0;pointer-events:none}.pmn.sub .pwal{opacity:0;pointer-events:none}
@@ -503,7 +544,7 @@ function svg(p,hub,bt,fin,vb){
  return h+'</svg>'}
 function hub(){const el=$('#hub'),W=el.clientWidth||innerWidth,H=el.clientHeight||Math.round(innerHeight*.56);
  el.innerHTML=svg(S.p,1,0,0,zoomVB(fitVB(W,H),S.dv.hz))+'<div class="hot" id="hot"></div><button class="mnb'+(hasNew()?' new':'')+'" id="mnb" aria-label="Menu"><span>☰</span></button>'+(S.prev?'<button class="un" id="un">Undo last</button>':'');
- $('#mnb').onclick=()=>menu('m');
+ $('#mnb').onclick=()=>{uiSnd('ok');menu('m')};
  const u=$('#un');if(u)u.onclick=()=>{S.p=S.prev;S.prev=null;if(S.h.length)S.h.pop();save();hub()}}
 function parse(x){const [t,g]=x.split('|'),a=[];g.replace(/([cga])(\d)/g,(m,s,n)=>a.push([s,+n]));return{t,a}}
 function btn(id,sc,cu){R[id]=sc;const q=(sc.t+' '+sc.a.map(([s,n])=>'+'+n+' '+ST[s].n).join(' ')).toLowerCase();return `<button class="sc" data-id="${id}" data-q="${esc(q)}" data-s="${sc.a.map(x=>x[0]).join('')}" data-v="${sc.a.map(x=>x[1]).join('')}" data-u="${cu?1:''}" style="--k:var(--${sc.a[0][0]})"><span>${esc(sc.t)}${cu?'<i class="yt">YOURS</i>':''}</span><span class="ch">${sc.a.map(([s,n])=>`<b class="${s}">+${n} ${ST[s].n}</b>`).join('')}${cu?'<i class="x">✕</i>':''}</span></button>`}
@@ -573,6 +614,12 @@ function hit(k){if(!S.dv.sfx||RM||!BS[k])return;const sn=BS[k],c=actx();
  const fadePrev=()=>{const L=lastHit;if(!L)return;lastHit=null;if(c&&L.aEnd&&c.currentTime>=L.aEnd-.25)return;   /* only a short tail left: let it ring out naturally */try{if(L.g&&c){const t=c.currentTime;L.g.gain.cancelScheduledValues(t);L.g.gain.setValueAtTime(L.g.gain.value,t);L.g.gain.linearRampToValueAtTime(0,t+.25);L.src.stop(t+.27)}else if(L.au){const a=L.au;let v=a.volume;const iv=setInterval(()=>{v-=.25;if(v<=0){clearInterval(iv);try{a.pause()}catch(e){}}else a.volume=v},30)}}catch(e){}};
  if(c&&sn.buf&&c.state==='running'){fadePrev();const src=c.createBufferSource(),g=c.createGain();src.buffer=sn.buf;src.connect(g);g.connect(OUT(c));src.start(0);const me={src,g,aEnd:c.currentTime+(sn.aud||sn.buf.duration)};lastHit=me;src.onended=()=>{if(lastHit===me)lastHit=null}}
  else{try{fadePrev();const au=new Audio(sn.url);au.volume=(S.dv.vol??80)/100;const p=au.play();if(p&&p.catch)p.catch(()=>{});const me={au};lastHit=me;au.onended=()=>{if(lastHit===me)lastHit=null}}catch(e){}}}
+/* menu sounds: confirm (choose an option), go back one step, go all the way back to the stats screen */
+const UIS={ok:{id:'ui-ok',url:'snd/sl/press.mp3'},b1:{id:'ui-b1',url:'snd/ui/back1.mp3'},home:{id:'ui-home',url:'snd/ui/home.mp3'}};
+function uiSnd(k){try{if(!S.dv.sfx)return;const sn=UIS[k],c=actx();if(!sn)return;
+ if(!c){const au=new Audio(sn.url);au.volume=(S.dv.vol??80)/100;au.play().catch(()=>{});return}
+ try{c.resume()}catch(e){}const go=b=>{const s2=c.createBufferSource();s2.buffer=b;s2.connect(OUT(c));s2.start()};if(sn.buf)go(sn.buf);else decodeSnd(sn).then(go).catch(()=>{})}catch(e){}}
+document.addEventListener('pointerdown',()=>{try{if(actx())Object.values(UIS).forEach(sn=>decodeSnd(sn).catch(()=>{}))}catch(e){}},{once:true,capture:true});
 function preloadSounds(){try{if(!window.fetch)return;Object.values(BS).forEach(sn=>decodeSnd(sn).catch(()=>{}))}catch(e){}}
 try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}   /* iPhone: play even with the silent switch on */
 let MG=null;const actx=()=>{if(!AC){const C=window.AudioContext||window.webkitAudioContext;if(C)try{AC=new C();MG=AC.createGain();MG.gain.value=(S.dv.vol??80)/100;MG.connect(AC.destination)}catch(e){}}return AC};
@@ -894,8 +941,8 @@ function slHTML(){if(!FB_ON)return '<p class="nores">Social Links work on the P3
  const L=RF.fr.map(f=>{const pr=RF.prof[f.uid]||{},n=slCount(f.uid);return {uid:f.uid,pr,a:arcOk(pr.arc)?pr.arc:99,n,r:slRank(n)}}).sort((x,y)=>x.a-y.a||y.r-x.r);
  const warn=arcOk(RF.me.arc)?'':'<div class="slwarn">You haven’t picked your Arcana yet.<button data-pf="edit" data-gop="1">Choose Arcana</button></div>';
  if(RF.slv){const i=L.findIndex(x=>x.uid==RF.slv);if(i<0)RF.slv=null;else return warn+slDetail(L,i)}
- if(!L.length)return warn+'<div class="sltag">LIST</div><p class="nores">No Social Links yet. Add a friend in Menu → Friends to forge your first bond.</p>';
- return warn+'<div class="slside" aria-hidden="true">SOCIAL LINK</div><div class="sltag">LIST</div><div class="sll">'+L.map(x=>{const nm=x.a<99?ARCN[x.a]:'Unknown';return `<button class="slr${RF.sls==x.uid?' on':''}" data-slv="${x.uid}"><span class="slt"><span class="slno">${x.a<99?ROM[x.a]:'?'}</span><span class="sla">${esc(nm)}</span><span class="slk">${x.r>=10?'<b>MAX</b>':`<small>RANK</small><b>${x.r}</b>`}</span></span><span class="slsub">${esc(x.pr.name||'…')}</span></button>`}).join('')+'</div>'}
+ if(!L.length)return warn+slReqHTML()+'<div class="sltag">LIST</div><p class="nores">No Social Links yet. Add a friend below to forge your first bond.</p>'+slAddHTML();
+ return warn+slReqHTML()+'<div class="slside" aria-hidden="true">SOCIAL LINK</div><div class="sltag">LIST</div><div class="sll">'+L.map(x=>{const nm=x.a<99?ARCN[x.a]:'Unknown';return `<button class="slr${RF.sls==x.uid?' on':''}" data-slv="${x.uid}"><span class="slt"><span class="slno">${x.a<99?ROM[x.a]:'?'}</span><span class="sla">${esc(nm)}</span><span class="slk">${x.r>=10?'<b>MAX</b>':`<small>RANK</small><b>${x.r}</b>`}</span></span><span class="slsub">${esc(x.pr.name||'…')}</span></button>`}).join('')+'</div>'+slAddHTML()}
 /* owner: remove a Social Link completely so the animations can be tested again */
 async function slDelete(uid){const me=myId(),pr=pairId(me,uid),db=fdb();toast('Deleting Social Link…');
  try{const hs=[...RF.hgIn,...RF.hgOut].filter(h=>h.pair==pr&&h.status=='ok');for(const h of hs)await db.collection('hangouts').doc(h.id).update({status:'reset'});
@@ -910,7 +957,13 @@ function slDetail(L,i){const x=L[i],pr=x.pr,nm=x.a<99?ARCN[x.a]:'Unknown',need=x
  <p class="sltx">${esc(txt)}</p>
  <div class="slvis"><div class="slcw">${arcCard(x.a<99?x.a:22,118,'slcard')}</div><div class="slav">${avHTML(pr,96)}</div></div>
  <div class="slfp"><b>${esc(pr.name||'')}</b><p>${esc(pr.bio||'A friend of yours on P3RL.')}</p></div>
- <div class="bk"><button data-fhang="${x.uid}" style="background:var(--cy);color:#000">Hang out</button></div>${S.dev?`<div class="hd">Owner \u00b7 Testing</div><div class="bk" style="margin-top:0"><button data-slt="new" data-u="${x.uid}">Play \u201cI am thou\u201d</button><button data-slt="rank" data-u="${x.uid}">Play rank up</button></div><div class="bk" style="margin-top:0"><button data-slt="max" data-u="${x.uid}">Play MAX</button><button class="danger" data-sldel="${x.uid}">${RF.sldel==x.uid?'Tap again to delete':'Delete Social Link'}</button></div><p style="opacity:.6;font-size:12px;margin:6px 4px">Only you see this. Delete removes the friendship and resets its rank for both of you. Add each other again to see the new-bond scene.</p>`:''}</div>`}
+ <div class="bk"><button data-fhang="${x.uid}" style="background:var(--cy);color:#000">Hang out</button><button data-vf="${x.uid}">Profile</button></div>${S.dev?`<div class="hd">Owner \u00b7 Testing</div><div class="bk" style="margin-top:0"><button data-slt="new" data-u="${x.uid}">Play \u201cI am thou\u201d</button><button data-slt="rank" data-u="${x.uid}">Play rank up</button></div><div class="bk" style="margin-top:0"><button data-slt="max" data-u="${x.uid}">Play MAX</button><button class="danger" data-sldel="${x.uid}">${RF.sldel==x.uid?'Tap again to delete':'Delete Social Link'}</button></div><p style="opacity:.6;font-size:12px;margin:6px 4px">Only you see this. Delete removes the friendship and resets its rank for both of you. Add each other again to see the new-bond scene.</p>`:''}</div>`}
+/* friend tools, shown on the Social Link page: requests on top, add a friend + sent requests under the list */
+const frRow=(uid,btns,sub)=>{const pr=RF.prof[uid]||{name:'…'};return `<div class="fr" data-view="${uid}">${avHTML(pr,44)}<div class="n">${esc(pr.name||'')}<small>@${esc(pr.handle||'')}${sub?' · '+sub:''}</small></div>${btns}</div>`};
+function slReqHTML(){return RF.reqIn.length?'<div class="hd">Friend requests</div>'+RF.reqIn.map(r=>frRow(r.from,`<button data-acc="${r.id}" style="background:var(--cy)!important;color:#000">Accept</button><button data-dec="${r.id}">✕</button>`)).join(''):''}
+function slAddHTML(){let o=`<div class="hd">Add a friend</div><div class="bk" style="margin-top:0"><input id="fsq" placeholder="@username" autocapitalize="none" maxlength="16" enterkeyhint="search"><button data-fs="" style="flex:0 0 96px">Search</button></div>`;
+ if(RF.found)o+=RF.found.err?`<p class="pkm">${esc(RF.found.err)}</p>`:frRow(RF.found.uid,RF.fr.some(f=>f.uid==RF.found.uid)?'<small>Friends ✓</small>':RF.reqOut.some(r=>r.to==RF.found.uid)?'<small>Requested</small>':`<button data-freq="${RF.found.uid}" style="background:var(--cy)!important;color:#000">Add</button>`);
+ if(RF.reqOut.length)o+='<div class="hd">Sent requests</div>'+RF.reqOut.map(r=>frRow(r.to,`<button data-dec="${r.id}">Cancel</button>`)).join('');return o}
 function friendsHTML(){if(!FB_ON)return '<p class="nores">Friends work on the P3RL app at p3rl-app.github.io.</p>';
  if(!FBU&&FBW&&ACC.get())return waitHTML();if(!FBU)return signInHTML('Sign in to add real friends.');
  if(!RF.me)return '<p class="nores">Make your profile first, so friends can find you.</p><div class="bk"><button data-pf="go" style="background:var(--cy);color:#000">Set up my profile</button></div>';
@@ -929,27 +982,27 @@ async function acceptReq(id){const r=RF.reqIn.find(x=>x.id==id);if(!r)return;con
  try{await fdb().collection('friendships').doc(pairId(me,r.from)).set({members:[r.from,me],from:r.from,t:Date.now()});await fdb().collection('friendReqs').doc(id).delete();toast('You’re now friends')}catch(e){toast('Couldn’t accept right now')}}
 function delReq(id){fdb().collection('friendReqs').doc(id).delete().catch(()=>{})}
 function viewFriend(uid){const pr=RF.prof[uid];if(!pr)return;const isF=RF.fr.some(f=>f.uid==uid);$('#pfc').innerHTML=cardHTML(pr,0,uid)+`<div class="bk">${isF?`<button data-fhang="${uid}" style="background:var(--cy);color:#000">Hang out</button><button data-unf="${uid}">${RF.unf==uid?'Tap again to remove':'Remove friend'}</button>`:''}<button data-pclose="">Close</button></div>`;$('#pfs').classList.add('on')}
-$('#pfs').onclick=e=>{const t=e.target.closest('button');if(e.target.id=='pfs'||(t&&t.dataset.pclose!==undefined)){RF.unf=null;return $('#pfs').classList.remove('on')}if(!t)return;
+$('#pfs').onclick=e=>{const t=e.target.closest('button');if(e.target.id=='pfs'||(t&&t.dataset.pclose!==undefined)){uiSnd('b1');RF.unf=null;return $('#pfs').classList.remove('on')}if(!t)return;uiSnd('ok');
  if(t.dataset.fhang){$('#pfs').classList.remove('on');return hgOpen(t.dataset.fhang)}
  if(t.dataset.unf){const u=t.dataset.unf;if(RF.unf!=u){RF.unf=u;return viewFriend(u)}RF.unf=null;fdb().collection('friendships').doc(pairId(myId(),u)).delete().then(()=>toast('Friend removed')).catch(()=>{});$('#pfs').classList.remove('on')}};
 /* synced hangout: you send it, your friend confirms on their phone, then both phones get the activity + 2 Charm */
 let HG=null;
 function hgActs(){const o=[];const add=(id,sc)=>o.push({id,sc});S.u.forEach((u,i)=>add('u'+i,u));P.forEach(([k,n,rows])=>rows.forEach((x,i)=>add(k+i,parse(x))));return o}
-function hgOpen(uid){if(!FB_ON||!FBU||!RF.me){menu(FB_ON&&FBU?'p':'f');return toast(FB_ON&&FBU?'Make your profile first':'Sign in with Google to hang out with friends')}
+function hgOpen(uid){if(!FB_ON||!FBU||!RF.me){menu(FB_ON&&FBU?'p':'l');return toast(FB_ON&&FBU?'Make your profile first':'Sign in with Google to hang out with friends')}
  HG={st:1,uid:uid||(RF.fr.length==1?RF.fr[0].uid:null),act:'c0'};hgRender();$('#hgs').classList.add('on')}
 function hgClose(){HG=null;$('#hgs').classList.remove('on')}
 const actById=id=>(hgActs().find(x=>x.id==id)||{sc:parse('Hung out with friends|c2')}).sc;
 function hgRender(){if(!HG)return;const C=$('#hgc');
  if(HG.st==1){const acts=hgActs(),grp=[['u','Yours'],['c','Charm'],['g','Courage'],['a','Academics'],['m','Combos']];
   C.innerHTML=`<h3>Hang out with a friend<small>They confirm it on their phone, then you both get it, plus +2 Charm.</small></h3>
-  <div class="hd">Who are you with?</div>${RF.fr.length?`<div class="fch">${RF.fr.map(f=>{const pr=RF.prof[f.uid]||{};return `<button data-u="${f.uid}" class="${f.uid==HG.uid?'on':''}">${avHTML(pr,26)} ${esc(pr.name||'…')}</button>`}).join('')}</div>`:'<p class="nores" style="margin:8px 0">Add friends first in ☰ → Friends.</p>'}
+  <div class="hd">Who are you with?</div>${RF.fr.length?`<div class="fch">${RF.fr.map(f=>{const pr=RF.prof[f.uid]||{};return `<button data-u="${f.uid}" class="${f.uid==HG.uid?'on':''}">${avHTML(pr,26)} ${esc(pr.name||'…')}</button>`}).join('')}</div>`:'<p class="nores" style="margin:8px 0">Add friends first in ☰ → Social Link.</p>'}
   <div class="hd">What did you do together?</div><select id="hgact" style="width:100%">${grp.map(([k,n])=>{const it=acts.filter(a=>a.id[0]==k);return it.length?`<optgroup label="${n}">${it.map(a=>`<option value="${a.id}" ${a.id==HG.act?'selected':''}>${esc(a.sc.t)} (${a.sc.a.map(([s,v])=>'+'+v+' '+ST[s].n).join(', ')})</option>`).join('')}</optgroup>`:''}).join('')}</select>
   <div class="row"><button data-h="x">Cancel</button><button data-h="send" style="background:var(--cy);color:#000">Send</button></div>`}
  else{const pr=RF.prof[HG.uid]||{},h=RF.hgOut.find(x=>x.id==HG.id),st=h&&h.status;
   C.innerHTML=`<div class="hgw">${avHTML(pr,72)}<h3>${st=='no'?`${esc(pr.name||'Your friend')} said no`:`Waiting for ${esc(pr.name||'your friend')}…`}<small>${st=='no'?'Nothing was logged.':'Ask them to open P3RL and tap Confirm.'}</small></h3>${st=='no'?'':'<div class="spin"></div>'}</div>
   <div class="row"><button data-h="${st=='no'?'x':'cancel'}">${st=='no'?'Close':'Cancel'}</button></div>`}}
-$('#hgb').onclick=()=>{if(busy)return;hgOpen()};
-$('#hgs').onclick=async e=>{if(e.target.id=='hgs'&&HG&&HG.st==1)return hgClose();const t=e.target.closest('button');if(!t||!HG)return;
+$('#hgb').onclick=()=>{if(busy)return;uiSnd('ok');hgOpen()};
+$('#hgs').onclick=async e=>{if(e.target.id=='hgs'&&HG&&HG.st==1){uiSnd('b1');return hgClose()}const t=e.target.closest('button');if(!t||!HG)return;uiSnd(t.dataset.h=='x'||t.dataset.h=='cancel'?'b1':'ok');
  if(t.dataset.u){HG.uid=t.dataset.u;return hgRender()}const a=$('#hgact');if(a)HG.act=a.value;const h=t.dataset.h;
  if(h=='x')return hgClose();
  if(h=='cancel'){if(HG.id)fdb().collection('hangouts').doc(HG.id).update({status:'cancel'}).catch(()=>{});return hgClose()}
@@ -961,7 +1014,7 @@ function showAsk(){const now=Date.now(),q=RF.hgIn.filter(h=>h.status=='pending'&
  if(!q){box.classList.remove('on');RF.ask=null;return}if(RF.ask==q.id&&box.classList.contains('on'))return;RF.ask=q.id;const pr=RF.prof[q.from]||{name:q.fromName};getProf(q.from);
  const pts=q.act.a.split(',').map(x=>'+'+x.slice(1)+' '+ST[x[0]].n).join(', ');
  $('#haskc').innerHTML=`<div class="hgw">${avHTML(pr,72)}<h3>${esc(pr.name||q.fromName)} says you hung out<small>${esc(q.act.t)} · ${pts} + 2 Charm bonus</small></h3></div><div class="row"><button data-ask="no">Not me</button><button data-ask="ok" style="background:var(--cy);color:#000">Confirm</button></div>`;box.classList.add('on')}
-$('#hask').onclick=e=>{const t=e.target.closest('button');if(!t||!RF.ask)return;const id=RF.ask;$('#hask').classList.remove('on');
+$('#hask').onclick=e=>{const t=e.target.closest('button');if(!t||!RF.ask)return;uiSnd(t.dataset.ask=='ok'?'ok':'b1');const id=RF.ask;$('#hask').classList.remove('on');
  fdb().collection('hangouts').doc(id).update({status:t.dataset.ask=='ok'?'ok':'no'}).catch(()=>toast('Couldn’t reach your friend’s request'));if(t.dataset.ask=='no'){(S.hd=S.hd||[]).push(id);save()}};
 /* both phones: an accepted hangout is logged once (S.hd remembers which ones were already counted) */
 /* queue of card scenes, played when nothing else is on screen */
@@ -977,7 +1030,7 @@ function slPlayBuf(sn,vol,loop,when){const c=actx();if(!c||!sn)return Promise.re
 function slBgmStart(delay){if(slBgm||!S.dv.sfx)return;clearTimeout(slBgmT);slBgm={pending:1};const go=()=>{if(!slBgm||!slBgm.pending)return;slPlayBuf(SLC.bgm,.36,true).then(o=>{if(slBgm&&slBgm.pending){slBgm=o}else if(o){o.src.stop()}})};if(delay)slBgmT=setTimeout(go,delay);else go()}
 function slBgmStop(){clearTimeout(slBgmT);const o=slBgm;slBgm=null;if(!o||o.pending)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+1.2);o.src.stop(t+1.3)}catch(e){}}
 function slSound(k,a){slStop();if(!S.dv.sfx)return;
- if(k=='iat')slBgmStart(0);else slBgmStart(3880);   /* rank screen on its own: the music comes in as the number appears, like the game */
+ slBgmStart(0);   /* music starts with the screen (and carries on from I am thou into the rank screen) */
  const sn=k=='iat'?SLV(a):SLC.rk;if(!sn)return;const me={};slSrc=me;slPlayBuf(sn,1).then(o=>{if(slSrc===me&&o)Object.assign(me,o);else if(o)o.src.stop()})}
 function slPress(){if(!S.dv.sfx)return;slPlayBuf(SLP,1)}
 function slStop(){const o=slSrc;slSrc=null;if(!o||!o.src)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+.25);o.src.stop(t+.3)}catch(e){}}
@@ -1008,7 +1061,8 @@ function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk
  }else{
   const mx=x.rank>=10;T0=0;need=4900;
   const SH=[[0,300,250,330,-12,'#0100df',.05],[150,250,200,280,8,'#02008d',.1],[460,520,230,140,-6,'#0100df',.12],[505,212,200,230,26,'#01009d',.08],[690,300,190,260,-10,'#01009d',.14],[850,300,140,230,14,'#02008d',.1],[930,430,220,190,-18,'#0100df',.16],[600,470,170,150,22,'#02008d',.18],[300,470,190,150,-26,'#01009d',.12]];
-  const ST=[[160,105,52,-12,.45,-6,-14],[262,92,50,14,.52,4,-16],[360,128,52,-6,.58,8,-12],[78,158,50,20,.5,-8,-10],[40,250,54,-18,.62,-10,-6],[428,195,50,8,.66,10,-8],[463,272,48,-14,.72,10,-4],[58,362,54,10,.7,-8,0],[140,458,58,-4,.78,-6,6],[300,455,46,18,.85,4,8]];
+  /* 10 stars = 10 ranks, laid out like the game: from the big one at the bottom, up the left side, over the top, down the right */
+  const ST=[[290,522,84,-8,.45,4,6],[146,474,58,-4,.5,-6,6],[66,375,56,10,.55,-8,0],[54,258,56,-18,.6,-10,-6],[84,172,54,20,.65,-8,-10],[165,110,54,-12,.7,-6,-14],[257,98,54,14,.75,4,-16],[362,141,52,-6,.8,8,-12],[430,203,52,8,.85,10,-8],[463,277,50,-14,.9,10,-4]];
   const SP=[[110,40,30,.3],[255,48,22,.5],[338,70,34,.2],[412,80,30,.9],[490,158,40,.4],[483,180,26,1.2],[420,232,34,.7],[540,236,26,1.5],[60,180,22,1],[40,236,24,.6],[85,325,30,1.3],[60,415,28,.8],[215,494,24,1.1],[395,385,36,.35],[160,200,22,1.7]];
   const DT=Array.from({length:30},(_,k)=>[30+((k*97)%470),20+((k*61)%460),(k*.37%4).toFixed(2)]);
   const starSVG=(x,y,sz,r,d,dx,dy)=>`<svg class="rks" viewBox="-12 -12 24 24" style="left:${x}px;top:${y}px;--s:${sz}px;--r:${r}deg;--d:${d}s;--dx:${dx}px;--dy:${dy}px"><path d="M0,-10.5 L2.6,-3.6 10,-3.3 4.2,1.3 6.2,8.5 0,4.4 -6.2,8.5 -4.2,1.3 -10,-3.3 -2.6,-3.6Z"/><path d="M0,-6 L1.5,-2 5.7,-1.9 2.4,.8 3.5,4.9 0,2.5 -3.5,4.9 -2.4,.8 -5.7,-1.9 -1.5,-2Z" style="fill:none;stroke-width:1.2"/></svg>`;
@@ -1016,15 +1070,14 @@ function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk
   if(PT){const q=v=>[Math.round(v[0]*1.25-50),Math.round(v[1]*1.25+75)];ST.forEach(v=>{[v[0],v[1]]=q(v);v[2]=Math.round(v[2]*1.2)});SP.forEach(v=>{[v[0],v[1]]=q(v)});DT.forEach(v=>{[v[0],v[1]]=q(v)});
    SH.length=0;SH.push([-40,640,260,300,-12,'#0100df',.05],[170,600,220,260,10,'#02008d',.1],[330,680,240,200,-8,'#0100df',.12],[440,560,200,240,24,'#01009d',.08],[-20,860,250,220,16,'#01009d',.14],[220,880,230,200,-14,'#02008d',.1],[420,860,220,230,18,'#0100df',.16],[100,980,260,200,-22,'#02008d',.18],[380,1000,240,180,12,'#01009d',.12])}
   E.className='iat rk'+(mx?' max':'');
-  E.innerHTML=`<div class="rkst${PT?' pt':''}"><i class="rkbgd"></i><i class="rkcol"></i><i class="rkband"></i><i class="rklow"></i>
+  E.innerHTML=`<div class="rkst${PT?' pt':''}"><i class="rkwipe"></i><i class="rkbgd"></i><i class="rkcol"></i><i class="rkband"></i><i class="rklow"></i>
   ${SH.map(([x,y,w,h,r,c,d])=>`<i class="rksh" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${c};rotate:${r}deg;animation-delay:${d}s"></i>`).join('')}
   ${mx?'<div class="rkmax">MAX</div>':''}
   ${DT.map(([x,y,d])=>`<i class="rkd" style="left:${x}px;top:${y}px;--d:${d}s"></i>`).join('')}
   <div class="rkcw"><div class="rkcard">${arcCard(a,236)}</div></div>
-  ${ST.map((v,k)=>{const h=starSVG(...v);return [0,1,3,4,7,8].includes(k)?h.replace('class="rks"','class="rks w"').replace('style="','style="--w:'+(2.95+k*.06).toFixed(2)+'s;'):h}).join('')}
+  ${ST.map((v,k)=>{const h=starSVG(...v),n=Math.min(10,x.rank),nw=k==n-1;if(k>=n)return h;const w=nw?3.45:2.95+k*.07;return h.replace('class="rks"','class="rks w'+(nw?' nw':'')+'"').replace('style="','style="--w:'+w.toFixed(2)+'s;')+(nw?`<i class="rkburst" style="left:${v[0]}px;top:${v[1]}px;--w:${w}s"></i>`:'')}).join('')}
   ${SP.map(([x,y,sz,d])=>`<i class="rkp" style="left:${x}px;top:${y}px;--s:${sz}px;--d:${d}s"></i>`).join('')}
-  <svg class="rkbig" viewBox="-12 -12 24 24"><path d="M0,-11 L2.7,-3.6 10.5,-3.4 4.4,1.4 6.5,8.9 0,4.6 -6.5,8.9 -4.4,1.4 -10.5,-3.4 -2.7,-3.6Z"/></svg>
-  <div class="rkup">RANK UP!</div>
+  <div class="rkup" data-t="RANK UP!">RANK UP!</div><i class="rkflash"></i>
   <div class="rkbar"><span><em>${esc((pr.name||'?')[0])}</em>${esc((pr.name||'your friend').slice(1))}</span></div>
   <div class="rknum${x.rank>=10?' two':''}">${x.rank}</div>
   <div class="rkinfo"><b>RANK</b><span>${esc(an)}</span></div></div>
@@ -1034,9 +1087,11 @@ function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk
  }
  slSound(x.kind=='new'?'iat':'rk',a);
  E.classList.remove('on');void E.offsetWidth;E.classList.add('on');document.body.classList.add('lock');try{if(S.dv.vib&&navigator.vibrate)navigator.vibrate(x.kind=='new'?[30,60,30]:[20,40,60])}catch(e){}
- let fin=0;const done=()=>{if(fin)return;fin=1;slStop();slPress();if(x.kind!='new'&&!SLQ.length)slBgmStop();E.classList.add('out');if(x.kind=='new')SLQ.unshift({kind:'rank',uid:x.uid,rank:1});setTimeout(()=>{E.className='iat';E.innerHTML='';E._fit=null;document.body.classList.remove('lock');slTick()},x.kind=='new'?700:380)};
+ let fin=0;const done=()=>{if(fin)return;fin=1;slStop();slPress();if(x.kind!='new'&&!SLQ.length)slBgmStop();E.classList.add('out');if(x.kind=='new')SLQ.unshift({kind:'rank',uid:x.uid,rank:1});setTimeout(()=>{E.className='iat';E.innerHTML='';E._fit=null;document.body.classList.remove('lock');slTick()},x.kind=='new'?700:820)};
  const ok=E.querySelector('.iatok'),t0=Date.now();
- E.onclick=e=>{if(Date.now()-t0<need){E.classList.add('skip');return}done()};ok.onclick=e=>{e.stopPropagation();done()}}
+ /* tap anywhere: skip to the end (the voice / sound stops too). Only the OK button closes the screen */
+ const skip=()=>{if(E.classList.contains('skip'))return;E.classList.add('skip');slStop()};
+ E.onclick=e=>{if(Date.now()-t0<need)skip()};ok.onclick=e=>{e.stopPropagation();if(!E.classList.contains('skip')&&Date.now()-t0<need)return skip();done()}}
 /* new bonds: a friendship we haven't celebrated yet */
 function slNew(){if(!FBU)return;S.sl=S.sl||{};if(!S.slT0){S.slT0=Date.now();RF.fr.forEach(f=>S.sl[f.uid]=1);save();return}
  let ch=0;RF.fr.forEach(f=>{if(!S.sl[f.uid]){S.sl[f.uid]=1;ch=1;if((f.t||0)>=S.slT0-6e4)slQ({kind:'new',uid:f.uid})}});if(ch)save()}
@@ -1073,7 +1128,7 @@ async function annPost(){const t=$('#ant').value.trim(),b=$('#anb').value.trim()
 let mTab='m',delArm=null,rstArm=0;
 const fmtT=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),dayK=t=>new Date(t).toDateString();
 function dayLabel(t){const d=new Date(t),n=new Date(),y=new Date(Date.now()-864e5);if(d.toDateString()==n.toDateString())return 'Today';if(d.toDateString()==y.toDateString())return 'Yesterday';return d.toLocaleDateString([],{weekday:'short',day:'numeric',month:'short'})}
-const MD={a:['Announcements','Read the latest news'],p:['Profile','View and edit your profile'],l:['Social Link','Whose S. Link do you want to view?'],f:['Friends','Find friends and hang out'],h:['History','See everything you logged'],s:['Settings','Sound, size and your account']};let mSel='a';
+const MD={a:['Announcements','Read the latest news'],p:['Profile','View and edit your profile'],l:['Social Link','Whose S. Link do you want to view?'],f:['Social Link','Whose S. Link do you want to view?'],h:['History','See everything you logged'],s:['Config','Sound, size and your account']};let mSel='a';
 function menu(t){mTab=t||'m';try{RF.slv=null;RF.sldel=null}catch(e){}$('#mnb2').scrollTop=0;delArm=null;rstArm=0;RF.edit=0;renderMenu();const m=$('#mns');const an=(mvOK||!mvBad)?'vid':menuAnim(),oc={splash:'op',slide:'op2',fade:'op3',vid:'op4'}[an];clearTimeout(m._cl);m.classList.remove('on','op','op2','op3','op4','pclose');void m.offsetWidth;m.classList.add('on');mvShow(mTab=='m');if(oc&&mTab=='m')m.classList.add(oc);clearTimeout(m._op);m._op=setTimeout(()=>m.classList.remove('op','op2','op3','op4'),1000);document.body.classList.add('lock')}
 /* menu opening animation: the owner picks it; the pick is shared with everyone through config/app */
 var CFG={};const MANIMS=[['splash','P3R splash'],['slide','Slide'],['fade','Fade'],['none','None']];
@@ -1103,10 +1158,10 @@ function menuClose(now){const M=$('#mns');clearTimeout(mvT);clearTimeout(M._cl);
 function pFit(){const N=$('#pitems');N.style.fontSize='';requestAnimationFrame(()=>{const W=innerWidth-36;let r=1;N.querySelectorAll('.pi').forEach(b=>{const x=b.offsetLeft+b.offsetWidth*(b.classList.contains('sel')?.98:.82)+(b.querySelector('em')?34:0);if(x*Math.cos(.19)>W)r=Math.min(r,W/(x*Math.cos(.19)))});if(r<1){const f=parseFloat(getComputedStyle(N.querySelector('.pi')).fontSize);N.querySelectorAll('.pi').forEach(b=>b.style.fontSize=(f*r).toFixed(1)+'px')}})}
 try{document.fonts&&document.fonts.ready.then(()=>{if($('#mns').classList.contains('on')&&mTab=='m')renderMenu()})}catch(e){}
 function pSel(k){const ch=k!=mSel;mSel=k;document.querySelectorAll('#pitems .pi').forEach(b=>{const on=b.dataset.go==k;b.classList.toggle('sel',on);if(on&&ch){b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop')}});$('#phd').textContent=MD[k][1];$('#phs').textContent='Command'}
-function renderMenu(){setTimeout(hSync,0);if(mTab!='l')RF.slv=null;const M=$('#mns'),sub=mTab!='m';M.classList.toggle('sub',sub);$('#mttl').textContent=sub?MD[mTab][0]:'';
- if(!sub){const pr=RF.me,nf=RF.reqIn.length,na=annUnread(),bd={a:na?'NEW':'',f:nf?String(nf):''},X=[0,58,22,48,14,56];
+function renderMenu(){if(mTab=='f')mTab='l';setTimeout(hSync,0);if(mTab!='l')RF.slv=null;const M=$('#mns'),sub=mTab!='m';M.classList.toggle('sub',sub);$('#mttl').textContent=sub?MD[mTab][0]:'';
+ if(!sub){const pr=RF.me,nf=RF.reqIn.length,na=annUnread(),bd={a:na?'NEW':'',l:nf?String(nf):''},X=[0,58,22,48,14];
   $('#pwal').innerHTML=FB_ON?(FBU?`${avHTML(pr||{photo:FBU.photoURL,name:FBU.displayName||FBU.email},40)}<span><b>${esc((pr&&pr.name)||FBU.displayName||'You')}</b><small>${pr?'@'+esc(pr.handle):'profile not set up'}</small></span>`:(FBW&&ACC.get()?`${avHTML({photo:ACC.get().p,name:ACC.get().n||ACC.get().e},40)}<span><b>${esc(ACC.get().n||'Signing in')}</b><small>signing in\u2026</small></span>`:`${avHTML({name:'?'},40)}<span><b>Not signed in</b><small>tap to sign in</small></span>`)):`<span><b>P3RL</b><small>social stats</small></span>`;
-  $('#pitems').innerHTML=['a','p','l','h','f','s'].map((k,i)=>{const t=k=='a'?'Announcements':MD[k][0];return `<button class="pi${k==mSel?' sel':''}" data-go="${k}" data-t="${t}" style="--x:${X[i]}px;--i:${i}"><span class="pw"><i></i></span><span class="pt">${t}</span>${bd[k]?`<em>${bd[k]}</em>`:''}</button>`}).join('');
+  $('#pitems').innerHTML=['a','p','l','h','s'].map((k,i)=>{const t=k=='a'?'Announcements':MD[k][0];return `<button class="pi${k==mSel?' sel':''}" data-go="${k}" data-t="${t}" style="--x:${X[i]}px;--i:${i}"><span class="pw"><i></i></span><span class="pt">${t}</span>${bd[k]?`<em>${bd[k]}</em>`:''}</button>`}).join('');
   $('#phd').textContent=MD[mSel][1];$('#phs').textContent='Command';pFit();return}
  $('#phd').textContent=MD[mTab][1];$('#phs').textContent=MD[mTab][0];const B=$('#mnb2');
  if(mTab=='a'){if(AN.length&&AN[0].t>(S.an||0)){S.an=AN[0].t;save();badge()}B.innerHTML=annHTML();return}
@@ -1141,8 +1196,8 @@ function hSync(){if(HP||HSKIP)return;const M=$('#mns'),w=M.classList.contains('o
 addEventListener('popstate',e=>{const d=(e.state&&e.state.p3)||0;if(HSKIP){HSKIP--;HD=d;if(!HSKIP)hSync();return}HD=d;HP=true;try{
  const sh=['#pfs','#hask'].find(q=>$(q).classList.contains('on'));
  if(sh&&d>=1){$(sh).classList.remove('on')}
- else if($('#mns').classList.contains('on')){if(d<3&&RF.slv){if(d>=2)slClose();else RF.slv=null}if(d<2&&mTab!='m')pBack();if(d<1)menuClose()}}finally{HP=false}});
-$('#mtab').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.id=='mnx')return menuClose();if(b.id=='mback'){if(HD>=2&&!HP){try{history.back();return}catch(z){}}pBack()}};
+ else if($('#mns').classList.contains('on')){uiSnd(d<1?'home':'b1');if(d<3&&RF.slv){if(d>=2)slClose();else RF.slv=null}if(d<2&&mTab!='m')pBack();if(d<1)menuClose()}}finally{HP=false}});
+$('#mtab').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.id=='mnx'){uiSnd('home');return menuClose()}if(b.id=='mback'){uiSnd('b1');if(HD>=2&&!HP){try{history.back();return}catch(z){}}pBack()}};
 let pGo=0,pDn=null;$('#pitems').addEventListener('pointerdown',e=>{pDn=[e.clientX,e.clientY]});
 $('#pitems').addEventListener('click',e=>{/* the words overlap a little, so use the exact spot the finger went down, not the browser's adjusted target */const h=pDn&&document.elementFromPoint(pDn[0],pDn[1]);const P=pDn,hs=P?[...new Set(document.elementsFromPoint(P[0],P[1]).map(x=>x.closest&&x.closest('.pi')).filter(Boolean))]:[];pDn=null;
  /* the selected word is drawn bigger and overlaps its neighbours, so pick the word whose middle is closest to the finger */
@@ -1150,18 +1205,20 @@ $('#pitems').addEventListener('click',e=>{/* the words overlap a little, so use 
  const b=(hs.length>1?hs.sort((x,y)=>dist(x)-dist(y))[0]:hs[0])||e.target.closest('.pi');if(!b||pGo)return;pConfirm(b)});
 /* confirm, as in P3R: the word pops, a dark blue blot spreads from it, the whole menu turns blue
    with the word in black, then the page opens */
-function pConfirm(b){const M=$('#mns'),go=b.dataset.go,chg=go!=mSel;pSel(go);M.classList.remove('op','op2','op3','op4');
+function pConfirm(b){uiSnd('ok');const M=$('#mns'),go=b.dataset.go,chg=go!=mSel;pSel(go);M.classList.remove('op','op2','op3','op4');
  const ch=chg,r=b.getBoundingClientRect(),bl=$('#pblob');bl.style.left=(r.left+r.width*.1)+'px';bl.style.top=(r.top+r.height*.6)+'px';const pb=M.querySelector('.pbg');pb.style.setProperty('--ox',(r.left+r.width/2)+'px');pb.style.setProperty('--oy',(r.top+r.height/2)+'px');
  /* game timing: blot on the press (~170 ms), blue + slow zoom (~280 ms), then the page cuts in */
  pGo=setTimeout(()=>{M.classList.add('cf1');pGo=setTimeout(()=>{M.classList.add('cf2');pGo=setTimeout(()=>{pGo=0;M.classList.remove('cf1','cf2');mTab=go;$('#mnb2').scrollTop=0;renderMenu();if(mTab=='p'&&RF.edit)formInit($('#mnb2'))},280)},170)},ch?110:0)}
 $('#pitems').addEventListener('pointerover',e=>{const b=e.target.closest('.pi');if(b&&e.pointerType=='mouse'&&b.dataset.go!=mSel)pSel(b.dataset.go)});
-$('#pwal').onclick=()=>{if(FB_ON&&FBU&&!RF.me)return openOnb();mTab=FB_ON&&FBU?'p':'s';renderMenu()};
+$('#pwal').onclick=()=>{uiSnd('ok');if(FB_ON&&FBU&&!RF.me)return openOnb();mTab=FB_ON&&FBU?'p':'s';renderMenu()};
 addEventListener('resize',()=>{const E=$('#iat');if(E&&E._fit&&E.classList.contains('on'))E._fit()});
-addEventListener('keydown',e=>{if(!$('#mns').classList.contains('on')||typing($('#mns')))return;const K=['a','p','l','h','f','s'];
- if(e.key=='Escape'){if(mTab=='m')menuClose();else pBack()}else if(mTab=='m'&&(e.key=='ArrowDown'||e.key=='ArrowUp')){e.preventDefault();pSel(K[(K.indexOf(mSel)+(e.key=='ArrowDown'?1:5))%6])}else if(mTab=='m'&&e.key=='Enter'){const b=document.querySelector('#pitems .pi.sel');if(b&&!pGo)pConfirm(b)}});
+addEventListener('keydown',e=>{if(!$('#mns').classList.contains('on')||typing($('#mns')))return;const K=['a','p','l','h','s'];
+ if(e.key=='Escape'){if(mTab=='m'){uiSnd('home');menuClose()}else{uiSnd('b1');pBack()}}else if(mTab=='m'&&(e.key=='ArrowDown'||e.key=='ArrowUp')){e.preventDefault();pSel(K[(K.indexOf(mSel)+(e.key=='ArrowDown'?1:4))%5])}else if(mTab=='m'&&e.key=='Enter'){const b=document.querySelector('#pitems .pi.sel');if(b&&!pGo)pConfirm(b)}});
 bindPF($('#mnb2'));bindPF($('#onbc'));
 
-$('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t){const r=e.target.closest('[data-view]');if(r&&RF.prof[r.dataset.view])viewFriend(r.dataset.view);return}
+$('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t){const r=e.target.closest('[data-view]');if(r&&RF.prof[r.dataset.view]){uiSnd('ok');viewFriend(r.dataset.view)}return}
+ uiSnd(t.dataset.dec||t.classList.contains('del')?'b1':'ok');
+ if(t.dataset.vf){return viewFriend(t.dataset.vf)}
    if(t.dataset.fhang){menuClose();return hgOpen(t.dataset.fhang)}
  if(t.dataset.slt){const u=t.dataset.u,k=t.dataset.slt,r=slRank(slCount(u));menuClose(true);slQ(k=='new'?{kind:'new',uid:u}:{kind:'rank',uid:u,rank:k=='max'?10:Math.min(10,Math.max(1,r+1))});return}
  if(t.dataset.sldel){const u=t.dataset.sldel;if(RF.sldel!=u){RF.sldel=u;return renderMenu()}RF.sldel=null;slDelete(u);return}
@@ -1210,7 +1267,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.21-2255';
+var APPVER='2026.11.21-2341';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
