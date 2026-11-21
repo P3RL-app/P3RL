@@ -968,7 +968,7 @@ $('#hask').onclick=e=>{const t=e.target.closest('button');if(!t||!RF.ask)return;
 const SLQ=[];let slT=0;
 /* Social Link sounds: each Arcana's own "I am thou" voice, Strength of Heart under both screens,
    the rank-up sound effect, and the confirm sound when the player presses OK */
-const SLV=a=>a>=1&&a<=21?{id:'sl-v'+a,url:'snd/sl/iat/'+a+'.mp3'}:null;
+const SLV=a=>a>=0&&a<=21?{id:'sl-v'+a,url:'snd/sl/iat/'+a+'.mp3'}:null;
 const SLC={rk:{id:'sl-rk',url:'snd/sl/rk.mp3'},bgm:{id:'sl-bgm',url:'snd/sl/bgm.mp3'}};const SLP={id:'slpress',url:'snd/sl/press.mp3'};
 let slSrc=null,slBgm=null,slBgmT=0;
 function slPreload(a){if(!actx())return;[SLC.rk,SLC.bgm,SLP,SLV(a)].forEach(sn=>{if(sn)decodeSnd(sn).catch(()=>{})})}
@@ -1210,7 +1210,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.21-2229';
+var APPVER='2026.11.21-2234';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
