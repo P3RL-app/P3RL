@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -1070,7 +1073,7 @@ function renderMenu(){setTimeout(hSync,0);if(mTab!='l')RF.slv=null;const M=$('#m
   `<div class="hd">Size</div>`+[['hz','Stat panel','The circles on the main screen'],['lz','Activity list','Search bar and activity buttons'],['oz','Stats Up screen','The cutscene after an activity']].map(([k,t,sub])=>`<div class="st2"><div>${t}<small>${sub} · <span id="zv${k}">${d[k]||100}%</span></small></div><input type="range" min="80" max="130" step="5" value="${d[k]||100}" data-z="${k}"></div>`).join('')+
   `<div class="bk"><button data-bk="zr">Reset sizes</button><button data-bk="zp">Preview Stats Up</button></div>`+
   `<div class="hd">Backup</div><div class="bk"><button data-bk="exp">Copy backup</button><button data-bk="imp">Paste backup</button></div><textarea id="bkt" rows="3" placeholder="Copy this text somewhere safe, or paste a backup here and tap Paste backup." style="margin-top:8px;font-size:12px"></textarea>`+
-  `<div class="hd">Progress</div><div class="bk"><button class="danger" data-bk="rst">${rstArm?'Tap again to erase everything':'Reset all progress'}</button></div><p style="opacity:.5;font-size:12px;margin:18px 4px 0">P3RL version 2026.11.21-16</p>`}}
+  `<div class="hd">Progress</div><div class="bk"><button class="danger" data-bk="rst">${rstArm?'Tap again to erase everything':'Reset all progress'}</button></div><p style="opacity:.5;font-size:12px;margin:18px 4px 0">P3RL version ${APPVER}</p>`}}
 function slClose(){const d=$('#mnb2 .sld');if(!d||d.classList.contains('out')){RF.slv=null;renderMenu();return}d.classList.remove('in');d.classList.add('out');clearTimeout(slClose.t);slClose.t=setTimeout(()=>{RF.slv=null;renderMenu()},250)}
 function pBack(){const M=$('#mns'),P=$('#ppage');if(mTab=='m')return;if(mTab=='l'&&RF.slv){slClose();return}mTab='m';RF.edit=0;RF.eb=undefined;RF.ea=undefined;delArm=null;rstArm=0;cancelAnimationFrame(M._bk);M.classList.add('bk');renderMenu();
  const W=innerWidth,H=innerHeight,max=Math.hypot(W,H)*.9,t0=performance.now(),D=260,clr=()=>{P.style.maskImage=P.style.webkitMaskImage='';P.style.maskComposite=P.style.webkitMaskComposite=''};
@@ -1152,6 +1155,13 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
+var APPVER='2026.11.21-2001';
+/* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
+function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
+ const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
+ if(busy||document.querySelector('.ov')||$('#iat').classList.contains('on')){setTimeout(updCheck,4000);return}
+ location.replace(location.pathname+'?v='+encodeURIComponent(v))}).catch(()=>{})}
+setTimeout(updCheck,1500);document.addEventListener('visibilitychange',()=>{if(!document.hidden)updCheck()});
 let FBU=null,FBE='',fbReady=null,FBW=true;
 const ACC={get(){try{return JSON.parse(localStorage.getItem('p3acct')||'null')}catch(e){return null}},set(u){try{u?localStorage.setItem('p3acct',JSON.stringify({n:u.displayName||'',e:u.email||'',p:u.photoURL||''})):localStorage.removeItem('p3acct')}catch(e){}}};
 function waitHTML(){const a=ACC.get();return `<p class="nores">Signing you in${a&&a.e?' as '+esc(a.e):''}\u2026</p>`}
