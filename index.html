@@ -80,6 +80,18 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .pkc{max-width:420px}.pkc input{text-align:center;font-size:28px;letter-spacing:.5em}.pkm{min-height:1.2em;margin:10px 0 0;color:#ff7aa8;font-style:normal;font-size:14px}.pkc.bad{animation:pksh .35s}@keyframes pksh{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
 #pko{background:var(--cy)!important;color:#000}
 .mnc{max-height:86vh;display:flex;flex-direction:column;padding-top:12px}#mnb2{overflow:auto;flex:1;-webkit-overflow-scrolling:touch}
+#mns.sh{align-items:stretch;justify-content:flex-end}
+#mns .mnc{width:min(320px,84vw);max-width:none;max-height:none;height:100%;margin:0;border-top:0;border-left:4px solid var(--cy);padding-top:calc(12px + env(safe-area-inset-top,0px));animation:dsl .24s cubic-bezier(.2,.8,.3,1) both}
+@keyframes dsl{from{transform:translateX(100%)}}
+.dhd{display:flex;align-items:center;gap:8px;margin-bottom:12px}.dhd b{flex:1;font:900 italic 24px 'Barlow',sans-serif;color:var(--cy);text-transform:uppercase;letter-spacing:.02em}
+.dhd button{width:42px;height:40px;padding:0!important;min-height:0!important;background:#2e3157;color:#fff;font-size:20px;font-weight:900;transform:skewX(-10deg)}#mback[hidden]{visibility:hidden;display:block}
+.dme{display:flex;align-items:center;gap:12px;padding:12px;background:#12131f;margin-bottom:12px;cursor:pointer}.dme div{font-style:normal;min-width:0}.dme b{display:block;font:900 italic 19px 'Barlow',sans-serif;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dme small{opacity:.6}
+.nav{display:flex!important;align-items:center;width:100%;margin:0 0 8px;padding:15px 16px!important;background:#1b1d33!important;color:#fff;font:900 italic 19px 'Barlow',sans-serif!important;text-align:left;transform:skewX(-8deg);border-left:5px solid transparent!important}
+.nav span{flex:1}.nav:active{border-left-color:var(--cy)!important;background:#2e3157!important}.nav i{font-style:normal;font-size:12px;background:var(--cy);color:#000;padding:2px 8px;transform:skewX(8deg)}
+.mnb.new::after{content:'';position:absolute;right:5px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--cy);box-shadow:0 0 6px var(--cy)}
+.ann{background:#12131f;padding:14px;margin-bottom:10px;border-left:4px solid var(--cy);font-style:normal}.ann b{display:block;font:900 italic 19px 'Barlow',sans-serif;margin-bottom:4px}.ann small{opacity:.55;font-size:12px}.ann p{margin:6px 0 0;line-height:1.4;white-space:pre-wrap;word-wrap:break-word}.ann .del{float:right}
+.bnup{display:flex;gap:8px}.bnup label,.bnup button{flex:1;text-align:center;padding:12px;background:#2e3157;font-weight:800;font-style:normal;cursor:pointer}
+.ef input{margin-bottom:8px}.lnk{background:none!important;color:var(--cy);padding:6px 0!important;font-size:13px;text-decoration:underline;min-height:0!important}
 .mtab{display:flex;gap:8px;margin-bottom:12px}.mtab button{flex:1;font-size:14px!important;padding:12px 4px!important;background:#2e3157!important;color:#cfd3ff;transform:skewX(-10deg);font-weight:900!important;font-size:16px}.mtab button.on{background:var(--cy)!important;color:#000}.mtab .mx2{flex:0 0 52px}
 .hd{font:900 italic 13px 'Barlow',sans-serif;color:#8f96d8;letter-spacing:.08em;text-transform:uppercase;margin:14px 0 6px}
 .hs{display:flex;gap:6px;margin-bottom:6px}.hs b{flex:1;background:#12131f;padding:8px 6px;text-align:center;font-size:13px}.hs b i{display:block;font-style:normal;font-size:20px;font-weight:900}
@@ -190,7 +202,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 <div class="row"><button id="lg">Log once</button><button id="sv2">Save as button</button></div>
 </div></div>
 <div class="sh" id="pks"><div class="card pkc"><h3>Owner passkey</h3><input id="pki" type="password" inputmode="numeric" autocomplete="off" enterkeyhint="go" maxlength="12" placeholder="••••"><p class="pkm" id="pkm"></p><div class="row"><button id="pkx">Cancel</button><button id="pko">Unlock</button></div></div></div>
-<div class="sh" id="mns"><div class="card mnc"><div class="mtab" id="mtab"><button data-t="h" class="on">History</button><button data-t="p">Profile</button><button data-t="f">Friends</button><button data-t="s">Settings</button><button class="mx2" id="mnx" aria-label="Close">✕</button></div><div id="mnb2"></div></div></div>
+<div class="sh" id="mns"><div class="card mnc"><div class="dhd" id="mtab"><button id="mback" aria-label="Back">‹</button><b id="mttl">Menu</b><button id="mnx" aria-label="Close">✕</button></div><div id="mnb2"></div></div></div>
 <div class="sh" id="pfs"><div class="card hgc" id="pfc"></div></div>
 <div class="sh" id="hask"><div class="card hgc" id="haskc"></div></div>
 <div class="sh" id="hgs"><div class="card hgc" id="hgc"></div></div>
@@ -264,8 +276,8 @@ function svg(p,hub,bt,fin,vb){
  if(bt){const L=bt[0]=='R'?820:800;h+=`<g transform="translate(${pt?1090:461} ${pt?-92:266})"><g class="bnw"><path class="bn" d="${bt[0]=='R'?WP.rank:WP.stats}" fill-rule="evenodd" transform="translate(-461 -266)"/></g></g><g class="ok" transform="translate(${vx+vw-250} ${vy+vh-115})"><path d="M-62 -62 L-8 -4 M-8 -62 L-62 -4" stroke="#d6d7dc" stroke-width="9"/><text x="10" y="0" font-size="70" font-weight="900">OK</text></g>`}
  return h+'</svg>'}
 function hub(){const el=$('#hub'),W=el.clientWidth||innerWidth,H=el.clientHeight||Math.round(innerHeight*.56);
- el.innerHTML=svg(S.p,1,0,0,zoomVB(fitVB(W,H),S.dv.hz))+'<div class="hot" id="hot"></div><button class="mnb" id="mnb" aria-label="Menu"><span>☰</span></button>'+(S.prev?'<button class="un" id="un">Undo last</button>':'');
- $('#mnb').onclick=()=>menu('h');
+ el.innerHTML=svg(S.p,1,0,0,zoomVB(fitVB(W,H),S.dv.hz))+'<div class="hot" id="hot"></div><button class="mnb'+(hasNew()?' new':'')+'" id="mnb" aria-label="Menu"><span>☰</span></button>'+(S.prev?'<button class="un" id="un">Undo last</button>':'');
+ $('#mnb').onclick=()=>menu('m');
  const u=$('#un');if(u)u.onclick=()=>{S.p=S.prev;S.prev=null;if(S.h.length)S.h.pop();save();hub()}}
 function parse(x){const [t,g]=x.split('|'),a=[];g.replace(/([cga])(\d)/g,(m,s,n)=>a.push([s,+n]));return{t,a}}
 function btn(id,sc,cu){R[id]=sc;const q=(sc.t+' '+sc.a.map(([s,n])=>'+'+n+' '+ST[s].n).join(' ')).toLowerCase();return `<button class="sc" data-id="${id}" data-q="${esc(q)}" data-s="${sc.a.map(x=>x[0]).join('')}" data-v="${sc.a.map(x=>x[1]).join('')}" data-u="${cu?1:''}" style="--k:var(--${sc.a[0][0]})"><span>${esc(sc.t)}${cu?'<i class="yt">YOURS</i>':''}</span><span class="ch">${sc.a.map(([s,n])=>`<b class="${s}">+${n} ${ST[s].n}</b>`).join('')}${cu?'<i class="x">✕</i>':''}</span></button>`}
@@ -520,22 +532,19 @@ const newCode=()=>{let c='';const r=new Uint32Array(3);try{crypto.getRandomValue
 const normCode=v=>v.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,5);
 function addFriend(name){const n=name.trim().slice(0,24);if(!n)return null;let f=S.f.find(x=>x.name.toLowerCase()==n.toLowerCase());if(!f){f={i:'f'+Date.now().toString(36),name:n,n:0,t:0};S.f.push(f);save()}return f}
 /* ======== REAL FRIENDS, PROFILES, SYNCED HANGOUTS (Google sign-in / Firebase) ======== */
-const BAN={dark:['Dark Hour','linear-gradient(135deg,#0b1f17,#1d4d3a 55%,#0a1210)'],tart:['Tartarus','linear-gradient(135deg,#16132e,#3a2a6b 50%,#0d0b1e)'],
- velvet:['Velvet','linear-gradient(135deg,#0a2a6b,#1f6fe6 55%,#08163a)'],moon:['Full Moon','radial-gradient(circle at 75% 35%,#fff7c2 0 14%,#f6d508 15% 17%,#1b2244 18%,#0c1024)'],
- cyan:['SEES','linear-gradient(120deg,#12f7fd,#1f6fe6 60%,#14152a)'],gold:['Rank Up','linear-gradient(135deg,#f6d508,#f2a10f 55%,#3a2a05)'],
- rose:['Rose','linear-gradient(135deg,#ff4fd8,#7a1f6b 60%,#1a0a18)'],mono:['Midnight','linear-gradient(135deg,#21242f,#3a3f78 60%,#14152a)']};
+const BAN0='linear-gradient(135deg,#0a2a6b,#1f6fe6 55%,#08163a)',banBG=img=>img?`url(${img}) center/cover no-repeat,#12131f`:BAN0;
 let RF={me:null,meLoaded:0,reqIn:[],reqOut:[],fr:[],prof:{},hgIn:[],hgOut:[],unsub:[],found:null,msg:'',edit:0,waiting:null,ask:null};
 const fdb=()=>firebase.firestore(),myId=()=>FBU&&FBU.uid,pairId=(a,b)=>[a,b].sort().join('_');
 const lvls=()=>({c:rank('c',S.p.c)+1,g:rank('g',S.p.g)+1,a:rank('a',S.p.a)+1});
 const avHTML=(pr,sz)=>{const ph=pr&&pr.photo,n=(pr&&pr.name||'?').trim();return `<span class="av" style="width:${sz}px;height:${sz}px;font-size:${sz*.42}px">${ph?`<img src="${esc(ph)}" referrerpolicy="no-referrer" alt="">`:esc(n[0]||'?').toUpperCase()}</span>`};
 const rkHTML=r=>`<div class="prk">${S3.map(s=>`<span class="${s}"><b>${(r&&r[s])||1}</b>${ST[s].n}<i>${ST[s].r[((r&&r[s])||1)-1]}</i></span>`).join('')}</div>`;
-function cardHTML(pr,own){const bn=(BAN[pr.banner]||BAN.velvet)[1];
+function cardHTML(pr,own){const bn=banBG(pr.bannerImg);
  return `<div class="pcard"><div class="pban" style="background:${bn}"></div><div class="pav">${avHTML(pr,84)}</div><div class="pinfo"><b>${esc(pr.name||'')}</b><span class="hdl">@${esc(pr.handle||'')}</span>${pr.bio?`<p>${esc(pr.bio)}</p>`:''}${rkHTML(pr.ranks)}</div></div>`}
-function rr(){if($('#mns').classList.contains('on')&&(mTab=='f'||mTab=='p'))renderMenu();if(HG)hgRender();showAsk()}
+function rr(){if($('#mns').classList.contains('on')&&(mTab=='f'||mTab=='p'||mTab=='m'))renderMenu();try{if(!busy)hub()}catch(e){}if(HG)hgRender();showAsk()}
 function fbStop(){RF.unsub.forEach(u=>{try{u()}catch(e){}});RF={...RF,me:null,meLoaded:0,reqIn:[],reqOut:[],fr:[],prof:{},hgIn:[],hgOut:[],unsub:[],found:null,waiting:null,ask:null};rr()}
 function getProf(uid){if(RF.prof[uid])return;RF.prof[uid]={name:'…'};fdb().collection('profiles').doc(uid).get().then(d=>{RF.prof[uid]=d.exists?d.data():{name:'(no profile)'};rr()}).catch(()=>{})}
 function fbStart(u){fbStop();const db=fdb(),me=u.uid,L=(q,f)=>RF.unsub.push(q.onSnapshot(f,()=>{}));
- db.collection('profiles').doc(me).get().then(d=>{RF.me=d.exists?d.data():null;RF.meLoaded=1;if(RF.me)pushRanks(1);rr()}).catch(()=>{RF.meLoaded=1;rr()});
+ db.collection('profiles').doc(me).get().then(async d=>{RF.me=d.exists?d.data():null;if(!RF.me)await autoProfile(u);RF.meLoaded=1;if(RF.me)pushRanks(1);rr()}).catch(()=>{RF.meLoaded=1;rr()});
  L(db.collection('friendReqs').where('to','==',me),q=>{RF.reqIn=q.docs.map(d=>({id:d.id,...d.data()}));RF.reqIn.forEach(r=>getProf(r.from));rr()});
  L(db.collection('friendReqs').where('from','==',me),q=>{RF.reqOut=q.docs.map(d=>({id:d.id,...d.data()}));RF.reqOut.forEach(r=>getProf(r.to));rr()});
  L(db.collection('friendships').where('members','array-contains',me),q=>{RF.fr=q.docs.map(d=>({id:d.id,uid:d.data().members.find(x=>x!=me),t:d.data().t}));RF.fr.forEach(f=>{delete RF.prof[f.uid];getProf(f.uid)});rr()});
@@ -546,16 +555,16 @@ let rkT=0;function pushRanks(now){if(!FBU||!RF.me)return;clearTimeout(rkT);rkT=s
 async function saveProfile(f){const db=fdb(),me=myId(),h=f.handle.toLowerCase();
  if(!/^[a-z0-9_]{3,15}$/.test(h))throw 'Username: 3-15 letters, numbers or _';
  if(!f.name.trim())throw 'Pick a display name';
- const data={name:f.name.trim().slice(0,24),handle:h,bio:f.bio.trim().slice(0,150),banner:f.banner,photo:FBU.photoURL||'',ranks:lvls(),t:Date.now()};
+ const data={name:f.name.trim().slice(0,24),handle:h,bio:f.bio.trim().slice(0,150),bannerImg:f.bannerImg||'',photo:FBU.photoURL||'',ranks:lvls(),t:Date.now()};
  await db.runTransaction(async tx=>{const ref=db.collection('usernames').doc(h),d=await tx.get(ref);if(d.exists&&d.data().uid!=me)throw 'That username is taken';
   tx.set(ref,{uid:me});const old=RF.me&&RF.me.handle;if(old&&old!=h)tx.delete(db.collection('usernames').doc(old));tx.set(db.collection('profiles').doc(me),data)});RF.me=data}
 function profileHTML(){if(!FB_ON)return '<p class="nores">Profiles and friends work on the P3RL app at p3rl-app.github.io.</p>';
- if(!FBU)return `<p class="nores">Sign in with Google to make your profile and add friends.</p><div class="bk"><button data-bk="gin" style="background:#fff;color:#000">Sign in with Google</button></div>`;
+ if(!FBU)return signInHTML('Sign in to get your profile and add friends.');
  if(!RF.meLoaded)return '<p class="nores">Loading…</p>';
- if(!RF.me||RF.edit){const m=RF.me||{name:FBU.displayName||'',handle:'',bio:'',banner:'velvet'};const b=RF.eb||m.banner;
+ if(!RF.me||RF.edit){const m=RF.me||{name:FBU.displayName||'',handle:'',bio:'',bannerImg:''};const b=RF.eb!==undefined?RF.eb:(m.bannerImg||'');
   return `<div class="hd">${RF.me?'Edit profile':'Create your profile'}</div>
-  <div class="pcard"><div class="pban" style="background:${BAN[b][1]}"></div><div class="pav">${avHTML({photo:FBU.photoURL,name:m.name},84)}</div><div class="pinfo" style="padding-top:52px"></div></div>
-  <div class="hd">Banner</div><div class="bns">${Object.entries(BAN).map(([k,[n,g]])=>`<button data-ban="${k}" class="${k==b?'on':''}" style="background:${g}" title="${n}"></button>`).join('')}</div>
+  <div class="pcard"><div class="pban" style="background:${banBG(b)}"></div><div class="pav">${avHTML({photo:FBU.photoURL,name:m.name},84)}</div><div class="pinfo" style="padding-top:52px"></div></div>
+  <div class="hd">Banner</div><div class="bnup"><label>${b?'Change image':'Choose image'}<input type="file" id="pfimg" accept="image/png,image/jpeg,image/webp,image/gif,image/*" hidden></label>${b?'<button data-ban="x">Remove</button>':''}</div><small style="opacity:.6;font-style:normal">PNG or JPG. It\u2019s cropped to a wide 3:1 banner.</small>
   <div class="hd">Display name</div><input id="pfn" maxlength="24" value="${esc(m.name)}">
   <div class="hd">Username</div><input id="pfh" maxlength="15" autocapitalize="none" placeholder="e.g. yanai_22" value="${esc(m.handle)}"><small style="opacity:.6;font-style:normal">Friends find you by this. Letters, numbers, _</small>
   <div class="hd">Description</div><textarea id="pfb" rows="3" maxlength="150" placeholder="A few words about you">${esc(m.bio)}</textarea>
@@ -563,7 +572,7 @@ function profileHTML(){if(!FB_ON)return '<p class="nores">Profiles and friends w
  return cardHTML(RF.me,1)+`<div class="bk"><button data-pf="edit">Edit profile</button></div><p style="opacity:.6;font-size:12px;font-style:normal;margin:10px 4px">Friends see your photo, name, @username, description and ranks. ${RF.fr.length} friend${RF.fr.length==1?'':'s'}.</p>`}
 /* friends */
 function friendsHTML(){if(!FB_ON)return '<p class="nores">Friends work on the P3RL app at p3rl-app.github.io.</p>';
- if(!FBU)return `<p class="nores">Sign in with Google to add real friends.</p><div class="bk"><button data-bk="gin" style="background:#fff;color:#000">Sign in with Google</button></div>`;
+ if(!FBU)return signInHTML('Sign in to add real friends.');
  if(!RF.me)return '<p class="nores">Make your profile first, so friends can find you.</p><div class="bk"><button data-pf="go">Create profile</button></div>';
  const row=(uid,btns,sub)=>{const pr=RF.prof[uid]||{name:'…'};return `<div class="fr" data-view="${uid}">${avHTML(pr,44)}<div class="n">${esc(pr.name||'')}<small>@${esc(pr.handle||'')}${sub?' · '+sub:''}</small></div>${btns}</div>`};
  let o=`<div class="hd">Add a friend</div><div class="bk" style="margin-top:0"><input id="fsq" placeholder="@username" autocapitalize="none" maxlength="16" enterkeyhint="search"><button data-fs="" style="flex:0 0 96px">Search</button></div>`;
@@ -622,12 +631,31 @@ function hgCheck(){const mine=myId();S.hd=S.hd||[];
   if(c)c[1]+=2;else a.push(['c',2]);if(HG&&HG.id==h.id)hgClose();['#mns','#pfs','#hask'].forEach(q=>$(q).classList.remove('on'));
   apply({t:`${h.act.t} with ${pr.name||'a friend'}`,a},{getBoundingClientRect:()=>({left:innerWidth/2-1,top:innerHeight*.62,width:2,height:2})})});
  rr()}
+function banFile(file){const u=URL.createObjectURL(file),im=new Image();im.onload=()=>{const W=900,H=300,c=document.createElement('canvas');c.width=W;c.height=H;const x=c.getContext('2d');x.fillStyle='#12131f';x.fillRect(0,0,W,H);
+ const sc=Math.max(W/im.width,H/im.height),w=im.width*sc,h=im.height*sc;x.drawImage(im,(W-w)/2,(H-h)/2,w,h);URL.revokeObjectURL(u);
+ let q=.85,d=c.toDataURL('image/jpeg',q);while(d.length>450000&&q>.4){q-=.1;d=c.toDataURL('image/jpeg',q)}
+ const v={n:$('#pfn').value,h:$('#pfh').value,b:$('#pfb').value};RF.eb=d;renderMenu();$('#pfn').value=v.n;$('#pfh').value=v.h;$('#pfb').value=v.b};
+ im.onerror=()=>{URL.revokeObjectURL(u);toast('That image couldn’t be opened')};im.src=u}
+/* announcements: everyone reads them, only the owner (signed in + owner tools on) can post */
+var AN=[];const annUnread=()=>AN.length&&AN[0].t>(S.an||0)?AN.filter(a=>a.t>(S.an||0)).length:0;
+function hasNew(){try{return !!annUnread()||(typeof RF!='undefined'&&RF.reqIn.length>0)}catch(e){return false}}
+function annStart(){if(annStart.on)return;annStart.on=1;try{fdb().collection('announcements').where('pub','==',true).onSnapshot(q=>{AN=q.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>b.t-a.t).slice(0,30);
+ if($('#mns').classList.contains('on')&&(mTab=='a'||mTab=='m'))renderMenu();if(!busy)hub()},()=>{})}catch(e){}}
+function annHTML(){if(!FB_ON)return '<p class="nores">Announcements show in the P3RL app at p3rl-app.github.io.</p>';
+ let o='';if(S.dev){o+=FBU?`<div class="hd">Post an announcement</div><input id="ant" maxlength="60" placeholder="Title"><textarea id="anb" rows="4" maxlength="1000" placeholder="What’s new?" style="margin-top:8px"></textarea><div class="bk"><button data-anp="" style="background:var(--cy);color:#000">Post</button></div><small style="opacity:.55;font-style:normal">Owner only. Posting works once your email is in the Firestore rules.</small><div class="hd">Posted</div>`:'<p class="nores">Sign in to post announcements.</p>'}
+ o+=AN.length?AN.map(a=>`<div class="ann">${S.dev&&FBU?`<button class="del" data-adel="${a.id}">${RF.adel==a.id?'Delete?':'✕'}</button>`:''}<small>${dayLabel(a.t)} · ${fmtT(a.t)}</small>${a.title?`<b>${esc(a.title)}</b>`:''}<p>${esc(a.body||'')}</p></div>`).join(''):'<p class="nores">No announcements yet.</p>';return o}
+async function annPost(){const t=$('#ant').value.trim(),b=$('#anb').value.trim();if(!b&&!t)return toast('Write something first');
+ try{await fdb().collection('announcements').doc().set({title:t.slice(0,60),body:b.slice(0,1000),pub:true,by:myId(),t:Date.now()});toast('Announcement posted')}catch(e){toast('Not allowed. Is your email in the Firestore rules?')}}
 /* ---- menu: history + settings ---- */
-let mTab='h',delArm=null,rstArm=0;
+let mTab='m',delArm=null,rstArm=0;
 const fmtT=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),dayK=t=>new Date(t).toDateString();
 function dayLabel(t){const d=new Date(t),n=new Date(),y=new Date(Date.now()-864e5);if(d.toDateString()==n.toDateString())return 'Today';if(d.toDateString()==y.toDateString())return 'Yesterday';return d.toLocaleDateString([],{weekday:'short',day:'numeric',month:'short'})}
-function menu(t){mTab=t||mTab;delArm=null;rstArm=0;renderMenu();$('#mns').classList.add('on')}
-function renderMenu(){[...$('#mtab').querySelectorAll('[data-t]')].forEach(b=>b.classList.toggle('on',b.dataset.t==mTab));const B=$('#mnb2');
+function menu(t){mTab=t||'m';$('#mnb2').scrollTop=0;delArm=null;rstArm=0;renderMenu();$('#mns').classList.add('on')}
+function renderMenu(){$('#mttl').textContent={m:'Menu',a:'Announcements',p:'Profile',f:'Friends',h:'History',s:'Settings'}[mTab]||'Menu';$('#mback').hidden=mTab=='m';const B=$('#mnb2');
+ if(mTab=='m'){const pr=RF.me,nf=RF.reqIn.length,na=annUnread();
+  B.innerHTML=(FB_ON?(FBU?`<div class="dme" data-go="p">${avHTML(pr||{photo:FBU.photoURL,name:FBU.displayName||FBU.email},52)}<div><b>${esc((pr&&pr.name)||FBU.displayName||'You')}</b><small>${pr?'@'+esc(pr.handle):esc(FBU.email||'')}</small></div></div>`:`<div class="dme" data-go="s">${avHTML({name:'?'},52)}<div><b>Not signed in</b><small>Sign in to save progress and add friends</small></div></div>`):'')+
+  [['a','Announcements',na?'New':''],['p','Profile',''],['f','Friends',nf?nf:''],['h','History',''],['s','Settings','']].map(([k,n,b])=>`<button class="nav" data-go="${k}"><span>${n}</span>${b!==''?`<i>${b}</i>`:''}</button>`).join('');return}
+ if(mTab=='a'){if(AN.length&&AN[0].t>(S.an||0)){S.an=AN[0].t;save();hub()}B.innerHTML=annHTML();return}
  if(mTab=='f'){B.innerHTML=friendsHTML();return}
  if(mTab=='p'){B.innerHTML=profileHTML();return}
  if(mTab=='h'){const H=S.h.map((h,i)=>({...h,i})).reverse();if(!H.length){B.innerHTML='<p class="nores">Nothing logged yet. Tap an activity to start.</p>';return}
@@ -645,21 +673,25 @@ function renderMenu(){[...$('#mtab').querySelectorAll('[data-t]')].forEach(b=>b.
   `<div class="bk"><button data-bk="zr">Reset sizes</button><button data-bk="zp">Preview Stats Up</button></div>`+
   `<div class="hd">Backup</div><div class="bk"><button data-bk="exp">Copy backup</button><button data-bk="imp">Paste backup</button></div><textarea id="bkt" rows="3" placeholder="Copy this text somewhere safe, or paste a backup here and tap Paste backup." style="margin-top:8px;font-size:12px"></textarea>`+
   `<div class="hd">Progress</div><div class="bk"><button class="danger" data-bk="rst">${rstArm?'Tap again to erase everything':'Reset all progress'}</button></div>`}}
-$('#mtab').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.id=='mnx')return $('#mns').classList.remove('on');mTab=b.dataset.t;delArm=null;rstArm=0;renderMenu()};
+$('#mtab').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.id=='mnx')return $('#mns').classList.remove('on');if(b.id=='mback'){mTab='m';RF.edit=0;RF.eb=undefined;delArm=null;rstArm=0;renderMenu()}};
 $('#mns').onclick=e=>{if(e.target.id=='mns')$('#mns').classList.remove('on')};
-$('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t){const r=e.target.closest('[data-view]');if(r&&RF.prof[r.dataset.view])viewFriend(r.dataset.view);return}
+$('#mnb2').onclick=e=>{const g=e.target.closest('[data-go]');if(g){mTab=g.dataset.go;$('#mnb2').scrollTop=0;return renderMenu()}const t=e.target.closest('button');if(!t){const r=e.target.closest('[data-view]');if(r&&RF.prof[r.dataset.view])viewFriend(r.dataset.view);return}
    if(t.dataset.fhang){$('#mns').classList.remove('on');return hgOpen(t.dataset.fhang)}
  if(t.dataset.fs!==undefined)return findFriend($('#fsq').value);
+ if(t.dataset.anp!==undefined)return annPost();
+ if(t.dataset.adel){const id=t.dataset.adel;if(RF.adel!=id){RF.adel=id;return renderMenu()}RF.adel=null;fdb().collection('announcements').doc(id).delete().catch(()=>toast('Couldn\u2019t delete'));return}
+ if(t.dataset.bk=='ein')return fbEmail();
+ if(t.dataset.bk=='erst')return fbReset();
  if(t.dataset.freq)return sendReq(t.dataset.freq);
  if(t.dataset.acc)return acceptReq(t.dataset.acc);
  if(t.dataset.dec)return delReq(t.dataset.dec);
- if(t.dataset.ban){RF.eb=t.dataset.ban;const v={n:$('#pfn').value,h:$('#pfh').value,b:$('#pfb').value};renderMenu();$('#pfn').value=v.n;$('#pfh').value=v.h;$('#pfb').value=v.b;return}
+ if(t.dataset.ban){RF.eb='';const v={n:$('#pfn').value,h:$('#pfh').value,b:$('#pfb').value};renderMenu();$('#pfn').value=v.n;$('#pfh').value=v.h;$('#pfb').value=v.b;return}
  if(t.dataset.pf){const k=t.dataset.pf;RF.msg='';
   if(k=='go'){mTab='p';return renderMenu()}
-  if(k=='edit'){RF.edit=1;RF.eb=RF.me.banner;return renderMenu()}
-  if(k=='cancel'){RF.edit=0;RF.eb=null;return renderMenu()}
-  if(k=='save'){const f={name:$('#pfn').value,handle:$('#pfh').value,bio:$('#pfb').value,banner:RF.eb||(RF.me&&RF.me.banner)||'velvet'};t.disabled=true;
-   saveProfile(f).then(()=>{RF.edit=0;RF.eb=null;toast('Profile saved');renderMenu()}).catch(er=>{RF.msg=typeof er=='string'?er:'Couldn\u2019t save. Check your internet.';renderMenu()});return}}
+  if(k=='edit'){RF.edit=1;RF.eb=undefined;return renderMenu()}
+  if(k=='cancel'){RF.edit=0;RF.eb=undefined;return renderMenu()}
+  if(k=='save'){const f={name:$('#pfn').value,handle:$('#pfh').value,bio:$('#pfb').value,bannerImg:RF.eb!==undefined?RF.eb:((RF.me&&RF.me.bannerImg)||'')};t.disabled=true;
+   saveProfile(f).then(()=>{RF.edit=0;RF.eb=undefined;toast('Profile saved');renderMenu()}).catch(er=>{RF.msg=typeof er=='string'?er:'Couldn\u2019t save. Check your internet.';renderMenu()});return}}
  if(t.dataset.del!==undefined){const i=+t.dataset.del;if(delArm!==i){delArm=i;return renderMenu()}const h=S.h[i];h.a.forEach(([s,n])=>S.p[s]=Math.max(0,S.p[s]-n));S.h.splice(i,1);S.prev=null;delArm=null;save();hub();renderMenu();return toast('Entry removed')}
  if(t.dataset.tg){S.dv[t.dataset.tg]=S.dv[t.dataset.tg]?0:1;save();return renderMenu()}
  if(t.dataset.pm){S.dv.pm=t.dataset.pm;save();return renderMenu()}
@@ -673,7 +705,7 @@ $('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t){const r=e.targe
  else if(k=='rst'){if(!rstArm){rstArm=1;return renderMenu()}rstArm=0;S.p={c:0,g:0,a:0};S.h=[];S.prev=null;save();hub();renderMenu();toast('Progress reset')}};
 $('#mnb2').addEventListener('keydown',e=>{if(e.key=='Enter'&&e.target.id=='fsq'){e.preventDefault();findFriend(e.target.value)}});
 $('#mnb2').addEventListener('input',e=>{const z=e.target.dataset&&e.target.dataset.z;if(z){S.dv[z]=+e.target.value;$('#zv'+z).textContent=e.target.value+'%';if(z=='hz')hub();if(z=='lz')applyLZ();return}if(e.target.id=='vol'){setVol(+e.target.value);const sm=e.target.parentNode.querySelector('small');if(sm)sm.textContent=e.target.value+'%'}});
-$('#mnb2').addEventListener('change',e=>{if(e.target.dataset&&e.target.dataset.z){save();return}if(e.target.id=='vol'){save();try{actx()&&AC.resume();hit('big')}catch(z){}}});
+$('#mnb2').addEventListener('change',e=>{if(e.target.id=='pfimg'&&e.target.files[0]){banFile(e.target.files[0]);return}if(e.target.dataset&&e.target.dataset.z){save();return}if(e.target.id=='vol'){save();try{actx()&&AC.resume();hit('big')}catch(z){}}});
 let hotN=0,hotT=0;
 document.addEventListener('pointerup',e=>{if(e.target.id!=='hot')return;const n=Date.now();hotN=n-hotT<1500?hotN+1:1;hotT=n;
  if(hotN>=6){hotN=0;if(S.dev){S.dev=0;save();ownerUI();toast('Owner tools off')}else pkOpen()}});
@@ -694,15 +726,27 @@ const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.
 let FBU=null,FBE='',fbReady=null;
 function fbLoad(){if(fbReady)return fbReady;const V='10.12.2',L=n=>new Promise((ok,no)=>{const x=document.createElement('script');x.src=`https://cdn.jsdelivr.net/npm/firebase@${V}/${n}-compat.js`;x.onload=ok;x.onerror=no;document.head.appendChild(x)});
  fbReady=(window.firebase&&firebase.auth?Promise.resolve():L('firebase-app').then(()=>Promise.all([L('firebase-auth'),L('firebase-firestore')]))).then(()=>{if(!firebase.apps.length)firebase.initializeApp(FBC);
-  firebase.auth().onAuthStateChanged(u=>{FBU=u;if(u){FBE='';cloudUse(firebase.firestore().collection('users').doc(u.uid));fbStart(u)}else{fbStop();if(CREF&&CREF.__fb)CREF=null};if($('#mns').classList.contains('on')&&mTab=='s')renderMenu()});
+  firebase.auth().onAuthStateChanged(u=>{FBU=u;if(u){FBE='';cloudUse(firebase.firestore().collection('users').doc(u.uid));fbStart(u)}else{fbStop();if(CREF&&CREF.__fb)CREF=null};if($('#mns').classList.contains('on'))renderMenu()});annStart();
   firebase.auth().getRedirectResult().catch(e=>{FBE=e.code||e.message})});return fbReady}
 function fbSignIn(){fbLoad().then(()=>{const a=firebase.auth(),pr=new firebase.auth.GoogleAuthProvider();pr.setCustomParameters({prompt:'select_account'});
  const standalone=navigator.standalone||matchMedia('(display-mode: standalone)').matches;
  (standalone?a.signInWithRedirect(pr):a.signInWithPopup(pr).catch(e=>{if(/popup/.test(e.code||''))return a.signInWithRedirect(pr);throw e})).catch(e=>{FBE=e.code||e.message;renderMenu()})}).catch(()=>{FBE='offline';renderMenu()})}
+const EMSG={'auth/wrong-password':'Wrong password for that email.','auth/invalid-credential':'Wrong password for that email.','auth/invalid-email':'That email doesn’t look right.','auth/weak-password':'Password needs at least 6 characters.','auth/missing-password':'Type a password.','auth/operation-not-allowed':'Email sign-in isn’t switched on in Firebase yet.','auth/too-many-requests':'Too many tries. Wait a bit and try again.','auth/network-request-failed':'No internet connection.'};
+var LEM='';function fbEmail(){const e=LEM=(($('#em')||{}).value||'').trim(),p=($('#emp')||{}).value||'';if(!e)return toast('Type your email');FBE='';
+ fbLoad().then(async()=>{const a=firebase.auth();try{await a.createUserWithEmailAndPassword(e,p);toast('Account created')}
+  catch(er){if(er.code=='auth/email-already-in-use'){try{await a.signInWithEmailAndPassword(e,p)}catch(e2){FBE=EMSG[e2.code]||e2.code;renderMenu()}}else{FBE=EMSG[er.code]||er.code;renderMenu()}}}).catch(()=>{FBE='No internet connection.';renderMenu()})}
+function fbReset(){const e=(($('#em')||{}).value||'').trim();if(!e)return toast('Type your email first');fbLoad().then(()=>firebase.auth().sendPasswordResetEmail(e)).then(()=>toast('Password reset email sent')).catch(er=>toast(EMSG[er.code]||'Couldn’t send it'))}
+function signInHTML(lead){return `${lead?`<p class="nores" style="margin:8px 0 12px">${lead}</p>`:''}<div class="bk" style="margin-top:0"><button data-bk="gin" style="background:#fff;color:#000">Sign in with Google</button></div>
+ <div class="hd">Or use email</div><div class="ef"><input id="em" type="email" autocomplete="email" autocapitalize="none" placeholder="Email" value="${esc(LEM)}"><input id="emp" type="password" autocomplete="current-password" placeholder="Password (6+ characters)"></div>
+ <div class="bk" style="margin-top:0"><button data-bk="ein" style="background:var(--cy);color:#000">Continue</button></div><button class="lnk" data-bk="erst">Forgot password?</button>
+ <p style="opacity:.6;font-size:12px;font-style:normal;margin:6px 4px">New email? Your account is created automatically.${FBE?`<br><b style="color:#ff7aa8">${esc(FBE)}</b>`:''}</p>`}
+async function autoProfile(u){const db=fdb(),base=((u.email||'').split('@')[0]||u.displayName||'player').toLowerCase().replace(/[^a-z0-9_]/g,'').slice(0,11).padEnd(3,'0');
+ for(let i=0;i<6;i++){const h=i?base+Math.floor(100+Math.random()*9900):base;try{const d=await db.collection('usernames').doc(h).get();if(d.exists)continue;
+  await saveProfile({name:u.displayName||(u.email||'').split('@')[0]||'Player',handle:h,bio:'',bannerImg:''});return true}catch(e){}}return false}
 function fbSignOut(){if(window.firebase&&firebase.auth)firebase.auth().signOut().then(()=>{CREF=null;toast('Signed out. Your progress stays on this phone.');renderMenu()})}
 function accountHTML(){if(!FB_ON)return '<div class="hd">Account</div><p style="opacity:.6;font-size:13px;font-style:normal;margin:4px">Here your progress backs up to your Claude account automatically.</p>';
- if(FBU)return `<div class="hd">Account</div><div class="st2"><div>${esc(FBU.displayName||'Signed in')}<small>${esc(FBU.email||'')} · progress is saved to your Google account</small></div><button data-bk="gout" style="flex:none;background:#2e3157;padding:10px 14px;font-weight:800">Sign out</button></div>`;
- return `<div class="hd">Account</div><div class="bk"><button data-bk="gin" style="background:#fff;color:#000">Sign in with Google</button></div><p style="opacity:.6;font-size:12px;font-style:normal;margin:6px 4px">Saves your progress to your Google account so you never lose it.${FBE?`<br><b style="color:#ff7aa8">Sign-in failed (${esc(FBE)})</b>`:''}</p>`}
+ if(FBU)return `<div class="hd">Account</div><div class="st2"><div>${esc(FBU.displayName||'Signed in')}<small>${esc(FBU.email||'')} · progress is saved to your account</small></div><button data-bk="gout" style="flex:none;background:#2e3157;padding:10px 14px;font-weight:800">Sign out</button></div>`;
+ return `<div class="hd">Account</div>`+signInHTML('Sign in so your progress is saved and never lost.')}
 addEventListener('pagehide',()=>{if(cDirty)cloudPush(1)});document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&cDirty)cloudPush(1)});
 applyLZ();hub();lst();ownerUI();loadClips();cloudInit();if(FB_ON)fbLoad().catch(()=>{});preloadSounds();
 </script>
