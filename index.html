@@ -323,7 +323,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .rk.skip .rkup::after,.rk.skip .rkflash,.rk.skip .rkburst{display:none}.rk.skip .rkinfo,.rk.skip .rkbar,.rk.skip .rknum{animation-delay:0s!important;animation-duration:.01s!important}.rk.skip .rks.w,.rk.skip .rks.nw{animation-delay:0s,.35s,0s,0s!important}
 /* ===== rank screen, matched to the game capture ===== */
 .rksh{animation-name:rksh,rkflow!important;animation-timing-function:cubic-bezier(.2,.75,.3,1),linear!important;animation-iteration-count:1,infinite!important;animation-fill-mode:both,both!important}
-@keyframes rkflow{0%{translate:0 0;rotate:var(--r0);scale:.35}14%{scale:1}100%{translate:1450px var(--dy);rotate:var(--r1);scale:1.1}}
+@keyframes rkflow{0%{translate:0 0;rotate:var(--ax) var(--r0)}100%{translate:2900px var(--dy);rotate:var(--ax) var(--r1)}}
 /* stars: thick grey outline, dark fill, no inner star; earned ones solid white */
 .rks{fill:#262a66;stroke:#b4b5c6;stroke-width:2.7;stroke-linejoin:round}
 .rks path+path{display:none}
@@ -357,6 +357,25 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .rk.out .rkcard{animation:rkoC .4s .08s cubic-bezier(.55,0,.85,.5) forwards!important}@keyframes rkoC{from{transform:none}to{transform:perspective(900px) translate(-50px,720px) rotateY(115deg) rotate(10deg)}}
 .rk.out .rknum,.rk.out .rkinfo,.rk.out .rkbar,.rk.out .rkmax{animation:rkoF .44s linear forwards!important}@keyframes rkoF{from{opacity:1}to{opacity:0}}
 .rk.out .rkbgd,.rk.out .rkcol,.rk.out .rkband,.rk.out .rklow{opacity:0!important;transition:opacity .3s .1s}
+.rkst{perspective:1600px}
+/* shaded fragments: lit edge, darker far side, a second facet and a thin highlight line */
+.rksh{background:linear-gradient(135deg,color-mix(in srgb,var(--c) 70%,#a99cff) 0,var(--c) 38%,color-mix(in srgb,var(--c) 75%,#0a0640) 100%)!important;opacity:.96;backface-visibility:visible}
+.rksh::before{content:'';position:absolute;inset:0;background:linear-gradient(200deg,rgba(255,255,255,.16),rgba(255,255,255,0) 45%);clip-path:polygon(0 0,62% 0,30% 58%,0 40%)}
+.rksh::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 0,rgba(190,180,255,.35) 48%,transparent 52%);opacity:.5;clip-path:polygon(0 0,100% 0,100% 6%,0 6%)}
+/* background detail: soft glow behind the card, slow light streaks, drifting haze, vignette, band highlights */
+.rkbgd::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(115deg,rgba(150,160,255,.035) 0 40px,transparent 40px 140px);background-size:300px 100%;animation:rkstreak 14s linear infinite}
+@keyframes rkstreak{to{background-position:900px 0}}
+.rkglow{z-index:0;left:-60px;top:20px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(150,140,255,.28),rgba(90,90,220,.10) 45%,transparent 70%);animation:rkglow 4s ease-in-out infinite alternate}
+@keyframes rkglow{to{opacity:.65;scale:1.08}}
+.rkhaze{z-index:0;width:var(--s);height:var(--s);border-radius:50%;background:radial-gradient(circle,rgba(170,160,255,.12),transparent 70%);animation:rkhz var(--t) var(--d) linear infinite}
+@keyframes rkhz{from{translate:-900px 0}to{translate:1900px 0}}
+.rkband{background:linear-gradient(180deg,#4a86ad 0,#377099 10%,#336a93 85%,#2b5b86 100%)!important;box-shadow:inset 0 2px 0 rgba(170,220,240,.35),inset 0 -2px 0 rgba(20,40,80,.4)}
+.rkband::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,.04) 0 2px,transparent 2px 22px);animation:rkstreak 10s linear infinite}
+.rklow{background:linear-gradient(180deg,#44629a,#3b5590)!important}
+.rkvig{z-index:19;left:-3000px;right:-3000px;top:-3000px;bottom:-3000px;pointer-events:none;background:radial-gradient(ellipse 900px 520px at 3540px 3318px,transparent 60%,rgba(5,6,25,.45) 100%)}
+.rk.out .rkglow,.rk.out .rkhaze,.rk.out .rkvig{opacity:0!important;transition:opacity .3s}
+/* I am thou -> rank: the words dissolve into the dark */
+.iat.xf>*{transition:opacity .38s ease-in;opacity:0!important}
 .pflash{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 47%,rgba(140,235,255,.9) 52%,transparent 60%);transform:translateX(-110%);opacity:0}
 .pflash.go{animation:pfl .32s cubic-bezier(.4,0,.2,1)}@keyframes pfl{0%{transform:translateX(-110%);opacity:1}100%{transform:translateX(110%);opacity:1}}
 .pmn.sub .pitems{transform:translateX(-50%) rotate(-11deg) translateX(-60%);opacity:0;pointer-events:none}.pmn.sub .pwal{opacity:0;pointer-events:none}
@@ -1061,19 +1080,21 @@ const SLV=a=>a>=0&&a<=21?{id:'sl-v'+a,url:'snd/sl/iat/'+a+'.mp3'}:null;
 const SLC={rk:{id:'sl-rk',url:'snd/sl/rk.mp3'},bgm:{id:'sl-bgm',url:'snd/sl/bgm.mp3'},star:{id:'sl-star',url:'snd/sl/star.mp3'}};let slStarT=0;const SLP={id:'slpress',url:'snd/sl/press.mp3'};
 let slSrc=null,slBgm=null,slBgmT=0;
 function slPreload(a){if(!actx())return;[SLC.rk,SLC.bgm,SLC.star,SLP,SLV(a)].forEach(sn=>{if(sn)decodeSnd(sn).catch(()=>{})})}
-function slPlayBuf(sn,vol,loop,when){const c=actx();if(!c||!sn)return Promise.resolve(null);try{c.resume()}catch(e){}return decodeSnd(sn).then(buf=>{const g=c.createGain();g.gain.value=vol;g.connect(OUT(c));const src=c.createBufferSource();src.buffer=buf;src.loop=!!loop;src.connect(g);src.start(when?c.currentTime+when:0);return {src,g,c}}).catch(()=>null)}
+function slPlayBuf(sn,vol,loop,when){const c=actx();if(!c||!sn)return Promise.resolve(null);try{c.resume()}catch(e){}return decodeSnd(sn).then(buf=>{const g=c.createGain();g.gain.value=vol;g.connect(OUT(c));const src=c.createBufferSource();src.buffer=buf;src.loop=!!loop;src.connect(g);src.start(when?c.currentTime+when:0);const o={src,g,c};if(!loop){slAll.add(o);src.onended=()=>slAll.delete(o)}return o}).catch(()=>null)}
 /* music: starts with the scene (or later, after a delay) and keeps playing from I am thou into the rank screen */
-function slBgmStart(delay){if(slBgm||!S.dv.sfx)return;clearTimeout(slBgmT);slBgm={pending:1};const go=()=>{if(!slBgm||!slBgm.pending)return;slPlayBuf(SLC.bgm,.36,true).then(o=>{if(slBgm&&slBgm.pending){slBgm=o}else if(o){o.src.stop()}})};if(delay)slBgmT=setTimeout(go,delay);else go()}
+function slBgmStart(delay){if(slBgm||!S.dv.sfx)return;clearTimeout(slBgmT);const tok={pending:1};slBgm=tok;const go=()=>{if(slBgm!==tok)return;slPlayBuf(SLC.bgm,.36,true).then(o=>{if(slBgm===tok&&o){slBgm=o}else if(o){try{o.src.stop()}catch(e){}}})};if(delay)slBgmT=setTimeout(go,delay);else go()}
 function slBgmStop(){clearTimeout(slBgmT);const o=slBgm;slBgm=null;if(!o||o.pending)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+1.2);o.src.stop(t+1.3)}catch(e){}}
 function slSound(k,a){slStop();if(!S.dv.sfx)return;
  slBgmStart(0);   /* music starts with the screen (and carries on from I am thou into the rank screen) */
  clearTimeout(slStarT);if(k=='rk')slStarT=setTimeout(()=>{if(slSrc)slPlayBuf(SLC.star,.9)},3440);   /* the chime as the new star lights up */
+ if(k=='iat')slKillAll();   /* a new I am thou never plays over an old one */
  const sn=k=='iat'?SLV(a):SLC.rk;if(!sn)return;const me={};slSrc=me;slPlayBuf(sn,1).then(o=>{if(slSrc===me&&o)Object.assign(me,o);else if(o)o.src.stop()})}
 function slPress(){if(!S.dv.sfx)return;slPlayBuf(SLP,1)}
+const slAll=new Set();function slKillAll(){slAll.forEach(o=>{try{o.src.stop()}catch(e){}});slAll.clear()}
 function slStop(){clearTimeout(slStarT);const o=slSrc;slSrc=null;if(!o||!o.src)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+.25);o.src.stop(t+.3)}catch(e){}}
 function slQ(x){SLQ.push(x);try{const pr=RF.prof[x.uid];slPreload(pr&&arcOk(pr.arc)?pr.arc:22)}catch(e){}slTick()}
 function slTick(){clearTimeout(slT);if(!SLQ.length)return;if(busy||document.querySelector('.ov')||$('#iat').classList.contains('on')||$('#onb').classList.contains('on')){slT=setTimeout(slTick,700);return}slPlay(SLQ.shift())}
-function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk(pr.arc)?pr.arc:22,an=a<22?ARCN[a]:'Unknown',nm=esc(pr.name||'your friend'),E=$('#iat');
+function slPlay(x){try{const E0=$('#iat');E0.classList.remove('xf','out');setTimeout(()=>{E0.style.background=''},60)}catch(e){}const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk(pr.arc)?pr.arc:22,an=a<22?ARCN[a]:'Unknown',nm=esc(pr.name||'your friend'),E=$('#iat');
  let lines=[],T0,need;
  if(x.kind=='new'){
   const w=(c,t)=>`<span class="${c}">${t}</span>`,dots=w('dots','…');
@@ -1099,7 +1120,7 @@ function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk
   const mx=x.rank>=10;T0=0;need=4900;
   const SH=[[0,300,250,330,-12,'#0100df',.05],[150,250,200,280,8,'#02008d',.1],[460,520,230,140,-6,'#0100df',.12],[505,212,200,230,26,'#01009d',.08],[690,300,190,260,-10,'#01009d',.14],[850,300,140,230,14,'#02008d',.1],[930,430,220,190,-18,'#0100df',.16],[600,470,170,150,22,'#02008d',.18],[300,470,190,150,-26,'#01009d',.12]];
   /* 10 stars = 10 ranks, laid out like the game: from the big one at the bottom, up the left side, over the top, down the right */
-  const ST=[[288,522,100,-8,.45,4,6],[146,474,58,-4,.5,-6,6],[66,375,56,10,.55,-8,0],[54,258,56,-18,.6,-10,-6],[84,172,54,20,.65,-8,-10],[165,110,54,-12,.7,-6,-14],[257,98,54,14,.75,4,-16],[362,141,52,-6,.8,8,-12],[430,203,52,8,.85,10,-8],[463,277,50,-14,.9,10,-4]];
+  const ST=[[288,522,118,-8,.45,4,6],[146,474,58,-4,.5,-6,6],[66,375,56,10,.55,-8,0],[54,258,56,-18,.6,-10,-6],[84,172,54,20,.65,-8,-10],[165,110,54,-12,.7,-6,-14],[257,98,54,14,.75,4,-16],[362,141,52,-6,.8,8,-12],[430,203,52,8,.85,10,-8],[463,277,50,-14,.9,10,-4]];
   const SP=[[401,72,52,.3],[322,148,40,.5],[377,180,46,.2],[450,213,34,.9],[19,163,52,.4],[47,213,62,1.2],[44,292,46,.7],[120,250,38,1.5],[100,58,34,1],[480,140,40,.6],[230,40,32,1.3],[30,520,42,.8],[200,560,36,1.1],[395,385,44,.35],[160,200,30,1.7],[300,30,34,2.1],[60,420,32,1.9],[520,300,28,2.4],[250,300,40,.15],[180,120,36,2.6],[340,250,30,1.05],[90,480,34,2.2]];
   const DT=Array.from({length:34},(_,k)=>[10+((k*97)%500),10+((k*61)%540),(k*.37%4.5).toFixed(2)]);
   const starSVG=(x,y,sz,r,d,dx,dy)=>`<svg class="rks" viewBox="-12 -12 24 24" style="left:${x}px;top:${y}px;--s:${sz}px;--r:${r}deg;--d:${d}s;--dx:${dx}px;--dy:${dy}px"><path d="M0,-10.5 L2.6,-3.6 10,-3.3 4.2,1.3 6.2,8.5 0,4.4 -6.2,8.5 -4.2,1.3 -10,-3.3 -2.6,-3.6Z"/><path d="M0,-6 L1.5,-2 5.7,-1.9 2.4,.8 3.5,4.9 0,2.5 -3.5,4.9 -2.4,.8 -5.7,-1.9 -1.5,-2Z" style="fill:none;stroke-width:1.2"/></svg>`;
@@ -1107,8 +1128,8 @@ function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk
   if(PT){const q=v=>[Math.round(v[0]*1.25-50),Math.round(v[1]*1.25+75)];ST.forEach(v=>{[v[0],v[1]]=q(v);v[2]=Math.round(v[2]*1.2)});SP.forEach(v=>{[v[0],v[1]]=q(v)});DT.forEach(v=>{[v[0],v[1]]=q(v)});
    SH.length=0;SH.push([-40,640,260,300,-12,'#0100df',.05],[170,600,220,260,10,'#02008d',.1],[330,680,240,200,-8,'#0100df',.12],[440,560,200,240,24,'#01009d',.08],[-20,860,250,220,16,'#01009d',.14],[220,880,230,200,-14,'#02008d',.1],[420,860,220,230,18,'#0100df',.16],[100,980,260,200,-22,'#02008d',.18],[380,1000,240,180,12,'#01009d',.12])}
   E.className='iat rk'+(mx?' max':'');
-  E.innerHTML=`<div class="rkst${PT?' pt':''}"><i class="rkwipe"></i><i class="rkbgd"></i><i class="rkcol"></i><i class="rkband"></i><i class="rklow"></i>
-  ${Array.from({length:34},(_,k)=>{const C=['#3a1ed6','#4318e4','#2c1398','#3f20cf','#5232f0','#33169f'],y=200+((k*83)%380),w=170+((k*53)%170),h=130+((k*71)%190),du=5.2+((k*37)%30)/10,ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="left:${40+(k%5)*45}px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?40:-40)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${du.toFixed(1)}s"></i>`}).join('')}
+  E.innerHTML=`<div class="rkst${PT?' pt':''}"><i class="rkwipe"></i><i class="rkvig"></i><i class="rkbgd"></i><i class="rkglow"></i>${Array.from({length:7},(_,k)=>`<i class="rkhaze" style="top:${40+k*80}px;left:0;--s:${260+(k*97)%240}px;--t:${26+k*3}s;--d:-${(k*7.3)%26}s"></i>`).join('')}<i class="rkcol"></i><i class="rkband"></i><i class="rklow"></i>
+  ${Array.from({length:26},(_,k)=>{const C=['#3a1ed6','#4318e4','#2c1398','#3f20cf','#5232f0','#33169f'],y=170+((k*89)%430),w=120+((k*53)%190),h=90+((k*71)%200),du=15+((k*37)%60)/10,ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="--c:${C[k%6]};--ax:${['1 .3 0','.4 1 0','1 -.5 .2','-.3 1 .3'][k%4]};left:-900px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?40:-40)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${du.toFixed(1)}s"></i>`}).join('')}
   ${mx?'<div class="rkmax">MAX</div>':''}
   ${DT.map(([x,y,d])=>`<i class="rkd" style="left:${x}px;top:${y}px;--d:${d}s"></i>`).join('')}
   <div class="rkcw"><div class="rkcard">${arcCard(a,236)}</div></div>
@@ -1124,7 +1145,8 @@ function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk
  }
  slSound(x.kind=='new'?'iat':'rk',a);
  E.classList.remove('on');void E.offsetWidth;E.classList.add('on');document.body.classList.add('lock');try{if(S.dv.vib&&navigator.vibrate)navigator.vibrate(x.kind=='new'?[30,60,30]:[20,40,60])}catch(e){}
- let fin=0;const done=()=>{if(fin)return;fin=1;slStop();slPress();if(x.kind!='new'&&!SLQ.length)slBgmStop();E.classList.add('out');if(x.kind=='new')SLQ.unshift({kind:'rank',uid:x.uid,rank:1});setTimeout(()=>{E.className='iat';E.innerHTML='';E._fit=null;document.body.classList.remove('lock');slTick()},x.kind=='new'?700:520)};
+ let fin=0;const done=()=>{if(fin)return;fin=1;slStop();slPress();if(x.kind!='new'&&!SLQ.length)slBgmStop();if(x.kind=='new'){E.style.background='rgba(24,28,60,.96)';E.classList.add('xf');SLQ.unshift({kind:'rank',uid:x.uid,rank:1});setTimeout(()=>{E.innerHTML='';E._fit=null;slPlay(SLQ.shift())},420);return}
+ E.classList.add('out');setTimeout(()=>{E.className='iat';E.style.background='';E.innerHTML='';E._fit=null;document.body.classList.remove('lock');slTick()},520)};
  const ok=E.querySelector('.iatok'),t0=Date.now();
  /* tap anywhere: skip to the end (the voice / sound stops too). Only the OK button closes the screen */
  const skip=()=>{if(E.classList.contains('skip'))return;E.classList.add('skip');slStop()};
@@ -1304,7 +1326,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-0000';
+var APPVER='2026.11.22-0009';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
