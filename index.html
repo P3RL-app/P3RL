@@ -657,7 +657,7 @@ function badge(){const m=$('#mnb');if(m)m.classList.toggle('new',hasNew())}
 function fbStop(){RF.unsub.forEach(u=>{try{u()}catch(e){}});RF={...RF,me:null,meLoaded:0,reqIn:[],reqOut:[],fr:[],prof:{},hgIn:[],hgOut:[],unsub:[],found:null,waiting:null,ask:null};rr()}
 function getProf(uid){if(RF.prof[uid])return;RF.prof[uid]={name:'…'};fdb().collection('profiles').doc(uid).get().then(d=>{RF.prof[uid]=d.exists?d.data():{name:'(no profile)'};rr()}).catch(()=>{})}
 function fbStart(u){fbStop();const db=fdb(),me=u.uid,L=(q,f)=>RF.unsub.push(q.onSnapshot(f,()=>{}));
- TO(db.collection('profiles').doc(me).get()).then(d=>{RF.dbErr='';RF.me=d.exists?d.data():null;RF.meLoaded=1;if(RF.me)pushRanks(1);else openOnb();rr()}).catch(e=>{RF.dbErr=errMsg(e);RF.meLoaded=1;rr()});
+ TO(db.collection('profiles').doc(me).get()).then(d=>{RF.dbErr='';RF.me=d.exists?d.data():null;RF.meLoaded=1;if(RF.me)pushRanks(1);else openOnb();rr()}).catch(e=>{RF.dbErr=errMsg(e);RF.meLoaded=1;rr();dbDiagnose()});
  L(db.collection('friendReqs').where('to','==',me),q=>{RF.reqIn=q.docs.map(d=>({id:d.id,...d.data()}));RF.reqIn.forEach(r=>getProf(r.from));rr()});
  L(db.collection('friendReqs').where('from','==',me),q=>{RF.reqOut=q.docs.map(d=>({id:d.id,...d.data()}));RF.reqOut.forEach(r=>getProf(r.to));rr()});
  L(db.collection('friendships').where('members','array-contains',me),q=>{RF.fr=q.docs.map(d=>({id:d.id,uid:d.data().members.find(x=>x!=me),t:d.data().t}));RF.fr.forEach(f=>{delete RF.prof[f.uid];getProf(f.uid)});rr()});
@@ -667,6 +667,23 @@ let rkT=0;function pushRanks(now){if(!FBU||!RF.me)return;clearTimeout(rkT);rkT=s
 /* profile */
 const ERRS={'timeout':'The database didn\u2019t answer. Make sure Firestore is created in Firebase (Build \u2192 Firestore Database), then try again.','not-found':'The Firestore database doesn\u2019t exist yet. Create it in Firebase (Build \u2192 Firestore Database).','failed-precondition':'The Firestore database isn\u2019t ready. Open Firebase \u2192 Firestore Database and finish creating it.','permission-denied':'Firebase blocked the save. Publish the latest Firestore rules (Firestore → Rules).','unavailable':navigator.onLine===false?'You\u2019re offline. Connect to the internet and try again.':'Can\u2019t reach the database. Try again in a moment. If it keeps happening, check that Firestore Database is created in Firebase (code: unavailable).','resource-exhausted':'That image is too big. Try a smaller one.','invalid-argument':'That image is too big. Try a smaller one.','unauthenticated':'You were signed out. Sign in again.'};
 const errMsg=e=>{if(typeof e=='string')return e;const c=(e&&e.code||'').replace('firestore/','');try{console.warn('P3RL save error',e)}catch(z){}return ERRS[c]||('Couldn\u2019t save ('+((e&&(e.code||e.message))||'unknown error')+')')};
+async function dbProbe(){const P=FBC.projectId,u=`https://firestore.googleapis.com/v1/projects/${P}/databases/(default)/documents/profiles/${myId()||'x'}?key=${FBC.apiKey}`;let tok='';try{tok=FBU?await FBU.getIdToken():''}catch(e){}
+ try{const r=await Promise.race([fetch(u,{headers:tok?{Authorization:'Bearer '+tok}:{}}),new Promise((_,no)=>setTimeout(()=>no(new Error('t')),12000))]);let j={};try{j=await r.json()}catch(e){}const m=(j.error&&j.error.message)||'';
+  if(r.ok)return{c:'ok'};
+  if(r.status==404&&/database/i.test(m)&&/not exist|does not exist|not found/i.test(m))return{c:'nodb',m};
+  if(r.status==404)return{c:'ok'};
+  if(r.status==403&&/has not been used|is disabled|SERVICE_DISABLED|not enabled/i.test(m))return{c:'api',m};
+  if(r.status==403)return{c:'rules',m};
+  if(r.status==400&&/Datastore Mode|datastore mode/i.test(m))return{c:'dsmode',m};
+  return{c:'http',m:r.status+' '+m}}catch(e){return{c:'blocked'}}}
+const DIAG={nodb:'Found it: your Firestore database was never created. In Firebase go to Build → Firestore Database → Create database → pick a location → Production mode → Create. Then paste the rules from Claude into the Rules tab and Publish.',
+ api:'Found it: the Firestore service is switched off for this project. In Firebase open Build → Firestore Database and create the database, then try again.',
+ dsmode:'Found it: the database was created in “Datastore mode”. It has to be “Native mode”. Create a new Firebase project database in Native mode.',
+ rules:'Found it: the database is there but the rules block it. In Firebase → Firestore Database → Rules, paste the rules from Claude and tap Publish.',
+ blocked:'Found it: this phone or network is blocking Google’s database (an ad blocker, content blocker, VPN or private DNS). Turn it off for this site or try on mobile data.',
+ ok:'The database itself answers fine, only the live connection failed. Tap “Switch connection & reload” below.'};
+async function dbDiagnose(){RF.diag='Checking what’s wrong…';rr();const r=await dbProbe();RF.diagC=r.c;RF.diag=DIAG[r.c]||('Database answered: '+(r.m||r.c));rr();return r}
+function diagHTML(){return RF.diag?`<p class="nores" style="text-align:left;margin:10px 2px">${esc(RF.diag)}</p>`+(RF.diagC=='ok'?'<div class="bk"><button data-bk="fbmode">Switch connection &amp; reload</button></div>':''):''}
 const TO=(p,ms)=>Promise.race([p,new Promise((_,no)=>setTimeout(()=>no({code:'timeout'}),ms||15000))]);
 async function saveProfile(f){const db=fdb(),me=myId(),h=f.handle.toLowerCase().trim(),old=RF.me&&RF.me.handle,t=Date.now();
  if(!/^[a-z0-9_]{3,15}$/.test(h))throw 'Username: 3-15 letters, numbers or _';
@@ -725,7 +742,7 @@ function bindPF(root){
   if(k=='later'){$('#onb').classList.remove('on');document.body.classList.remove('lock');return toast('You can finish your profile any time in Menu → Profile')}
   if(k=='save'){const f={name:root.querySelector('#pfn').value,handle:clean(root.querySelector('#pfh').value),bio:root.querySelector('#pfb').value,ban:RF.eb,av:RF.ea};t.disabled=true;
    saveProfile(f).then(()=>{RF.edit=0;RF.eb=undefined;RF.ea=undefined;if(root.id=='onbc'){$('#onb').classList.remove('on');document.body.classList.remove('lock');toast('Welcome, '+RF.me.name+'!')}else{toast('Profile saved');renderMenu()}rr()})
-    .catch(er=>{t.disabled=false;if(pm)pm.textContent=errMsg(er)})}});
+    .catch(er=>{t.disabled=false;if(pm)pm.textContent=errMsg(er);const c=(er&&er.code||'').replace('firestore/','');if(c=='unavailable'||c=='timeout'||c=='permission-denied'||c=='not-found'||c=='failed-precondition')dbProbe().then(r=>{if(pm)pm.textContent=errMsg(er)+' '+(DIAG[r.c]||'')})})}});
  root.addEventListener('input',e=>{if(e.target.id=='pfh')ucheck(root);if(e.target.id=='pfn'){phUpdate(root);if(!root.querySelector('#pfh').value)ucheck(root)}});
  root.addEventListener('change',e=>{const f=e.target.files&&e.target.files[0];if(!f)return;
   if(e.target.id=='pqban'||e.target.id=='pqav'){const isB=e.target.id=='pqban';imgFile(f,isB?900:256,isB?300:256,isB?240000:60000,d=>{const m=RF.me;toast('Saving…');saveProfile({name:m.name,handle:m.handle,bio:m.bio||'',ban:isB?d:undefined,av:isB?undefined:d}).then(()=>{toast(isB?'Banner updated':'Picture updated');renderMenu()}).catch(er=>toast(errMsg(er)))});e.target.value='';return}
@@ -734,7 +751,7 @@ function bindPF(root){
 function profileHTML(){if(!FB_ON)return '<p class="nores">Profiles and friends work on the P3RL app at p3rl-app.github.io.</p>';
  if(!FBU)return signInHTML('Sign in to get your profile and add friends.');
  if(!RF.meLoaded)return '<p class="nores">Loading…</p>';
- if(RF.dbErr&&!RF.me)return `<p class="pkm">${esc(RF.dbErr)}</p><div class="bk"><button data-bk="retry">Try again</button></div>`;
+ if(RF.dbErr&&!RF.me)return `<p class="pkm">${esc(RF.dbErr)}</p>${diagHTML()}<div class="bk"><button data-bk="retry">Try again</button></div>`;
  if(!RF.me)return `<p class="nores">Your profile isn\u2019t set up yet.</p><div class="bk"><button data-pf="go" style="background:var(--cy);color:#000">Set up my profile</button></div>`;
  if(RF.edit)return formHTML(0);
  return cardHTML(RF.me,1)+`<div class="bk"><button data-pf="edit">Edit profile</button></div><p style="opacity:.6;font-size:12px;font-style:normal;margin:10px 4px">Friends see your photo, name, @username, description and ranks. ${RF.fr.length} friend${RF.fr.length==1?'':'s'}.</p>`}
@@ -914,7 +931,8 @@ $('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t){const r=e.targe
  if(k=='exp'){const x=JSON.stringify({p:S.p,u:S.u,h:S.h});$('#bkt').value=x;try{$('#bkt').select();navigator.clipboard&&navigator.clipboard.writeText(x).then(()=>toast('Backup copied'),()=>{})}catch(z){}}
  else if(k=='imp'){try{const j=JSON.parse($('#bkt').value);if(!j.p)throw 0;S.p=j.p;S.u=j.u||[];S.h=j.h||[];S.prev=null;save();hub();lst();renderMenu();toast('Backup restored')}catch(z){toast('That is not a valid backup')}}
  else if(k=='map'){const keep=mTab;menu('m');setTimeout(()=>{if($('#mns').classList.contains('on')&&mTab=='m'){mTab=keep;renderMenu()}},1500)}
- else if(k=='retry'){if(FBU){RF.meLoaded=0;renderMenu();fbStart(FBU)}}
+ else if(k=='retry'){if(FBU){RF.meLoaded=0;RF.dbErr='';RF.diag='';renderMenu();fbStart(FBU)}}
+ else if(k=='fbmode'){try{const m=localStorage.getItem('p3fbmode');localStorage.setItem('p3fbmode',m=='auto'?'lp':'auto')}catch(z){}location.reload()}
  else if(k=='gin'){fbSignIn()}
  else if(k=='gout'){fbSignOut()}
  else if(k=='zr'){S.dv.hz=S.dv.oz=S.dv.lz=100;save();applyLZ();hub();renderMenu()}
@@ -942,7 +960,7 @@ const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2b
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
 let FBU=null,FBE='',fbReady=null;
 function fbLoad(){if(fbReady)return fbReady;const V='10.12.2',L=n=>new Promise((ok,no)=>{const x=document.createElement('script');x.src=`https://cdn.jsdelivr.net/npm/firebase@${V}/${n}-compat.js`;x.onload=ok;x.onerror=no;document.head.appendChild(x)});
- fbReady=(window.firebase&&firebase.auth?Promise.resolve():L('firebase-app').then(()=>Promise.all([L('firebase-auth'),L('firebase-firestore')]))).then(()=>{if(!firebase.apps.length){firebase.initializeApp(FBC);/* long polling: the streaming connection fails on some phones and networks (iPhone home-screen apps especially), which looked like 'no internet' */try{firebase.firestore().settings({experimentalForceLongPolling:true,merge:true})}catch(e){}}
+ fbReady=(window.firebase&&firebase.auth?Promise.resolve():L('firebase-app').then(()=>Promise.all([L('firebase-auth'),L('firebase-firestore')]))).then(()=>{if(!firebase.apps.length){firebase.initializeApp(FBC);/* long polling: the streaming connection fails on some phones and networks (iPhone home-screen apps especially), which looked like 'no internet' */try{const lp=(()=>{try{return localStorage.getItem('p3fbmode')}catch(e){return null}})();firebase.firestore().settings(lp=='auto'?{experimentalAutoDetectLongPolling:true,merge:true}:{experimentalForceLongPolling:true,merge:true})}catch(e){}}
   firebase.auth().onAuthStateChanged(u=>{FBU=u;if(u){FBE='';cloudUse(firebase.firestore().collection('users').doc(u.uid));fbStart(u)}else{fbStop();if(CREF&&CREF.__fb)CREF=null};if($('#mns').classList.contains('on'))renderMenu()});annStart();
   firebase.auth().getRedirectResult().catch(e=>{FBE=e.code||e.message})});return fbReady}
 function fbSignIn(){fbLoad().then(()=>{const a=firebase.auth(),pr=new firebase.auth.GoogleAuthProvider();pr.setCustomParameters({prompt:'select_account'});
