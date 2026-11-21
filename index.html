@@ -375,21 +375,30 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 @keyframes rkd3{0%{opacity:0;transform:translate(0,0)}15%{opacity:.85}85%{opacity:.6}100%{opacity:0;transform:translate(34px,-70px)}}
 /* card surface: slow watery light flowing across it, like the game */
 .wtr{position:absolute;inset:7%;z-index:2;pointer-events:none;mix-blend-mode:screen;opacity:.45;overflow:hidden;border-radius:2px}
-.wtr::before,.wtr::after{content:'';position:absolute;inset:-60%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.011 .028' numOctaves='2' seed='4' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .75 0 0 0 0 1 7 0 0 0 -3.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");background-size:260px 260px;animation:wtr1 9s linear infinite}
-.wtr::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.02 .009' numOctaves='2' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .6 0 0 0 0 .82 0 0 0 0 1 6.5 0 0 0 -3.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");background-size:300px 300px;animation:wtr2 13s linear infinite;opacity:.8}
+.wtr::before,.wtr::after{content:'';position:absolute;inset:-60%;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.011 .028' numOctaves='2' seed='4' stitchTiles='stitch'%3E%3Canimate attributeName='baseFrequency' dur='7s' values='.011 .028;.015 .021;.009 .032;.011 .028' repeatCount='indefinite'/%3E%3C/feTurbulence%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .75 0 0 0 0 1 7 0 0 0 -3.75'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");background-size:260px 260px;animation:wtr1 6s linear infinite}
+.wtr::after{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.02 .009' numOctaves='2' seed='11' stitchTiles='stitch'%3E%3Canimate attributeName='baseFrequency' dur='9s' values='.02 .009;.016 .013;.023 .007;.02 .009' repeatCount='indefinite'/%3E%3C/feTurbulence%3E%3CfeColorMatrix values='0 0 0 0 .6 0 0 0 0 .82 0 0 0 0 1 6.5 0 0 0 -3.5'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");background-size:300px 300px;animation:wtr2 8.5s linear infinite;opacity:.8}
 @keyframes wtr1{to{transform:translate(260px,-260px)}}@keyframes wtr2{to{transform:translate(-300px,-300px)}}
 .rkcard{position:relative}
 /* background shapes: slow, steady drift to the right (no pop / snap back) */
 @keyframes rkflow{0%{translate:0 0;rotate:var(--r0)}100%{translate:3200px var(--dy);rotate:var(--r1)}}
 /* OK prompt: green circled A + white OK, placed where the game puts it */
-.rkst .rkok{position:absolute!important;left:858px!important;top:506px!important;right:auto!important;bottom:auto!important;z-index:8;gap:0!important;padding:0!important;font:900 italic 62px/1 'Archivo','Arial Black',sans-serif!important;font-variation-settings:'wdth' 100;color:#fff!important;-webkit-text-stroke:0!important;letter-spacing:-.03em}
-.rkst .rkok .rkx{width:62px!important;height:62px!important;margin:0 -14px 0 0!important;border:3.4px solid #8ff03c!important;border-radius:50%!important;background:none!important;box-shadow:none!important;position:relative}
-.rkst .rkok .rkx::after{display:none!important}
-.rkst .rkok .rkx::before{content:'A'!important;position:absolute!important;inset:0!important;display:flex!important;align-items:center;justify-content:center;width:auto!important;height:auto!important;margin:0!important;background:none!important;border:0!important;transform:none!important;font:900 italic 58px/1 'Archivo','Arial Black',sans-serif!important;color:#8ff03c!important;left:4px!important;top:2px!important}
+.rk .rkok{position:absolute!important;left:auto!important;top:auto!important;right:calc(22px + env(safe-area-inset-right,0px))!important;bottom:calc(18px + env(safe-area-inset-bottom,0px))!important;z-index:30;gap:0!important;padding:0!important;font:900 italic clamp(30px,6.2vmin,58px)/1 'Archivo','Arial Black',sans-serif!important;font-variation-settings:'wdth' 100;color:#fff!important;-webkit-text-stroke:0!important;letter-spacing:-.03em;text-shadow:0 2px 8px rgba(0,0,30,.35)}
+.rk .rkok .rkx{width:1.02em!important;height:1.02em!important;margin:0 -.24em 0 0!important;border:.055em solid #8ff03c!important;border-radius:50%!important;background:none!important;box-shadow:none!important;position:relative}
+.rk .rkok .rkx::after{display:none!important}
+.rk .rkok .rkx::before{content:'A'!important;position:absolute!important;inset:0!important;display:flex!important;align-items:center;justify-content:center;width:auto!important;height:auto!important;margin:0!important;background:none!important;border:0!important;transform:none!important;font:900 italic .95em/1 'Archivo','Arial Black',sans-serif!important;color:#8ff03c!important;left:.07em!important;top:.03em!important}
 .rkcw{left:101px!important;top:174px!important;transform:matrix(.873,-.068,.426,1.029,0,0)!important}
 .rkinfo span{font-size:78px!important}
 .rkbar{left:492px!important;width:480px!important}
 .rkbar span{left:126px!important}
+.rkst{isolation:isolate}
+.rkshw{position:absolute;left:0;top:0;width:0;height:0;z-index:1;pointer-events:none}
+.rkshw>.rksh{position:absolute}
+.rkbgd{z-index:0!important}.rkcol,.rkband,.rklow{z-index:0!important}
+.rkcw{z-index:4!important;transform-style:flat}.rks,.rkghost{z-index:5!important}.rkp,.rkd{z-index:6!important}
+.rkup,.rknum,.rkinfo,.rkbar,.rkmax{z-index:7!important}.rkflash{z-index:6!important}
+/* water: the light also ripples (the pattern itself morphs) and pulses */
+.wtr{animation:wtrp 3.2s ease-in-out infinite alternate}
+@keyframes wtrp{from{opacity:.3}to{opacity:.6}}
 .pflash{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 47%,rgba(140,235,255,.9) 52%,transparent 60%);transform:translateX(-110%);opacity:0}
 .pflash.go{animation:pfl .32s cubic-bezier(.4,0,.2,1)}@keyframes pfl{0%{transform:translateX(-110%);opacity:1}100%{transform:translateX(110%);opacity:1}}
 .pmn.sub .pitems{transform:translateX(-50%) rotate(-11deg) translateX(-60%);opacity:0;pointer-events:none}.pmn.sub .pwal{opacity:0;pointer-events:none}
@@ -829,7 +838,9 @@ function dvAct(e){const t=e.target.closest('[data-act]');if(!t)return;const act=
  else if(act=='spd'){d.spd=+t.dataset.v}
  else if(act=='pm'){d.pm=t.dataset.v}
  else if(act=='ts'){d.tsrc=t.dataset.v}
- else if(act=='sln'||act=='slrk'){const f=$('#slf').value,ar=+$('#sla').value,rk=+$('#slr').value;let u=f;if(!u){u='__test';RF.prof[u]={name:'Test Friend',arc:ar}}$('#dvs').classList.remove('on');slQ(act=='sln'?{kind:'new',uid:u}:{kind:'rank',uid:u,rank:rk});return}
+ else if(act=='sln'||act=='slrk'){try{const sf=$('#slf'),sa=$('#sla'),sr=$('#slr'),f=sf?sf.value:'',ar=sa?+sa.value:0,rk=sr?+sr.value:1;let u=f;if(!u||!RF.prof[u]){u='__test';RF.prof[u]={name:'Test Friend',arc:ar}}
+  $('#dvs').classList.remove('on');document.body.classList.remove('dvon');try{menuClose(true)}catch(z){}busy=0;document.querySelectorAll('.ov').forEach(o=>o.remove());const E=$('#iat');if(E.classList.contains('on')){E.className='iat';E.innerHTML='';E.style.background=''}SLQ.length=0;try{slStop();slBgmStop()}catch(z){}
+  setTimeout(()=>slQ(act=='sln'?{kind:'new',uid:u}:{kind:'rank',uid:u,rank:Math.max(1,Math.min(10,rk||1))}),60)}catch(err){toast('Test didn\u2019t start: '+(err&&err.message||err))}return}
  else if(act=='sldel'){const u=t.dataset.u;if(RF.sldel!=u){RF.sldel=u;return renderDev()}RF.sldel=null;$('#dvs').classList.remove('on');slDelete(u);return}
  else if(act=='test'){const st=[...document.querySelectorAll('.tc:checked')].map(x=>x.value);return testPlay(st,+$('#tn').value,$('#tf').checked)}
  else if(act=='replay'){if(lastTest)return testPlay(...lastTest);toast('Nothing to replay yet')}
@@ -1143,7 +1154,7 @@ function slPlay(x){try{const E0=$('#iat');E0.classList.remove('xf','out');setTim
    SH.length=0;SH.push([-40,640,260,300,-12,'#0100df',.05],[170,600,220,260,10,'#02008d',.1],[330,680,240,200,-8,'#0100df',.12],[440,560,200,240,24,'#01009d',.08],[-20,860,250,220,16,'#01009d',.14],[220,880,230,200,-14,'#02008d',.1],[420,860,220,230,18,'#0100df',.16],[100,980,260,200,-22,'#02008d',.18],[380,1000,240,180,12,'#01009d',.12])}
   E.className='iat rk'+(mx?' max':'');
   E.innerHTML=`<div class="rkst${PT?' pt':''}"><i class="rkwipe"></i><i class="rkbgd"></i><i class="rkcol"></i><i class="rkband"></i><i class="rklow"></i>
-  ${Array.from({length:34},(_,k)=>{const C=['#0a14e0','#0610c4','#1426f0','#0508a6','#0c1ad6','#1a2cff'],y=200+((k*83)%380),w=170+((k*53)%170),h=130+((k*71)%190),du=46+((k*37)%30),ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="left:-1100px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?40:-40)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${du.toFixed(1)}s"></i>`}).join('')}
+  <div class="rkshw">${Array.from({length:34},(_,k)=>{const C=['#0a14e0','#0610c4','#1426f0','#0508a6','#0c1ad6','#1a2cff'],y=200+((k*83)%380),w=170+((k*53)%170),h=130+((k*71)%190),du=46+((k*37)%30),ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="left:-1100px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?40:-40)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${du.toFixed(1)}s"></i>`}).join('')}</div>
   ${mx?'<div class="rkmax">MAX</div>':''}
   ${DT.map(([x,y,d],k)=>`<i class="rkd" style="left:${x}px;top:${y}px;--d:${d}s;--z:${[5,8,11,14,7,9][k%6]}px;--t:${(5+(k*.7)%3).toFixed(1)}s"></i>`).join('')}
   <div class="rkcw"><div class="rkcard">${arcCard(a,236)}<i class="wtr"></i></div></div>
@@ -1152,8 +1163,8 @@ function slPlay(x){try{const E0=$('#iat');E0.classList.remove('xf','out');setTim
   <div class="rkup" data-t="RANK UP!">RANK UP!</div><i class="rkflash"></i>
   <div class="rkbar"><span><em>${esc((pr.name||'?')[0])}</em>${esc((pr.name||'your friend').slice(1))}</span></div>
   <div class="rknum${x.rank>=10?' two':''}">${x.rank}</div>
-  <div class="rkinfo"><b>RANK</b><span>${esc(an)}</span></div>
-  <button class="iatok rkok" style="animation-delay:${need}ms"><i class="rkx"></i>OK</button></div>`;
+  <div class="rkinfo"><b>RANK</b><span>${esc(an)}</span></div></div>
+  <button class="iatok rkok" style="animation-delay:${need}ms"><i class="rkx"></i>OK</button>`;
   const fit=()=>{const st=E.querySelector('.rkst'),pt=false,k=Math.min(innerWidth/1010,innerHeight/600);st.style.setProperty('--k',k.toFixed(4));if(window.CSS&&CSS.supports('zoom','2')){st.style.zoom=k;st.style.transform='none';st.style.margin='0';st.style.left=(innerWidth/2/k-540).toFixed(1)+'px';st.style.top=(innerHeight/2/k-318).toFixed(1)+'px'}
    const sp=E.querySelector('.rkinfo span');if(sp){const vis=Math.min(1060,540+innerWidth/2/k-20),w=sp.scrollWidth,mw=Math.min(420,vis-620);sp.style.transform=w>mw?`scaleX(${(mw/w).toFixed(3)})`:''}};fit();E._fit=fit;setTimeout(()=>{if(E._fit===fit)fit()},250);try{document.fonts.ready.then(()=>{if(E._fit===fit)fit()})}catch(e){}
  }
@@ -1340,7 +1351,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-0031';
+var APPVER='2026.11.22-0041';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
