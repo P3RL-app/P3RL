@@ -24,6 +24,7 @@ It will open on a computer, but it is not meant to be used there.
 - **Ranks 1 to 6** for every stat, with the real rank names (Plain → Charismatic, Timid → Badass, Slacker → Genius)
 - **Undo** – made a mistake? Tap *Undo last* on the stat panel
 - **Saves automatically** – your progress stays on your phone even after you close the app
+- **Friend hangout** - you gain more points if u and your friend hangout together! (Dont forget to click on the +Friend)
 
 ## Use it like an app on your phone
 
