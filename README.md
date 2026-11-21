@@ -1,72 +1,70 @@
-# P3RL – Social Stats
+P3RL – Social Stats
 
-A personal, offline-friendly phone app in the style of the Persona 3 Reload social-stats screen.
-Log real-life activities and level up **Charm**, **Courage** and **Academics**.
+A fan-made phone app in the style of the Persona 3 Reload social stats screen. Do things in real life, log them, and watch your Charm, Courage and Academics rank up, with the Stats Up animation, the music notes and the rank-up sounds.
 
-Every time you do something in real life – hang out with friends, hit the gym, study – tap it in the list.
-Music notes play, the stat screen opens, rings close in on the stat you raised, and when you've earned
-enough points you **RANK UP!!** just like in the game.
+Open it here: https://p3rl-app.github.io/P3RL/
 
-Everything is one file: `index.html` (the sounds are built into it).
+📱 This app is made for phones only
 
-**Open the app:** https://p3rl-app.github.io/P3RL/)](https://p3rl-app.github.io/P3RL/)
+P3RL is built for a phone screen held upright. It opens on a computer, but the layout, the animations and the menu are made for a phone, so it won't look right there. Use it on your iPhone or Android phone.
 
-## 📱 Phone only
+🐣 How to install it (step by step, nothing to download)
 
-P3RL is made for phones. It is designed for a phone screen held upright, with big buttons for your thumbs.
-It will open on a computer, but it is not meant to be used there.
+You don't need the App Store or Google Play. It installs straight from the website.
 
-## Features
+iPhone
+Open Safari. It has to be Safari, other browsers can't add it to the home screen.
+Go to p3rl-app.github.io/P3RL
+Tap the Share button at the bottom. It's the square with an arrow pointing up.
+Scroll down and tap Add to Home Screen.
+Tap Add in the top-right corner.
+Close Safari. The P3RL icon is now on your home screen, so open it from there like any app.
 
-- **54 ready-made activities** for Charm, Courage and Academics (plus combos that raise two stats at once)
-- **Your own activities** – tap **+ New**, name it, pick a stat and give it 1–3 points
-- **Search and filters** – find activities by name, stat (Charm / Courage / Academics), points (+1 / +2 / +3) or only *Yours*
-- **Ranks 1 to 6** for every stat, with the real rank names (Plain → Charismatic, Timid → Badass, Slacker → Genius)
-- **Undo** – made a mistake? Tap *Undo last* on the stat panel
-- **Saves automatically** – your progress stays on your phone even after you close the app
-- **Friend hangout** - you gain more points if u and your friend hangout together! (Dont forget to click on the +Friend)
-- **History** - see your activity history and time. (also undo as you like)
+Tip: sign in with Google once in Safari before adding it to your home screen. It goes smoother that way.
 
-## Use it like an app on your phone
+Android
+Open Chrome.
+Go to p3rl-app.github.io/P3RL
+Tap the ⋮ menu in the top-right corner.
+Tap Add to Home screen (on some phones it says Install app).
+Tap Add or Install.
+Open P3RL from your home screen.
+🎮 How to use it
+Log an activity: tap any activity in the list (search it, or filter by Charm, Courage or Academics). The Stats Up screen plays and your points go up. Tap OK to go back.
+Your own activities: tap + New to make your own. Custom activities give up to 3 points.
+Rank up: enough points raises a stat to the next rank, up to rank 6, with the big rank-up animation.
+Undo: made a mistake? Tap Undo last on the main screen, or remove any entry in Menu → History.
+Menu (☰ top right):
+Announcements: news and updates about the app
+Profile: your picture, banner, name, @username, description and ranks
+History: everything you logged, day by day
+Friends: find friends and hang out
+Settings: sound, volume, vibration, sizes, your account and backups
+👥 Friends and hangouts
+Open Menu → Settings and sign in with Google or with email and a password. A new email creates an account automatically.
+Set up your profile: tap the circle to add a profile picture, tap the banner to add a banner, then pick a display name and an @username. If your name is taken, the app suggests free ones.
+Go to Menu → Friends, search your friend's @username and tap Add. They accept it on their own phone.
+Did something together? Tap + Friend, pick the friend and what you did, and tap Send. Your friend gets a pop-up on their phone and taps Confirm. Then you both get the activity plus a +2 Charm bonus. Invites run out after 15 minutes.
+💾 Your progress
+Your progress is saved on your phone and stays after you close the app.
+Sign in and it's also saved to your account. If you change phones or delete the app, just sign in again and everything comes back.
+No account? Use Settings → Backup → Copy backup to save it as text, and Paste backup to bring it back.
 
-Open the link on your phone, then:
-- **iPhone (Safari):** Share → *Add to Home Screen*
-- **Android (Chrome):** ⋮ menu → *Add to Home screen* / *Install app*
+What friends can see: your picture, banner, name, @username, description and your three ranks. Your points and your history stay private.
 
-After that, P3RL opens from its own icon, full screen, like a normal app.
+❓ Something not working?
+Menu or new features missing: fully close the app and open it again. If you added it to your home screen, close it from the app switcher. The newest version number is shown at the bottom of Settings.
+Sign-in doesn't open (iPhone): sign in once in Safari, then add the app to your home screen again.
+No sound: check Settings → Sound and Volume, and make sure your phone isn't on silent.
+🗂️ Files in this repository
+File	What it is
+index.html	The whole app
+menu.mp4	The menu background video
+apple-touch-icon.png	The home screen icon
+README.md	This page
 
-## Step-by-step guide (no experience needed)
+All files stay in the main folder, next to each other.
 
-**Step 1 – Open the link on your phone**
-On your phone, open **Safari** (iPhone) or **Chrome** (Android).
-Tap the address bar at the top and type exactly:
-[ [https://yanaiben22-dev.github.io/P3RL/](https://p3rl-app.github.io/P3RL/)](https://p3rl-app.github.io/P3RL/)
-⚠️ The **P3RL** part must be in CAPITAL letters, or you will get a "404" error page.
+⚠️ Note
 
-**Step 2 – Add it to your home screen**
-- **iPhone:** tap the **Share** button (the square with an arrow pointing up, at the bottom of the screen) →
-  scroll down → tap **Add to Home Screen** → tap **Add** in the top-right corner.
-- **Android:** tap the **three dots ⋮** in the top-right corner → tap **Add to Home screen** (or **Install app**) →
-  tap **Add** / **Install**.
-
-**Step 3 – Open it from your home screen**
-Go to your home screen and tap the new **P3RL** icon. From now on, always open it from there.
-
-**Step 4 – Log something you did**
-Scroll down to the list and tap any activity you actually did today, for example *Hung out with friends*.
-Watch the animation, then tap **OK** to go back.
-
-**Step 5 – Add your own activities**
-Tap the **+ New** button in the bottom-right corner. Type what you did, choose **Charm**, **Courage** or
-**Academics**, set the points (1–3), then tap **Save as button** to keep it, or **Log once** to use it just this time.
-
-**Step 6 – Keep going**
-Come back every day and log what you did. Get every stat to rank 6 – **MAX**!
-
-## Your data
-
-- Your points, history and custom activities are saved **on your phone**, inside the browser.
-- They stay there after you close the app or restart your phone.
-- They are **not** shared between devices – your phone and your computer each have their own progress.
-- ⚠️ If you clear your browser's data (history / website data), your progress is deleted too.
-- On iPhone, open the app at least once a week, because Safari may clear data from websites you haven't visited in a while.
+This is a free, non-commercial fan project. It is not made by, sponsored by or connected to ATLUS or SEGA. Persona 3 Reload and its artwork, sounds and style belong to © ATLUS © SEGA.
