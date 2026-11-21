@@ -671,6 +671,10 @@ function renderDev(){const d=S.dv,chip=(on,act,k,v,t)=>`<button class="chip${on?
  <div class="r2">${S3.map(s=>`<label><input type="checkbox" class="tc" value="${s}" ${s=='c'?'checked':''}>${ST[s].n}</label>`).join('')}</div>
  <div class="r2"><label>Points <select id="tn"><option>1</option><option selected>2</option><option>3</option></select></label><label><input type="checkbox" id="tf">Force rank-up</label></div>
  <div class="r2"><button class="go" data-act="test">Play</button><button data-act="replay">Replay last</button></div>
+ <h4>Social Link animations</h4>
+ <div class="r2"><label>Friend <select id="slf"><option value="">Test card</option>${(typeof RF!='undefined'?RF.fr:[]).map(f=>`<option value="${f.uid}">${esc((RF.prof[f.uid]||{}).name||'Friend')}</option>`).join('')}</select></label><label>Arcana <select id="sla">${ARCN.map((n,i)=>`<option value="${i}"${i==13?' selected':''}>${ROM[i]} ${n}</option>`).join('')}</select></label></div>
+ <div class="r2"><label>Rank <select id="slr">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<option${n==2?' selected':''}>${n}</option>`).join('')}</select></label><button class="go" data-act="sln">Play “I am thou”</button><button class="go" data-act="slrk">Play rank up</button></div>
+ ${(typeof RF!='undefined'&&RF.fr.length)?`<div class="r2">${RF.fr.map(f=>`<button data-act="sldel" data-u="${f.uid}">${RF.sldel==f.uid?'Tap again: delete ':'Delete link: '}${esc((RF.prof[f.uid]||{}).name||'Friend')}</button>`).join('')}</div><small style="opacity:.6">Delete removes the friendship and resets its rank for both of you. Add each other again to see the real scene.</small>`:''}
  <h4>Speed</h4><div class="r2">${[[1,'1×'],[2,'½×'],[4,'¼×'],[8,'⅛×']].map(([v,t])=>chip(d.spd==v,'spd','',v,t)).join('')}</div>
  <h4>Set points</h4><div class="r2">${S3.map(s=>`<label>${ST[s].n}<input type="number" min="0" inputmode="numeric" enterkeyhint="${s=='a'?'done':'next'}" id="p${s}" value="${S.p[s]}"></label>`).join('')}<button data-act="set">Set</button></div>
  <h4>Data</h4><div class="r2"><button data-act="exp">Export</button><button data-act="imp">Import</button><button data-act="reset">${rsArm?'Tap again to reset':'Reset stats'}</button></div>
@@ -694,6 +698,8 @@ function dvAct(e){const t=e.target.closest('[data-act]');if(!t)return;const act=
  else if(act=='spd'){d.spd=+t.dataset.v}
  else if(act=='pm'){d.pm=t.dataset.v}
  else if(act=='ts'){d.tsrc=t.dataset.v}
+ else if(act=='sln'||act=='slrk'){const f=$('#slf').value,ar=+$('#sla').value,rk=+$('#slr').value;let u=f;if(!u){u='__test';RF.prof[u]={name:'Test Friend',arc:ar}}$('#dvs').classList.remove('on');slQ(act=='sln'?{kind:'new',uid:u}:{kind:'rank',uid:u,rank:rk});return}
+ else if(act=='sldel'){const u=t.dataset.u;if(RF.sldel!=u){RF.sldel=u;return renderDev()}RF.sldel=null;$('#dvs').classList.remove('on');slDelete(u);return}
  else if(act=='test'){const st=[...document.querySelectorAll('.tc:checked')].map(x=>x.value);return testPlay(st,+$('#tn').value,$('#tf').checked)}
  else if(act=='replay'){if(lastTest)return testPlay(...lastTest);toast('Nothing to replay yet')}
  else if(act=='set'){S3.forEach(s=>{S.p[s]=Math.max(0,parseInt($('#p'+s).value)||0)});S.prev=null;hub();toast('Points set')}
@@ -1155,7 +1161,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.21-2001';
+var APPVER='2026.11.21-2003';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
