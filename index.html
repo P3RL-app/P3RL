@@ -125,8 +125,8 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .pmn.op2 .pi{animation:pfly .32s calc(.08s + var(--i)*.04s) both}.pmn.op2 .pvert{animation:pvin .4s .05s both}.pmn.op2 .pwal{animation:pwl .3s .1s both}
 .pmn.op4 .pi{animation:pfd .35s calc(.15s + var(--i)*.04s) both}.pmn.op4 .pwal{animation:pfd .3s .2s both}
 .pmn.op3{animation:pfd .22s ease-out both}@keyframes pfd{from{opacity:0}}.pmn.op3 .pi{animation:pfd .3s calc(.05s + var(--i)*.03s) both}
-.pvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none;background:#0a179e}
-.pmn.hasvid .pvid{display:block}.pmn.hasvid .pbase,.pmn.hasvid .pcau,.pmn.hasvid .pbub,.pmn.hasvid .pvert,.pmn.hasvid .psp{display:none!important}
+.pvid{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none}
+.pmn.hasvid .pvid{opacity:1}.pmn.hasvid .pbase,.pmn.hasvid .pcau,.pmn.hasvid .pbub,.pmn.hasvid .pvert,.pmn.hasvid .psp{display:none!important}
 .pflash{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 47%,rgba(140,235,255,.9) 52%,transparent 60%);transform:translateX(-110%);opacity:0}
 .pflash.go{animation:pfl .32s cubic-bezier(.4,0,.2,1)}@keyframes pfl{0%{transform:translateX(-110%);opacity:1}100%{transform:translateX(110%);opacity:1}}
 .pmn.sub .pitems{transform:rotate(-11deg) translateX(-70%);opacity:0;pointer-events:none}.pmn.sub .pwal{opacity:0;pointer-events:none}
@@ -781,7 +781,7 @@ let mTab='m',delArm=null,rstArm=0;
 const fmtT=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),dayK=t=>new Date(t).toDateString();
 function dayLabel(t){const d=new Date(t),n=new Date(),y=new Date(Date.now()-864e5);if(d.toDateString()==n.toDateString())return 'Today';if(d.toDateString()==y.toDateString())return 'Yesterday';return d.toLocaleDateString([],{weekday:'short',day:'numeric',month:'short'})}
 const MD={a:['Announcements','Read the latest news'],p:['Profile','View and edit your profile'],f:['Friends','Find friends and hang out'],h:['History','See everything you logged'],s:['Settings','Sound, size and your account']};let mSel='a';
-function menu(t){mTab=t||'m';$('#mnb2').scrollTop=0;delArm=null;rstArm=0;RF.edit=0;renderMenu();const m=$('#mns');mvShow(mTab=='m');const an=mvOK?'vid':menuAnim(),oc={splash:'op',slide:'op2',fade:'op3',vid:'op4'}[an];m.classList.remove('on','op','op2','op3');void m.offsetWidth;m.classList.add('on');if(oc&&mTab=='m')m.classList.add(oc);clearTimeout(m._op);m._op=setTimeout(()=>m.classList.remove('op','op2','op3'),1000);document.body.classList.add('lock')}
+function menu(t){mTab=t||'m';$('#mnb2').scrollTop=0;delArm=null;rstArm=0;RF.edit=0;renderMenu();const m=$('#mns');mvShow(mTab=='m');const an=(mvOK||!mvBad)?'vid':menuAnim(),oc={splash:'op',slide:'op2',fade:'op3',vid:'op4'}[an];m.classList.remove('on','op','op2','op3');void m.offsetWidth;m.classList.add('on');if(oc&&mTab=='m')m.classList.add(oc);clearTimeout(m._op);m._op=setTimeout(()=>m.classList.remove('op','op2','op3'),1000);document.body.classList.add('lock')}
 /* menu opening animation: the owner picks it; the pick is shared with everyone through config/app */
 var CFG={};const MANIMS=[['splash','P3R splash'],['slide','Slide'],['fade','Fade'],['none','None']];
 function menuAnim(){const v=S.dv.man||'splash';return MANIMS.some(x=>x[0]==v)?v:'splash'}
@@ -791,11 +791,15 @@ function cfgStart(){try{fdb().collection('config').doc('app').onSnapshot(d=>{CFG
 /* the menu video (menu.mp4, same for everyone). The menu words are drawn on top.
    Plays once when the menu opens and stays on its last frame behind the pages.
    If it can't load (offline, first visit), the drawn background + splash is used instead. */
-const MENU_MP4='menu.mp4';let mvOK=false;
-function mvInit(){const v=$('#mns .pvid');if(!v||v.dataset.src)return;v.dataset.src=MENU_MP4;v.muted=true;v.preload='auto';
- v.addEventListener('loadeddata',()=>{mvOK=true},{once:true});v.addEventListener('error',()=>{mvOK=false;$('#mns').classList.remove('hasvid')});v.src=MENU_MP4;try{v.load()}catch(e){}}
-function mvShow(fromStart){const M=$('#mns'),v=M.querySelector('.pvid');mvInit();M.classList.toggle('hasvid',mvOK);if(!mvOK)return;
- try{if(fromStart){v.currentTime=0;const p=v.play();if(p&&p.catch)p.catch(()=>{})}}catch(e){}}
+const MENU_MP4='menu.mp4';let mvOK=false,mvBad=false;
+/* iPhones don't download a video until it is played, so we don't wait for it:
+   every time the menu opens we try to play it (the tap counts as permission). The drawn background shows
+   underneath until the first frame really plays; if it never does, the drawn menu just stays. */
+function mvInit(){const v=$('#mns .pvid');if(!v||v.dataset.src)return v;v.dataset.src=MENU_MP4;v.muted=true;v.defaultMuted=true;v.setAttribute('muted','');v.setAttribute('playsinline','');v.setAttribute('webkit-playsinline','');v.preload='auto';
+ v.addEventListener('playing',()=>{mvOK=true;$('#mns').classList.add('hasvid')});
+ v.addEventListener('error',()=>{mvBad=true;$('#mns').classList.remove('hasvid')});v.src=MENU_MP4;try{v.load()}catch(e){}return v}
+function mvShow(fromStart){const M=$('#mns'),v=mvInit();if(mvBad||!v)return;M.classList.toggle('hasvid',mvOK);
+ if(fromStart){try{v.currentTime=0}catch(e){}const p=v.play();if(p&&p.catch)p.catch(()=>{M.classList.remove('hasvid')})}}
 function menuClose(){$('#mns').classList.remove('on');document.body.classList.remove('lock')}
 function pFit(){const N=$('#pitems');N.style.fontSize='';requestAnimationFrame(()=>{const W=innerWidth-N.getBoundingClientRect().left-14;let r=1;N.querySelectorAll('.pi').forEach(b=>{const x=b.offsetLeft+b.offsetWidth+(b.querySelector('em')?34:0);if(x*Math.cos(.19)>W)r=Math.min(r,W/(x*Math.cos(.19)))});if(r<1){const f=parseFloat(getComputedStyle(N.querySelector('.pi')).fontSize);N.querySelectorAll('.pi').forEach(b=>b.style.fontSize=(f*r).toFixed(1)+'px')}})}
 try{document.fonts&&document.fonts.ready.then(()=>{if($('#mns').classList.contains('on')&&mTab=='m')renderMenu()})}catch(e){}
