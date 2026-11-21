@@ -967,18 +967,18 @@ $('#hask').onclick=e=>{const t=e.target.closest('button');if(!t||!RF.ask)return;
 /* queue of card scenes, played when nothing else is on screen */
 const SLQ=[];let slT=0;
 /* scene sounds (taken from your clips): I am thou plays from the card, rank up from the rank screen */
-/* each Arcana uses the sound from its own P3R clip: snd/iat/N.mp3 (I am thou) and snd/rk/N.mp3 (rank screen) */
-const SLRK=new Set([1,2,4,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20]),SLPAD={3:.07,6:.24,13:.04,16:.14};const SLC={};let slSrc=null;
-function slSnd(k,a){if(!arcOk(a))a=13;if(k=='rk'&&!SLRK.has(a))a=13;if(k=='iat'&&a==0)a=13;const id=k+a;return SLC[id]||(SLC[id]={id,url:`snd/${k}/${a}.mp3`})}
-function slPreload(a){['iat','rk'].forEach(k=>{const sn=slSnd(k,a);if(actx())decodeSnd(sn).catch(()=>{})});if(actx())decodeSnd(SLP).catch(()=>{})}
-function slSound(k,a){slStop();if(!S.dv.sfx)return;const sn=slSnd(k,a),delay=k=='iat'?(SLPAD[a]||0):0;const c=actx();
- if(c){try{c.resume()}catch(e){}const t0=c.currentTime;decodeSnd(sn).then(buf=>{const late=c.currentTime-t0-delay;const g=c.createGain();g.gain.value=1;g.connect(OUT(c));const src=c.createBufferSource();src.buffer=buf;src.connect(g);
-  if(late>0)src.start(0,Math.min(late,buf.duration-.1));else src.start(c.currentTime-late);slSrc={src,g,c}}).catch(()=>{})}
- else{try{const au=new Audio(sn.url);au.volume=(S.dv.vol??80)/100;setTimeout(()=>{const p=au.play();if(p&&p.catch)p.catch(()=>{})},delay*1000);slSrc={au}}catch(e){}}}
-const SLP={id:'slpress',url:'snd/press.mp3'};
-function slPress(){if(!S.dv.sfx)return;const c=actx();if(c){try{c.resume()}catch(e){}decodeSnd(SLP).then(buf=>{const s2=c.createBufferSource();s2.buffer=buf;s2.connect(OUT(c));s2.start()}).catch(()=>{})}else{try{const au=new Audio(SLP.url);au.volume=(S.dv.vol??80)/100;au.play().catch(()=>{})}catch(e){}}}
-function slStop(){const o=slSrc;slSrc=null;if(!o)return;try{if(o.au){o.au.pause();return}const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+.35);o.src.stop(t+.4)}catch(e){}}
-function slQ(x){SLQ.push(x);try{const pr=RF.prof[x.uid];slPreload(pr&&arcOk(pr.arc)?pr.arc:13)}catch(e){}slTick()}
+/* Social Link sounds: the scene sound effects (music removed) + "Strength of Heart" playing underneath both screens */
+const SLC={iat:{id:'sl-iat',url:'snd/sl/iat.mp3'},rk:{id:'sl-rk',url:'snd/sl/rk.mp3'},bgm:{id:'sl-bgm',url:'snd/sl/bgm.mp3'}};let slSrc=null,slBgm=null;
+function slPreload(){if(!actx())return;Object.values(SLC).forEach(sn=>decodeSnd(sn).catch(()=>{}));decodeSnd(SLP).catch(()=>{})}
+function slPlayBuf(sn,vol,loop){const c=actx();if(!c)return Promise.resolve(null);try{c.resume()}catch(e){}return decodeSnd(sn).then(buf=>{const g=c.createGain();g.gain.value=vol;g.connect(OUT(c));const src=c.createBufferSource();src.buffer=buf;src.loop=!!loop;src.connect(g);src.start();return {src,g,c}}).catch(()=>null)}
+function slSound(k){slStop();if(!S.dv.sfx)return;
+ if(!slBgm){slBgm={pending:1};slPlayBuf(SLC.bgm,.55,true).then(o=>{if(slBgm&&slBgm.pending){slBgm=o}else if(o){o.src.stop()}})}
+ const me={};slSrc=me;slPlayBuf(SLC[k],1).then(o=>{if(slSrc===me&&o)Object.assign(me,o);else if(o)o.src.stop()})}
+function slBgmStop(){const o=slBgm;slBgm=null;if(!o||o.pending)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+1.2);o.src.stop(t+1.3)}catch(e){}}
+const SLP={id:'slpress',url:'snd/sl/press.mp3'};
+function slPress(){if(!S.dv.sfx)return;slPlayBuf(SLP,1)}
+function slStop(){const o=slSrc;slSrc=null;if(!o||!o.src)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+.25);o.src.stop(t+.3)}catch(e){}}
+function slQ(x){SLQ.push(x);try{slPreload()}catch(e){}slTick()}
 function slTick(){clearTimeout(slT);if(!SLQ.length)return;if(busy||document.querySelector('.ov')||$('#iat').classList.contains('on')||$('#onb').classList.contains('on')){slT=setTimeout(slTick,700);return}slPlay(SLQ.shift())}
 function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk(pr.arc)?pr.arc:22,an=a<22?ARCN[a]:'Unknown',nm=esc(pr.name||'your friend'),E=$('#iat');
  let lines=[],T0,need;
@@ -1029,9 +1029,9 @@ function slPlay(x){const pr=RF.prof[x.uid]||{name:x.name||'your friend'},a=arcOk
   const fit=()=>{const st=E.querySelector('.rkst'),pt=false,k=Math.min(innerWidth/1010,innerHeight/600);st.style.setProperty('--k',k.toFixed(4));
    const sp=E.querySelector('.rkinfo span');if(sp){const vis=Math.min(1060,540+innerWidth/2/k-20),w=sp.scrollWidth,mw=Math.min(420,vis-620);sp.style.transform=w>mw?`scaleX(${(mw/w).toFixed(3)})`:''}};fit();E._fit=fit;setTimeout(()=>{if(E._fit===fit)fit()},250);try{document.fonts.ready.then(()=>{if(E._fit===fit)fit()})}catch(e){}
  }
- slSound(x.kind=='new'?'iat':'rk',a);
+ slSound(x.kind=='new'?'iat':'rk');
  E.classList.remove('on');void E.offsetWidth;E.classList.add('on');document.body.classList.add('lock');try{if(S.dv.vib&&navigator.vibrate)navigator.vibrate(x.kind=='new'?[30,60,30]:[20,40,60])}catch(e){}
- let fin=0;const done=()=>{if(fin)return;fin=1;slStop();slPress();E.classList.add('out');if(x.kind=='new')SLQ.unshift({kind:'rank',uid:x.uid,rank:1});setTimeout(()=>{E.className='iat';E.innerHTML='';E._fit=null;document.body.classList.remove('lock');slTick()},x.kind=='new'?700:380)};
+ let fin=0;const done=()=>{if(fin)return;fin=1;slStop();slPress();if(x.kind!='new'&&!SLQ.length)slBgmStop();E.classList.add('out');if(x.kind=='new')SLQ.unshift({kind:'rank',uid:x.uid,rank:1});setTimeout(()=>{E.className='iat';E.innerHTML='';E._fit=null;document.body.classList.remove('lock');slTick()},x.kind=='new'?700:380)};
  const ok=E.querySelector('.iatok'),t0=Date.now();
  E.onclick=e=>{if(Date.now()-t0<need){E.classList.add('skip');return}done()};ok.onclick=e=>{e.stopPropagation();done()}}
 /* new bonds: a friendship we haven't celebrated yet */
@@ -1207,7 +1207,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.21-2040';
+var APPVER='2026.11.21-2052';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
