@@ -1051,6 +1051,62 @@ body.lock .etab,body.dvon .etab.hide{display:none!important}
 #hgs .card{left:0;border-right:4px solid #5fe8ff!important;animation:drL .3s cubic-bezier(.2,.8,.3,1) both}
 @keyframes drR{from{transform:translateX(105%)}}
 @keyframes drL{from{transform:translateX(-105%)}}
+
+/* ===== Update 24 ===== */
+/* simpler streak scene */
+.skov{background:rgba(2,4,16,.5);animation:sq_skf .15s ease-out both}
+.skov .skbg,.skov .skband,.skov .sqr,.skov .sqsp{display:none}
+.sqp{position:relative;display:flex;align-items:center;gap:14px;padding:10px 34px 10px 26px;background:#05060c;transform:rotate(-6deg) skewX(-12deg);box-shadow:6px 6px 0 #5fe8ff;animation:sq_in2 .24s cubic-bezier(.2,.8,.3,1) both}
+.sqp>*{transform:skewX(12deg)}
+.sqt{display:flex;flex-direction:column;align-items:center;font:900 italic 15px/1 'Montserrat','Arial Black',sans-serif;color:#fff;letter-spacing:.02em}
+.sqfi svg{width:26px;height:26px;fill:#ff9a2e;margin-bottom:3px}.sqfi svg .fi{fill:#ffe066}
+.skov .sqn{position:relative;width:auto;min-width:1.2ch;height:84px;overflow:hidden;margin:0}
+.skov .sqn span{position:absolute;left:0;right:0;top:0;text-align:center;font:900 italic 80px/84px 'Montserrat','Arial Black',sans-serif;letter-spacing:-.06em;color:#fff;transition:transform .18s cubic-bezier(.4,0,.2,1)}
+.skov .sqn .o{position:relative}
+.skov .sqn .n{transform:translateY(100%);color:#5fe8ff}
+.skov.up .sqn .o{transform:translateY(-100%);opacity:1}
+.skov.up .sqn .n{transform:none}
+.sqd{font:900 italic 18px/1 'Montserrat','Arial Black',sans-serif;color:#e5001b;align-self:flex-end;margin-bottom:12px}
+.skov.out{animation:none;transition:opacity .22s;opacity:0}
+.skov.out .sqp{transition:transform .22s ease-in;transform:rotate(-6deg) skewX(-12deg) translateX(120vw)}
+@keyframes sq_in2{from{transform:rotate(-6deg) skewX(-12deg) translateX(-120vw)}}
+/* NEW drawer grows out of its edge tab, from the bottom */
+#sh .card{top:auto!important;bottom:calc(120px + env(safe-area-inset-bottom,0px))!important;max-height:min(70vh,560px)!important;animation:drT .34s cubic-bezier(.2,.8,.3,1) both!important}
+@keyframes drT{from{clip-path:inset(calc(100% - 104px) 0 0 calc(100% - 22px))}to{clip-path:inset(0 0 0 0)}}
+body:has(#sh.on) #fab{opacity:0}
+/* emoji picker sections */
+.emh{margin:6px 2px 4px;color:#4f8bff;font:900 italic 12px 'Montserrat',sans-serif;letter-spacing:.04em;text-transform:uppercase}
+/* full profile */
+.chh{cursor:pointer}
+.pfull .pcard{margin-bottom:8px}
+.pfc3{display:flex;gap:6px;margin:4px 0 10px}
+.pfc3 button{flex:1;display:flex;flex-direction:column;align-items:center;min-height:0!important;padding:8px 4px!important;background:#05060c!important;border:1.5px solid #2c3058!important;color:#cfe8ff!important;font:700 12px 'Barlow',sans-serif!important}
+.pfc3 b{font:900 italic 22px/1.05 'Montserrat','Arial Black',sans-serif;color:#fff}
+.pfa{margin:0 0 12px!important}
+.pfa button.pri{background:#1d3bbd!important;color:#fff!important}
+.pfarc{display:flex;align-items:center;gap:12px;background:#05060c;padding:8px 12px;margin-bottom:10px}
+.pfarc small{display:block;color:#5fe8ff;font:800 italic 11px 'Montserrat',sans-serif;letter-spacing:.06em}
+.pfarc b{font:900 italic 22px 'Montserrat','Arial Black',sans-serif;color:#fff;text-transform:uppercase}
+.pfsh{margin:6px 2px 6px;color:#5fe8ff;font:900 italic 13px 'Montserrat',sans-serif;letter-spacing:.06em}
+.pfst{background:#05060c;padding:8px 12px 10px;margin-bottom:10px}
+.pfsr{display:grid;grid-template-columns:1fr auto 26px;grid-template-areas:"n b r" "t b r";align-items:center;column-gap:10px;padding:5px 0;border-bottom:1px solid #1c1f3a}
+.pfsr:last-child{border-bottom:0}
+.pfsr b{grid-area:n;font:900 italic 17px 'Montserrat','Arial Black',sans-serif;color:#fff}
+.pfsr i{grid-area:t;font:600 12px 'EB Garamond',serif;color:#9fb6d8}
+.pfsb{grid-area:b;display:flex;gap:3px}
+.pfsb u{width:12px;height:12px;transform:skewX(-14deg);background:#1c1f3a}
+.pfsr.c .pfsb u.on{background:#2a45d6}.pfsr.g .pfsb u.on{background:#4f8bff}.pfsr.a .pfsb u.on{background:#36e0f0}
+.pfsr em{grid-area:r;font:900 italic 22px 'Montserrat',sans-serif;color:#fff;text-align:right}
+.pffr{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.pffr button{min-height:0!important;padding:0!important;background:none!important;border:0!important;border-radius:50%}
+.pffr .pfmore{width:40px;height:40px;border-radius:50%!important;background:#1c1f3a!important;color:#fff!important;font:800 13px 'Barlow',sans-serif!important}
+.pfl{min-height:200px}
+.pflh{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.pflh button{min-height:0!important;width:40px;height:40px;padding:0!important;font:900 26px/1 sans-serif!important;background:#05060c!important;color:#fff!important}
+.pflh b{font:900 italic 22px 'Montserrat','Arial Black',sans-serif;color:#fff}
+.pflh small{color:#5fe8ff;font:700 13px 'Barlow',sans-serif}
+.pflr{display:flex!important;align-items:center;gap:10px;width:100%;min-height:0!important;padding:6px 8px!important;margin-bottom:4px;background:#05060c!important;border:0!important;text-align:left}
+.pflr span{display:flex;flex-direction:column}.pflr b{color:#fff;font:800 italic 16px 'Barlow',sans-serif}.pflr small{color:#5fe8ff;font:600 12px 'Barlow',sans-serif}
 </style>
 </head>
 <body>
@@ -1231,7 +1287,7 @@ function hit(k){if(!S.dv.sfx||RM||!BS[k])return;const sn=BS[k],c=actx();
  if(c&&sn.buf&&c.state==='running'){fadePrev();const src=c.createBufferSource(),g=c.createGain();src.buffer=sn.buf;src.connect(g);g.connect(OUT(c));src.start(0);const me={src,g,aEnd:c.currentTime+(sn.aud||sn.buf.duration)};lastHit=me;src.onended=()=>{if(lastHit===me)lastHit=null}}
  else{try{fadePrev();const au=new Audio(sn.url);au.volume=(S.dv.vol??80)/100;const p=au.play();if(p&&p.catch)p.catch(()=>{});const me={au};lastHit=me;au.onended=()=>{if(lastHit===me)lastHit=null}}catch(e){}}}
 /* menu sounds: confirm (choose an option), go back one step, go all the way back to the stats screen */
-const UIS={sw:{id:'ui-sw',url:'snd/ui/switch.mp3'},ok:{id:'ui-ok',url:'snd/sl/press.mp3'},b1:{id:'ui-b1',url:'snd/ui/back1.mp3'},home:{id:'ui-home',url:'snd/ui/home.mp3'}};
+const UIS={sw:{id:'ui-sw',url:'snd/ui/switch.mp3'},ok:{id:'ui-ok',url:'snd/sl/press.mp3'},b1:{id:'ui-b1',url:'snd/ui/back1.mp3'},home:{id:'ui-home',url:'snd/ui/home.mp3'},stk:{id:'ui-stk',url:'snd/ui/streak.mp3'}};
 function uiSnd(k){try{if(!S.dv.sfx)return;const sn=UIS[k],c=actx();if(!sn)return;
  if(!c){const au=new Audio(sn.url);au.volume=(S.dv.vol??80)/100;au.play().catch(()=>{});return}
  try{c.resume()}catch(e){}const go=b=>{const s2=c.createBufferSource();s2.buffer=b;s2.connect(OUT(c));s2.start()};if(sn.buf)go(sn.buf);else decodeSnd(sn).then(go).catch(()=>{})}catch(e){}}
@@ -1326,7 +1382,7 @@ function play(b,a,sc){
  T(()=>{ov.classList.add('rdy');ov.onclick=()=>{ov.classList.add('out');setTimeout(()=>{ov.remove();document.body.classList.remove('lock');busy=0;hub();stkPend()},320)}},end)}
 /* ---- add-a-scenario sheet ---- */
 let cs='c',cv=2;
-$('#fab').onclick=()=>{$('#sh').classList.add('on');$('#nm').focus()};
+$('#fab').onclick=()=>{try{uiSnd('ok')}catch(e){}$('#sh').classList.add('on')};
 $('#sh').onclick=e=>{if(e.target.id=='sh')$('#sh').classList.remove('on')};
 $('#pl').onclick=e=>{const b=e.target.closest('button');if(!b)return;cs=b.dataset.s;[...$('#pl').children].forEach(x=>x.classList.toggle('on',x==b))};
 $('#mn').onclick=()=>$('#pv').textContent=cv=Math.max(1,cv-1);
@@ -1456,7 +1512,7 @@ function cardHTML(pr,own,uid){uid=uid||(own?myId():'');const bn=banBG(banOf(uid,
  return `<div class="pcard"><div class="pban" data-ban-of="${uid}" style="background:${bn}"></div><div class="pav">${avHTML(pr,84)}</div><div class="pinfo"><b>${esc(pr.name||'')}</b><span class="hdl">@${esc(pr.handle||'')}</span>${pr.bio?`<p>${emoHTML(pr.bio)}</p>`:''}${arcLine(pr)}${rkHTML(pr.ranks)}</div></div>`}
 let rrQ=0;function rr(){if(rrQ)return;rrQ=requestAnimationFrame(()=>{rrQ=0;rrNow()})}
 function typing(el){const a=document.activeElement;return a&&el.contains(a)&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)}
-function rrNow(){if($('#mns').classList.contains('on')&&(mTab=='f'||mTab=='p'||mTab=='m'||mTab=='l'||mTab=='q'||(mTab=='x'&&!RF.chat))&&!RF.edit&&!typing($('#mns')))renderMenu();badge();if(HG&&!typing($('#hgs')))hgRender();showAsk()}
+function rrNow(){if($('#mns').classList.contains('on')&&(mTab=='f'||mTab=='p'||mTab=='m'||mTab=='l'||mTab=='q'||(mTab=='x'&&!RF.chat))&&!RF.edit&&!typing($('#mns')))renderMenu();badge();if(HG&&!typing($('#hgs')))hgRender();if(RF.pv&&$('#pfs').classList.contains('on')&&!RF.pvT){RF.pvT=setTimeout(()=>{RF.pvT=0;if($('#pfs').classList.contains('on')&&RF.pv)viewFriend(RF.pv,RF.pvl)},120)}showAsk()}
 function badge(){const m=$('#mnb');if(m)m.classList.toggle('new',hasNew())}
 function fbStop(){RF.unsub.forEach(u=>{try{u()}catch(e){}});RF={...RF,me:null,meLoaded:0,reqIn:[],reqOut:[],fr:[],prof:{},hgIn:[],hgOut:[],unsub:[],found:null,waiting:null,ask:null};rr()}
 /* friends' profiles (name, photo, Arcana) are re-read when you look at your Social Links or come back to the app, at most every 30 s */
@@ -1468,7 +1524,9 @@ function fbStart(u){fbStop();const db=fdb(),me=u.uid,L=(q,f)=>RF.unsub.push(q.on
  TO(db.collection('profiles').doc(me).get()).then(d=>{RF.dbErr='';RF.me=d.exists?d.data():null;RF.meLoaded=1;if(RF.me)pushRanks(1);else openOnb();rr()}).catch(e=>{RF.dbErr=errMsg(e);RF.meLoaded=1;rr();dbDiagnose()});
  L(db.collection('friendReqs').where('to','==',me),q=>{RF.reqIn=q.docs.map(d=>({id:d.id,...d.data()}));RF.reqIn.forEach(r=>getProf(r.from));rr()});
  L(db.collection('friendReqs').where('from','==',me),q=>{RF.reqOut=q.docs.map(d=>({id:d.id,...d.data()}));RF.reqOut.forEach(r=>getProf(r.to));rr()});
- L(db.collection('friendships').where('members','array-contains',me),q=>{RF.fr=q.docs.map(d=>({id:d.id,uid:d.data().members.find(x=>x!=me),t:d.data().t}));RF.fr.forEach(f=>{delete RF.prof[f.uid];getProf(f.uid)});rr();setTimeout(slNew,900)});
+ try{L(db.collection('emojis').limit(500),q=>{GEMO={};q.docs.forEach(d=>{const x=d.data();if(x&&x.img)GEMO[d.id]={img:x.img,by:x.by}});try{geSync();chPaint();const W=document.getElementById('emos');if(W&&W.classList.contains('on')&&EMTAB=='Custom'&&!W.dataset.add)emoSheet()}catch(e){}rr()});
+ L(db.collection('follows').where('from','==',me),q=>{RF.ifol=new Set(q.docs.map(d=>d.data().to));rr()});}catch(e){}
+ L(db.collection('friendships').where('members','array-contains',me),q=>{RF.fr=q.docs.map(d=>({id:d.id,uid:d.data().members.find(x=>x!=me),t:d.data().t}));setTimeout(frPublish,1500);RF.fr.forEach(f=>{delete RF.prof[f.uid];getProf(f.uid)});rr();setTimeout(slNew,900)});
  L(db.collection('hangouts').where('to','==',me),q=>{RF.hgIn=q.docs.map(d=>({id:d.id,...d.data()}));hgCheck()});
  L(db.collection('chats').where('members','array-contains',me),q=>{const old=RF.chats;RF.chats={};q.docs.forEach(d=>RF.chats[d.id]=d.data());if(old)chNotify(old);rr();chPaint()},()=>{});
  L(db.collection('hangouts').where('from','==',me),q=>{RF.hgOut=q.docs.map(d=>({id:d.id,...d.data()}));hgCheck()})}
@@ -1580,7 +1638,7 @@ function profileHTML(){if(!FB_ON)return '<p class="nores">Profiles and friends w
  if(!RF.me)return `<p class="nores">Your profile isn\u2019t set up yet.</p><div class="bk"><button data-pf="go" style="background:var(--cy);color:#000">Set up my profile</button></div>`;
  if(RF.edit)return formHTML(0);
  return (arcOk(RF.me.arc)?'':'<div class="slwarn">Pick your Arcana to start your Social Links.<button data-pf="edit">Choose Arcana</button></div>')+pf2HTML()+'';
- return cardHTML(RF.me,1)+`<div class="bk"><button data-pf="edit">Edit profile</button></div><p style="opacity:.6;font-size:12px;font-style:normal;margin:10px 4px">Friends see your photo, name, @username, description and ranks. ${RF.fr.length} friend${RF.fr.length==1?'':'s'}.</p>`}
+ return cardHTML(RF.me,1)+`<div class="bk"><button data-pf="edit">Edit profile</button></div><p style="opacity:.6;font-size:12px;font-style:normal;margin:10px 4px">Friends see your photo, name, @username, description and ranks. ${RF.fr.length} friend${RF.fr.length==1?'':'s'}.</p><div class="bk"><button data-vf="${myId()}">View my full profile</button></div>`}
 /* friends */
 function slHTML(){if(!FB_ON)return '<p class="nores">Social Links work on the P3RL app at p3rl-app.github.io.</p>';
  if(!FBU&&FBW&&ACC.get())return waitHTML();if(!FBU)return signInHTML('Sign in to start your Social Links.');
@@ -1647,9 +1705,36 @@ async function sendReq(uid){const me=myId(),back=RF.reqIn.find(r=>r.from==uid);i
 async function acceptReq(id){const r=RF.reqIn.find(x=>x.id==id);if(!r)return;const me=myId();
  try{await fdb().collection('friendships').doc(pairId(me,r.from)).set({members:[r.from,me],from:r.from,t:Date.now()});await fdb().collection('friendReqs').doc(id).delete();toast('You’re now friends')}catch(e){toast('Couldn’t accept right now')}}
 function delReq(id){fdb().collection('friendReqs').doc(id).delete().catch(()=>{})}
-function viewFriend(uid){const pr=RF.prof[uid];if(!pr)return;const isF=RF.fr.some(f=>f.uid==uid);$('#pfc').innerHTML=cardHTML(pr,0,uid)+`<div class="bk">${isF?`<button data-fhang="${uid}" style="background:var(--cy);color:#000">Hang out</button><button data-unf="${uid}">${RF.unf==uid?'Tap again to remove':'Remove friend'}</button>`:''}<button data-pclose="">Close</button></div>`;$('#pfs').classList.add('on')}
-$('#pfs').onclick=e=>{const t=e.target.closest('button');if(e.target.id=='pfs'||(t&&t.dataset.pclose!==undefined)){uiSnd('b1');RF.unf=null;return $('#pfs').classList.remove('on')}if(!t)return;uiSnd('ok');
+/* keep a short public list of your friends on your profile, so others can see it */
+function frPublish(){try{if(!RF.me||!myId())return;const fl=RF.fr.map(f=>f.uid).sort().slice(0,80),old=(RF.me.fl||[]).slice().sort();if(JSON.stringify(fl)==JSON.stringify(old))return;RF.me.fl=fl;fdb().collection('profiles').doc(myId()).set({fl},{merge:true}).catch(()=>{})}catch(e){}}
+async function folLoad(uid){try{const db=fdb(),[a,b]=await Promise.all([db.collection('follows').where('to','==',uid).get(),db.collection('follows').where('from','==',uid).get()]);RF.fol[uid]={ers:a.docs.map(d=>d.data().from),ing:b.docs.map(d=>d.data().to)}}catch(e){RF.fol[uid]=RF.fol[uid]||{ers:[],ing:[],err:1}}if($('#pfs').classList.contains('on')&&RF.pv==uid)viewFriend(uid)}
+async function folToggle(uid){const me=myId();if(!me||uid==me)return;const id=me+'_'+uid,on=RF.ifol.has(uid),F=RF.fol[uid]||(RF.fol[uid]={ers:[],ing:[]});
+ if(on){RF.ifol.delete(uid);F.ers=F.ers.filter(x=>x!=me)}else{RF.ifol.add(uid);F.ers=[...F.ers,me]}viewFriend(uid);
+ try{const r=fdb().collection('follows').doc(id);if(on)await r.delete();else await r.set({from:me,to:uid,t:Date.now()})}catch(e){toast('Couldn’t update: '+errMsg(e));folLoad(uid)}}
+function pfList(uid,kind){const pr=RF.prof[uid]||{},F=RF.fol[uid]||{},ids=kind=='fr'?(uid==myId()?RF.fr.map(f=>f.uid):(pr.fl||[])):kind=='ers'?(F.ers||[]):(F.ing||[]);ids.forEach(getProf);
+ const T={fr:'Friends',ers:'Followers',ing:'Following'}[kind];
+ return `<div class="pfl"><div class="pflh"><button data-pfb="${uid}" aria-label="Back to profile">‹</button><b>${T}</b><small>${esc(pr.name||'')}</small></div>${ids.length?ids.map(u=>{const q=RF.prof[u]||{name:'…'};return `<button class="pflr" data-pfv="${u}">${avHTML(q,40)}<span><b>${esc(q.name||'')}</b><small>@${esc(q.handle||'')}</small></span></button>`}).join(''):`<p class="skh">No one here yet.</p>`}</div>`}
+function viewFriend(uid,list){if(!uid)return;RF.fol=RF.fol||{};RF.ifol=RF.ifol||new Set();const me=myId(),self=uid==me;let pr=self?RF.me:RF.prof[uid];
+ if(!pr||pr.name=='…'){getProf(uid);RF.pv=uid;$('#pfc').innerHTML='<p class="skh" style="padding:30px;text-align:center">Loading profile…</p>';$('#pfs').classList.add('on');setTimeout(()=>{if(RF.pv==uid&&$('#pfs').classList.contains('on'))viewFriend(uid,list)},700);return}
+ if(RF.pv!=uid||!RF.fol[uid]){RF.pv=uid;RF.fol[uid]=RF.fol[uid]||{ers:[],ing:[],ld:1};folLoad(uid);if(!self)fdb().collection('profiles').doc(uid).get().then(d=>{if(d.exists){RF.prof[uid]=d.data();if(RF.pv==uid&&$('#pfs').classList.contains('on'))viewFriend(uid,RF.pvl)}}).catch(()=>{})}
+ RF.pv=uid;RF.pvl=list||null;
+ if(list){$('#pfc').innerHTML=pfList(uid,list);$('#pfs').classList.add('on');return}
+ const isF=RF.fr.some(f=>f.uid==uid),F=RF.fol[uid],fl=self?RF.fr.map(f=>f.uid):(pr.fl||[]);fl.slice(0,8).forEach(getProf);
+ const req=RF.reqOut.some(r=>r.to==uid),inc=RF.reqIn.some(r=>r.from==uid);
+ const big=arcOk(pr.arc)?`<div class="pfarc">${arcCard(pr.arc,58)}<span><small>ARCANA</small><b>${ARCN[pr.arc]}</b></span></div>`:'';
+ const stats=`<div class="pfst"><p class="pfsh">SOCIAL STATS</p>${S3.map(k=>{const r=(pr.ranks&&pr.ranks[k])||1;return `<div class="pfsr ${k}"><b>${ST[k].n}</b><i>${ST[k].r[r-1]}</i><span class="pfsb">${[1,2,3,4,5,6].map(n=>`<u class="${n<=r?'on':''}"></u>`).join('')}</span><em>${r}</em></div>`}).join('')}</div>`;
+ const cnt=`<div class="pfc3"><button data-pfl="fr" data-u="${uid}"><b>${fl.length}</b>Friends</button><button data-pfl="ers" data-u="${uid}"><b>${F&&!F.ld?F.ers.length:'…'}</b>Followers</button><button data-pfl="ing" data-u="${uid}"><b>${F&&!F.ld?F.ing.length:'…'}</b>Following</button></div>`;
+ const frs=fl.length?`<div class="pffr">${fl.slice(0,8).map(u=>{const q=RF.prof[u]||{};return `<button data-pfv="${u}" aria-label="${esc(q.name||'Friend')}">${avHTML(q,40)}</button>`}).join('')}${fl.length>8?`<button data-pfl="fr" data-u="${uid}" class="pfmore">+${fl.length-8}</button>`:''}</div>`:'';
+ const acts=self?'':`<div class="bk pfa">${`<button data-fol="${uid}" class="${RF.ifol.has(uid)?'':'pri'}">${RF.ifol.has(uid)?'Following ✓':'Follow'}</button>`}${isF?`<button data-fmsg="${uid}">Message</button><button data-fhang="${uid}">Hang out</button>`:inc?`<button disabled>Wants to be friends</button>`:req?`<button disabled>Requested</button>`:(FBU&&RF.me?`<button data-fadd="${uid}">Add friend</button>`:'')}</div>`;
+ $('#pfc').innerHTML=`<div class="pfull">`+cardHTML(pr,0,uid).replace(`${arcLine(pr)}${rkHTML(pr.ranks)}`,'')+cnt+acts+big+stats+(frs?`<p class="pfsh">FRIENDS</p>`+frs:'')+`</div><div class="bk">${isF?`<button data-unf="${uid}">${RF.unf==uid?'Tap again to remove':'Remove friend'}</button>`:''}<button data-pclose="">Close</button></div>`;$('#pfs').classList.add('on')}
+$('#pfs').onclick=e=>{const t=e.target.closest('button');if(e.target.id=='pfs'||(t&&t.dataset.pclose!==undefined)){uiSnd('b1');RF.unf=null;RF.pv=null;RF.pvl=null;return $('#pfs').classList.remove('on')}if(!t)return;uiSnd('ok');
  if(t.dataset.fhang){$('#pfs').classList.remove('on');return hgOpen(t.dataset.fhang)}
+ if(t.dataset.fol){return folToggle(t.dataset.fol)}
+ if(t.dataset.pfl){return viewFriend(t.dataset.u,t.dataset.pfl)}
+ if(t.dataset.pfb){return viewFriend(t.dataset.pfb)}
+ if(t.dataset.pfv){return viewFriend(t.dataset.pfv)}
+ if(t.dataset.fadd){sendReq(t.dataset.fadd);setTimeout(()=>viewFriend(t.dataset.fadd),600);return}
+ if(t.dataset.fmsg){const u=t.dataset.fmsg;$('#pfs').classList.remove('on');try{if(!$('#mns').classList.contains('on'))menu('x');else{mTab='x';}chOpen(u);renderMenu()}catch(z){}return}
  if(t.dataset.unf){const u=t.dataset.unf;if(RF.unf!=u){RF.unf=u;return viewFriend(u)}RF.unf=null;fdb().collection('friendships').doc(pairId(myId(),u)).delete().then(()=>toast('Friend removed')).catch(()=>{});$('#pfs').classList.remove('on')}};
 /* synced hangout: you send it, your friend confirms on their phone, then both phones get the activity + 2 Charm */
 let HG=null;
@@ -1845,7 +1930,8 @@ let ARCU='';function arcUrl(){if(!ARCU){try{const el=document.getElementById('ar
 const arcOk=a=>Number.isInteger(a)&&a>=0&&a<=21;
 /* card picture: index 0-21 = arcana, 22 = card back */
 const arcCard=(i,w,cls)=>`<span class="arc ${cls||''}" style="width:${w}px;height:${Math.round(w*230/160)}px;background-image:url(${arcUrl()});background-position:${(i/22*100).toFixed(4)}% 0"></span>`;
-const ANB=[{id:'b23',t:new Date(2026,10,22,19,0).getTime(),title:'NEW: Streaks, side tabs and sharper GIFs',body:'• Daily streak: every activity counts. Your first one each day adds +1 and a new streak scene plays.\n• Your streak now sits in the top-left of the stats screen. A grey flame means you haven’t logged anything today yet.\n• + New and + Friend are now tabs on the edges of the screen: NEW on the right, FRIEND on the left. Tap one and its drawer slides out.\n• GIFs are sharper and show square in chats.\n• The Tutorial has new pages for streaks, messages and quests.'},
+const ANB=[{id:'b24',t:new Date(2026,10,22,20,0).getTime(),title:'NEW: Full profiles, followers and shared emojis',body:'• Tap anyone to see their full profile: banner, photo, description, Arcana, Social Stats and friends.\n• Follow and unfollow people, and see Followers and Following counts and lists.\n• In a chat, tap the name at the top to open their profile.\n• Custom emojis are now shared. Make :yourname: and everyone sees it in messages and descriptions. Find them under ★ → Everyone’s.\n• The streak has its own sound and a cleaner animation.\n\nFixes:\n• The GIF menu always closes now (✕, the GIF button, tapping the chat, or B Back).\n• B Back closes an open panel first instead of leaving the chat.\n• The NEW tab no longer pops up the keyboard by itself, and opens from the tab.\n• Send is dark blue, the chat name bar no longer covers MESSAGES, and the menu is back to its old look.\n• Dark boxes behind the menu words on iPhone are gone.'},
+{id:'b23',t:new Date(2026,10,22,19,0).getTime(),title:'NEW: Streaks, side tabs and sharper GIFs',body:'• Daily streak: every activity counts. Your first one each day adds +1 and a new streak scene plays.\n• Your streak now sits in the top-left of the stats screen. A grey flame means you haven’t logged anything today yet.\n• + New and + Friend are now tabs on the edges of the screen: NEW on the right, FRIEND on the left. Tap one and its drawer slides out.\n• GIFs are sharper and show square in chats.\n• The Tutorial has new pages for streaks, messages and quests.'},
 {id:'b22',t:new Date(2026,10,22,18,0).getTime(),title:'NEW: Messages got a big upgrade',body:'• Tap any message to react, reply, edit or copy it.\n• Search GIFs, browse Trending and categories, and save Favorites.\n• Emoji picker, plus your own custom emojis. Tap a friend’s emoji to add it to your set.\n• Make your own stickers from a photo or words.\n• Send a picture with text, and get alerts when friends text you.'},
 {id:'b14',t:new Date(2026,10,21,17,0).getTime(),title:'NEW: Social Links!',body:'Every friend is now a Social Link, just like in P3R.\n\n• Pick your Arcana in Profile (new players choose it when they sign up). Your friends see your card.\n• Add a friend and you’ll see the “I am thou” scene as a new bond is born.\n• Every confirmed hangout with that friend grows your Social Link. Rank up and the card scene plays again, all the way to MAX at Rank 10.\n• See all your bonds in Menu → Social Link. Tap one to see its rank, stars and how many hangouts are left to the next rank.'}];
 var AN=[...ANB];const annUnread=()=>AN.length&&AN[0].t>(S.an||0)?AN.filter(a=>a.t>(S.an||0)).length:0;
@@ -2029,10 +2115,10 @@ let STKP=null;
 const FLAME='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.6 1.8c.5 3.3-1.4 5-3 6.9C8 10.5 6.6 12.4 6.6 15a5.4 5.4 0 0 0 10.8 0c0-2.4-1.1-4-2.2-5.2.1 1.5-.4 2.7-1.5 3.3.4-3.7-.6-8.4-1.1-11.3z"/><path class="fi" d="M12.3 12.4c.2 1.6-.7 2.4-1.4 3.2-.6.7-1 1.4-1 2.3a2.1 2.1 0 0 0 4.2 0c0-1.3-.8-2.4-1.8-5.5z"/></svg>';
 function stkPend(){if(!STKP)return;const x=STKP;STKP=null;setTimeout(()=>streakFx(x.from,x.to),180)}
 function streakFx(from,to){document.querySelectorAll('.skov').forEach(o=>o.remove());const o=document.createElement('div');o.className='skov';
- o.innerHTML=`<div class="skbg"></div><div class="skband"></div><div class="skband b2"></div><div class="sqc"><div class="sql">DAILY STREAK</div><div class="sqfl">${FLAME}</div><div class="sqn"><span class="o">${from}</span><span class="n">${to}</span></div><div class="sqd">${to==1?'DAY':'DAYS'} IN A ROW</div><div class="sqm">${to==1?'A new streak starts today.':to>=7&&to%7==0?'A full week, keep the flame alive!':'Come back tomorrow to keep it going.'}</div></div><i class="sqr"></i>${Array.from({length:14},(_,i)=>`<b class="sqsp" style="--a:${i*25.7}deg;--d:${(i%3)*.06}s"></b>`).join('')}`;
- document.body.appendChild(o);try{uiSnd('sw')}catch(e){}setTimeout(()=>{if(o.isConnected){o.classList.add('up');try{uiSnd('ok')}catch(e){}try{S.dv.vib&&navigator.vibrate&&navigator.vibrate([12,40,18])}catch(e){}}},950);
- let done=false;const end=()=>{if(done)return;done=true;o.classList.add('out');setTimeout(()=>o.remove(),380);try{hub()}catch(e){}};
- setTimeout(()=>o.addEventListener('click',end),500);setTimeout(end,3400)}
+ o.innerHTML=`<div class="sqp"><div class="sqt"><span class="sqfi">${FLAME}</span>STREAK</div><div class="sqn"><span class="o">${from}</span><span class="n">${to}</span></div><div class="sqd">${to==1?'DAY':'DAYS'}</div></div>`;
+ document.body.appendChild(o);setTimeout(()=>{if(!o.isConnected)return;o.classList.add('up');try{uiSnd('stk')}catch(e){}try{S.dv.vib&&navigator.vibrate&&navigator.vibrate(14)}catch(e){}},520);
+ let done=false;const end=()=>{if(done)return;done=true;o.classList.add('out');setTimeout(()=>o.remove(),260);try{hub()}catch(e){}};
+ setTimeout(()=>o.addEventListener('click',end),300);setTimeout(end,2300)}
 function stkHud(){const H=document.getElementById('hub');if(!H)return;let b=H.querySelector('.stkh');if(!b){b=document.createElement('div');b.className='stkh';H.appendChild(b)}
  const si=streakInfo();b.classList.toggle('cold',!si.today);b.classList.toggle('zero',!si.n);b.innerHTML=`${FLAME}<b>${si.n}</b><span>DAY<br>STREAK</span>`;b.setAttribute('aria-label',si.n+' day streak'+(si.today?'':', log something today to keep it'))}
 
@@ -2084,17 +2170,18 @@ let CEMO=[];const CEDB=()=>new Promise((ok,no)=>{const r=indexedDB.open('p3rl-em
 const ceTx=(mode,fn)=>CEDB().then(db=>new Promise((ok,no)=>{const t=db.transaction('e',mode),r=fn(t.objectStore('e'));t.oncomplete=()=>ok(r&&r.result);t.onerror=()=>no(t.error)}));
 const ceLoad=()=>ceTx('readonly',st=>st.getAll()).then(a=>{CEMO=(a||[]).sort((x,y)=>x.t-y.t)}).catch(()=>{CEMO=[]});try{ceLoad()}catch(e){}
 const ceMap=()=>{const o={};CEMO.forEach(x=>o[x.id]=x.img);return o};
+let GEMO={},gemoSynced=0;const geMap=()=>{const o={};for(const k in GEMO)o[k]=GEMO[k].img;return o};
 function emoPack(t){const mine=ceMap(),o={};let n=0;(t.match(/:[a-z0-9_]{2,20}:/g)||[]).forEach(k=>{k=k.slice(1,-1);if(mine[k]&&!o[k]&&n<8){o[k]=mine[k];n++}});return n?o:null}
-function emoHTML(t,cus){const C=Object.assign({},ceMap(),cus||{});let h=esc(t||'');
+function emoHTML(t,cus){const C=Object.assign({},geMap(),ceMap(),cus||{});let h=esc(t||'');
  h=h.replace(EMRX,e=>`<img class="emj" src="${twUrl(e)}" alt="${e}" draggable="false" onerror="this.outerHTML=this.alt">`);
  return h.replace(/:([a-z0-9_]{2,20}):/g,(m,k)=>C[k]?`<img class="emj cus" src="${esc(C[k])}" alt=":${k}:" title=":${k}:" draggable="false">`:m)}
-function emoOnly(t,cus){const C=Object.assign({},ceMap(),cus||{});const r=(t||'').replace(EMRX,'\u0001').replace(/:([a-z0-9_]{2,20}):/g,(m,k)=>C[k]?'\u0001':m).replace(/\s/g,'');return r.length>0&&r.length<=6&&/^\u0001+$/.test(r)}
+function emoOnly(t,cus){const C=Object.assign({},geMap(),ceMap(),cus||{});const r=(t||'').replace(EMRX,'\u0001').replace(/:([a-z0-9_]{2,20}):/g,(m,k)=>C[k]?'\u0001':m).replace(/\s/g,'');return r.length>0&&r.length<=6&&/^\u0001+$/.test(r)}
 let EMT=null,EMTAB='Smileys',RXT=null;
 function emoSheet(){let W=document.getElementById('emos');if(!W){W=document.createElement('div');W.id='emos';W.className='emos';document.body.appendChild(W);
   W.addEventListener('click',emoClick);W.addEventListener('change',e=>{if(e.target.id=='cef'){const f=e.target.files&&e.target.files[0];e.target.value='';if(f)ceFile(f)}})}
  const tabs=['Custom',...Object.keys(EMOS)],ic={Custom:'★',Smileys:'😀',People:'👋',Hearts:'❤️',Nature:'🌸',Food:'🍔',Things:'🎮'};
  let body;if(EMTAB=='Custom'){body=W.dataset.add?`<div class="cea"><input id="cen" maxlength="20" placeholder="name (letters, numbers, _)" autocomplete="off" autocapitalize="off"><input id="ceu" placeholder="Image link (optional)" autocomplete="off" autocapitalize="off"><div class="skr"><label class="skb"><input type="file" id="cef" accept="image/*" hidden>Upload image</label><button data-ceu="1">Use link</button></div><div class="skr"><button data-cec="1">Cancel</button></div><p class="skh">Type :name: in a message to use it. Friends see it too.</p></div>`
-   :`<div class="emg">${CEMO.map(x=>`<button data-emc="${x.id}" aria-label=":${x.id}:"><img src="${esc(x.img)}" alt=""></button>`).join('')}<button class="emn" data-cea="1">+ Add</button></div><p class="skh">${CEMO.length?'Tap to insert. Hold to delete.':'Make your own emoji from a picture.'}</p>`}
+   :`<p class="emh">Yours</p><div class="emg">${CEMO.map(x=>`<button data-emc="${x.id}" aria-label=":${x.id}:"><img src="${esc(x.img)}" alt=""></button>`).join('')}<button class="emn" data-cea="1">+ Add</button></div><p class="skh">${CEMO.length?'Tap to insert. Hold to delete.':'Make your own emoji from a picture.'}</p>${(()=>{const mine=new Set(CEMO.map(x=>x.id)),g=Object.keys(GEMO).filter(k=>!mine.has(k)).sort();return g.length?`<p class="emh">Everyone’s</p><div class="emg">${g.map(k=>`<button data-emc="${k}" data-gl="1" aria-label=":${k}:"><img src="${esc(GEMO[k].img)}" alt="" loading="lazy"></button>`).join('')}</div>`:''})()}`}
  else body=`<div class="emg">${EMOS[EMTAB].split(' ').map(e=>`<button data-emi="${e}" aria-label="${e}"><img src="${twUrl(e)}" alt="${e}" loading="lazy" draggable="false" onerror="this.outerHTML=this.alt"></button>`).join('')}</div>`;
  W.innerHTML=`<div class="emt">${tabs.map(k=>`<button data-emt="${k}" class="${k==EMTAB?'on':''}" aria-label="${k}">${k=='Custom'?'★':`<img src="${twUrl(ic[k])}" alt="${ic[k]}" onerror="this.outerHTML=this.alt">`}</button>`).join('')}<button data-emx="1" aria-label="Close">✕</button></div><div class="emb">${body}</div>`;W.classList.add('on')}
 function emoOpen(id){const rx=RXT;EMT=id;const W=document.getElementById('emos');if(W&&W.classList.contains('on')&&W.dataset.for==id&&!rx){emoClose();return}RXT=rx;emoSheet();const W2=document.getElementById('emos');W2.dataset.for=id;W2.classList.toggle('rxm',!!rx);emoPlace();try{uiSnd('ok')}catch(e){}}
@@ -2112,13 +2199,16 @@ function emoClick(e){const t=e.target.closest('button');if(!t)return;const W=doc
  if(t.dataset.cea){W.dataset.add=1;emoSheet();return}
  if(t.dataset.cec){delete W.dataset.add;emoSheet();return}
  if(t.dataset.ceu){const u=($('#ceu').value||'').trim();if(!/^https:\/\/\S+$/i.test(u)){toast('Paste an https:// image link');return}const im=new Image();im.crossOrigin='anonymous';im.onload=()=>ceSave(im,u);im.onerror=()=>toast('Couldn’t load that image link');im.src=u}}
-function ceName(){const n=($('#cen').value||'').trim().toLowerCase().replace(/^:|:$/g,'');if(!/^[a-z0-9_]{2,20}$/.test(n)){toast('Name: 2–20 letters, numbers or _');return null}if(badText(n.replace(/_/g,' '))){toast('That name isn’t allowed.');return null}return n}
+function ceName(){const n=($('#cen').value||'').trim().toLowerCase().replace(/^:|:$/g,'');if(!/^[a-z0-9_]{2,20}$/.test(n)){toast('Name: 2–20 letters, numbers or _');return null}if(badText(n.replace(/_/g,' '))){toast('That name isn’t allowed.');return null}if(GEMO[n]&&GEMO[n].by!=myId()){toast(':'+n+': is taken. Pick another name.');return null}return n}
 function ceFile(f){const u=URL.createObjectURL(f),im=new Image();im.onload=()=>ceSave(im,null);im.onerror=()=>toast('Couldn’t open that picture');im.src=u}
 async function ceSave(im,url){const n=ceName();if(!n)return;let d=url;
  try{const c=document.createElement('canvas');c.width=c.height=96;const g=c.getContext('2d'),k=Math.min(96/im.width,96/im.height);g.drawImage(im,(96-im.width*k)/2,(96-im.height*k)/2,im.width*k,im.height*k);const w=c.toDataURL('image/webp',.85);d=w.startsWith('data:image/webp')?w:c.toDataURL('image/png')}catch(e){/* link blocks copying: keep the link itself */}
  if(!d){toast('Couldn’t use that image');return}
  if(d.startsWith('data:')&&await badImg(d)){toast('That picture isn’t allowed.');return}
- ceTx('readwrite',st=>st.put({id:n,t:Date.now(),img:d})).then(ceLoad).then(()=>{const W=document.getElementById('emos');delete W.dataset.add;EMTAB='Custom';emoSheet();toast(':'+n+': added')}).catch(()=>toast('Couldn’t save the emoji'))}
+ ceTx('readwrite',st=>st.put({id:n,t:Date.now(),img:d})).then(ceLoad).then(()=>{gePub(n,d);const W=document.getElementById('emos');delete W.dataset.add;EMTAB='Custom';emoSheet();toast(':'+n+': added for everyone')}).catch(()=>toast('Couldn’t save the emoji'))}
+/* share custom emojis with everyone (one owner per name) */
+function gePub(n,img){try{if(!FBU||!myId()||GEMO[n]||!img||img.length>60000)return;fdb().collection('emojis').doc(n).set({img,by:myId(),t:Date.now()}).catch(()=>{})}catch(e){}}
+function geSync(){if(gemoSynced)return;gemoSynced=1;CEMO.forEach(x=>{if(!GEMO[x.id])gePub(x.id,x.img)})}
 document.addEventListener('click',e=>{const g=e.target.closest('.cb img.emj.cus');if(g){e.preventDefault();e.stopPropagation();document.querySelectorAll('.cbm').forEach(x=>x.remove());
   const k=g.alt.replace(/:/g,''),src=g.getAttribute('src'),have=CEMO.some(x=>x.img==src),d=document.createElement('div');d.className='cbm'+(g.closest('.cb').classList.contains('me')?' me':'');
   d.innerHTML=have?`<div class="cbr"><button disabled>:${esc(k)}: is in your emojis</button></div>`:`<div class="cbr"><button data-cesv="${esc(k)}">Add :${esc(k)}: to my emojis</button></div>`;d._src=src;g.closest('.cb').after(d);return}
@@ -2126,7 +2216,7 @@ document.addEventListener('click',e=>{const g=e.target.closest('.cb img.emj.cus'
   ceTx('readwrite',st=>st.put({id:n,t:Date.now(),img:src})).then(ceLoad).then(()=>{box.remove();toast(':'+n+': added to your emojis')}).catch(()=>toast('Couldn’t save the emoji'));return}
  const b=e.target.closest('[data-emo]');if(b){e.preventDefault();e.stopPropagation();emoOpen(b.dataset.emo);return}
  const W=document.getElementById('emos');if(W&&W.classList.contains('on')&&!W.contains(e.target)&&!e.target.closest('input,textarea,#mback'))emoClose()},true);
-(()=>{let ht=0;document.addEventListener('pointerdown',e=>{const p=e.target.closest('[data-emc]');if(!p)return;ht=setTimeout(()=>{ht=0;if(confirm('Delete :'+p.dataset.emc+':?'))ceTx('readwrite',st=>st.delete(p.dataset.emc)).then(ceLoad).then(emoSheet)},650)});['pointerup','pointercancel'].forEach(k=>document.addEventListener(k,()=>clearTimeout(ht)))})();
+(()=>{let ht=0;document.addEventListener('pointerdown',e=>{const p=e.target.closest('[data-emc]');if(!p)return;ht=setTimeout(()=>{ht=0;if(p.dataset.gl)return;if(confirm('Delete :'+p.dataset.emc+':?')){const k=p.dataset.emc;if(GEMO[k]&&GEMO[k].by==myId()){try{fdb().collection('emojis').doc(k).delete().catch(()=>{})}catch(z){}}ceTx('readwrite',st=>st.delete(k)).then(ceLoad).then(emoSheet)}},650)});['pointerup','pointercancel'].forEach(k=>document.addEventListener(k,()=>clearTimeout(ht)))})();
 
 /* ===== GIFs: search, trending, categories, favorites, recent (Powered by GIPHY) ===== */
 const GKEY='VDfkOWywohDFdKPK67Icwmo5leX0O9YI';
@@ -2277,7 +2367,7 @@ addEventListener('keydown',e=>{if(!$('#mns').classList.contains('on')||typing($(
  if(e.key=='Escape'){if(mTab=='m'){uiSnd('home');menuClose()}else{uiSnd('b1');pBack()}}else if(mTab=='m'&&(e.key=='ArrowDown'||e.key=='ArrowUp')){e.preventDefault();pSel(K[(K.indexOf(mSel)+(e.key=='ArrowDown'?1:K.length-1))%K.length])}else if(mTab=='m'&&e.key=='Enter'){const b=document.querySelector('#pitems .pi.sel');if(b&&!pGo)pConfirm(b)}});
 bindPF($('#mnb2'));bindPF($('#onbc'));
 
-$('#mnb2').onclick=e=>{if((RF.gifOn||RF.stkOn)&&e.target.closest('#chm')){chTrays();return}const t=e.target.closest('button');if(!t){const cb=e.target.closest('.cb[data-mid]');if(cb){chMenu(cb.dataset.mid,cb);return}document.querySelectorAll('.cbm').forEach(x=>x.remove());if(e.target.closest('#tpx')){tutFinish();return}const r=e.target.closest('[data-view]');if(r&&RF.prof[r.dataset.view]){uiSnd('ok');viewFriend(r.dataset.view)}return}
+$('#mnb2').onclick=e=>{if(e.target.closest('.chh')&&RF.chat){uiSnd('ok');viewFriend(RF.chat);return}if((RF.gifOn||RF.stkOn)&&e.target.closest('#chm')){chTrays();return}const t=e.target.closest('button');if(!t){const cb=e.target.closest('.cb[data-mid]');if(cb){chMenu(cb.dataset.mid,cb);return}document.querySelectorAll('.cbm').forEach(x=>x.remove());if(e.target.closest('#tpx')){tutFinish();return}const r=e.target.closest('[data-view]');if(r&&RF.prof[r.dataset.view]){uiSnd('ok');viewFriend(r.dataset.view)}return}
  if(t.disabled)return;uiSnd(t.dataset.sln!==undefined||t.dataset.ttn!==undefined||t.dataset.cyc?'sw':t.dataset.tpg=='-1'?'b1':t.dataset.dec||t.classList.contains('del')?'b1':'ok');
  if(sysClick(t))return;
  if(t.dataset.qc){qClaim(t.dataset.qc);return}
@@ -2352,7 +2442,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-1842';
+var APPVER='2026.11.22-1907';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
