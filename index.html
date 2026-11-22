@@ -993,6 +993,64 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 #chm{min-height:72px}
 .stkp{max-height:min(34vh,300px)!important;overscroll-behavior:contain}
 .gfi{height:96px}
+
+/* ===== Update 23 ===== */
+.gfi{height:auto!important;aspect-ratio:1}
+.cb img.gimg{width:min(56vw,220px);height:auto;aspect-ratio:1;object-fit:cover;max-height:none}
+/* streak badge on the stats screen */
+.stkh{position:absolute;left:12px;top:calc(78px + env(safe-area-inset-top,0px));z-index:6;display:flex;align-items:center;gap:5px;padding:4px 12px 4px 8px;background:#05060c;color:#fff;transform:skewX(-12deg) rotate(-6deg);box-shadow:3px 3px 0 rgba(95,232,255,.85);pointer-events:none;animation:sq_in .5s cubic-bezier(.2,.8,.3,1) both}
+.stkh>*{transform:skewX(12deg)}
+.stkh svg{width:20px;height:20px;fill:#ff9a2e}.stkh svg .fi{fill:#ffe066}
+.stkh b{font:900 italic 24px/1 'Montserrat','Arial Black',sans-serif;letter-spacing:-.04em}
+.stkh span{font:800 italic 9px/1.05 'Montserrat',sans-serif;color:#5fe8ff;letter-spacing:.02em}
+.stkh.cold svg{fill:#5b6080}.stkh.cold svg .fi{fill:#8b90b0}
+.stkh.zero{opacity:.75}
+@keyframes sq_in{from{opacity:0;translate:-30px 0}}
+/* streak cutscene */
+.skov{position:fixed;inset:0;z-index:120;overflow:hidden;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.skbg{position:absolute;inset:0;background:radial-gradient(circle at 50% 45%,rgba(16,40,140,.92),rgba(3,6,24,.96) 70%);animation:sq_skf .35s ease-out both}
+.skband{position:absolute;left:-20%;right:-20%;top:38%;height:120px;background:#fff;transform:rotate(-8deg) scaleX(0);transform-origin:0 50%;animation:sq_skb .45s .08s cubic-bezier(.2,.8,.3,1) forwards}
+.skband.b2{top:calc(38% + 112px);height:14px;background:#5fe8ff;animation-delay:.16s}
+.sqc{position:relative;text-align:center;transform:rotate(-8deg);animation:sq_skp .45s .12s cubic-bezier(.2,.8,.3,1.2) both}
+.sql{font:900 italic 22px/1 'Montserrat','Arial Black',sans-serif;color:#05060c;letter-spacing:-.02em;margin-bottom:2px}
+.sqfl{position:absolute;left:50%;top:-74px;width:64px;height:64px;margin-left:-32px;animation:sq_skfl 1.2s .9s ease-in-out infinite}
+.sqfl svg{width:100%;height:100%;fill:#ff9a2e;filter:drop-shadow(0 0 14px rgba(255,140,40,.8))}.sqfl svg .fi{fill:#ffe066}
+.sqn{position:relative;height:100px;width:260px;margin:0 auto;overflow:hidden}
+.sqn span{position:absolute;left:0;right:0;top:0;font:900 italic 96px/100px 'Montserrat','Arial Black',sans-serif;letter-spacing:-.06em;color:#05060c;transition:transform .42s cubic-bezier(.5,0,.2,1.3),opacity .3s}
+.sqn .n{transform:translateY(105%);color:#1d3bbd}
+.skov.up .sqn .o{transform:translateY(-105%);opacity:0}
+.skov.up .sqn .n{transform:none}
+.sqd{font:900 italic 18px/1 'Montserrat','Arial Black',sans-serif;color:#05060c;margin-top:2px}
+.sqm{margin-top:34px;font:700 italic 15px 'Barlow',sans-serif;color:#cfe8ff;opacity:0;transition:opacity .4s .3s}
+.skov.up .sqm{opacity:1}
+.sqr{position:absolute;left:50%;top:50%;width:40px;height:40px;margin:-20px;border:3px solid #ffe066;border-radius:50%;opacity:0}
+.skov.up .sqr{animation:sq_skr .7s ease-out}
+.sqsp{position:absolute;left:50%;top:50%;width:6px;height:16px;margin:-8px -3px;background:#ffe066;opacity:0;transform:rotate(var(--a)) translateY(0)}
+.skov.up .sqsp{animation:sq_sksp .7s var(--d) ease-out}
+.skov.out{transition:opacity .35s;opacity:0}
+@keyframes sq_skf{from{opacity:0}}
+@keyframes sq_skb{to{transform:rotate(-8deg) scaleX(1)}}
+@keyframes sq_skp{from{opacity:0;transform:rotate(-8deg) scale(.6)}}
+@keyframes sq_skfl{50%{transform:scale(1.08) translateY(-3px)}}
+@keyframes sq_skr{from{opacity:1;transform:scale(.5)}to{opacity:0;transform:scale(7)}}
+@keyframes sq_sksp{0%{opacity:1;transform:rotate(var(--a)) translateY(-30px)}100%{opacity:0;transform:rotate(var(--a)) translateY(-150px)}}
+/* edge tabs (replace + New / + Friend) */
+#fab.etab,#hgb.etab{position:fixed!important;top:auto!important;bottom:calc(120px + env(safe-area-inset-bottom,0px))!important;width:22px!important;height:104px;padding:0!important;margin:0;min-height:0!important;background:#05060c!important;color:#5fe8ff!important;border:0!important;box-shadow:none!important;transform:none!important;display:flex;align-items:center;justify-content:center;z-index:20;transition:width .18s,background .18s;font:900 italic 11px/1 'Montserrat','Arial Black',sans-serif!important;letter-spacing:.08em}
+#fab.etab{right:0!important;left:auto!important;clip-path:polygon(28% 0,100% 0,100% 100%,0 100%,0 8%)}
+#hgb.etab{left:0!important;right:auto!important;clip-path:polygon(0 0,72% 0,100% 8%,100% 100%,0 100%)}
+.etab span{writing-mode:vertical-rl;white-space:nowrap}
+#hgb.etab span{transform:rotate(180deg)}
+.etab i{position:absolute;top:10px;bottom:10px;width:3px;background:#5fe8ff;box-shadow:0 0 8px #5fe8ff}
+#fab.etab i{left:3px;width:2px}#hgb.etab i{right:3px;width:2px}
+.etab:active,.etab.pop{width:30px!important;background:#1d3bbd!important;color:#fff!important}
+body.lock .etab,body.dvon .etab.hide{display:none!important}
+/* drawers */
+#sh.on,#hgs.on{display:block!important;background:rgba(3,5,20,.6)!important}
+#sh .card,#hgs .card{position:fixed;top:max(9vh,calc(env(safe-area-inset-top,0px) + 16px));bottom:auto;width:min(90vw,430px);max-height:80vh;margin:0;border-top:0!important;padding-bottom:18px;box-shadow:0 18px 50px rgba(0,0,0,.55)}
+#sh .card{right:0;border-left:4px solid #5fe8ff!important;animation:drR .3s cubic-bezier(.2,.8,.3,1) both}
+#hgs .card{left:0;border-right:4px solid #5fe8ff!important;animation:drL .3s cubic-bezier(.2,.8,.3,1) both}
+@keyframes drR{from{transform:translateX(105%)}}
+@keyframes drL{from{transform:translateX(-105%)}}
 </style>
 </head>
 <body>
@@ -1002,8 +1060,8 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 <div class="fc" id="fc"><button data-f="" class="on">All</button><button data-f="u" class="u">Yours</button><button data-f="c" class="c">Charm</button><button data-f="g" class="g">Courage</button><button data-f="a" class="a">Academics</button><button data-f="1">+1</button><button data-f="2">+2</button><button data-f="3">+3</button></div></div>
 <div class="lst" id="lst"></div>
 <p class="nores" id="nores" hidden>No activities match.</p>
-<button class="fab" id="fab">+ New</button>
-<button class="fab fab2" id="hgb">+ Friend</button>
+<button class="fab etab etr" id="fab" aria-label="New activity"><i></i><span>NEW</span></button>
+<button class="fab fab2 etab etl" id="hgb" aria-label="Hang out with a friend"><i></i><span>FRIEND</span></button>
 <button class="devbtn" id="devbtn" hidden>OWNER</button>
 <video class="pip" id="pip" muted loop playsinline controls hidden></video>
 <input type="file" id="fl" accept="video/*" multiple hidden>
@@ -1100,7 +1158,7 @@ function svg(p,hub,bt,fin,vb){
  h+=`</g></g></g>`;
  if(bt){const L=bt[0]=='R'?820:800;h+=`<g transform="translate(${pt?1090:461} ${pt?-92:266})"><g class="bnw"><path class="bn" d="${bt[0]=='R'?WP.rank:WP.stats}" fill-rule="evenodd" transform="translate(-461 -266)"/></g></g><g class="ok" transform="translate(${vx+vw-250} ${vy+vh-115})"><path d="M-62 -62 L-8 -4 M-8 -62 L-62 -4" stroke="#d6d7dc" stroke-width="9"/><text x="10" y="0" font-size="70" font-weight="900">OK</text></g>`}
  return h+'</svg>'}
-function hub(){const el=$('#hub'),W=el.clientWidth||innerWidth,H=el.clientHeight||Math.round(innerHeight*.56);
+function hub(){setTimeout(()=>{try{stkHud()}catch(e){}},0);const el=$('#hub'),W=el.clientWidth||innerWidth,H=el.clientHeight||Math.round(innerHeight*.56);
  el.innerHTML=svg(S.p,1,0,0,zoomVB(fitVB(W,H),S.dv.hz))+'<div class="hot" id="hot"></div><button class="mnb'+(hasNew()?' new':'')+'" id="mnb" aria-label="Menu"><span>☰</span></button>'+(S.prev?'<button class="un" id="un">Undo last</button>':'');
  $('#mnb').onclick=()=>{uiSnd('ok');menu('m')};
  const u=$('#un');if(u)u.onclick=()=>{S.p=S.prev;S.prev=null;if(S.h.length)S.h.pop();save();hub()}}
@@ -1117,7 +1175,7 @@ $('#lst').onclick=e=>{const b=e.target.closest('.sc');if(!b)return;const x=e.tar
 let FQ='',FS='',FV='',FU=0;
 function filt(){const q=FQ.trim().toLowerCase().split(/\s+/).filter(Boolean);let n=0;
  $('#lst').querySelectorAll('.sc').forEach(b=>{const ok=q.every(w=>b.dataset.q.includes(w))&&(!FS||b.dataset.s.includes(FS))&&(!FV||b.dataset.v.includes(FV))&&(!FU||b.dataset.u);b.hidden=!ok;if(ok)n++});
- $('#nores').hidden=n>0;$('#nores').textContent=FU&&!S.u.length?'You haven\u2019t made any activities yet. Tap + New to add one.':'No activities match.';$('#qx').hidden=!FQ;const h=$('#lst').querySelector('.sec');if(h)h.hidden=!n}
+ $('#nores').hidden=n>0;$('#nores').textContent=FU&&!S.u.length?'You haven\u2019t made any activities yet. Tap the NEW tab on the right edge to add one.':'No activities match.';$('#qx').hidden=!FQ;const h=$('#lst').querySelector('.sec');if(h)h.hidden=!n}
 $('#q').oninput=e=>{FQ=e.target.value;filt()};
 $('#qx').onclick=()=>{FQ='';$('#q').value='';filt();$('#q').focus()};
 $('#fc').onclick=e=>{const b=e.target.closest('button');if(!b)return;const f=b.dataset.f;
@@ -1210,7 +1268,7 @@ function pre(el,go,tier){const sn=S.dv.sfx?BS.tr:null;
  so.started.then(d=>{if(done)return;clearTimeout(tm);tm=setTimeout(fin,d*1000+250)});
  so.done.then(()=>fin(),()=>fin(1))}
 function apply(sc,el){if(busy)return;busy=1;const b={...S.p};S.prev=b;sc.a.forEach(([s,n])=>S.p[s]+=n);
- S.h.push({t:Date.now(),n:sc.t,a:sc.a});if(S.h.length>200)S.h.shift();save();
+ const sk0=streakInfo();S.h.push({t:Date.now(),n:sc.t,a:sc.a});const sk1=streakInfo();if(!/^Quest:/.test(sc.t||'')&&sk1.n>sk0.n)STKP={from:sk0.n,to:sk1.n};if(S.h.length>200)S.h.shift();save();
  try{S.dv.vib&&navigator.vibrate&&navigator.vibrate(15)}catch(e){}
  pre(el,()=>play(b,{...S.p},sc),Math.min(3,sc.a.reduce((m,x)=>m+x[1],0)))}
 /* ---- the stat screen: closing-in circles -> rank flip -> slow pulses + rings ---- */
@@ -1265,7 +1323,7 @@ function play(b,a,sc){
   ring(s,Lc+650);RS=Math.min(RS,Lc+650);   /* rings start ~0.65 s after the last hit (as in the game) */
   PB=Math.max(PB,P0);end=Math.max(end,P0+250)});
  S3.filter(s=>!g.includes(s)).forEach(s=>ring(s,RS));   /* the other circles get the same rings */
- T(()=>{ov.classList.add('rdy');ov.onclick=()=>{ov.classList.add('out');setTimeout(()=>{ov.remove();document.body.classList.remove('lock');busy=0;hub()},320)}},end)}
+ T(()=>{ov.classList.add('rdy');ov.onclick=()=>{ov.classList.add('out');setTimeout(()=>{ov.remove();document.body.classList.remove('lock');busy=0;hub();stkPend()},320)}},end)}
 /* ---- add-a-scenario sheet ---- */
 let cs='c',cv=2;
 $('#fab').onclick=()=>{$('#sh').classList.add('on');$('#nm').focus()};
@@ -1294,6 +1352,10 @@ function renderDev(){const d=S.dv,chip=(on,act,k,v,t)=>`<button class="chip${on?
  <div class="r2">${S3.map(s=>`<label><input type="checkbox" class="tc" value="${s}" ${s=='c'?'checked':''}>${ST[s].n}</label>`).join('')}</div>
  <div class="r2"><label>Points <select id="tn"><option>1</option><option selected>2</option><option>3</option></select></label><label><input type="checkbox" id="tf">Force rank-up</label></div>
  <div class="r2"><button class="go" data-act="test">Play</button><button data-act="replay">Replay last</button></div>
+ <h4>Cutscene tester</h4>
+ <div class="r2"><label>Streak <select id="sksn">${[1,2,3,5,7,14,30,100].map(n=>`<option${n==5?' selected':''}>${n}</option>`).join('')}</select></label><button class="go" data-act="stkfx">Play streak up</button></div>
+ <div class="r2">${S3.map(s=>`<button data-act="rkfx" data-s="${s}">${ST[s].n} rank-up</button>`).join('')}</div>
+ <div class="r2"><button data-act="stfx">Stats Up (+2 Charm)</button><button data-act="bootfx">App intro</button></div>
  <h4>Social Link animations</h4>
  <div class="r2"><label>Friend <select id="slf"><option value="">Test card</option>${(typeof RF!='undefined'?RF.fr:[]).map(f=>`<option value="${f.uid}">${esc((RF.prof[f.uid]||{}).name||'Friend')}</option>`).join('')}</select></label><label>Arcana <select id="sla">${ARCN.map((n,i)=>`<option value="${i}"${i==13?' selected':''}>${ROM[i]} ${n}</option>`).join('')}</select></label></div>
  <div class="r2"><label>Rank <select id="slr">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<option${n==2?' selected':''}>${n}</option>`).join('')}</select></label><button class="go" data-act="sln">Play “I am thou”</button><button class="go" data-act="slrk">Play rank up</button></div>
@@ -1308,6 +1370,10 @@ function testPlay(st,n,force){if(!st.length)return toast('Tick at least one stat
  const sc={t:'Test',a:st.map(s=>[s,n])},a={...b};sc.a.forEach(([s,k])=>a[s]+=k);lastTest=[st,n,force];$('#dvs').classList.remove('on');pre($('#devbtn'),()=>play(b,a,sc),Math.min(3,n))}
 function dvAct(e){const t=e.target.closest('[data-act]');if(!t)return;const act=t.dataset.act,d=S.dv;
  if(act!='reset')rsArm=0;
+ if(act=='stkfx'){const n=+(($('#sksn')||{}).value||5);$('#dvs').classList.remove('on');setTimeout(()=>streakFx(n-1,n),250);return}
+ if(act=='rkfx'){return testPlay([t.dataset.s],1,true)}
+ if(act=='stfx'){return testPlay(['c'],2,false)}
+ if(act=='bootfx'){$('#dvs').classList.remove('on');try{location.replace(location.pathname+'?intro='+Date.now())}catch(z){}return}
  if(act=='add')return $('#fl').click();
  if(act=='adds')return $('#fa').click();
  if(act=='hear'){if(curAu){curAu.stop();curAu=null}else{const sn=activeSnd();if(!sn)return toast('Add an mp3 first');const so=sound(sn);curAu=so;so.done.then(()=>{if(curAu==so){curAu=null;renderDev()}},()=>{curAu=null;renderDev();toast('Sound didn\u2019t play ('+(so.err||'unknown')+')')})}return renderDev()}
@@ -1551,7 +1617,7 @@ function pf2HTML(){const pr=RF.me,uid=myId(),bn=banBG(banOf(uid,pr)),a=arcOk(pr.
  <div class="bk"><button data-pf="edit">Edit profile</button><button data-pfgo="l">Add friends</button></div>
  <p class="pfnote">Friends see your photo, name, @username, description, Arcana and ranks.</p></div>`}
 function slDetail(L,i){const x=L[i],pr=x.pr,nm=x.a<99?ARCN[x.a]:'Unknown',need=x.r>=10?0:SLT[x.r]-x.n;
- const txt=x.r>=10?`Your bond with ${pr.name||'your friend'} is at its strongest. Every moment together still counts.`:(x.n?`You’ve hung out ${x.n} time${x.n==1?'':'s'}. ${need} more hangout${need==1?'':'s'} to reach Rank ${x.r+1}.`:`A new bond. Hang out together (+ Friend) to grow this Social Link.`);
+ const txt=x.r>=10?`Your bond with ${pr.name||'your friend'} is at its strongest. Every moment together still counts.`:(x.n?`You’ve hung out ${x.n} time${x.n==1?'':'s'}. ${need} more hangout${need==1?'':'s'} to reach Rank ${x.r+1}.`:`A new bond. Hang out together (FRIEND tab on the left edge) to grow this Social Link.`);
  const kk=RF.slk;RF.slk=0;return `<div class="sld in${RF.sldir<0?' nx':''}${kk?' sw':''}"><div class="slnav"><button data-sln="${(i-1+L.length)%L.length}" data-dir="-1" aria-label="Previous" class="slq${RF.slk<0?' kk':''}"><svg class="slar" viewBox="0 0 30 34" aria-hidden="true"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4" stroke-linejoin="miter"/></svg></button><button data-sln="${(i+1)%L.length}" data-dir="1" aria-label="Next" class="sle${RF.slk>0?' kk':''}"><svg class="slar slarr" viewBox="0 0 30 34" aria-hidden="true"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4" stroke-linejoin="miter"/></svg></button></div>
  <div class="slp"><div class="slps">${esc(pr.name||'@'+(pr.handle||''))}</div><div class="slpm"><span class="sltg">ARCANA</span><b>${esc(nm)}</b><span class="slrk"><small>RANK</small><em>${x.r>=10?'MAX':x.r}</em></span></div><div class="slst">${'★'.repeat(x.r)}<i>${'★'.repeat(10-x.r)}</i></div></div>
  <p class="sltx">${esc(txt)}</p>
@@ -1779,7 +1845,9 @@ let ARCU='';function arcUrl(){if(!ARCU){try{const el=document.getElementById('ar
 const arcOk=a=>Number.isInteger(a)&&a>=0&&a<=21;
 /* card picture: index 0-21 = arcana, 22 = card back */
 const arcCard=(i,w,cls)=>`<span class="arc ${cls||''}" style="width:${w}px;height:${Math.round(w*230/160)}px;background-image:url(${arcUrl()});background-position:${(i/22*100).toFixed(4)}% 0"></span>`;
-const ANB=[{id:'b14',t:new Date(2026,10,21,17,0).getTime(),title:'NEW: Social Links!',body:'Every friend is now a Social Link, just like in P3R.\n\n• Pick your Arcana in Profile (new players choose it when they sign up). Your friends see your card.\n• Add a friend and you’ll see the “I am thou” scene as a new bond is born.\n• Every confirmed hangout with that friend grows your Social Link. Rank up and the card scene plays again, all the way to MAX at Rank 10.\n• See all your bonds in Menu → Social Link. Tap one to see its rank, stars and how many hangouts are left to the next rank.'}];
+const ANB=[{id:'b23',t:new Date(2026,10,22,19,0).getTime(),title:'NEW: Streaks, side tabs and sharper GIFs',body:'• Daily streak: every activity counts. Your first one each day adds +1 and a new streak scene plays.\n• Your streak now sits in the top-left of the stats screen. A grey flame means you haven’t logged anything today yet.\n• + New and + Friend are now tabs on the edges of the screen: NEW on the right, FRIEND on the left. Tap one and its drawer slides out.\n• GIFs are sharper and show square in chats.\n• The Tutorial has new pages for streaks, messages and quests.'},
+{id:'b22',t:new Date(2026,10,22,18,0).getTime(),title:'NEW: Messages got a big upgrade',body:'• Tap any message to react, reply, edit or copy it.\n• Search GIFs, browse Trending and categories, and save Favorites.\n• Emoji picker, plus your own custom emojis. Tap a friend’s emoji to add it to your set.\n• Make your own stickers from a photo or words.\n• Send a picture with text, and get alerts when friends text you.'},
+{id:'b14',t:new Date(2026,10,21,17,0).getTime(),title:'NEW: Social Links!',body:'Every friend is now a Social Link, just like in P3R.\n\n• Pick your Arcana in Profile (new players choose it when they sign up). Your friends see your card.\n• Add a friend and you’ll see the “I am thou” scene as a new bond is born.\n• Every confirmed hangout with that friend grows your Social Link. Rank up and the card scene plays again, all the way to MAX at Rank 10.\n• See all your bonds in Menu → Social Link. Tap one to see its rank, stars and how many hangouts are left to the next rank.'}];
 var AN=[...ANB];const annUnread=()=>AN.length&&AN[0].t>(S.an||0)?AN.filter(a=>a.t>(S.an||0)).length:0;
 function hasNew(){try{return !!annUnread()||(typeof RF!='undefined'&&(RF.reqIn.length>0||chUnread()>0))||qClaimable()>0}catch(e){return false}}
 function annStart(){if(annStart.on)return;annStart.on=1;try{fdb().collection('announcements').where('pub','==',true).onSnapshot(q=>{AN=[...q.docs.map(d=>({id:d.id,...d.data()})),...ANB].sort((a,b)=>b.t-a.t).slice(0,30);
@@ -1908,20 +1976,28 @@ const TUT=()=>{const th=s=>ST[s].t.slice(1).map((t,i)=>`${ST[s].r[i+1]} at ${t}`
  {n:'Basics',it:[
   {t:'Welcome to P3RL',ill:'stats',pg:['P3RL turns your real life into Persona 3 Reload Social Stats. Do things in real life, log them here, and watch Charm, Courage and Academics grow.','Your three stats sit at the top of the main screen. Each one has six ranks, and its title changes every time it ranks up.']},
   {t:'The Three Stats',ill:'stats',pg:['Charm grows when you are social: meeting people, dates, parties, reaching out to a friend.','Courage grows when you push yourself: workouts, facing a fear, trying something new.','Academics grows when you learn: studying, reading, practicing a skill, acing a test.']},
+  {t:'Daily Streak',pg:['Log any activity on a day and that day counts toward your streak. The first activity of each day adds +1 and the streak scene plays.','Your streak shows in the top-left corner of the stats screen. Skip a whole day and it starts again from 0. When the flame is grey, you haven’t logged anything today yet.']},
   {t:'Ranking Up a Stat',ill:'stats',pg:['Every activity gives points. When a stat reaches the next amount of points, it ranks up and the Stats Up screen shows its new title.',`Charm: ${th('c')}.`,`Courage: ${th('g')}.`,`Academics: ${th('a')}.`]}]},
  {n:'Activities',it:[
   {t:'Logging an Activity',pg:['Tap any activity in the list on the main screen. The Stats Up screen plays; tap it when it ends to go back. The points are added and saved in History.','To find one fast, use the search bar or the filters: Yours, Charm, Courage, Academics, +1, +2 and +3.']},
   {t:'Double Activities',pg:['Some activities raise two stats at once. They are listed under Combos, for example Study group at a café gives +2 Academics and +1 Charm, both from one tap.','Hanging out doubles up too: do an activity with a friend and you both get it, plus a +2 Charm bonus. See Social Links › Hanging Out.']},
-  {t:'Your Own Activities',pg:['Tap + New on the main screen. Write what happened, pick the stat, and choose 1 to 3 points.','Log once adds it just this time. Save as button also adds it to your list under Yours, so you can tap it again later. Tap the ✕ on one of your buttons to remove it.']},
+  {t:'Your Own Activities',pg:['Tap the NEW tab on the right edge of the main screen. A drawer slides out: write what happened, pick the stat, and choose 1 to 3 points.','Log once adds it just this time. Save as button also adds it to your list under Yours, so you can tap it again later. Tap the ✕ on one of your buttons to remove it.']},
   {t:'History and Undo',pg:['Menu › History shows everything you logged, grouped by day, with today’s points at the top.','Tap ✕ on an entry to remove it. Its points are taken back. You can switch off the extra confirm tap in Config › Game System Settings › Confirm Removals.']}]},
  {n:'Social Links',it:[
   {t:'Your Arcana',ill:'card',pg:['Pick your Arcana card in Menu › Profile. You need one before your Social Links can start.','Each friend appears as a Social Link under the Arcana they picked, with its own rank from 1 to MAX.']},
   {t:'Adding Friends',pg:['Sign in, then open Menu › Social Link. Under your list, search your friend’s @username and tap Add.','When they accept, a new bond forms and the “I am thou” scene plays, followed by Rank 1. Requests you receive show at the top of the Social Link page.']},
-  {t:'Hanging Out',pg:['Tap + Friend on the main screen, or Hang out on a Social Link. Pick your friend and what you did together, then send it.','Your friend confirms on their phone. Then you both get the activity plus +2 Charm, and the hangout counts toward your Social Link.']},
+  {t:'Hanging Out',pg:['Tap the FRIEND tab on the left edge of the main screen, or Hang out on a Social Link. Pick your friend and what you did together, then send it.','Your friend confirms on their phone. Then you both get the activity plus +2 Charm, and the hangout counts toward your Social Link.']},
   {t:'Social Link Ranks',ill:'card',pg:['Every confirmed hangout with a friend moves your Social Link forward. When it ranks up, the Rank Up screen plays.',`Hangouts needed: ${SLT.slice(1).map((n,i)=>`Rank ${i+2==10?'MAX':i+2} at ${n}`).join(', ')}.`]},
-  {t:'Switching Links',pg:['Open a Social Link from the list. Use the Q and E arrows at the top to move to the previous or next one.','You can also swipe left or right. Turn swiping off in Config › Game System Settings.']}]},
+  {t:'Switching Links',pg:['Open a Social Link from the list. Use the arrows at the top to move to the previous or next one.','You can also swipe left or right. Turn swiping off in Config › Game System Settings.']}]},
+ {n:'Messages',it:[
+  {t:'Chatting',pg:['Menu › Messages lists your friends. Tap one to open your chat. Type in the box and tap SEND.','You get a banner when a friend texts you, even in another screen. Turn alerts on or off in Config.']},
+  {t:'Reply, Edit and React',pg:['Tap any message for its menu: a row of quick reactions, + for any emoji, Reply, Edit (your own messages) and Copy.','Reactions show under the message. Tap one to add yours or take it back.']},
+  {t:'Pictures, GIFs and Stickers',pg:['+ on the left adds a picture. Inside the message box: GIF opens search, Trending, categories, Favorites and Recent. Tap ★ on a GIF to keep it.','The sticker button opens your stickers. Make one from a photo, words, or both.']},
+  {t:'Emojis',pg:['The smiley opens the emoji picker. Under ★ you can add your own emoji from a picture and give it a :name:.','Tap a friend’s custom emoji in a message to add it to your own set.']}]},
+ {n:'Quests',it:[
+  {t:'Weekly Quests',pg:['Menu › Quests has new goals every Monday. Finish one and tap Claim for bonus points.','Quests track what you log during the week, so just keep doing activities.']}]},
  {n:'System',it:[
-  {t:'The Menu',pg:['Tap ☰ to open the menu: Announcements, Profile, Social Link, History and System.','Back goes back one screen. Close returns straight to your stats.']},
+  {t:'The Menu',pg:['Tap ☰ to open the menu: Announcements, Profile, Social Link, Messages, Quests, History and System.','Back goes back one screen. Close returns straight to your stats.']},
   {t:'Config',pg:['System › Config holds every setting: sound and the BGM, SE and Voice volumes, text speed, sizes, effects, and your account.','Changes are saved right away.']},
   {t:'Backups and Sync',pg:['When you are signed in, your progress syncs to your account by itself.','Signed out? Use Config › Account & Data › Copy backup to save your progress as text, and Paste backup to bring it back.']}]}]};
 function tutHTML(){const T=TUT(),ti=Math.max(0,Math.min(T.length-1,RF.tt||0)),tab=T[ti];
@@ -1948,6 +2024,18 @@ document.getElementById('mnb2').addEventListener('input',e=>{const k=e.target.da
 document.getElementById('mnb2').addEventListener('change',e=>{const k=e.target.dataset&&e.target.dataset.cv;if(!k)return;save();try{actx()&&AC.resume();uiSnd(k=='bgmv'?'sw':k=='vov'?'ok':'ok')}catch(z){}});
 
 /* ===================== WEEKLY QUESTS + STREAK ===================== */
+/* ===== daily streak: cutscene when it goes up + badge on the stats screen ===== */
+let STKP=null;
+const FLAME='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.6 1.8c.5 3.3-1.4 5-3 6.9C8 10.5 6.6 12.4 6.6 15a5.4 5.4 0 0 0 10.8 0c0-2.4-1.1-4-2.2-5.2.1 1.5-.4 2.7-1.5 3.3.4-3.7-.6-8.4-1.1-11.3z"/><path class="fi" d="M12.3 12.4c.2 1.6-.7 2.4-1.4 3.2-.6.7-1 1.4-1 2.3a2.1 2.1 0 0 0 4.2 0c0-1.3-.8-2.4-1.8-5.5z"/></svg>';
+function stkPend(){if(!STKP)return;const x=STKP;STKP=null;setTimeout(()=>streakFx(x.from,x.to),180)}
+function streakFx(from,to){document.querySelectorAll('.skov').forEach(o=>o.remove());const o=document.createElement('div');o.className='skov';
+ o.innerHTML=`<div class="skbg"></div><div class="skband"></div><div class="skband b2"></div><div class="sqc"><div class="sql">DAILY STREAK</div><div class="sqfl">${FLAME}</div><div class="sqn"><span class="o">${from}</span><span class="n">${to}</span></div><div class="sqd">${to==1?'DAY':'DAYS'} IN A ROW</div><div class="sqm">${to==1?'A new streak starts today.':to>=7&&to%7==0?'A full week, keep the flame alive!':'Come back tomorrow to keep it going.'}</div></div><i class="sqr"></i>${Array.from({length:14},(_,i)=>`<b class="sqsp" style="--a:${i*25.7}deg;--d:${(i%3)*.06}s"></b>`).join('')}`;
+ document.body.appendChild(o);try{uiSnd('sw')}catch(e){}setTimeout(()=>{if(o.isConnected){o.classList.add('up');try{uiSnd('ok')}catch(e){}try{S.dv.vib&&navigator.vibrate&&navigator.vibrate([12,40,18])}catch(e){}}},950);
+ let done=false;const end=()=>{if(done)return;done=true;o.classList.add('out');setTimeout(()=>o.remove(),380);try{hub()}catch(e){}};
+ setTimeout(()=>o.addEventListener('click',end),500);setTimeout(end,3400)}
+function stkHud(){const H=document.getElementById('hub');if(!H)return;let b=H.querySelector('.stkh');if(!b){b=document.createElement('div');b.className='stkh';H.appendChild(b)}
+ const si=streakInfo();b.classList.toggle('cold',!si.today);b.classList.toggle('zero',!si.n);b.innerHTML=`${FLAME}<b>${si.n}</b><span>DAY<br>STREAK</span>`;b.setAttribute('aria-label',si.n+' day streak'+(si.today?'':', log something today to keep it'))}
+
 function wkStart(t){const d=new Date(t||Date.now());d.setHours(0,0,0,0);const w=(d.getDay()+6)%7;d.setDate(d.getDate()-w);return d.getTime()}
 const dayKey=t=>{const d=new Date(t);return d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate()};
 function streakInfo(){const days=new Set(S.h.filter(h=>!/^Quest:/.test(h.n||'')).map(h=>dayKey(h.t)));const d=new Date();d.setHours(12,0,0,0);let today=days.has(dayKey(d)),n=0;if(!today)d.setDate(d.getDate()-1);while(days.has(dayKey(d))){n++;d.setDate(d.getDate()-1)}return {n,today}}
@@ -2047,7 +2135,7 @@ let GF={tab:'tr',q:'',items:[],off:0,busy:0,end:0};
 const gifLS=(k,v)=>{try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||'[]');localStorage.setItem(k,JSON.stringify(v.slice(0,120)))}catch(e){return []}};
 const gifFav=u=>gifLS('p3gfav').some(x=>x.u==u);
 function gifFavT(u,pv){let a=gifLS('p3gfav');if(a.some(x=>x.u==u)){a=a.filter(x=>x.u!=u);toast('Removed from favorites')}else{a.unshift({u,p:pv||u});toast('★ Added to favorites')}gifLS('p3gfav',a);if(RF.gifOn&&GF.tab=='fv')gifLoad(1)}
-function gifMap(d){const i=d.images||{};const u=(i.fixed_width||i.downsized||i.original||{}).url,p=(i.fixed_width_small||i.preview_gif||i.fixed_width||{}).url;return u?{u,p:p||u,t:d.title||''}:null}
+function gifMap(d){const i=d.images||{};const u=(i.downsized_medium||i.downsized||i.fixed_width||i.original||{}).url,fw=i.fixed_width||{},p=fw.webp||fw.url||(i.fixed_height||{}).url;return u?{u,p:p||u,t:d.title||''}:null}
 async function gifLoad(reset){if(reset){GF.items=[];GF.off=0;GF.end=0;GF.err=''}
  if(GF.tab=='fv'||GF.tab=='rc'){GF.items=gifLS(GF.tab=='fv'?'p3gfav':'p3grec');GF.end=1;gifUI();return}
  if(!GKEY){GF.err='GIF search isn’t set up yet.';GF.end=1;gifUI();return}
@@ -2109,7 +2197,7 @@ function chPaint(force){const B=document.getElementById('chm');if(!B||!RF.chat)r
  const nm=u=>u==me?'You':((RF.prof[u]||{}).name||'Friend');
  B.innerHTML=(RF.chm||[]).length?RF.chm.map(m=>{const q=m.re?`<div class="cbq"><b>${esc(nm(m.re.from))}</b>${esc(m.re.txt||'Picture')}</div>`:'';
   if(m.stk&&!m.txt)return `<div class="cb stk${m.from==me?' me':''}" data-mid="${m.id}">${q}<img src="${m.img}" alt="Sticker" loading="lazy"><small>${new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>`+rxHTML(m);
-  return `<div class="cb${m.from==me?' me':''}${RF.chSel==m.id?' pick':''}" data-mid="${m.id}">${q}${m.img?`<img src="${m.img}" alt="${m.gif?'GIF':'Picture'}" loading="lazy">`:''}${m.txt?`<p${emoOnly(m.txt,m.emo)?' class="jumbo"':''}>${emoHTML(m.txt,m.emo)}</p>`:''}<small>${m.ed?'edited · ':''}${new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>`+rxHTML(m)}).join(''):'<p class="che">No messages yet. Say hi!</p>';
+  return `<div class="cb${m.from==me?' me':''}${RF.chSel==m.id?' pick':''}" data-mid="${m.id}">${q}${m.img?`<img src="${m.img}" alt="${m.gif?'GIF':'Picture'}"${m.gif?' class="gimg"':''} loading="lazy">`:''}${m.txt?`<p${emoOnly(m.txt,m.emo)?' class="jumbo"':''}>${emoHTML(m.txt,m.emo)}</p>`:''}<small>${m.ed?'edited · ':''}${new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>`+rxHTML(m)}).join(''):'<p class="che">No messages yet. Say hi!</p>';
  if(force||atEnd)B.scrollTop=B.scrollHeight;chBar()}
 /* reply / edit / attachment strip above the message box */
 function chBar(){const Q=document.getElementById('chq');if(!Q)return;const me=myId(),parts=[];
@@ -2264,7 +2352,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-1822';
+var APPVER='2026.11.22-1842';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
