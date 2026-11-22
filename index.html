@@ -876,6 +876,44 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 #chbn b{font:900 italic 18px 'Barlow',sans-serif;color:#fff}
 #chbn i{font:600 14px 'Barlow',sans-serif;color:rgba(255,255,255,.8);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .chnt{width:100%;margin:0 0 10px;min-height:0!important;padding:10px!important;font:800 italic 15px 'Barlow',sans-serif!important}
+
+/* ===== pause menu like P3R: words stacked straight down, each tilted, zig-zag offsets ===== */
+.pitems{transform:translateX(-50%)!important;top:calc(18% + env(safe-area-inset-top,0px))!important}
+#pitems .pi{transform:rotate(-7deg) skewX(-6deg)!important;transform-origin:0 75%!important;line-height:.9!important;margin-top:.06em!important}
+#pitems .pi.sel{transform:rotate(-9deg) scale(1.06) skewX(-6deg)!important;margin:.34em 0 .12em var(--x)!important}
+/* ===== messages: reply / edit / attachments / stickers ===== */
+.cb{cursor:pointer;-webkit-user-select:none;user-select:none}
+.cb.pick{outline:2px solid #ff2f5f}
+.cbq{border-left:3px solid #ff2f5f;background:rgba(5,6,12,.08);padding:3px 7px;margin:0 0 5px;font:600 12px/1.25 'Barlow',sans-serif;max-height:3.8em;overflow:hidden}
+.cbq b{display:block;font:800 italic 11px 'Barlow',sans-serif;color:#ff2f5f}
+.cb.stk{background:none!important;clip-path:none!important;padding:0}
+.cb.stk img{width:150px;height:150px;max-height:none;filter:drop-shadow(3px 4px 0 rgba(0,0,0,.35))}
+.cb.stk small{color:#fff;opacity:.6}
+.cbm{display:flex;gap:4px;align-self:flex-start;margin:-2px 0 4px;animation:prow .18s cubic-bezier(.2,.8,.3,1) both}
+.cbm.me{align-self:flex-end}
+.cbm button{min-height:0!important;padding:6px 14px!important;background:#05060c!important;color:#fff!important;border:1.5px solid #5fe8ff!important;transform:skewX(-10deg);font:800 italic 14px 'Barlow',sans-serif!important}
+.chq{display:flex;flex-direction:column;gap:4px;padding-top:6px}
+.chqr,.chqa{display:flex;align-items:center;gap:8px;background:#05060c;border-left:4px solid #ff2f5f;padding:6px 8px}
+.chqr.ed{border-left-color:#ffd84a}
+.chqr span,.chqa span{flex:1;min-width:0;color:rgba(255,255,255,.75);font:600 13px 'Barlow',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chqr b{display:block;color:#ff2f5f;font:800 italic 12px 'Barlow',sans-serif}.chqr.ed b{color:#ffd84a}
+.chqa img{width:44px;height:44px;object-fit:cover;flex:none}
+.chqr button,.chqa button{min-height:0!important;padding:4px 8px!important;background:none!important;border:0!important;color:#fff!important}
+.chc .chk{background:#05060c;border:1.5px solid #3a3d63!important;min-height:0!important;padding:0!important}
+.chc{gap:5px!important}.chc .chsb{padding:0 12px 0 12px!important}
+.stkp{background:#0b0d1d;border:1.5px solid #3a3d63;margin-top:6px;padding:8px;max-height:46vh;overflow:auto}
+.skg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.skp{aspect-ratio:1;padding:2px!important;min-height:0!important;background:rgba(255,255,255,.04)!important;border:0!important}
+.skp img{width:100%;height:100%;object-fit:contain}
+.skn{aspect-ratio:1;min-height:0!important;font:900 italic 15px 'Barlow',sans-serif!important;border:2px dashed #5fe8ff!important;background:none!important;color:#5fe8ff!important}
+.skh{color:rgba(255,255,255,.55);font:600 12px 'Barlow',sans-serif;margin:8px 2px 0}
+.skm{display:flex;gap:10px;align-items:flex-start}
+#skc{width:128px;height:128px;flex:none;background:repeating-conic-gradient(#1a1d33 0 25%,#12142a 0 50%) 0 0/16px 16px}
+.skf{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0}
+.skr{display:flex;gap:6px;flex-wrap:wrap}
+.skr button,.skb{flex:1;min-height:0!important;padding:8px!important;font:800 italic 13px 'Barlow',sans-serif!important;text-align:center;background:#1c1f38;color:#fff;cursor:pointer;border:0}
+.skr .skv{background:#ff2f5f!important;color:#fff!important}
+#skt{height:38px;font-size:16px}
 </style>
 </head>
 <body>
@@ -1721,11 +1759,11 @@ function mvLoop(L,cb){mvGet('mvl').then(b=>{if(!b)return;if(!mvU.mvl)mvU.mvl=URL
 function menuClose(now){const M=$('#mns');clearTimeout(mvT);try{const V=M.querySelector('video.pvl');if(V)V.pause()}catch(e){}clearTimeout(M._cl);document.body.classList.remove('lock');if(!M.classList.contains('on')){hSync();return}
  if(now===true||RMO()){M.classList.remove('on','pclose');hSync();return}
  M.classList.add('pclose');hSync();M._cl=setTimeout(()=>{M.classList.remove('on','pclose')},330)}
-function pFit(){const N=$('#pitems');N.style.fontSize='';requestAnimationFrame(()=>{const W=innerWidth-36;let r=1;N.querySelectorAll('.pi').forEach(b=>{const x=b.offsetLeft+b.offsetWidth*(b.classList.contains('sel')?.98:.82)+(b.querySelector('em')?34:0);if(x*Math.cos(.26)>W)r=Math.min(r,W/(x*Math.cos(.26)))});if(r<1){const f=parseFloat(getComputedStyle(N.querySelector('.pi')).fontSize);N.querySelectorAll('.pi').forEach(b=>b.style.fontSize=(f*r).toFixed(1)+'px')}})}
+function pFit(){const N=$('#pitems');N.style.fontSize='';requestAnimationFrame(()=>{const W=innerWidth-36;let r=1;N.querySelectorAll('.pi').forEach(b=>{const x=b.offsetLeft+b.offsetWidth*(b.classList.contains('sel')?.98:.82)+(b.querySelector('em')?34:0);if(x*Math.cos(.16)>W)r=Math.min(r,W/(x*Math.cos(.16)))});if(r<1){const f=parseFloat(getComputedStyle(N.querySelector('.pi')).fontSize);N.querySelectorAll('.pi').forEach(b=>b.style.fontSize=(f*r).toFixed(1)+'px')}})}
 try{document.fonts&&document.fonts.ready.then(()=>{if($('#mns').classList.contains('on')&&mTab=='m')renderMenu()})}catch(e){}
 function pSel(k){const ch=k!=mSel;mSel=k;if(S.dv.cpm!==0&&S.dv.msel!=k){S.dv.msel=k;try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}}document.querySelectorAll('#pitems .pi').forEach(b=>{const on=b.dataset.go==k;b.classList.toggle('sel',on);if(on&&ch){b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop')}});$('#phd').textContent=MD[k][1];$('#phs').textContent='Command'}
 function renderMenu(){if(mTab=='f')mTab='l';{const same=(mTab=='s'||mTab=='t')&&RF.lastTab==mTab;$('#mnb2').classList.toggle('noanim',same);RF.lastTab=mTab}{const M0=$('#mns');M0.classList.toggle('sysm',mTab=='y');M0.classList.toggle('cfgm',mTab=='s');M0.classList.toggle('tutm',mTab=='t')}document.body.classList.toggle('rmo',RMO());if(mTab=='l')try{profRefresh()}catch(e){}setTimeout(hSync,0);if(mTab!='l')RF.slv=null;const M=$('#mns'),sub=mTab!='m';M.classList.toggle('sub',sub);$('#mttl').textContent=sub?MD[mTab][0]:'';
- if(!sub){const pr=RF.me,nf=RF.reqIn.length,na=annUnread(),bd={a:na?'NEW':'',l:nf?String(nf):'',x:chUnread()?String(chUnread()):'',q:qClaimable()?'!':''},X=[20,74,0,58,30,70,40],FZ=[.82,.92,1.04,.9,.96,.88,.94];
+ if(!sub){const pr=RF.me,nf=RF.reqIn.length,na=annUnread(),bd={a:na?'NEW':'',l:nf?String(nf):'',x:chUnread()?String(chUnread()):'',q:qClaimable()?'!':''},X=[26,4,34,10,30,0,22],FZ=[.82,.94,1,.92,.96,.9,.94];
   $('#pwal').innerHTML=FB_ON?(FBU?`${avHTML(pr||{photo:FBU.photoURL,name:FBU.displayName||FBU.email},40)}<span><b>${esc((pr&&pr.name)||FBU.displayName||'You')}</b><small>${pr?'@'+esc(pr.handle):'profile not set up'}</small></span>`:(FBW&&ACC.get()?`${avHTML({photo:ACC.get().p,name:ACC.get().n||ACC.get().e},40)}<span><b>${esc(ACC.get().n||'Signing in')}</b><small>signing in\u2026</small></span>`:`${avHTML({name:'?'},40)}<span><b>Not signed in</b><small>tap to sign in</small></span>`)):`<span><b>P3RL</b><small>social stats</small></span>`;
   $('#pitems').innerHTML=['a','p','l','x','q','h','y'].map((k,i)=>{const t=k=='a'?'Announcements':MD[k][0];return `<button class="pi${k==mSel?' sel':''}" data-go="${k}" data-t="${t}" style="--x:${X[i]}px;--fz:${FZ[i]};--i:${i};--tc:${['#8af1ff','#2fcaf3','#a9eef9','#5df1ff','#3bd0f4'][i%5]}" aria-label="${t}"><span class="pw"><i></i></span><span class="pt" aria-hidden="true">${wv(t)}</span>${bd[k]?`<em>${bd[k]}</em>`:''}</button>`}).join('');
   $('#phd').textContent=MD[mSel][1];$('#phs').textContent='Command';pFit();return}
@@ -1858,13 +1896,31 @@ const chPid=uid=>pairId(myId(),uid);
 function chUnread(){try{if(!RF.chats)return 0;const me=myId();return Object.values(RF.chats).filter(c=>c.last&&c.last.from!=me&&c.last.t>((c.rd||{})[me]||0)).length}catch(e){return 0}}
 function msgHTML(){if(!FB_ON)return '<p class="nores">Messages work on the P3RL app.</p>';if(!FBU)return signInHTML('Sign in to message your friends.');
  if(RF.chat){const pr=RF.prof[RF.chat]||{};return `<div class="cht"><div class="chh">${avHTML(pr,38)}<b>${esc(pr.name||'')}</b><small>@${esc(pr.handle||'')}</small></div><div class="chm" id="chm"></div>
-  <div class="chc"><label class="chi" aria-label="Send a picture or GIF"><input type="file" id="chf" accept="image/*" hidden><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="2" fill="currentColor"/><path d="M4 17l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="2"/></svg></label><input id="cht" maxlength="500" placeholder="Message" autocomplete="off" enterkeyhint="send"><button class="chsb" data-chs="1" aria-label="Send"><span>SEND</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4l18 8-18 8 3-8z"/></svg></button></div></div>`}
+  <div class="chq" id="chq" hidden></div><div class="stkp" id="stkp" hidden></div>
+  <div class="chc"><label class="chi" aria-label="Attach a picture or GIF"><input type="file" id="chf" accept="image/*" hidden><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="2" fill="currentColor"/><path d="M4 17l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="2"/></svg></label><button class="chi chk" data-stk="1" aria-label="Stickers"><svg viewBox="0 0 24 24"><path d="M5 3h10l6 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 3v6h6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="11" r="1.3" fill="currentColor"/><circle cx="14" cy="11" r="1.3" fill="currentColor"/><path d="M8.5 15c1.8 1.6 4.2 1.6 6 0" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><input id="cht" maxlength="500" placeholder="Message" autocomplete="off" enterkeyhint="send"><button class="chsb" data-chs="1" aria-label="Send"><span>SEND</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4l18 8-18 8 3-8z"/></svg></button></div></div></div>`}
  const me=myId(),L=RF.fr.map(f=>{const c=(RF.chats||{})[chPid(f.uid)]||{};return {uid:f.uid,pr:RF.prof[f.uid]||{},c,t:(c.last&&c.last.t)||0}}).sort((a,b)=>b.t-a.t);
  const nb=('Notification' in window)&&Notification.permission=='default'?'<button class="chnt" data-ntf="1">Turn on message notifications</button>':'';
  if(!L.length)return nb+'<p class="nores">Add friends on the Social Link page to start messaging.</p>';
  return nb+`<div class="chl">${L.map((x,i)=>{const un=x.c.last&&x.c.last.from!=me&&x.c.last.t>((x.c.rd||{})[me]||0),lt=x.c.last?(x.c.last.from==me?'You: ':'')+(x.c.last.txt||'Picture'):'Say hi!';
   return `<button class="chr${un?' un':''}" data-cho="${x.uid}" style="--i:${i}">${avHTML(x.pr,44)}<span><b>${esc(x.pr.name||'')}</b><small>${esc(lt)}</small></span>${un?'<em>NEW</em>':''}</button>`}).join('')}</div>`}
 let chUn=null,chLast=0;
+/* stickers you make: saved on this phone (IndexedDB), sent like a picture */
+const STDB=()=>new Promise((ok,no)=>{const r=indexedDB.open('p3rl-stk',1);r.onupgradeneeded=()=>r.result.createObjectStore('s',{keyPath:'id'});r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)});
+const stTx=(mode,fn)=>STDB().then(db=>new Promise((ok,no)=>{const t=db.transaction('s',mode),st=t.objectStore('s'),r=fn(st);t.oncomplete=()=>ok(r&&r.result);t.onerror=()=>no(t.error)}));
+let STK=[];const stkLoad=()=>stTx('readonly',st=>st.getAll()).then(a=>{STK=(a||[]).sort((x,y)=>y.t-x.t)}).catch(()=>{STK=[]});
+const SKS=[['#5fe8ff','#05060c'],['#ff2f5f','#fff'],['#fff','#05060c'],['#ffd84a','#05060c']];
+function stkDraw(){const c=document.getElementById('skc');if(!c)return;const g=c.getContext('2d'),W=256,M=RF.skm||{};g.clearRect(0,0,W,W);const [bg,fg]=SKS[M.st||0],txt=(M.txt||'').toUpperCase();
+ if(M.img){const im=M.imgEl;if(im&&im.complete){g.save();g.beginPath();g.moveTo(14,22);g.lineTo(W-10,10);g.lineTo(W-18,W-14);g.lineTo(8,W-22);g.closePath();g.fillStyle='#fff';g.fill();g.clip();g.beginPath();g.moveTo(22,30);g.lineTo(W-18,19);g.lineTo(W-26,W-22);g.lineTo(16,W-30);g.closePath();g.clip();const k=Math.max(W/im.width,W/im.height);g.drawImage(im,(W-im.width*k)/2,(W-im.height*k)/2,im.width*k,im.height*k);g.restore()}}
+ else{g.save();g.translate(W/2,W/2);g.rotate(-.18);g.fillStyle='#05060c';g.beginPath();g.moveTo(-118,-52+8);g.lineTo(122,-70+8);g.lineTo(112,62+8);g.lineTo(-124,48+8);g.closePath();g.fill();g.fillStyle=bg;g.beginPath();g.moveTo(-122,-56);g.lineTo(118,-74);g.lineTo(108,58);g.lineTo(-128,44);g.closePath();g.fill();g.restore()}
+ if(txt){g.save();g.translate(W/2,M.img?W-46:W/2);g.rotate(-.18);let fs=64;g.font=`900 italic ${fs}px Montserrat,'Arial Black',sans-serif`;while(g.measureText(txt).width>(M.img?230:210)&&fs>18){fs-=2;g.font=`900 italic ${fs}px Montserrat,'Arial Black',sans-serif`}
+  g.textAlign='center';g.textBaseline='middle';g.lineJoin='round';if(M.img){g.lineWidth=fs*.22;g.strokeStyle='#05060c';g.strokeText(txt,0,0);g.fillStyle='#fff'}else{g.fillStyle=fg}g.fillText(txt,0,0);g.restore()}}
+function stkHTML(){if(RF.skm){const M=RF.skm;return `<div class="skm"><canvas id="skc" width="256" height="256"></canvas><div class="skf"><input id="skt" maxlength="24" placeholder="Sticker text" value="${esc(M.txt||'')}"><div class="skr"><label class="skb"><input type="file" id="skf" accept="image/*" hidden>${M.img?'Change photo':'Add photo'}</label>${M.img?'<button data-skx="1">No photo</button>':''}<button data-sks="1">Style</button></div><div class="skr"><button data-skc="1">Cancel</button><button class="skv" data-skv="1">Save sticker</button></div></div></div>`}
+ return `<div class="skg">${STK.map(x=>`<button class="skp" data-skp="${x.id}" aria-label="Send sticker"><img src="${x.img}" alt=""></button>`).join('')}<button class="skn" data-skn="1">+ Make</button></div>${STK.length?'<p class="skh">Tap to send. Hold to delete.</p>':'<p class="skh">Make a sticker from a photo, words, or both.</p>'}`}
+function stkUI(){const P=document.getElementById('stkp');if(!P)return;P.hidden=!RF.stkOn;if(RF.stkOn){P.innerHTML=stkHTML();if(RF.skm)stkDraw()}}
+function stkSave(){const c=document.getElementById('skc');if(!c)return;const M=RF.skm||{};if(!M.img&&!(M.txt||'').trim()){toast('Add a photo or some text first');return}if(badText(M.txt)){toast('That sticker text isn’t allowed.');return}
+ const d=c.toDataURL('image/webp',.85).startsWith('data:image/webp')?c.toDataURL('image/webp',.85):c.toDataURL('image/png');
+ (M.img?badImg(d):Promise.resolve(false)).then(bad=>{if(bad){toast('That picture isn’t allowed.');return}stTx('readwrite',st=>st.put({id:'k'+Date.now(),t:Date.now(),img:d})).then(stkLoad).then(()=>{RF.skm=null;stkUI();toast('Sticker saved')}).catch(()=>toast('Couldn’t save the sticker'))})}
+try{stkLoad()}catch(e){}
 /* new-message alerts: an in-app banner (and buzz/sound), plus a phone notification while the app is in the background */
 function chNotify(old){const me=myId();Object.entries(RF.chats).forEach(([pid,c])=>{const l=c.last;if(!l||l.from==me)return;const o=old[pid];if(o&&o.last&&o.last.t>=l.t)return;if(Date.now()-l.t>60000)return;
   const open=RF.chat&&chPid(RF.chat)==pid&&$('#mns').classList.contains('on')&&mTab=='x'&&!document.hidden;if(open)return;
@@ -1880,23 +1936,44 @@ function ntfAsk(){if(!('Notification' in window)){toast('This browser can’t sh
 function chOpen(uid){chClose();RF.chat=uid;RF.chm=[];if((RF.chats||{})[chPid(uid)])chSub();renderMenu();chRead()}
 function chSub(){if(chUn||!RF.chat)return;const pid=chPid(RF.chat);
  try{chUn=fdb().collection('chats').doc(pid).collection('msgs').orderBy('t').limitToLast(80).onSnapshot(q=>{RF.chm=q.docs.map(d=>({id:d.id,...d.data()}));chPaint(1);chRead()},()=>{toast('Messages need the new database rules (see the update notes).')})}catch(e){}}
-function chClose(){if(chUn){try{chUn()}catch(e){}chUn=null}RF.chat=null;RF.chm=[]}
+function chClose(){if(chUn){try{chUn()}catch(e){}chUn=null}RF.chat=null;RF.chm=[];RF.chRe=null;RF.chEd=null;RF.chAtt=null;RF.stkOn=0}
 function chRead(){if(!RF.chat)return;const pid=chPid(RF.chat),me=myId(),c=(RF.chats||{})[pid];if(!c||!c.last||((c.rd||{})[me]||0)>=c.last.t)return;
  fdb().collection('chats').doc(pid).set({rd:{[me]:Date.now()}},{merge:true}).catch(()=>{})}
-function chPaint(force){const B=document.getElementById('chm');if(!B||!RF.chat)return;const me=myId(),atEnd=B.scrollHeight-B.scrollTop-B.clientHeight<80;
- B.innerHTML=(RF.chm||[]).length?RF.chm.map(m=>`<div class="cb${m.from==me?' me':''}">${m.img?`<img src="${m.img}" alt="${m.gif?'GIF':'Picture'}" loading="lazy">`:''}${m.txt?`<p>${esc(m.txt)}</p>`:''}<small>${new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>`).join(''):'<p class="che">No messages yet. Say hi!</p>';
- if(force||atEnd)B.scrollTop=B.scrollHeight}
-async function chSend(txt,img,gif){if(!RF.chat)return;const now=Date.now();if(now-chLast<800)return;txt=(txt||'').trim().slice(0,500);if(!txt&&!img)return;
+function chPaint(force){const B=document.getElementById('chm');if(!B||!RF.chat)return;const me=myId(),atEnd=B.scrollHeight-B.scrollTop-B.clientHeight<80,by={};(RF.chm||[]).forEach(m=>by[m.id]=m);
+ const nm=u=>u==me?'You':((RF.prof[u]||{}).name||'Friend');
+ B.innerHTML=(RF.chm||[]).length?RF.chm.map(m=>{const q=m.re?`<div class="cbq"><b>${esc(nm(m.re.from))}</b>${esc(m.re.txt||'Picture')}</div>`:'';
+  if(m.stk&&!m.txt)return `<div class="cb stk${m.from==me?' me':''}" data-mid="${m.id}">${q}<img src="${m.img}" alt="Sticker" loading="lazy"><small>${new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>`;
+  return `<div class="cb${m.from==me?' me':''}${RF.chSel==m.id?' pick':''}" data-mid="${m.id}">${q}${m.img?`<img src="${m.img}" alt="${m.gif?'GIF':'Picture'}" loading="lazy">`:''}${m.txt?`<p>${esc(m.txt)}</p>`:''}<small>${m.ed?'edited · ':''}${new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>`}).join(''):'<p class="che">No messages yet. Say hi!</p>';
+ if(force||atEnd)B.scrollTop=B.scrollHeight;chBar()}
+/* reply / edit / attachment strip above the message box */
+function chBar(){const Q=document.getElementById('chq');if(!Q)return;const me=myId(),parts=[];
+ if(RF.chEd){parts.push(`<div class="chqr ed"><span><b>Editing message</b>${esc(RF.chEd.txt||'')}</span><button data-chx="ed" aria-label="Cancel edit">✕</button></div>`)}
+ else if(RF.chRe){parts.push(`<div class="chqr"><span><b>Replying to ${RF.chRe.from==me?'yourself':esc((RF.prof[RF.chRe.from]||{}).name||'Friend')}</b>${esc(RF.chRe.txt||'Picture')}</span><button data-chx="re" aria-label="Cancel reply">✕</button></div>`)}
+ if(RF.chAtt)parts.push(`<div class="chqa"><img src="${RF.chAtt.img}" alt="Attachment"><span>${RF.chAtt.gif?'GIF':'Picture'} attached. Add a message or just send it.</span><button data-chx="att" aria-label="Remove attachment">✕</button></div>`);
+ Q.innerHTML=parts.join('');Q.hidden=!parts.length}
+/* tap a message: Reply / Edit / Copy */
+function chMenu(id,el){const m=(RF.chm||[]).find(x=>x.id==id);if(!m)return;document.querySelectorAll('.cbm').forEach(x=>x.remove());const me=myId();
+ const d=document.createElement('div');d.className='cbm'+(m.from==me?' me':'');d.innerHTML=`<button data-cma="re">Reply</button>${m.from==me&&m.txt&&!m.stk?'<button data-cma="ed">Edit</button>':''}${m.txt?'<button data-cma="cp">Copy</button>':''}`;d.dataset.mid=id;el.after(d)}
+async function chSend(txt,img,gif,stk){if(!RF.chat)return;const now=Date.now();if(now-chLast<700)return;txt=(txt||'').trim().slice(0,500);
+ if(!img&&RF.chAtt&&!stk){img=RF.chAtt.img;gif=RF.chAtt.gif}
+ if(RF.chEd&&!stk&&!img){if(!txt)return;if(badText(txt)){toast('That message has a word that isn’t allowed.');return false}
+  const id=RF.chEd.id;RF.chEd=null;chBar();try{await fdb().collection('chats').doc(chPid(RF.chat)).collection('msgs').doc(id).update({txt,ed:true});return true}catch(e){toast('Couldn’t edit: '+errMsg(e));return false}}
+ if(!txt&&!img)return;
  if(badText(txt)){toast('That message has a word that isn’t allowed.');return false}
- if(img){toast('Checking picture…');if(await badImg(img)){toast('That picture isn’t allowed.');return false}}
- chLast=now;const me=myId(),pid=chPid(RF.chat),db=fdb(),m={from:me,t:now};if(txt)m.txt=txt;if(img){m.img=img;if(gif)m.gif=true}
- try{await db.collection('chats').doc(pid).set({members:[me,RF.chat].sort(),last:{t:now,from:me,txt:txt?txt.slice(0,80):(gif?'GIF':'Picture')},rd:{[me]:now}},{merge:true});
-  await db.collection('chats').doc(pid).collection('msgs').doc().set(m);chSub();return true}catch(e){toast('Couldn’t send: '+errMsg(e));return false}}
+ if(img&&!stk){toast('Checking picture…');if(await badImg(img)){toast('That picture isn’t allowed.');return false}}
+ chLast=now;const me=myId(),pid=chPid(RF.chat),db=fdb(),m={from:me,t:now};if(txt)m.txt=txt;if(img){m.img=img;if(gif)m.gif=true;if(stk)m.stk=true}
+ if(RF.chRe&&!stk){m.re={id:RF.chRe.id,from:RF.chRe.from,txt:(RF.chRe.txt||(RF.chRe.stk?'Sticker':'Picture')).slice(0,80)}}
+ const sum=txt?txt.slice(0,80):(stk?'Sticker':gif?'GIF':'Picture');
+ try{await db.collection('chats').doc(pid).set({members:[me,RF.chat].sort(),last:{t:now,from:me,txt:sum},rd:{[me]:now}},{merge:true});
+  await db.collection('chats').doc(pid).collection('msgs').doc().set(m);if(!stk){RF.chRe=null;RF.chAtt=null}chBar();chSub();return true}catch(e){toast('Couldn’t send: '+errMsg(e));return false}}
 function chPic(f){if(!f)return;const gif=/gif/i.test(f.type);
- if(gif){if(f.size>560000){toast('That GIF is too big (max 550 KB).');return}const r=new FileReader();r.onload=()=>chSend('',r.result,1);r.readAsDataURL(f);return}
+ if(gif){if(f.size>560000){toast('That GIF is too big (max 550 KB).');return}const r=new FileReader();r.onload=()=>{RF.chAtt={img:r.result,gif:1};chBar();$('#cht').focus()};r.readAsDataURL(f);return}
  const u=URL.createObjectURL(f),im=new Image();im.onload=()=>{const k=Math.min(1,960/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);
-  let q=.82,d=c.toDataURL('image/jpeg',q);while(d.length>600000&&q>.4){q-=.1;d=c.toDataURL('image/jpeg',q)}chSend('',d)};im.onerror=()=>{URL.revokeObjectURL(u);toast('That picture couldn’t be opened')};im.src=u}
-document.getElementById('mnb2').addEventListener('change',e=>{if(e.target.id=='chf'){const f=e.target.files&&e.target.files[0];e.target.value='';chPic(f)}});
+  let q=.82,d=c.toDataURL('image/jpeg',q);while(d.length>600000&&q>.4){q-=.1;d=c.toDataURL('image/jpeg',q)}RF.chAtt={img:d};chBar()};im.onerror=()=>{URL.revokeObjectURL(u);toast('That picture couldn’t be opened')};im.src=u}
+document.getElementById('mnb2').addEventListener('input',e=>{if(e.target.id=='skt'&&RF.skm){RF.skm.txt=e.target.value;stkDraw()}});
+(()=>{let ht=0;const B=document.getElementById('mnb2');B.addEventListener('pointerdown',e=>{const p=e.target.closest('[data-skp]');if(!p)return;ht=setTimeout(()=>{ht=0;if(confirm('Delete this sticker?'))stTx('readwrite',st=>st.delete(p.dataset.skp)).then(stkLoad).then(stkUI)},650)});['pointerup','pointerleave','pointercancel'].forEach(k=>B.addEventListener(k,()=>{clearTimeout(ht)}))})();
+document.getElementById('mnb2').addEventListener('change',e=>{if(e.target.id=='skf'){const f=e.target.files&&e.target.files[0];e.target.value='';if(!f)return;const u=URL.createObjectURL(f),im=new Image();im.onload=()=>{RF.skm.img=u;RF.skm.imgEl=im;stkUI()};im.src=u;return}
+ if(e.target.id=='chf'){const f=e.target.files&&e.target.files[0];e.target.value='';chPic(f)}});
 document.getElementById('mnb2').addEventListener('keydown',e=>{if(e.target.id=='cht'&&e.key=='Enter'){e.preventDefault();const v=e.target.value;chSend(v).then(ok=>{if(ok)e.target.value=''})}});
 let musDuck=0;function musVol(){}
 document.addEventListener('visibilitychange',()=>{document.body.classList.toggle('bg',document.hidden)});
@@ -1935,12 +2012,21 @@ addEventListener('keydown',e=>{if(!$('#mns').classList.contains('on')||typing($(
  if(e.key=='Escape'){if(mTab=='m'){uiSnd('home');menuClose()}else{uiSnd('b1');pBack()}}else if(mTab=='m'&&(e.key=='ArrowDown'||e.key=='ArrowUp')){e.preventDefault();pSel(K[(K.indexOf(mSel)+(e.key=='ArrowDown'?1:K.length-1))%K.length])}else if(mTab=='m'&&e.key=='Enter'){const b=document.querySelector('#pitems .pi.sel');if(b&&!pGo)pConfirm(b)}});
 bindPF($('#mnb2'));bindPF($('#onbc'));
 
-$('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t){if(e.target.closest('#tpx')){tutFinish();return}const r=e.target.closest('[data-view]');if(r&&RF.prof[r.dataset.view]){uiSnd('ok');viewFriend(r.dataset.view)}return}
+$('#mnb2').onclick=e=>{const t=e.target.closest('button');if(!t){const cb=e.target.closest('.cb[data-mid]');if(cb){chMenu(cb.dataset.mid,cb);return}document.querySelectorAll('.cbm').forEach(x=>x.remove());if(e.target.closest('#tpx')){tutFinish();return}const r=e.target.closest('[data-view]');if(r&&RF.prof[r.dataset.view]){uiSnd('ok');viewFriend(r.dataset.view)}return}
  if(t.disabled)return;uiSnd(t.dataset.sln!==undefined||t.dataset.ttn!==undefined||t.dataset.cyc?'sw':t.dataset.tpg=='-1'?'b1':t.dataset.dec||t.classList.contains('del')?'b1':'ok');
  if(sysClick(t))return;
  if(t.dataset.qc){qClaim(t.dataset.qc);return}
  if(t.dataset.ntf){ntfAsk();return}
  if(t.dataset.cho){chOpen(t.dataset.cho);return}
+ if(t.dataset.stk){RF.stkOn=!RF.stkOn;RF.skm=null;stkUI();return}
+ if(t.dataset.skn){RF.skm={st:0};stkUI();return}
+ if(t.dataset.skc){RF.skm=null;stkUI();return}
+ if(t.dataset.sks){RF.skm.st=((RF.skm.st||0)+1)%SKS.length;stkDraw();return}
+ if(t.dataset.skx){RF.skm.img=null;RF.skm.imgEl=null;stkUI();return}
+ if(t.dataset.skv){stkSave();return}
+ if(t.dataset.skp){const x=STK.find(k=>k.id==t.dataset.skp);if(x){chLast=0;chSend('',x.img,0,1)}return}
+ if(t.dataset.chx){if(t.dataset.chx=='ed'){RF.chEd=null;$('#cht').value=''}if(t.dataset.chx=='re')RF.chRe=null;if(t.dataset.chx=='att')RF.chAtt=null;chBar();return}
+ if(t.dataset.cma){const box=t.closest('.cbm'),m=(RF.chm||[]).find(x=>x.id==box.dataset.mid);box.remove();if(!m)return;if(t.dataset.cma=='re'){RF.chEd=null;RF.chRe=m;chBar();$('#cht').focus()}else if(t.dataset.cma=='ed'){RF.chRe=null;RF.chEd=m;$('#cht').value=m.txt||'';chBar();$('#cht').focus()}else if(t.dataset.cma=='cp'){try{navigator.clipboard.writeText(m.txt);toast('Copied')}catch(e){}}return}
  if(t.dataset.chs){t.classList.remove('go');void t.offsetWidth;t.classList.add('go');const I=$('#cht');chSend(I.value).then(ok=>{if(ok)I.value=''});return}
  if(t.dataset.pfsl){const u=t.dataset.pfsl;menu('l');RF.slv=u;RF.sldir=1;renderMenu();return}
  if(t.dataset.pfgo){menu(t.dataset.pfgo);return}
@@ -1993,7 +2079,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-1619';
+var APPVER='2026.11.22-1639';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
