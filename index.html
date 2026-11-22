@@ -1107,6 +1107,19 @@ body:has(#sh.on) #fab{opacity:0}
 .pflh small{color:#5fe8ff;font:700 13px 'Barlow',sans-serif}
 .pflr{display:flex!important;align-items:center;gap:10px;width:100%;min-height:0!important;padding:6px 8px!important;margin-bottom:4px;background:#05060c!important;border:0!important;text-align:left}
 .pflr span{display:flex;flex-direction:column}.pflr b{color:#fff;font:800 italic 16px 'Barlow',sans-serif}.pflr small{color:#5fe8ff;font:600 12px 'Barlow',sans-serif}
+
+/* ===== fixes ===== */
+/* FRIEND drawer grows out of its tab like NEW */
+#hgs .card{top:auto!important;bottom:calc(120px + env(safe-area-inset-bottom,0px))!important;max-height:min(70vh,560px)!important;animation:drTL .34s cubic-bezier(.2,.8,.3,1) both!important}
+@keyframes drTL{from{clip-path:inset(calc(100% - 104px) calc(100% - 22px) 0 0)}to{clip-path:inset(0 0 0 0)}}
+body:has(#hgs.on) #hgb{opacity:0}
+/* streak number: both numbers share one cell, no overlap, room for 3+ digits */
+.skov .sqn{display:grid!important;height:auto!important;min-width:0!important;width:auto!important;overflow:hidden;padding:0 .14em 0 .04em}
+.skov .sqn span{position:static!important;grid-area:1/1;text-align:center;white-space:nowrap;transition:transform .2s cubic-bezier(.4,0,.2,1),opacity .14s!important}
+.skov .sqn .o{transform:none;opacity:1}
+.skov .sqn .n{transform:translateY(70%);opacity:0}
+.skov.up .sqn .o{transform:translateY(-70%)!important;opacity:0!important}
+.skov.up .sqn .n{transform:none!important;opacity:1!important}
 </style>
 </head>
 <body>
@@ -1524,7 +1537,7 @@ function fbStart(u){fbStop();const db=fdb(),me=u.uid,L=(q,f)=>RF.unsub.push(q.on
  TO(db.collection('profiles').doc(me).get()).then(d=>{RF.dbErr='';RF.me=d.exists?d.data():null;RF.meLoaded=1;if(RF.me)pushRanks(1);else openOnb();rr()}).catch(e=>{RF.dbErr=errMsg(e);RF.meLoaded=1;rr();dbDiagnose()});
  L(db.collection('friendReqs').where('to','==',me),q=>{RF.reqIn=q.docs.map(d=>({id:d.id,...d.data()}));RF.reqIn.forEach(r=>getProf(r.from));rr()});
  L(db.collection('friendReqs').where('from','==',me),q=>{RF.reqOut=q.docs.map(d=>({id:d.id,...d.data()}));RF.reqOut.forEach(r=>getProf(r.to));rr()});
- try{L(db.collection('emojis').limit(500),q=>{GEMO={};q.docs.forEach(d=>{const x=d.data();if(x&&x.img)GEMO[d.id]={img:x.img,by:x.by}});try{geSync();chPaint();const W=document.getElementById('emos');if(W&&W.classList.contains('on')&&EMTAB=='Custom'&&!W.dataset.add)emoSheet()}catch(e){}rr()});
+ try{L(db.collection('emojis').limit(500),q=>{GEMO={};q.docs.forEach(d=>{const x=d.data();if(x&&x.img)GEMO[d.id]={img:x.img,by:x.by}});try{geSync();chPaint();if(RF.pv&&$('#pfs').classList.contains('on'))viewFriend(RF.pv,RF.pvl);const W=document.getElementById('emos');if(W&&W.classList.contains('on')&&EMTAB=='Custom'&&!W.dataset.add)emoSheet()}catch(e){}rr()});
  L(db.collection('follows').where('from','==',me),q=>{RF.ifol=new Set(q.docs.map(d=>d.data().to));rr()});}catch(e){}
  L(db.collection('friendships').where('members','array-contains',me),q=>{RF.fr=q.docs.map(d=>({id:d.id,uid:d.data().members.find(x=>x!=me),t:d.data().t}));setTimeout(frPublish,1500);RF.fr.forEach(f=>{delete RF.prof[f.uid];getProf(f.uid)});rr();setTimeout(slNew,900)});
  L(db.collection('hangouts').where('to','==',me),q=>{RF.hgIn=q.docs.map(d=>({id:d.id,...d.data()}));hgCheck()});
@@ -2171,11 +2184,11 @@ const ceTx=(mode,fn)=>CEDB().then(db=>new Promise((ok,no)=>{const t=db.transacti
 const ceLoad=()=>ceTx('readonly',st=>st.getAll()).then(a=>{CEMO=(a||[]).sort((x,y)=>x.t-y.t)}).catch(()=>{CEMO=[]});try{ceLoad()}catch(e){}
 const ceMap=()=>{const o={};CEMO.forEach(x=>o[x.id]=x.img);return o};
 let GEMO={},gemoSynced=0;const geMap=()=>{const o={};for(const k in GEMO)o[k]=GEMO[k].img;return o};
-function emoPack(t){const mine=ceMap(),o={};let n=0;(t.match(/:[a-z0-9_]{2,20}:/g)||[]).forEach(k=>{k=k.slice(1,-1);if(mine[k]&&!o[k]&&n<8){o[k]=mine[k];n++}});return n?o:null}
+function emoPack(t){const mine=ceMap(),o={};let n=0;(t.match(/:[a-zA-Z0-9_]{2,20}:/g)||[]).forEach(k=>{k=k.slice(1,-1).toLowerCase();if(mine[k]&&!o[k]&&n<8){o[k]=mine[k];n++}});return n?o:null}
 function emoHTML(t,cus){const C=Object.assign({},geMap(),ceMap(),cus||{});let h=esc(t||'');
  h=h.replace(EMRX,e=>`<img class="emj" src="${twUrl(e)}" alt="${e}" draggable="false" onerror="this.outerHTML=this.alt">`);
- return h.replace(/:([a-z0-9_]{2,20}):/g,(m,k)=>C[k]?`<img class="emj cus" src="${esc(C[k])}" alt=":${k}:" title=":${k}:" draggable="false">`:m)}
-function emoOnly(t,cus){const C=Object.assign({},geMap(),ceMap(),cus||{});const r=(t||'').replace(EMRX,'\u0001').replace(/:([a-z0-9_]{2,20}):/g,(m,k)=>C[k]?'\u0001':m).replace(/\s/g,'');return r.length>0&&r.length<=6&&/^\u0001+$/.test(r)}
+ return h.replace(/:([a-zA-Z0-9_]{2,20}):/g,(m,k)=>(k=k.toLowerCase(),C[k])?`<img class="emj cus" src="${esc(C[k])}" alt=":${k}:" title=":${k}:" draggable="false">`:m)}
+function emoOnly(t,cus){const C=Object.assign({},geMap(),ceMap(),cus||{});const r=(t||'').replace(EMRX,'\u0001').replace(/:([a-zA-Z0-9_]{2,20}):/g,(m,k)=>C[k.toLowerCase()]?'\u0001':m).replace(/\s/g,'');return r.length>0&&r.length<=6&&/^\u0001+$/.test(r)}
 let EMT=null,EMTAB='Smileys',RXT=null;
 function emoSheet(){let W=document.getElementById('emos');if(!W){W=document.createElement('div');W.id='emos';W.className='emos';document.body.appendChild(W);
   W.addEventListener('click',emoClick);W.addEventListener('change',e=>{if(e.target.id=='cef'){const f=e.target.files&&e.target.files[0];e.target.value='';if(f)ceFile(f)}})}
@@ -2442,7 +2455,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-1907';
+var APPVER='2026.11.22-1934';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
