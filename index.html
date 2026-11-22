@@ -421,8 +421,6 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .cfi{display:flex!important;align-items:center;gap:8px;margin:2px 0 18px;color:#5fe8ff;font:600 15px/1.3 'Barlow',sans-serif}
 .cfi i{flex:none;font:800 italic 11px/1 'Barlow',sans-serif;color:#5fe8ff;border:1.5px solid #5fe8ff;border-radius:20px;padding:2px 9px}
 .cfcat{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
-.cfcat button{background:none!important;border:0;color:#5fe8ff!important;font:700 19px/1.2 'Barlow',sans-serif!important;font-style:normal!important;padding:8px 14px!important;min-height:0!important;text-align:left;position:relative}
-.cfcat button.on{background:#fff!important;color:#0c1033!important;box-shadow:inset 0 -3px 0 #e8132f;padding-right:42px!important}
 .cfv{margin:26px 4px 0;color:rgba(255,255,255,.45);font:600 12px 'Barlow',sans-serif}
 .cfw{position:fixed;left:-8px;bottom:calc(64px + env(safe-area-inset-bottom,0px));z-index:0;pointer-events:none;font:900 italic 88px/1 'Archivo','Arial Black',sans-serif;letter-spacing:-.05em;color:rgba(205,208,222,.92);text-shadow:none;opacity:.9;animation:cfw .4s cubic-bezier(.2,.8,.3,1) both}
 @keyframes cfw{from{translate:-60px 0;opacity:0}}
@@ -454,10 +452,6 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .tts button{flex:1 0 auto;background:none!important;border:0;border-radius:16px;color:#fff!important;font:700 italic 12px/1 'Barlow',sans-serif!important;padding:7px 6px!important;min-height:0!important;white-space:nowrap}
 .tts button.on{background:#fff!important;color:#0c1033!important}
 .ttl{display:flex;flex-direction:column;gap:3px;position:relative;z-index:1}
-.ttl button{display:flex;align-items:center;gap:10px;background:none!important;border:0;color:#5fe8ff!important;font:700 17px/1.2 'Barlow',sans-serif!important;font-style:normal!important;text-align:left;padding:9px 12px!important;min-height:0!important}
-.ttl button i{width:5px;height:5px;border-radius:50%;background:currentColor;flex:none}
-.ttl button.on{background:#fff!important;color:#0c1033!important;box-shadow:inset 0 -3px 0 #e8132f}
-.tut.in .ttl button,.tut .ttl button{animation:prow .26s cubic-bezier(.2,.8,.3,1) both}
 .ttw{position:fixed;right:-30px;bottom:calc(70px + env(safe-area-inset-bottom,0px));pointer-events:none;font:900 italic 92px/1 'Archivo','Arial Black',sans-serif;letter-spacing:-.05em;color:rgba(205,208,222,.9);transform:rotate(-38deg);transform-origin:100% 100%;animation:ttw .45s cubic-bezier(.2,.8,.3,1) both;z-index:0}
 @keyframes ttw{from{opacity:0;translate:80px 40px}}
 .tvp{position:relative;z-index:1;background:rgba(5,7,28,.88);border:1px solid rgba(95,232,255,.35);box-shadow:0 10px 30px rgba(0,0,0,.4);padding:14px 16px 12px;clip-path:polygon(0 0,100% 0,100% calc(100% - 14px),calc(100% - 14px) 100%,0 100%);animation:tvp .3s cubic-bezier(.2,.8,.3,1) both}
@@ -475,7 +469,6 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 /* reduce motion */
 .rmo .rksh{animation-play-state:paused!important}
 .rmo .sys.in .syc,.rmo .sys.in .syt{animation-duration:.01s!important}
-.ttl button{display:flex!important}.ttl button i{background:#5fe8ff!important}.ttl button.on i{background:#0c1033!important}
 /* in-place updates on Config / Tutorial: no entrance replay */
 #mnb2.noanim *,#mnb2.noanim>*{animation:none!important}
 #mnb2.noanim .tvp.new{animation:tvp .25s cubic-bezier(.2,.8,.3,1) both!important}
@@ -513,11 +506,9 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .ww{display:inline-block;white-space:nowrap}
 .wvw{display:inline-block;scale:.84 1;transform-origin:0 50%}
 .cfl .wvw{transform-origin:100% 50%}
-.cfcat button,.cfl,.ttl button,.cfh{font:900 italic 22px/1.08 'Montserrat','Arial Black',sans-serif!important;letter-spacing:-.05em!important;text-transform:uppercase}
 .cfl{font-size:14px!important;flex:1 1 50%!important}
 .cfh{font-size:26px!important;color:#fff}
 .cfh .wl{--tc:#ffffff}
-.ttl button{font-size:20px!important}
 .cfcat{gap:2px!important}
 /* ===== Social Link: ARCANA tag tilted down like the game ===== */
 .sltg{left:-6px!important;top:-4px!important;padding:5px 26px 6px 16px!important;font:900 italic 15px/1 'Barlow',sans-serif!important;letter-spacing:.02em;transform:rotate(-13deg) skewX(-14deg)!important;transform-origin:0 100%;clip-path:polygon(0 0,100% 0,86% 100%,0 100%);z-index:2}
@@ -698,31 +689,85 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 #pitems .pt{display:inline-block}
 #pitems .pi:not(.sel) .pt{filter:drop-shadow(0 .045em 0 rgba(14,96,190,.6))}
 #pitems .pi.sel .wl,.pmn.cf2 #pitems .pi .wl{background:none!important;color:inherit;-webkit-text-fill-color:currentColor}
-.cfcat button.on .wl,.cfr.sel .wl,.ttl button.on .wl{background:none!important;color:#0c1033;-webkit-text-fill-color:#0c1033}
-.cfl .wl,.cfcat .wl,.ttl .wl{--tc:#5fe8ff}
-.ttl button{display:flex!important}.ttl button i{background:#5fe8ff!important}.ttl button.on i{background:#0c1033!important}
 #mnb2.noanim .wl{animation:wlw 3.6s calc(var(--j)*-.22s) ease-in-out infinite,wlf 14s linear infinite!important}
 .rmo .wl{animation:none!important}
 /* ===== System items (matched to the game) ===== */
 .syi{position:absolute;right:3%;top:calc(9% + env(safe-area-inset-top,0px));z-index:3;display:flex;flex-direction:column;align-items:flex-end;transform:rotate(-6deg);transform-origin:100% 0}
-.syb{position:relative;display:block;background:none!important;border:0!important;padding:0 .08em!important;min-height:0!important;margin:0 var(--x,0) -.16em 0;font:900 italic clamp(40px,12.5vw,64px)/1.06 'Montserrat','Arial Black',sans-serif;letter-spacing:-.055em;text-transform:uppercase;scale:.84 1;transform-origin:100% 50%;color:var(--tc)}
-.syb .syn{position:relative;z-index:2;display:inline-block;filter:drop-shadow(0 .045em 0 rgba(6,16,110,.55))}
-.syb::after{content:attr(data-t);position:absolute;left:.08em;top:0;z-index:1;color:#05060c;translate:-.07em .085em;opacity:0;white-space:nowrap;pointer-events:none;letter-spacing:-.055em}
-.syb.on::after{opacity:1}
-.syb.on .syn{filter:none}
-.syb.on .wl{background:none!important;color:#e5001b;-webkit-text-fill-color:#e5001b}
-.syw{position:absolute;z-index:0;left:-.6em;right:-1em;top:-.42em;bottom:.24em;display:none;pointer-events:none}
-.syb.on .syw{display:block}
-.syw::before,.syw::after{content:'';position:absolute;inset:0;clip-path:polygon(0 56%,100% 0,91% 100%,5% 100%)}
-.syw::before{background:linear-gradient(90deg,#ff6ac8,#ff2f8f);translate:.12em .09em}
-.syw::after{background:#fff}
-.sys.in .syb{animation:syib2 .3s calc(.36s + var(--i)*.06s) cubic-bezier(.2,.8,.3,1) both}
-.sys.in .syb.on .syw{animation:sysel2 .22s .5s cubic-bezier(.2,.8,.3,1) both}
 @keyframes syib2{from{opacity:0;translate:0 -.3em}}
 @keyframes sysel2{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0 0 0 0)}}
-.syb:active{scale:.8 .96}
 /* main menu: tighter stack like the game */
 #pitems .pi{line-height:1.02!important}
+
+/* ===== one preset for every menu list (Config, Tutorial, System) = the pause menu's ===== */
+.mpl .pi{font:900 italic clamp(30px,9.2vw,54px)/1.16 'Montserrat','Arial Black',sans-serif;letter-spacing:-.05em;scale:.8 1;transform:skewX(-6deg);color:#5fe3f6;text-shadow:0 .045em 0 rgba(14,96,190,.6);transform-origin:50% 60%;padding:0 .08em!important;transition:color .08s}
+.mpl .pi::before{display:none}
+.mpl .pi::after{content:attr(data-t);position:absolute;inset:0;right:auto;width:auto;height:auto;padding:0 .08em;border:0;transform:none;transition:none;color:#e5001b;text-shadow:none;opacity:0;z-index:2;white-space:nowrap;pointer-events:none;
+ clip-path:polygon(calc(0% + -0.160em) 0.972em,calc(100% + 0.210em) -0.110em,calc(94% + 0.188em) 1.120em,calc(0% + -0.160em) 1.120em);translate:0.04em -0.06em}
+.mpl .pt{position:relative;z-index:1}
+.mpl .pw{position:absolute;z-index:0;left:-.12em;right:-.25em;top:-.17em;bottom:.1em;display:none;pointer-events:none}
+.mpl .pw::before,.mpl .pw::after{content:'';position:absolute;inset:0;clip-path:polygon(0 88%,100% 0,94% 100%,0 100%)}
+.mpl .pw::before{background:linear-gradient(90deg,#ff59c8,#ff2f9c);transform:translate(.11em,.07em)}
+.mpl .pw::after{background:#fff}
+.mpl .pi.sel{color:#05060c;text-shadow:none;transform:translate(0,-.04em) rotate(-4deg) scale(1.12) skewX(-6deg);z-index:3}
+.mpl .pi.sel .pw{display:block}
+.mpl .pi.sel .pw::before,.mpl .pi.sel .pw::after{animation:pwj 2.3s step-end infinite}
+.mpl .pi.sel::after{animation:pwr 2.3s step-end infinite}
+.mpl .pw i{position:absolute;inset:0;background:#e5001b;z-index:1;animation:pws 2.3s step-end infinite}
+.mpl .pi.sel::after{opacity:1}
+.mpl .pi.sel.pop{animation:ppop .17s cubic-bezier(.2,.9,.3,1)}
+.mpl .pi em{z-index:3}
+.mpl .pi{line-height:.9!important}
+.mpl .pt{display:inline-block}
+.mpl .pi{line-height:1.02!important}
+.mpl{display:flex;flex-direction:column;align-items:flex-start;gap:0;position:relative;z-index:1;padding:.2em 0 .4em .5em}
+.mpl .pi{font-size:clamp(22px,6.4vw,36px)!important;line-height:1.08!important;animation:none;margin:0 0 0 var(--x)!important}
+.mpl .pi:not(.sel) .pt{filter:drop-shadow(0 .045em 0 rgba(14,96,190,.6))}
+.mpl .pi.sel .wl{background:none!important;color:inherit;-webkit-text-fill-color:currentColor}
+.mpl .pi.sel{margin:.2em 0 .32em .3em!important}
+#mnb2.noanim .mpl .pi.sel .pw::before,#mnb2.noanim .mpl .pi.sel .pw::after{animation:pwj 2.3s step-end infinite!important}
+#mnb2.noanim .mpl .pi.sel::after{animation:pwr 2.3s step-end infinite!important}
+#mnb2.noanim .mpl .pw i{animation:pws 2.3s step-end infinite!important}
+.cfg .mpl,.tut .mpl{transform:rotate(-4deg);transform-origin:0 0;margin-top:6px}
+.syi.mpl{position:absolute;right:4%;left:auto;top:calc(7% + env(safe-area-inset-top,0px));align-items:flex-end;transform:rotate(-12deg);transform-origin:100% 0;z-index:3;padding:0}
+.syi.mpl .pi{font-size:clamp(34px,11vw,58px)!important;line-height:.95!important}
+.sys.in .syi .pi{animation:syib2 .3s calc(.36s + var(--i)*.06s) cubic-bezier(.2,.8,.3,1) both}
+@keyframes syib2{from{opacity:0;translate:0 -.3em}}
+/* setting labels: same type, smaller */
+.cfl{font:900 italic 16px/1.05 'Montserrat','Arial Black',sans-serif!important;letter-spacing:-.05em!important;text-transform:uppercase}
+.cfl .wvw{scale:.8 1;transform:skewX(-6deg);transform-origin:100% 50%}
+.cfr.sel{background:none!important;box-shadow:none!important}
+.cfr.sel .cfl .wl{background:none!important;color:#e5001b;-webkit-text-fill-color:#e5001b}
+.cfr.sel .cfl .wvw{filter:drop-shadow(-.06em .07em 0 #05060c)}
+.cfh{font:900 italic 26px/1 'Montserrat','Arial Black',sans-serif!important;letter-spacing:-.05em!important;text-transform:uppercase}
+.cfh .wvw{scale:.8 1;transform:skewX(-6deg)}
+.tts button{font:900 italic 14px/1 'Montserrat','Arial Black',sans-serif!important;letter-spacing:-.04em!important;text-transform:uppercase}
+.tvt{font:900 italic 26px/1 'Montserrat','Arial Black',sans-serif!important;letter-spacing:-.05em;text-transform:uppercase}
+/* ===== pause menu: P3R structure (tight, tilted, mixed sizes, zig-zag) ===== */
+.pitems{transform:translateX(-50%) rotate(-15deg)!important;top:calc(20% + env(safe-area-inset-top,0px))!important}
+#pitems{animation:none!important}
+#pitems .pi{line-height:.84!important;font-size:calc(var(--fz,1)*clamp(30px,9.2vw,54px))}
+#pitems .pi:not(.sel) .pt{filter:none}
+#pitems .pi:not(.sel) .wl{text-shadow:none}
+.pmn .pvid{image-rendering:auto}
+/* ===== profile stat bars (dark, P3R) ===== */
+.pfs{background:rgba(5,6,12,.74)!important;color:#fff!important;border-left:4px solid var(--sc,#5fe8ff);clip-path:polygon(0 0,100% 0,97% 100%,0 100%)}
+.pfs.c{--sc:#ff5fb4}.pfs.g{--sc:#4f8bff}.pfs.a{--sc:#36e0f0}
+.pfsn{font:900 italic 24px/1 'Montserrat','Arial Black',sans-serif!important}
+.pfsn .wvw{scale:.8 1;transform:skewX(-6deg)}
+.pfs.c .pfsn .wl,.pfs.g .pfsn .wl,.pfs.a .pfsn .wl{--tc:#5fe3f6}
+.pfs b{font:900 italic 46px/.85 'Montserrat','Arial Black',sans-serif!important;color:#fff;scale:.8 1;letter-spacing:-.05em}
+.pfst{color:rgba(255,255,255,.75)!important}
+.pfs i{background:rgba(255,255,255,.14)!important;height:5px!important}
+.pfs i u{background:var(--sc)!important;box-shadow:0 0 8px var(--sc)}
+.pfs small{color:rgba(255,255,255,.5)!important}
+/* ===== boot: logo only ===== */
+#boot{background:#0b1240!important;gap:0!important}
+.bt-w,.bt-b,.bt-p{display:none!important}
+.bt-tag{animation:btlogo 1s cubic-bezier(.2,.8,.25,1) both}
+@keyframes btlogo{0%{opacity:0;transform:rotate(-14deg) skewX(-8deg) scale(.7)}55%{opacity:1;transform:rotate(-4deg) skewX(-8deg) scale(1.04)}100%{transform:rotate(-6deg) skewX(-8deg) scale(1)}}
+.bt-tag small{position:relative;overflow:hidden}
+.bt-tag::after{content:'';position:absolute;left:-8px;right:-8px;bottom:-12px;height:4px;background:#5fe8ff;transform-origin:0 50%;animation:btln .5s .55s cubic-bezier(.2,.8,.3,1) both}
+@keyframes btln{from{transform:scaleX(0)}}
 </style>
 </head>
 <body>
@@ -773,8 +818,8 @@ const P=[['c','Charm',['Hung out with friends|c2','Met someone new|c2','Went on 
 ['g','Courage',['Talked to a stranger|g3','Did something that scared me|g3','Asked someone out|g3','Gave a presentation or spoke in public|g3','Spoke up in a meeting or class|g2','Set a boundary or said no|g2','Had a hard, honest conversation|g3','Hit the gym|g2','Ran or did cardio|g2','Took a cold shower|g1','Tried something new|g2','Went somewhere new alone|g2','Sang karaoke|g2','Asked for something I wanted|g2','Watched a horror movie|g1','Tried an unusual food|g1','Applied for something I might not get|g3']],
 ['a','Academics',['Studied 30+ minutes|a1','Deep study session (2 hrs)|a3','Studied at the library|a2','Finished homework or an assignment|a2','Paid attention the whole class|a1','Reviewed my notes|a1','Read a chapter|a1','Finished a book|a3','Watched a lecture or documentary|a1','Practiced a language|a1','Practiced a skill (code, music, craft)|a2','Wrote an essay or report|a2','Aced a test or quiz|a3','Visited a museum or library|a2','Learned something and wrote it down|a1']],
 ['m','Combos',['Study group at a café|a2c1','Part-time job shift|g1c1','Group workout|g2c1','Joined a club meeting|c2g1','Volunteered|g1c2','Taught someone something|a2c1']]];
-let S={p:{c:0,g:0,a:0},u:[],prev:null,h:[],f:[],bu:[],dev:0,dv:{clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1,hz:100,oz:100,lz:100,bgmv:100,sev:100,vov:100,tspd:1,rmo:0,bgv:1,fxs:1,fxw:1,cpm:1,swp:1,dconf:1,mix:1,msel:'a'}},busy=0,R={},CL=[],SN=[],UID=0,lastTest=null,rsArm=0;
-try{const j=JSON.parse(localStorage.getItem('p3s')||'{}');Object.assign(S,j);S.dv=Object.assign({clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1,hz:100,oz:100,lz:100,bgmv:100,sev:100,vov:100,tspd:1,rmo:0,bgv:1,fxs:1,fxw:1,cpm:1,swp:1,dconf:1,mix:1,msel:'a'},j.dv||{});if(!S.h)S.h=[];if(!S.f)S.f=[];if(!S.bu)S.bu=[];(S.u||[]).forEach(u=>(u.a||[]).forEach(x=>x[1]=Math.min(3,x[1])))}catch(e){}
+let S={p:{c:0,g:0,a:0},u:[],prev:null,h:[],f:[],bu:[],dev:0,dv:{clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1,hz:100,oz:100,lz:100,bgmv:100,sev:100,vov:100,tspd:1,rmo:0,bgv:1,fxs:1,fxw:1,cpm:1,swp:1,dconf:1,mix:1,mus:1,musv:60,msel:'a'}},busy=0,R={},CL=[],SN=[],UID=0,lastTest=null,rsArm=0;
+try{const j=JSON.parse(localStorage.getItem('p3s')||'{}');Object.assign(S,j);S.dv=Object.assign({clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1,hz:100,oz:100,lz:100,bgmv:100,sev:100,vov:100,tspd:1,rmo:0,bgv:1,fxs:1,fxw:1,cpm:1,swp:1,dconf:1,mix:1,mus:1,musv:60,msel:'a'},j.dv||{});if(!S.h)S.h=[];if(!S.f)S.f=[];if(!S.bu)S.bu=[];(S.u||[]).forEach(u=>(u.a||[]).forEach(x=>x[1]=Math.min(3,x[1])))}catch(e){}
 let CREF=null,cBusy=0,cDirty=0,cTm=0;   /* account copy of the save (only when signed in to Claude) */
 const applyLZ=()=>document.documentElement.style.setProperty('--lz',(S.dv.lz||100)/100);
 const save=()=>{S.t=Date.now();try{typeof pushRanks=='function'&&pushRanks()}catch(e){}try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}cloudPush()};
@@ -914,6 +959,14 @@ let MG=null;const actx=()=>{if(!AC){const C=window.AudioContext||window.webkitAu
 /* iPhone: 'ambient' lets the app's sounds mix with music already playing in your headphones instead of stopping it */
 function audSess(){try{if(navigator.audioSession)navigator.audioSession.type=S.dv.mix===0?'playback':'ambient'}catch(e){}}
 try{audSess()}catch(e){}
+/* background music: Color Your Night, one seamless 3:38 loop, streamed (not decoded into memory) */
+let MUS=null,musDuck=0;
+function musSync(){try{const want=S.dv.mus!==0&&S.dv.sfx!==0&&!document.hidden;if(!MUS){if(!want)return;MUS=new Audio('snd/music.mp3');MUS.loop=true;MUS.preload='auto';MUS.setAttribute('playsinline','');
+  const c=actx();if(c){try{const src=c.createMediaElementSource(MUS);MUS._g=c.createGain();src.connect(MUS._g);MUS._g.connect(MG||c.destination)}catch(e){}}}
+ const v=(S.dv.musv??60)/100*(musDuck?0:1);if(MUS._g){const c=MUS._g.context,t=c.currentTime;MUS._g.gain.cancelScheduledValues(t);MUS._g.gain.setValueAtTime(MUS._g.gain.value,t);MUS._g.gain.linearRampToValueAtTime(v*.55,t+.6)}else MUS.volume=Math.min(1,v*.55);
+ if(want){if(MUS.paused){try{actx()&&AC.resume()}catch(e){}const p=MUS.play();if(p&&p.catch)p.catch(()=>{})}}else if(!MUS.paused)MUS.pause()}catch(e){}}
+document.addEventListener('pointerdown',()=>{if(!MUS||MUS.paused)musSync()},{capture:true});
+document.addEventListener('visibilitychange',()=>musSync());
 const BUS={},busVol=()=>{if(BUS.se){BUS.se.gain.value=(S.dv.sev??100)/100;BUS.bg.gain.value=(S.dv.bgmv??100)/100;BUS.vo.gain.value=(S.dv.vov??100)/100}},OUT=c=>BUS.se||MG||c.destination,setVol=v=>{S.dv.vol=v;if(MG)MG.gain.value=v/100};
 function decodeSnd(sn){if(sn.buf)return Promise.resolve(sn.buf);if(sn.dec)return sn.dec;const c=actx();if(!c)return Promise.reject(new Error('no web audio'));
  sn.dec=(sn.blob?(sn.blob.arrayBuffer?sn.blob.arrayBuffer():new Response(sn.blob).arrayBuffer()):fetch(sn.url).then(r=>{if(!r.ok)throw new Error('missing');return r.arrayBuffer()})).then(ab=>new Promise((res,rej)=>{const p=c.decodeAudioData(ab,res,rej);if(p&&p.then)p.then(res,rej)})).then(b=>{sn.buf=b;return b});
@@ -1157,7 +1210,19 @@ const DIAG={nodb:'Found it: your Firestore database was never created. In Fireba
 async function dbDiagnose(){RF.diag='Checking what’s wrong…';rr();const r=await dbProbe();RF.diagC=r.c;RF.diag=DIAG[r.c]||('Database answered: '+(r.m||r.c));rr();return r}
 function diagHTML(){return RF.diag?`<p class="nores" style="text-align:left;margin:10px 2px">${esc(RF.diag)}</p>`+(RF.diagC=='ok'?'<div class="bk"><button data-bk="fbmode">Switch connection &amp; reload</button></div>':''):''}
 const TO=(p,ms)=>Promise.race([p,new Promise((_,no)=>setTimeout(()=>no({code:'timeout'}),ms||15000))]);
-async function saveProfile(f){const db=fdb(),me=myId(),h=f.handle.toLowerCase().trim(),old=RF.me&&RF.me.handle,t=Date.now();
+/* content filter: names, usernames and descriptions (English + Hebrew), with look-alike letters undone */
+const BADS=['nigger','nigga','faggot','kike','chink','tranny','retard','pedophile','paedophile','molest','porn','hentai','onlyfans','xvideos','pornhub','cunt','whore','slut','penis','vagina','pussy','boob','titties','dildo','blowjob','handjob','cumshot','motherfuck','fuck','fck','shit','bitch','bastard','asshole','dickhead','jizz','nazi','hitler','killyourself','milf','horny','nude','nudes','naked','xxx','שרמוטה','זונה','מניאק','כוסית','קוקסינל','בןזונה','כוסאמק','כוסעמק'];
+const BADW=['sex','sexy','dick','cock','cum','anal','tits','ass','fag','hoe','rape','rapist','pedo','kys','fuk','heil','זין','כוס'];
+function badText(t){if(!t)return false;let x=String(t).toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g,'');
+ x=x.replace(/[0@4]/g,m=>({0:'o','@':'a',4:'a'}[m])).replace(/[1!|]/g,'i').replace(/3/g,'e').replace(/[5$]/g,'s').replace(/7/g,'t').replace(/8/g,'b');
+ const glued=x.replace(/[^a-zא-ת]/g,'').replace(/(.)\1{2,}/g,'$1$1'),g2=glued.replace(/(.)\1+/g,'$1');
+ if(BADS.some(w=>glued.includes(w)||g2.includes(w)))return true;const words=x.split(/[^a-zא-ת]+/).map(w=>w.replace(/(.)\1+/g,'$1'));return words.some(w=>BADW.includes(w)||BADW.includes(w.replace(/s$/,'')))}
+/* picture check: a small on-device nudity classifier (NSFWJS), loaded only when you pick a picture */
+let NSFWP=null;function nsfwModel(){if(NSFWP)return NSFWP;const add=u=>new Promise((ok,no)=>{const e=document.createElement('script');e.src=u;e.async=true;e.onload=ok;e.onerror=no;document.head.appendChild(e)});
+ NSFWP=add('https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js').then(()=>add('https://cdn.jsdelivr.net/npm/nsfwjs@4.2.1/dist/browser/nsfwjs.min.js').catch(()=>add('https://cdn.jsdelivr.net/npm/nsfwjs@2.4.2/dist/nsfwjs.min.js'))).then(()=>window.nsfwjs.load('MobileNetV2').catch(()=>window.nsfwjs.load()));NSFWP.catch(()=>{NSFWP=null});return NSFWP}
+async function badImg(d){try{const m=await Promise.race([nsfwModel(),new Promise((_,no)=>setTimeout(()=>no('slow'),20000))]);const im=new Image();im.src=d;await im.decode();const P=await m.classify(im),g=k=>(P.find(x=>x.className==k)||{}).probability||0;return g('Porn')+g('Hentai')>.4||g('Sexy')>.72}catch(e){return false}}
+async function saveProfile(f){if(badText(f.name))throw 'That display name isn’t allowed. Pick another one.';if(badText(f.handle))throw 'That username isn’t allowed. Pick another one.';if(badText(f.bio))throw 'Your description has a word that isn’t allowed.';
+ if(f.av&&/^data:/.test(f.av)&&await badImg(f.av))throw 'That picture isn’t allowed. Pick another one.';if(f.ban&&/^data:/.test(f.ban)&&await badImg(f.ban))throw 'That banner isn’t allowed. Pick another one.';const db=fdb(),me=myId(),h=f.handle.toLowerCase().trim(),old=RF.me&&RF.me.handle,t=Date.now();
  if(!/^[a-z0-9_]{3,15}$/.test(h))throw 'Username: 3-15 letters, numbers or _';
  if(!f.name.trim())throw 'Pick a display name';
  if(h!=old){const ref=db.collection('usernames').doc(h),d=await TO(ref.get());if(d.exists&&d.data().uid!=me)throw '@'+h+' is taken. Pick another one.';if(!d.exists)await TO(ref.set({uid:me}))}
@@ -1344,8 +1409,8 @@ let slSrc=null,slBgm=null,slBgmT=0;
 function slPreload(a){if(!actx())return;[SLC.rk,SLC.bgm,SLC.star,SLP,SLV(a)].forEach(sn=>{if(sn)decodeSnd(sn).catch(()=>{})})}
 function slPlayBuf(sn,vol,loop,when){const c=actx();if(!c||!sn)return Promise.resolve(null);try{c.resume()}catch(e){}return decodeSnd(sn).then(buf=>{const g=c.createGain();g.gain.value=vol;g.connect(sn.id=='sl-bgm'?(BUS.bg||OUT(c)):/^sl-v/.test(sn.id)?(BUS.vo||OUT(c)):OUT(c));const src=c.createBufferSource();src.buffer=buf;src.loop=!!loop;src.connect(g);src.start(when?c.currentTime+when:0);const o={src,g,c};if(!loop){slAll.add(o);src.onended=()=>slAll.delete(o)}return o}).catch(()=>null)}
 /* music: starts with the scene (or later, after a delay) and keeps playing from I am thou into the rank screen */
-function slBgmStart(delay){if(slBgm||!S.dv.sfx)return;clearTimeout(slBgmT);const tok={pending:1};slBgm=tok;const go=()=>{if(slBgm!==tok)return;slPlayBuf(SLC.bgm,.36,true).then(o=>{if(slBgm===tok&&o){slBgm=o}else if(o){try{o.src.stop()}catch(e){}}})};if(delay)slBgmT=setTimeout(go,delay);else go()}
-function slBgmStop(){clearTimeout(slBgmT);const o=slBgm;slBgm=null;if(!o||o.pending)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+1.2);o.src.stop(t+1.3)}catch(e){}}
+function slBgmStart(delay){musDuck=1;musSync();if(slBgm||!S.dv.sfx)return;clearTimeout(slBgmT);const tok={pending:1};slBgm=tok;const go=()=>{if(slBgm!==tok)return;slPlayBuf(SLC.bgm,.36,true).then(o=>{if(slBgm===tok&&o){slBgm=o}else if(o){try{o.src.stop()}catch(e){}}})};if(delay)slBgmT=setTimeout(go,delay);else go()}
+function slBgmStop(){musDuck=0;setTimeout(musSync,900);clearTimeout(slBgmT);const o=slBgm;slBgm=null;if(!o||o.pending)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+1.2);o.src.stop(t+1.3)}catch(e){}}
 function slSound(k,a){slStop();if(!S.dv.sfx)return;
  slBgmStart(0);   /* music starts with the screen (and carries on from I am thou into the rank screen) */
  clearTimeout(slStarT);if(k=='rk')slStarT=setTimeout(()=>{if(slSrc)slPlayBuf(SLC.star,.9)},3440);   /* the chime as the new star lights up */
@@ -1555,13 +1620,13 @@ function mvLoop(L,cb){mvGet('mvl').then(b=>{if(!b)return;if(!mvU.mvl)mvU.mvl=URL
 function menuClose(now){const M=$('#mns');clearTimeout(mvT);try{const V=M.querySelector('video.pvl');if(V)V.pause()}catch(e){}clearTimeout(M._cl);document.body.classList.remove('lock');if(!M.classList.contains('on')){hSync();return}
  if(now===true||RMO()){M.classList.remove('on','pclose');hSync();return}
  M.classList.add('pclose');hSync();M._cl=setTimeout(()=>{M.classList.remove('on','pclose')},330)}
-function pFit(){const N=$('#pitems');N.style.fontSize='';requestAnimationFrame(()=>{const W=innerWidth-36;let r=1;N.querySelectorAll('.pi').forEach(b=>{const x=b.offsetLeft+b.offsetWidth*(b.classList.contains('sel')?.98:.82)+(b.querySelector('em')?34:0);if(x*Math.cos(.19)>W)r=Math.min(r,W/(x*Math.cos(.19)))});if(r<1){const f=parseFloat(getComputedStyle(N.querySelector('.pi')).fontSize);N.querySelectorAll('.pi').forEach(b=>b.style.fontSize=(f*r).toFixed(1)+'px')}})}
+function pFit(){const N=$('#pitems');N.style.fontSize='';requestAnimationFrame(()=>{const W=innerWidth-36;let r=1;N.querySelectorAll('.pi').forEach(b=>{const x=b.offsetLeft+b.offsetWidth*(b.classList.contains('sel')?.98:.82)+(b.querySelector('em')?34:0);if(x*Math.cos(.26)>W)r=Math.min(r,W/(x*Math.cos(.26)))});if(r<1){const f=parseFloat(getComputedStyle(N.querySelector('.pi')).fontSize);N.querySelectorAll('.pi').forEach(b=>b.style.fontSize=(f*r).toFixed(1)+'px')}})}
 try{document.fonts&&document.fonts.ready.then(()=>{if($('#mns').classList.contains('on')&&mTab=='m')renderMenu()})}catch(e){}
 function pSel(k){const ch=k!=mSel;mSel=k;if(S.dv.cpm!==0&&S.dv.msel!=k){S.dv.msel=k;try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}}document.querySelectorAll('#pitems .pi').forEach(b=>{const on=b.dataset.go==k;b.classList.toggle('sel',on);if(on&&ch){b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop')}});$('#phd').textContent=MD[k][1];$('#phs').textContent='Command'}
 function renderMenu(){if(mTab=='f')mTab='l';{const same=(mTab=='s'||mTab=='t')&&RF.lastTab==mTab;$('#mnb2').classList.toggle('noanim',same);RF.lastTab=mTab}{const M0=$('#mns');M0.classList.toggle('sysm',mTab=='y');M0.classList.toggle('cfgm',mTab=='s');M0.classList.toggle('tutm',mTab=='t')}document.body.classList.toggle('rmo',RMO());if(mTab=='l')try{profRefresh()}catch(e){}setTimeout(hSync,0);if(mTab!='l')RF.slv=null;const M=$('#mns'),sub=mTab!='m';M.classList.toggle('sub',sub);$('#mttl').textContent=sub?MD[mTab][0]:'';
- if(!sub){const pr=RF.me,nf=RF.reqIn.length,na=annUnread(),bd={a:na?'NEW':'',l:nf?String(nf):''},X=[34,86,10,70,44];
+ if(!sub){const pr=RF.me,nf=RF.reqIn.length,na=annUnread(),bd={a:na?'NEW':'',l:nf?String(nf):''},X=[20,74,0,66,40],FZ=[.86,.96,1.08,.92,.98];
   $('#pwal').innerHTML=FB_ON?(FBU?`${avHTML(pr||{photo:FBU.photoURL,name:FBU.displayName||FBU.email},40)}<span><b>${esc((pr&&pr.name)||FBU.displayName||'You')}</b><small>${pr?'@'+esc(pr.handle):'profile not set up'}</small></span>`:(FBW&&ACC.get()?`${avHTML({photo:ACC.get().p,name:ACC.get().n||ACC.get().e},40)}<span><b>${esc(ACC.get().n||'Signing in')}</b><small>signing in\u2026</small></span>`:`${avHTML({name:'?'},40)}<span><b>Not signed in</b><small>tap to sign in</small></span>`)):`<span><b>P3RL</b><small>social stats</small></span>`;
-  $('#pitems').innerHTML=['a','p','l','h','y'].map((k,i)=>{const t=k=='a'?'Announcements':MD[k][0];return `<button class="pi${k==mSel?' sel':''}" data-go="${k}" data-t="${t}" style="--x:${X[i]}px;--i:${i};--tc:${['#8af1ff','#2fcaf3','#a9eef9','#5df1ff','#3bd0f4'][i%5]}" aria-label="${t}"><span class="pw"><i></i></span><span class="pt" aria-hidden="true">${wv(t)}</span>${bd[k]?`<em>${bd[k]}</em>`:''}</button>`}).join('');
+  $('#pitems').innerHTML=['a','p','l','h','y'].map((k,i)=>{const t=k=='a'?'Announcements':MD[k][0];return `<button class="pi${k==mSel?' sel':''}" data-go="${k}" data-t="${t}" style="--x:${X[i]}px;--fz:${FZ[i]};--i:${i};--tc:${['#8af1ff','#2fcaf3','#a9eef9','#5df1ff','#3bd0f4'][i%5]}" aria-label="${t}"><span class="pw"><i></i></span><span class="pt" aria-hidden="true">${wv(t)}</span>${bd[k]?`<em>${bd[k]}</em>`:''}</button>`}).join('');
   $('#phd').textContent=MD[mSel][1];$('#phs').textContent='Command';pFit();return}
  $('#phd').textContent=MD[mTab][1];$('#phs').textContent=MD[mTab][0];const B=$('#mnb2');
  if(mTab=='a'){if(AN.length&&AN[0].t>(S.an||0)){S.an=AN[0].t;save();badge()}B.innerHTML=annHTML();return}
@@ -1595,10 +1660,10 @@ function sysHTML(){const y=RF.ysel||'t',it=[['t','Tutorial'],['s','Config']],cx=
   <g class="syc"><circle cx="${cx}" cy="${cy}" r="${r}" fill="url(#syt0)"/><g clip-path="url(#sycc)"><image href="${mvU.mvl||'img/menu2.jpg'}" x="${cx-r}" y="${cy-r-40}" width="${2*r}" height="${2*r*1.78}" preserveAspectRatio="xMidYMid slice" opacity=".5" style="mix-blend-mode:luminosity"/><rect x="0" y="0" width="400" height="860" fill="#1424d6" opacity=".38" style="mix-blend-mode:multiply"/></g>
    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#08105f" stroke-width="13"/></g>
   <g class="syt"><text><textPath href="#syp" startOffset="1%">SYSTEM</textPath></text></g></svg>
-  <div class="syi">${it.map(([k,n],i)=>`<button data-sys="${k}" class="syb${k==y?' on':''}" data-t="${n}" aria-label="${n}" style="--i:${i};--x:${[0,1.1][i]}em;--tc:${['#e2f9ff','#3fd6ff'][i]}"><span class="syw"><i></i></span><span class="syn">${wv(n)}</span></button>`).join('')}</div></div>`}
+  <div class="syi mpl">${it.map(([k,n],i)=>`<button data-sys="${k}" class="pi${k==y?' sel':''}" data-t="${n}" aria-label="${n}" style="--i:${i};--x:0px;--tc:${['#8ef1ff','#25c3f2','#9fe9f6','#62f0ff','#2cc2ee','#7fe8ff'][i%6]}"><span class="pw"><i></i></span><span class="pt" aria-hidden="true">${wv(n)}</span></button>`).join('')}</div></div>`}
 const CFGS=[
  {k:'sys',n:'Game System Settings',d:'Change the app’s basic settings',rows:[['cpm','tg','Cursor Position Memory','Remember the last menu option you chose'],['swp','tg','Swipe Between Links','Swipe left or right on a Social Link to switch to the next one'],['dconf','tg','Confirm Removals','Ask once more before a History entry is removed'],['tspd','ch','Text Speed','How fast tutorial text appears',['Slow','Normal','Fast','Instant']],['vib','tg','Vibration','Buzz when you log and rank up (Android)']]},
- {k:'snd',n:'Sound Settings',d:'Change all volume settings',rows:[['sfx','tg','Sound','Turn every sound in the app on or off'],['mix','tg','Play With My Music','Keep your own music playing while the app makes sounds (iPhone: sounds follow the silent switch)'],['vol','sl','Master Volume','Volume of everything together'],['bgmv','sl','BGM Volume','Music in the Social Link scenes'],['sev','sl','SE Volume','Menu, button and stat sound effects'],['vov','sl','Voice Volume','The “I am thou” voice']]},
+ {k:'snd',n:'Sound Settings',d:'Change all volume settings',rows:[['mus','tg','Music','Play “Color Your Night” in the background (Off mutes it)'],['musv','sl','Music Volume','Background music volume'],['sfx','tg','Sound','Turn every sound in the app on or off'],['mix','tg','Play With My Music','Keep your own music playing while the app makes sounds (iPhone: sounds follow the silent switch)'],['vol','sl','Master Volume','Volume of everything together'],['bgmv','sl','BGM Volume','Music in the Social Link scenes'],['sev','sl','SE Volume','Menu, button and stat sound effects'],['vov','sl','Voice Volume','The “I am thou” voice']]},
  {k:'dsp',n:'Display Settings',d:'Change sizes and the stat glow',rows:[['hz','sz','Stat Panel Size','The circles on the main screen'],['lz','sz','Activity List Size','Search bar and activity buttons'],['oz','sz','Stats Up Size','The cutscene after an activity'],['pm','ch','Cyan Pulse','The glow on the circle you raised',['Smooth','Game'],['smooth','game']]]},
  {k:'gfx',n:'Animation Settings',d:'Change effects and motion',rows:[['bgv','tg','Menu Background Video','The moving menu background. Turn off to save battery'],['fxs','tg','Sparkle Effects','Sparkles in the Social Link scenes'],['fxw','tg','Card Shimmer','The watery light flowing over Arcana cards'],['rmo','tg','Reduce Motion','Calmer transitions and fewer moving effects']]},
  {k:'acc',n:'Account & Data',d:'Your account, backups and progress',rows:[]}];
@@ -1610,13 +1675,13 @@ function cfRow(r){const [k,ty,n]=r,v=S.dv[k],sel=RF.cfr==k;let c='';
  else if(ty=='ch'){const i=cfVal(r);c=`<div class="cfc"><button data-cyc="${k}" data-d="-1" aria-label="Previous">‹</button><span>${r[4][i]}</span><button data-cyc="${k}" data-d="1" aria-label="Next">›</button></div>`}
  return `<div class="cfr${sel?' sel':''}" data-row="${k}"><button class="cfl" data-cfr="${k}" aria-label="${n}"><span class="wvw">${wv(n)}</span></button>${c}</div>`}
 function cfgHTML(){const c=CFGS.find(x=>x.k==RF.cfc);
- if(!c){const cur=RF.cfk||'sys';return `<div class="cfg"><p class="cfi"><i>Info</i>${esc((CFGS.find(x=>x.k==cur)||CFGS[0]).d)}</p><div class="cfcat">${CFGS.map(x=>`<button data-cfc="${x.k}" class="${x.k==cur?'on':''}" aria-label="${x.n}"><span class="wvw">${wv(x.n)}</span></button>`).join('')}</div><p class="cfv">P3RL version ${APPVER}</p><div class="cfw" aria-hidden="true">CONFIG</div></div>`}
+ if(!c){const cur=RF.cfk||'sys';return `<div class="cfg"><p class="cfi"><i>Info</i>${esc((CFGS.find(x=>x.k==cur)||CFGS[0]).d)}</p><div class="cfcat mpl">${CFGS.map((x,i)=>`<button data-cfc="${x.k}" class="pi${x.k==cur?' sel':''}" data-t="${x.n}" aria-label="${x.n}" style="--i:${i};--x:0px;--tc:${['#8ef1ff','#25c3f2','#9fe9f6','#62f0ff','#2cc2ee','#7fe8ff'][i%6]}"><span class="pw"><i></i></span><span class="pt" aria-hidden="true">${wv(x.n)}</span></button>`).join('')}</div><p class="cfv">P3RL version ${APPVER}</p><div class="cfw" aria-hidden="true">CONFIG</div></div>`}
  const r=c.rows.find(x=>x[0]==RF.cfr);
  let body=c.rows.map(cfRow).join('');
  if(c.k=='dsp')body+=`<div class="bk"><button data-bk="zr">Reset sizes</button><button data-bk="zp">Preview Stats Up</button></div>`;
  if(c.k=='acc')body=accountHTML()+`<div class="hd">Backup</div><div class="bk"><button data-bk="exp">Copy backup</button><button data-bk="imp">Paste backup</button></div><textarea id="bkt" rows="3" placeholder="Copy this text somewhere safe, or paste a backup here and tap Paste backup." style="margin-top:8px;font-size:12px"></textarea><div class="hd">Progress</div><div class="bk"><button class="danger" data-bk="rst">${rstArm?'Tap again to erase everything':'Reset all progress'}</button></div><p style="opacity:.5;font-size:12px;margin:18px 4px 0">P3RL version ${APPVER}</p>`;
  return `<div class="cfg cfg2"><p class="cfi"><i>Info</i>${esc(r?r[3]:c.d)}</p><div class="cfh"><span class="wvw">${wv(c.n)}</span></div><div class="cfrows">${body}</div><div class="cfw" aria-hidden="true">CONFIG</div></div>`}
-function cfApply(k){if(k=='mix')audSess();if(k=='vol')setVol(S.dv.vol);if(k=='bgmv'||k=='sev'||k=='vov')busVol();if(k=='hz')hub();if(k=='lz')applyLZ();if(k=='rmo')document.body.classList.toggle('rmo',RMO());
+function cfApply(k){if(k=='mus'||k=='musv')musSync();if(k=='mix')audSess();if(k=='sfx')musSync();if(k=='vol')setVol(S.dv.vol);if(k=='bgmv'||k=='sev'||k=='vov')busVol();if(k=='hz')hub();if(k=='lz')applyLZ();if(k=='rmo')document.body.classList.toggle('rmo',RMO());
  if(k=='bgv'||k=='rmo'){const V=$('#mns video.pvl');if(V){if(S.dv.bgv===0||RMO())mvLoop(V,()=>V.classList.add('rdy'));else{mvVBad=0;mvShow(true)}}}}
 /* ----- tutorial ----- */
 const TUT=()=>{const th=s=>ST[s].t.slice(1).map((t,i)=>`${ST[s].r[i+1]} at ${t}`).join(', ');return [
@@ -1641,7 +1706,7 @@ const TUT=()=>{const th=s=>ST[s].t.slice(1).map((t,i)=>`${ST[s].r[i+1]} at ${t}`
   {t:'Backups and Sync',pg:['When you are signed in, your progress syncs to your account by itself.','Signed out? Use Config › Account & Data › Copy backup to save your progress as text, and Paste backup to bring it back.']}]}]};
 function tutHTML(){const T=TUT(),ti=Math.max(0,Math.min(T.length-1,RF.tt||0)),tab=T[ti];
  const head=`<div class="tth"><button class="ttar" data-ttn="-1" aria-label="Previous tab"><svg viewBox="0 0 30 34"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4"/></svg></button><div class="tts">${T.map((x,i)=>`<button data-tt="${i}" class="${i==ti?'on':''}">${x.n}</button>`).join('')}</div><button class="ttar" data-ttn="1" aria-label="Next tab"><svg viewBox="0 0 30 34" style="transform:scaleX(-1)"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4"/></svg></button></div>`;
- if(RF.tp==null){const sel=RF.tsel??0;return `<div class="tut">${head}<div class="ttl">${tab.it.map((x,i)=>`<button data-tp="${i}" class="${i==sel?'on':''}"><i></i><span class="wvw">${wv(x.t)}</span></button>`).join('')}</div><div class="ttw" aria-hidden="true">TUTORIAL</div></div>`}
+ if(RF.tp==null){const sel=RF.tsel??0;return `<div class="tut">${head}<div class="ttl mpl">${tab.it.map((x,i)=>`<button data-tp="${i}" class="pi${i==sel?' sel':''}" data-t="${x.t}" aria-label="${x.t}" style="--i:${i};--x:0px;--tc:${['#8ef1ff','#25c3f2','#9fe9f6','#62f0ff','#2cc2ee','#7fe8ff'][i%6]}"><span class="pw"><i></i></span><span class="pt" aria-hidden="true">${wv(x.t)}</span></button>`).join('')}</div><div class="ttw" aria-hidden="true">TUTORIAL</div></div>`}
  const x=tab.it[RF.tp]||tab.it[0],pi=Math.max(0,Math.min(x.pg.length-1,RF.tpg||0));
  const ill=x.ill=='stats'?`<div class="tvi">${S3.map(s=>`<span class="tvs ${s}"><b>${rank(s,S.p[s])+1}</b>${ST[s].n}</span>`).join('')}</div>`:x.ill=='card'?`<div class="tvi">${arcCard(arcOk(RF.me&&RF.me.arc)?RF.me.arc:0,66)}</div>`:'';
  const nw=RF.tvNew;RF.tvNew=0;return `<div class="tut tv">${head}<div class="tvp${nw?' new':''}"><div class="tvt"><small>${tab.n}</small>${x.t}</div>${ill}<p id="tpx" data-full="${esc(x.pg[pi])}"></p><div class="tvn"><button data-tpg="-1" ${pi==0?'disabled':''}>Prev</button><span>${pi+1} / ${x.pg.length}</span><button data-tpg="1">${pi==x.pg.length-1?'Done':'Next'}</button></div></div><div class="ttw" aria-hidden="true">TUTORIAL</div></div>`}
@@ -1649,7 +1714,7 @@ let tutRAF=0;function tutType(){cancelAnimationFrame(tutRAF);const el=$('#tpx');
  if(!cps){el.textContent=full;return}const t0=performance.now();const step=now=>{if(!el.isConnected)return;const n=Math.min(full.length,Math.floor((now-t0)/1000*cps));el.textContent=full.slice(0,n);if(n<full.length)tutRAF=requestAnimationFrame(step)};tutRAF=requestAnimationFrame(step)}
 function tutFinish(){cancelAnimationFrame(tutRAF);const el=$('#tpx');if(el)el.textContent=el.dataset.full.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'")}
 function sysClick(t){
- if(t.dataset.sys){const k=t.dataset.sys;RF.ysel=k;t.closest('.syi').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b==t));setTimeout(()=>{if(mTab!='y')return;mTab=k;RF.cfc=null;RF.cfr=null;RF.tp=null;$('#mnb2').scrollTop=0;renderMenu()},170);return true}
+ if(t.dataset.sys){const k=t.dataset.sys;RF.ysel=k;t.closest('.syi').querySelectorAll('button').forEach(b=>b.classList.toggle('sel',b==t));setTimeout(()=>{if(mTab!='y')return;mTab=k;RF.cfc=null;RF.cfr=null;RF.tp=null;$('#mnb2').scrollTop=0;renderMenu()},170);return true}
  if(t.dataset.cfc){const k=t.dataset.cfc;if(RF.cfk!=k){RF.cfk=k;renderMenu();}RF.cfc=k;RF.cfr=(CFGS.find(x=>x.k==k).rows[0]||[])[0]||null;$('#mnb2').scrollTop=0;renderMenu();return true}
  if(t.dataset.cfr){RF.cfr=t.dataset.cfr;renderMenu();return true}
  if(t.dataset.cset){const k=t.dataset.cset;RF.cfr=k;S.dv[k]=+t.dataset.v;save();cfApply(k);renderMenu();return true}
@@ -1736,7 +1801,7 @@ document.addEventListener('pointerup',e=>{if(e.target.id!=='hot')return;const n=
  if(hotN>=6){hotN=0;if(S.dev){S.dev=0;save();ownerUI();toast('Owner tools off')}else pkOpen()}});
 let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!busy)hub()},150)});
 /* ---- account save: newest copy wins (this phone vs. your Claude account) ---- */
-const cPack=()=>({p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,sl:S.sl||{},slT0:S.slT0||0,hd:(S.hd||[]).slice(-200),bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,bgmv:S.dv.bgmv,sev:S.dv.sev,vov:S.dv.vov,tspd:S.dv.tspd,rmo:S.dv.rmo,bgv:S.dv.bgv,fxs:S.dv.fxs,fxw:S.dv.fxw,cpm:S.dv.cpm,swp:S.dv.swp,dconf:S.dv.dconf,mix:S.dv.mix,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
+const cPack=()=>({p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,sl:S.sl||{},slT0:S.slT0||0,hd:(S.hd||[]).slice(-200),bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,bgmv:S.dv.bgmv,sev:S.dv.sev,vov:S.dv.vov,tspd:S.dv.tspd,rmo:S.dv.rmo,bgv:S.dv.bgv,fxs:S.dv.fxs,fxw:S.dv.fxw,cpm:S.dv.cpm,swp:S.dv.swp,dconf:S.dv.dconf,mix:S.dv.mix,mus:S.dv.mus,musv:S.dv.musv,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
 function cloudPush(now){if(!CREF)return;cDirty=1;clearTimeout(cTm);cTm=setTimeout(async()=>{if(cBusy){cloudPush();return}cBusy=1;cDirty=0;try{await CREF.set(cPack())}catch(e){}cBusy=0;if(cDirty)cloudPush()},now?0:700)}
 async function cloudInit(){try{if(IN_PV||!window.claude||!claude.use)return;const [db,us]=await Promise.all([claude.use('db'),claude.use('user')]);if(!db||!us)return;
  const id=await us.id();if(!id)return;await cloudUse(db.doc('data/users/'+id+'/save'))}catch(e){}}
@@ -1748,7 +1813,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-1229';
+var APPVER='2026.11.22-1317';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
