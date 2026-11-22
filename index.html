@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="apple-touch-icon.png">
 <title>P3RL</title>
 <meta name="theme-color" content="#21242f">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,600;0,700;1,600;1,700;1,800;1,900&family=Barlow+Condensed:ital,wght@1,700;1,800;1,900&family=EB+Garamond:wght@600;700&family=Montserrat:ital,wght@0,600;1,700;1,800;1,900&family=Archivo:wdth,wght@62..125,400..900&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,600;0,700;1,600;1,700;1,800;1,900&family=Barlow+Condensed:ital,wght@1,700;1,800;1,900&family=EB+Garamond:wght@600;700&family=Montserrat:ital,wght@0,600;1,700;1,800;1,900&family=Archivo:wdth,wght@62..125,400..900&family=Fira+Sans+Condensed:ital,wght@0,500;0,600;1,500;1,600&display=swap">
 <style>
 :root{--ink:#14152a;background:#14152a;--pn:#21242f;--cy:#12f7fd;--ye:#f6d508;--c:#66bdf9;--g:#568ff7;--a:#4a63ff;--sp:1;color-scheme:dark;box-sizing:border-box}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -1132,6 +1132,112 @@ body:has(#hgs.on) #hgb{opacity:0}
 .cb img{-webkit-touch-callout:none;-webkit-user-drag:none}
 .cb img.gimg,.cb.stk img,.cb>img,.cb p .emj:not(.cus){pointer-events:none}
 .cb{-webkit-tap-highlight-color:transparent}
+
+/* ===== Update 24 ===== */
+/* poster credit */
+.anp{cursor:pointer;transition:transform .12s,background .12s,border-color .12s}
+.anp:hover,.anp:active{transform:scale(1.03) skewX(-4deg);background:#11163a!important;border-color:#5fe8ff!important}
+/* flowing menu text: solid pale cyan with slow soft light streaks moving through it (no per-letter wobble) */
+#pitems .pi:not(.sel) .ww,.mpl .pi:not(.sel):not(.on) .ww{--tcw:var(--tc,#8ff3ff);background-color:transparent;background-image:repeating-linear-gradient(115deg,rgba(255,255,255,0) 0,rgba(255,255,255,0) 2.6em,rgba(255,255,255,.34) 3.3em,rgba(255,255,255,0) 4em,rgba(255,255,255,0) 6em),repeating-linear-gradient(70deg,rgba(255,255,255,0) 0,rgba(255,255,255,0) 5em,rgba(255,255,255,.2) 6.2em,rgba(255,255,255,0) 7.4em,rgba(255,255,255,0) 9em),linear-gradient(var(--tcw),var(--tcw));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;animation:wwflow 12s linear infinite}
+#pitems .pi:not(.sel) .ww .wl,.mpl .pi:not(.sel):not(.on) .ww .wl{animation:none!important;background:none!important;-webkit-text-fill-color:transparent!important;color:transparent!important;translate:none;rotate:none}
+@keyframes wwflow{from{background-position:0 0,0 0,0 0}to{background-position:13.246em 0,9.574em 0,0 0}}
+body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
+/* Social Link: title above, white connector, taller black box, big outlined rank */
+.slpw{position:relative;margin-top:14px}
+.slcn{position:absolute;left:34px;top:-18px;width:3px;height:18px;background:#fff;z-index:2}
+.slp{border-top-width:46px!important;padding:8px 18px 14px!important;overflow:visible}
+.slps{margin:-40px 0 18px!important;height:30px!important;font:800 italic 22px/30px 'Barlow',sans-serif!important;letter-spacing:.01em;text-align:center!important;padding:0 56px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slpm{margin-top:20px!important;padding-right:110px}
+.slpm b{font:600 40px/1.05 'EB Garamond',Georgia,serif!important;letter-spacing:.01em;font-style:normal!important}
+.sltg{top:-18px!important}
+.slrk{position:absolute;right:96px;bottom:6px}
+.slrk small{font:900 italic 15px 'Montserrat','Barlow',sans-serif!important;letter-spacing:.02em}
+.slbig{position:absolute;right:4px;bottom:-30px;z-index:3;font:900 italic 128px/1 'Montserrat','Arial Black',sans-serif;letter-spacing:-.06em;color:#05060c;-webkit-text-stroke:7px #fff;paint-order:stroke fill;text-shadow:4px 5px 0 rgba(5,6,12,.35);pointer-events:none;animation:slbig .34s .08s cubic-bezier(.2,.8,.3,1.25) both}
+.slbig.mx{font-size:76px;bottom:-18px;right:6px}
+@keyframes slbig{from{opacity:0;transform:scale(1.5) translateY(-10px)}}
+.slst{display:flex;gap:3px;margin-top:8px!important}
+.slst span{width:15px;height:15px;display:block}
+.slst svg{width:100%;height:100%;fill:none;stroke:#05060c;stroke-width:1.6;stroke-linejoin:round}
+.slst span.on svg{fill:#05060c}
+/* arrows sit on the ends of the black bar and nudge outward */
+.slnav{position:absolute!important;left:0;right:0;top:12px;margin:0!important;padding:0 2px!important;z-index:4;pointer-events:none}
+.slnav button{pointer-events:auto}
+.slnav .slar{width:26px!important;height:32px!important;filter:drop-shadow(1px 2px 0 rgba(0,0,0,.6))}
+.slnav .slq .slar{animation:slidl 1.1s ease-in-out infinite;--d:-3px}
+.slnav .sle .slar{animation:slidr 1.1s ease-in-out infinite}
+@keyframes slidl{50%{translate:-3px 0}}
+@keyframes slidr{50%{translate:3px 0}}
+.slnav .kk .slar{animation:slkick .26s cubic-bezier(.2,.8,.3,1)!important}
+.sld{padding-top:2px}
+/* quests: P3R Quest screen */
+.qx{position:relative;padding:0 0 100px;font-family:'Fira Sans Condensed','Barlow',sans-serif}
+.qxbg{position:absolute;left:-16px;right:-16px;top:40px;bottom:0;background:rgba(24,20,120,.86);clip-path:polygon(0 0,100% 0,100% 100%,0 100%);z-index:0;pointer-events:none}
+.qx>*{position:relative;z-index:1}
+.qxh{margin:-6px 0 -10px -6px;font:900 italic 92px/.82 'Montserrat','Arial Black',sans-serif;letter-spacing:-.06em;color:rgba(210,214,226,.78);height:58px;overflow:hidden;pointer-events:none}
+.qxs{display:flex;align-items:center;justify-content:space-between;margin:14px 0 8px}
+.qxf{display:flex;align-items:center;gap:6px;background:#05060c;padding:4px 12px 4px 8px;transform:skewX(-12deg);color:#fff}
+.qxf>*{transform:skewX(12deg)}.qxf svg{width:18px;height:18px;fill:#ff9a2e}.qxf svg .fi{fill:#ffe066}
+.qxf b{font:900 italic 20px/1 'Montserrat',sans-serif}.qxf small{font:800 italic 10px 'Montserrat',sans-serif;color:#5fe8ff}
+.qxw{color:#9fb0e8;font:500 italic 14px 'Fira Sans Condensed','Barlow',sans-serif}.qxw b{color:#7ff0ff}
+.qxt{display:grid;grid-template-columns:32px 1fr 44px 94px;gap:6px;padding:0 6px 4px;color:#8f9bd6;font:500 italic 14px 'Fira Sans Condensed','Barlow',sans-serif}
+.qxt span:nth-child(3),.qxt span:nth-child(4){text-align:center}
+.qxl{display:flex;flex-direction:column;gap:2px}
+.qxr{display:grid!important;grid-template-columns:32px 1fr 44px 94px;gap:6px;align-items:center;width:100%;min-height:0!important;padding:5px 6px!important;background:none!important;border:0!important;text-align:left;color:#7ff0ff!important;position:relative;-webkit-tap-highlight-color:transparent}
+.qxr em{font:400 italic 24px/1 'EB Garamond',Georgia,serif;color:#7ff0ff;letter-spacing:-.02em}
+.qxr b{font:600 18px/1.15 'Fira Sans Condensed','Barlow',sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qxr i{font:700 17px 'Fira Sans Condensed','Barlow',sans-serif;font-style:normal;text-align:center}
+.qxr.cl{color:#8f9bd6!important}.qxr.cl em{color:#8f9bd6}
+.qxp{display:inline-flex;align-items:center;justify-content:center;gap:2px;height:24px;border-radius:3px;font:600 14px/1 'Fira Sans Condensed','Barlow',sans-serif;white-space:nowrap}
+.qxp svg{width:12px;height:12px}
+.qxp.ip{background:#7ff0ff;color:#141070}
+.qxp.rd{background:#ff2f6e;color:#fff;animation:qxpl 1s ease-in-out infinite alternate}
+.qxp.dn{border:1.5px solid #7ff0ff;color:#7ff0ff}
+.qxp.st{animation:qxst .4s cubic-bezier(.2,.8,.3,1.4)}
+@keyframes qxpl{to{background:#ff6b9a}}
+@keyframes qxst{from{transform:scale(1.6);opacity:0}}
+.qxr.on{color:#05060c!important;background:#fff!important;box-shadow:0 -4px 0 #ff2f6e,inset 0 0 0 #000}
+.qxr.on em{color:#05060c}
+.qxr.on .qxp.ip{background:#05060c;color:#fff}
+.qxr.on .qxp.dn{border-color:#05060c;color:#05060c}
+.qxr.on.fl{animation:qxfl .28s ease-out}
+@keyframes qxfl{from{background:#ffb3cd}}
+.qxk{margin:18px 4px 0;min-height:120px}
+.qxk h4{margin:0 0 6px;font:500 italic 28px/1 'Fira Sans Condensed','Barlow',sans-serif;color:#7ff0ff}
+.qxk ul{margin:0 0 10px;padding-left:22px;color:#fff;font:500 17px/1.35 'Fira Sans Condensed','Barlow',sans-serif}
+.qxb{height:6px;background:rgba(127,240,255,.18);overflow:hidden;transform:skewX(-20deg);margin:0 0 10px}
+.qxb u{display:block;height:100%;width:var(--w);background:#7ff0ff;text-decoration:none;animation:qxbf .6s .1s cubic-bezier(.2,.8,.3,1) both}
+@keyframes qxbf{from{width:0}}
+.qxa{display:flex;align-items:center;gap:10px}
+.qxa>span:first-child{flex:1;color:#9fb0e8;font:500 15px 'Fira Sans Condensed','Barlow',sans-serif}.qxa b{color:#ffd84a;font-weight:600}
+.qxa button{min-height:0!important;padding:8px 20px!important;background:#ff2f6e!important;color:#fff!important;border:0!important;font:600 italic 17px 'Fira Sans Condensed','Barlow',sans-serif!important;transform:skewX(-10deg)}
+.qxc{color:#8f9bd6;font:600 italic 14px 'Fira Sans Condensed','Barlow',sans-serif;letter-spacing:.04em}
+.qxk.sw>*{animation:qxkin .22s cubic-bezier(.2,.8,.3,1) both}
+@keyframes qxkin{from{opacity:0;transform:translateX(-10px)}}
+.qxg{margin:22px 0 0 auto;width:max-content;max-width:100%;text-align:right;color:#fff}
+.qxg b{display:block;font:600 italic 17px 'Fira Sans Condensed','Barlow',sans-serif}
+.qxg i{display:block;height:1.5px;background:#fff;margin:2px 0 1px}
+.qxg small{display:block;text-align:left;font:600 9px 'Barlow',sans-serif;letter-spacing:.04em}
+/* entrance: navy wipe, header drops, rows stagger in */
+.qx.qin .qxbg{animation:qxwp .32s cubic-bezier(.3,.7,.2,1) both}
+.qx.qin .qxh{animation:qxhd .36s .1s cubic-bezier(.2,.8,.3,1) both}
+.qx.qin .qxs,.qx.qin .qxt{animation:qxfd .25s .18s ease-out both}
+.qx.qin .qxr{animation:qxrw .24s calc(.2s + var(--i)*.035s) cubic-bezier(.2,.8,.3,1) both}
+.qx.qin .qxr.on{animation:qxrw .24s .2s cubic-bezier(.2,.8,.3,1) both,qxfl .3s .44s ease-out}
+.qx.qin .qxk,.qx.qin .qxg{animation:qxfd .3s .38s ease-out both}
+@keyframes qxwp{from{clip-path:polygon(0 0,0 0,0 100%,0 100%)}}
+@keyframes qxhd{from{transform:translateY(-40px);opacity:0}}
+@keyframes qxfd{from{opacity:0}}
+@keyframes qxrw{from{opacity:0;transform:translateX(-14px)}}
+
+#mns.qtab #mttl{visibility:hidden}
+#mns.qtab .qxh{margin-top:-26px;margin-bottom:6px;height:66px}
+#mns.qtab .qxbg{top:-10px}
+
+.slpw{margin-bottom:30px}
+.slp .sltg{top:-30px!important;transform:rotate(-5deg) skewX(-14deg)!important}
+.slpm{margin-top:34px!important}
+.slrk{right:92px!important;bottom:10px!important}
+.slbig{right:12px;bottom:-26px}
 </style>
 </head>
 <body>
@@ -1166,7 +1272,7 @@ body:has(#hgs.on) #hgb{opacity:0}
 <script>
 /* boot: preload pictures, sounds and fonts behind a splash, like a native app */
 (()=>{const B=document.getElementById('boot');if(!B)return;const t0=performance.now();let done=0,shut=0;
- const L=['img/menu2.jpg','snd/rank1.mp3','snd/rankbetter.mp3','snd/rankbig.mp3','snd/ui/switch.mp3','snd/ui/back1.mp3','snd/ui/home.mp3','snd/sl/press.mp3'],N=L.length+1,bar=document.getElementById('btb'),pt=document.getElementById('btp');
+ const L=['img/menu2.jpg','snd/rank1.mp3','snd/rankbetter.mp3','snd/rankbig.mp3','snd/ui/switch.mp3','snd/ui/back1.mp3','snd/ui/home.mp3','snd/sl/press.mp3','snd/ui/menuopen.mp3','snd/ui/menuclose.mp3'],N=L.length+1,bar=document.getElementById('btb'),pt=document.getElementById('btp');
  const tick=()=>{done++;const p=Math.min(100,Math.round(done/N*100));if(bar)bar.style.width=p+'%';if(pt)pt.textContent=p<100?'Loading… '+p+'%':'Ready'};
  const close=()=>{if(shut)return;shut=1;setTimeout(()=>{B.classList.add('out');setTimeout(()=>B.remove(),650)},Math.max(0,1100-(performance.now()-t0)))};
  const loc=/^(file:|about:)/.test(location.protocol);
@@ -1241,7 +1347,7 @@ function svg(p,hub,bt,fin,vb){
  return h+'</svg>'}
 function hub(){setTimeout(()=>{try{stkHud()}catch(e){}},0);const el=$('#hub'),W=el.clientWidth||innerWidth,H=el.clientHeight||Math.round(innerHeight*.56);
  el.innerHTML=svg(S.p,1,0,0,zoomVB(fitVB(W,H),S.dv.hz))+'<div class="hot" id="hot"></div><button class="mnb'+(hasNew()?' new':'')+'" id="mnb" aria-label="Menu"><span>☰</span></button>'+(S.prev?'<button class="un" id="un">Undo last</button>':'');
- $('#mnb').onclick=()=>{uiSnd('ok');menu('m')};
+ $('#mnb').onclick=()=>{uiSnd('mo');menu('m')};
  const u=$('#un');if(u)u.onclick=()=>{S.p=S.prev;S.prev=null;if(S.h.length)S.h.pop();save();hub()}}
 function parse(x){const [t,g]=x.split('|'),a=[];g.replace(/([cga])(\d)/g,(m,s,n)=>a.push([s,+n]));return{t,a}}
 function btn(id,sc,cu){R[id]=sc;const q=(sc.t+' '+sc.a.map(([s,n])=>'+'+n+' '+ST[s].n).join(' ')).toLowerCase();return `<button class="sc" data-id="${id}" data-q="${esc(q)}" data-s="${sc.a.map(x=>x[0]).join('')}" data-v="${sc.a.map(x=>x[1]).join('')}" data-u="${cu?1:''}" style="--k:var(--${sc.a[0][0]})"><span>${esc(sc.t)}${cu?'<i class="yt">YOURS</i>':''}</span><span class="ch">${sc.a.map(([s,n])=>`<b class="${s}">+${n} ${ST[s].n}</b>`).join('')}${cu?'<i class="x">✕</i>':''}</span></button>`}
@@ -1312,10 +1418,10 @@ function hit(k){if(!S.dv.sfx||RM||!BS[k])return;const sn=BS[k],c=actx();
  if(c&&sn.buf&&c.state==='running'){fadePrev();const src=c.createBufferSource(),g=c.createGain();src.buffer=sn.buf;src.connect(g);g.connect(OUT(c));src.start(0);const me={src,g,aEnd:c.currentTime+(sn.aud||sn.buf.duration)};lastHit=me;src.onended=()=>{if(lastHit===me)lastHit=null}}
  else{try{fadePrev();const au=new Audio(sn.url);au.volume=(S.dv.vol??80)/100;const p=au.play();if(p&&p.catch)p.catch(()=>{});const me={au};lastHit=me;au.onended=()=>{if(lastHit===me)lastHit=null}}catch(e){}}}
 /* menu sounds: confirm (choose an option), go back one step, go all the way back to the stats screen */
-const UIS={sw:{id:'ui-sw',url:'snd/ui/switch.mp3'},ok:{id:'ui-ok',url:'snd/sl/press.mp3'},b1:{id:'ui-b1',url:'snd/ui/back1.mp3'},home:{id:'ui-home',url:'snd/ui/home.mp3'},stk:{id:'ui-stk',url:'snd/ui/streak.mp3'}};
+const UIS={sw:{id:'ui-sw',url:'snd/ui/switch.mp3'},ok:{id:'ui-ok',url:'snd/sl/press.mp3'},b1:{id:'ui-b1',url:'snd/ui/back1.mp3'},home:{id:'ui-home',url:'snd/ui/home.mp3'},stk:{id:'ui-stk',url:'snd/ui/streak.mp3'},mo:{id:'ui-mo',url:'snd/ui/menuopen.mp3'},mc:{id:'ui-mc',url:'snd/ui/menuclose.mp3'}};
 function uiSnd(k){try{if(!S.dv.sfx)return;const sn=UIS[k],c=actx();if(!sn)return;
  if(!c){const au=new Audio(sn.url);au.volume=(S.dv.vol??80)/100;au.play().catch(()=>{});return}
- try{c.resume()}catch(e){}const go=b=>{const s2=c.createBufferSource();s2.buffer=b;s2.connect(OUT(c));s2.start()};if(sn.buf)go(sn.buf);else decodeSnd(sn).then(go).catch(()=>{})}catch(e){}}
+ try{c.resume()}catch(e){}const go=b=>{if(k=='mo'||k=='mc'){try{uiSnd._m&&uiSnd._m.stop()}catch(z){}}const s2=c.createBufferSource();s2.buffer=b;s2.connect(OUT(c));s2.start();if(k=='mo'||k=='mc')uiSnd._m=s2};if(sn.buf)go(sn.buf);else decodeSnd(sn).then(go).catch(()=>{})}catch(e){}}
 document.addEventListener('pointerdown',()=>{try{if(actx())Object.values(UIS).forEach(sn=>decodeSnd(sn).catch(()=>{}))}catch(e){}},{once:true,capture:true});
 function preloadSounds(){try{if(!window.fetch)return;Object.values(BS).forEach(sn=>decodeSnd(sn).catch(()=>{}))}catch(e){}}
 try{if(navigator.audioSession)navigator.audioSession.type='playback'}catch(e){}   /* iPhone: play even with the silent switch on */
@@ -1701,8 +1807,8 @@ function pf2HTML(){const pr=RF.me,uid=myId(),bn=banBG(banOf(uid,pr)),a=arcOk(pr.
  <p class="pfnote">Friends see your photo, name, @username, description, Arcana and ranks.</p></div>`}
 function slDetail(L,i){const x=L[i],pr=x.pr,nm=x.a<99?ARCN[x.a]:'Unknown',need=x.r>=10?0:SLT[x.r]-x.n;
  const txt=x.r>=10?`Your bond with ${pr.name||'your friend'} is at its strongest. Every moment together still counts.`:(x.n?`You’ve hung out ${x.n} time${x.n==1?'':'s'}. ${need} more hangout${need==1?'':'s'} to reach Rank ${x.r+1}.`:`A new bond. Hang out together (FRIEND tab on the left edge) to grow this Social Link.`);
- const kk=RF.slk;RF.slk=0;return `<div class="sld in${RF.sldir<0?' nx':''}${kk?' sw':''}"><div class="slnav"><button data-sln="${(i-1+L.length)%L.length}" data-dir="-1" aria-label="Previous" class="slq${RF.slk<0?' kk':''}"><svg class="slar" viewBox="0 0 30 34" aria-hidden="true"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4" stroke-linejoin="miter"/></svg></button><button data-sln="${(i+1)%L.length}" data-dir="1" aria-label="Next" class="sle${RF.slk>0?' kk':''}"><svg class="slar slarr" viewBox="0 0 30 34" aria-hidden="true"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4" stroke-linejoin="miter"/></svg></button></div>
- <div class="slp"><div class="slps">${esc(pr.name||'@'+(pr.handle||''))}</div><div class="slpm"><span class="sltg">ARCANA</span><b>${esc(nm)}</b><span class="slrk"><small>RANK</small><em>${x.r>=10?'MAX':x.r}</em></span></div><div class="slst">${'★'.repeat(x.r)}<i>${'★'.repeat(10-x.r)}</i></div></div>
+ const kk=RF.slk;RF.slk=0;return `<div class="sld in${RF.sldir<0?' nx':''}${kk?' sw':''}"><div class="slnav"><button data-sln="${(i-1+L.length)%L.length}" data-dir="-1" aria-label="Previous" class="slq${RF.slk<0?' kk':''}"><svg class="slar" viewBox="0 0 30 36" aria-hidden="true"><path d="M21 2 L4 18 L21 34 L27 28 L16 18 L27 8 Z" fill="#e5001b" stroke="#05060c" stroke-width="2" stroke-linejoin="miter"/><path d="M21 7 L9 18" stroke="#ff6b7d" stroke-width="2" fill="none"/></svg></button><button data-sln="${(i+1)%L.length}" data-dir="1" aria-label="Next" class="sle${RF.slk>0?' kk':''}"><svg class="slar slarr" viewBox="0 0 30 36" aria-hidden="true"><path d="M21 2 L4 18 L21 34 L27 28 L16 18 L27 8 Z" fill="#e5001b" stroke="#05060c" stroke-width="2" stroke-linejoin="miter"/><path d="M21 7 L9 18" stroke="#ff6b7d" stroke-width="2" fill="none"/></svg></button></div>
+ <div class="slpw"><i class="slcn"></i><div class="slp"><div class="slps">${esc(pr.name||'@'+(pr.handle||''))}</div><div class="slpm"><span class="sltg">ARCANA</span><b>${esc(nm)}</b><span class="slrk"><small>RANK</small></span></div><div class="slst">${Array.from({length:10},(_,k)=>`<span class="${k<x.r?'on':''}"><svg viewBox="0 0 20 20"><path d="M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6l-5.2 2.9 1.2-5.8-4.4-4 5.9-.7z"/></svg></span>`).join('')}</div></div><em class="slbig${x.r>=10?' mx':''}">${x.r>=10?'MAX':x.r}</em></div>
  <p class="sltx">${esc(txt)}</p>
  <div class="slvis"><div class="slcw">${arcCard(x.a<99?x.a:22,118,'slcard')}</div><div class="slav">${avHTML(pr,96)}</div></div>
  <div class="slfp"><b>${esc(pr.name||'')}</b><p>${esc(pr.bio||'A friend of yours on P3RL.')}</p></div>
@@ -1755,6 +1861,7 @@ function viewFriend(uid,list){if(!uid)return;RF.fol=RF.fol||{};RF.ifol=RF.ifol||
 $('#pfs').onclick=e=>{const t=e.target.closest('button');if(e.target.id=='pfs'||(t&&t.dataset.pclose!==undefined)){uiSnd('b1');RF.unf=null;RF.pv=null;RF.pvl=null;return $('#pfs').classList.remove('on')}if(!t)return;uiSnd('ok');
  if(t.dataset.fhang){$('#pfs').classList.remove('on');return hgOpen(t.dataset.fhang)}
  if(t.dataset.fol){return folToggle(t.dataset.fol)}
+ if(t.dataset.anh){return annGo(t.dataset.anh)}
  if(t.dataset.pfl){return viewFriend(t.dataset.u,t.dataset.pfl)}
  if(t.dataset.pfb){return viewFriend(t.dataset.pfb)}
  if(t.dataset.pfv){return viewFriend(t.dataset.pfv)}
@@ -1955,7 +2062,8 @@ let ARCU='';function arcUrl(){if(!ARCU){try{const el=document.getElementById('ar
 const arcOk=a=>Number.isInteger(a)&&a>=0&&a<=21;
 /* card picture: index 0-21 = arcana, 22 = card back */
 const arcCard=(i,w,cls)=>`<span class="arc ${cls||''}" style="width:${w}px;height:${Math.round(w*230/160)}px;background-image:url(${arcUrl()});background-position:${(i/22*100).toFixed(4)}% 0"></span>`;
-const ANB=[{id:'b26',t:new Date(2026,10,22,21,30).getTime(),title:'Fix: delete GIFs, stickers and emojis',body:'• You can now delete any message you sent: GIFs, stickers, pictures and emoji-only messages too. Tap it, then Delete.\n• Tapping a message with a custom emoji opens the full menu (react, reply, delete) plus Add :name: to save the emoji.'},
+const ANB=[{id:'b27',t:new Date(2026,10,22,23,0).getTime(),title:'NEW: Quest screen, Social Link look, menu sounds',body:'• Quests have a new look, like the Quest screen in the game: tap a quest to see its task and claim your reward.\n• Social Link pages are redone: taller Arcana box, a big outlined rank number, new arrows and stars.\n• The menu has its own sounds when it opens and closes.\n• Menu text has a smoother, calmer water shine.\n• "Posted by" on announcements always opens the poster’s profile.'},
+{id:'b26',t:new Date(2026,10,22,21,30).getTime(),title:'Fix: delete GIFs, stickers and emojis',body:'• You can now delete any message you sent: GIFs, stickers, pictures and emoji-only messages too. Tap it, then Delete.\n• Tapping a message with a custom emoji opens the full menu (react, reply, delete) plus Add :name: to save the emoji.'},
 {id:'b25',t:new Date(2026,10,22,21,0).getTime(),title:'NEW: Delete messages + fixes',body:'• Delete your own messages: tap a message → Delete → tap again to confirm.\n• Announcements now show who posted them. Tap the name to open their profile.\n\nFixes:\n• The FRIEND tab now opens from the bottom like the NEW tab.\n• Streak numbers no longer overlap, and big streaks like 100 fit.\n• Custom emojis work even when your keyboard adds a capital letter (:Omri: shows the emoji).'},
 {id:'b24',t:new Date(2026,10,22,20,0).getTime(),title:'NEW: Full profiles, followers and shared emojis',body:'• Tap anyone to see their full profile: banner, photo, description, Arcana, Social Stats and friends.\n• Follow and unfollow people, and see Followers and Following counts and lists.\n• In a chat, tap the name at the top to open their profile.\n• Custom emojis are now shared. Make :yourname: and everyone sees it in messages and descriptions. Find them under ★ → Everyone’s.\n• The streak has its own sound and a cleaner animation.\n\nFixes:\n• The GIF menu always closes now (✕, the GIF button, tapping the chat, or B Back).\n• B Back closes an open panel first instead of leaving the chat.\n• The NEW tab no longer pops up the keyboard by itself, and opens from the tab.\n• Send is dark blue, the chat name bar no longer covers MESSAGES, and the menu is back to its old look.\n• Dark boxes behind the menu words on iPhone are gone.'},
 {id:'b23',t:new Date(2026,10,22,19,0).getTime(),title:'NEW: Streaks, side tabs and sharper GIFs',body:'• Daily streak: every activity counts. Your first one each day adds +1 and a new streak scene plays.\n• Your streak now sits in the top-left of the stats screen. A grey flame means you haven’t logged anything today yet.\n• + New and + Friend are now tabs on the edges of the screen: NEW on the right, FRIEND on the left. Tap one and its drawer slides out.\n• GIFs are sharper and show square in chats.\n• The Tutorial has new pages for streaks, messages and quests.'},
@@ -1970,7 +2078,8 @@ function annPub(a){const h=a.byh||(a.by?null:PUBH);let uid=a.by||(h&&HUID[h]);
  if(!uid&&h&&FB_ON&&FBU&&HUID[h]===undefined){HUID[h]=null;fdb().collection('usernames').doc(h).get().then(d=>{HUID[h]=d.exists?d.data().uid:'';if(HUID[h]){getProf(HUID[h])}rr()}).catch(()=>{HUID[h]=''})}
  if(uid&&!RF.prof[uid]&&uid!=myId())getProf(uid);const pr=uid==myId()?RF.me:(uid&&RF.prof[uid]);
  if(uid&&pr&&pr.name&&pr.name!='…')return `<button class="anp" data-vf="${uid}">${avHTML(pr,30)}<span><small>Posted by</small><b>${esc(pr.name)}</b> @${esc(pr.handle||h||'')}</span></button>`;
- return h?`<div class="anp"><span><small>Posted by</small><b>@${esc(h)}</b></span></div>`:''}
+ return h?`<button class="anp" data-anh="${esc(h)}"><span><small>Posted by</small><b>@${esc(h)}</b></span></button>`:''}
+async function annGo(h){if(!FBU){toast('Sign in to see profiles');return}let uid=HUID[h];if(!uid){try{const d=await fdb().collection('usernames').doc(h).get();uid=HUID[h]=d.exists?d.data().uid:''}catch(e){}}if(!uid){toast('@'+h+' not found');return}uiSnd('ok');viewFriend(uid)}
 function annHTML(){if(!FB_ON)return ANB.map(a=>`<div class="ann"><small>${dayLabel(a.t)}</small><b>${esc(a.title)}</b><p>${esc(a.body)}</p>${annPub(a)}</div>`).join('')+'<p class="nores">More announcements show in the P3RL app at p3rl-app.github.io.</p>';
  let o='';if(S.dev){o+=FBU?`<div class="hd">Post an announcement</div><input id="ant" maxlength="60" placeholder="Title"><textarea id="anb" rows="4" maxlength="1000" placeholder="What’s new?" style="margin-top:8px"></textarea><div class="bk"><button data-anp="" style="background:var(--cy);color:#000">Post</button></div><small style="opacity:.55;font-style:normal">Owner only. Posting works once your email is in the Firestore rules.</small><div class="hd">Posted</div>`:'<p class="nores">Sign in to post announcements.</p>'}
  o+=AN.length?AN.map(a=>`<div class="ann">${S.dev&&FBU&&a.id[0]!='b'?`<button class="del" data-adel="${a.id}">${RF.adel==a.id?'Delete?':'✕'}</button>`:''}<small>${dayLabel(a.t)} · ${fmtT(a.t)}</small>${a.title?`<b>${esc(a.title)}</b>`:''}<p>${esc(a.body||'')}</p>${annPub(a)}</div>`).join(''):'<p class="nores">No announcements yet.</p>';return o}
@@ -1982,7 +2091,7 @@ const fmtT=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'
 function dayLabel(t){const d=new Date(t),n=new Date(),y=new Date(Date.now()-864e5);if(d.toDateString()==n.toDateString())return 'Today';if(d.toDateString()==y.toDateString())return 'Yesterday';return d.toLocaleDateString([],{weekday:'short',day:'numeric',month:'short'})}
 const MD={a:['Announcements','Read the latest news'],p:['Profile','View and edit your profile'],l:['Social Link','Whose S. Link do you want to view?'],f:['Social Link','Whose S. Link do you want to view?'],h:['History','See everything you logged'],s:['Config','Which do you want to change?'],x:['Messages','Who do you want to talk to?'],q:['Quests','This week’s goals'],y:['System','View settings and tutorials'],t:['Tutorial','Which tutorial do you want to view?']};let mSel=(S.dv.cpm!==0&&S.dv.msel&&'aplxqhy'.includes(S.dv.msel))?S.dv.msel:'a';
 const RMO=()=>S.dv.rmo==1||matchMedia('(prefers-reduced-motion: reduce)').matches;
-function menu(t){if(RF.chat&&t!='x')chClose();mTab=t||'m';if(mTab=='m'&&S.dv.cpm===0)mSel='a';RF.cfc=null;RF.cfr=null;RF.tp=null;if(mTab=='l'||mTab=='f')try{profRefresh(1)}catch(e){}try{RF.slv=null;RF.sldel=null}catch(e){}$('#mnb2').scrollTop=0;delArm=null;rstArm=0;RF.edit=0;renderMenu();const m=$('#mns');const an=RMO()?'fade':(mvOK||!mvBad)?'vid':menuAnim(),oc={splash:'op',slide:'op2',fade:'op3',vid:'op4'}[an];clearTimeout(m._cl);m.classList.remove('on','op','op2','op3','op4','pclose');void m.offsetWidth;m.classList.add('on');mvShow(mTab=='m');if(oc&&mTab=='m')m.classList.add(oc);clearTimeout(m._op);m._op=setTimeout(()=>m.classList.remove('op','op2','op3','op4'),1000);document.body.classList.add('lock')}
+function menu(t){RF.qin=null;if(RF.chat&&t!='x')chClose();mTab=t||'m';if(mTab=='m'&&S.dv.cpm===0)mSel='a';RF.cfc=null;RF.cfr=null;RF.tp=null;if(mTab=='l'||mTab=='f')try{profRefresh(1)}catch(e){}try{RF.slv=null;RF.sldel=null}catch(e){}$('#mnb2').scrollTop=0;delArm=null;rstArm=0;RF.edit=0;renderMenu();const m=$('#mns');const an=RMO()?'fade':(mvOK||!mvBad)?'vid':menuAnim(),oc={splash:'op',slide:'op2',fade:'op3',vid:'op4'}[an];clearTimeout(m._cl);m.classList.remove('on','op','op2','op3','op4','pclose');void m.offsetWidth;m.classList.add('on');mvShow(mTab=='m');if(oc&&mTab=='m')m.classList.add(oc);clearTimeout(m._op);m._op=setTimeout(()=>m.classList.remove('op','op2','op3','op4'),1000);document.body.classList.add('lock')}
 /* menu opening animation: the owner picks it; the pick is shared with everyone through config/app */
 var CFG={};const MANIMS=[['splash','P3R splash'],['slide','Slide'],['fade','Fade'],['none','None']];
 function menuAnim(){const v=S.dv.man||'splash';return MANIMS.some(x=>x[0]==v)?v:'splash'}
@@ -2028,7 +2137,7 @@ function menuClose(now){const M=$('#mns');clearTimeout(mvT);try{const V=M.queryS
 function pFit(){const N=$('#pitems');N.style.fontSize='';requestAnimationFrame(()=>{const W=innerWidth-36;let r=1;N.querySelectorAll('.pi').forEach(b=>{const x=b.offsetLeft+b.offsetWidth*(b.classList.contains('sel')?.98:.82)+(b.querySelector('em')?34:0);if(x*Math.cos(.26)>W)r=Math.min(r,W/(x*Math.cos(.26)))});if(r<1){const f=parseFloat(getComputedStyle(N.querySelector('.pi')).fontSize);N.querySelectorAll('.pi').forEach(b=>b.style.fontSize=(f*r).toFixed(1)+'px')}})}
 try{document.fonts&&document.fonts.ready.then(()=>{if($('#mns').classList.contains('on')&&mTab=='m')renderMenu()})}catch(e){}
 function pSel(k){const ch=k!=mSel;mSel=k;if(S.dv.cpm!==0&&S.dv.msel!=k){S.dv.msel=k;try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}}document.querySelectorAll('#pitems .pi').forEach(b=>{const on=b.dataset.go==k;b.classList.toggle('sel',on);if(on&&ch){b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop')}});$('#phd').textContent=MD[k][1];$('#phs').textContent='Command'}
-function renderMenu(){if(mTab=='f')mTab='l';{const same=(mTab=='s'||mTab=='t')&&RF.lastTab==mTab;$('#mnb2').classList.toggle('noanim',same);RF.lastTab=mTab}{const M0=$('#mns');M0.classList.toggle('sysm',mTab=='y');M0.classList.toggle('cfgm',mTab=='s');M0.classList.toggle('tutm',mTab=='t')}document.body.classList.toggle('rmo',RMO());if(mTab=='l')try{profRefresh()}catch(e){}setTimeout(hSync,0);if(mTab!='l')RF.slv=null;const M=$('#mns'),sub=mTab!='m';M.classList.toggle('sub',sub);$('#mttl').textContent=sub?MD[mTab][0]:'';
+function renderMenu(){if(mTab!='q')RF.qin=null;if(mTab=='f')mTab='l';{const same=(mTab=='s'||mTab=='t')&&RF.lastTab==mTab;$('#mnb2').classList.toggle('noanim',same);RF.lastTab=mTab}{const M0=$('#mns');M0.classList.toggle('sysm',mTab=='y');M0.classList.toggle('cfgm',mTab=='s');try{$('#mns').classList.toggle('qtab',mTab=='q')}catch(e){}M0.classList.toggle('tutm',mTab=='t')}document.body.classList.toggle('rmo',RMO());if(mTab=='l')try{profRefresh()}catch(e){}setTimeout(hSync,0);if(mTab!='l')RF.slv=null;const M=$('#mns'),sub=mTab!='m';M.classList.toggle('sub',sub);$('#mttl').textContent=sub?MD[mTab][0]:'';
  if(!sub){const pr=RF.me,nf=RF.reqIn.length,na=annUnread(),bd={a:na?'NEW':'',l:nf?String(nf):'',x:chUnread()?String(chUnread()):'',q:qClaimable()?'!':''},X=[20,74,0,58,30,70,40],FZ=[.82,.92,1.04,.9,.96,.88,.94];
   $('#pwal').innerHTML=FB_ON?(FBU?`${avHTML(pr||{photo:FBU.photoURL,name:FBU.displayName||FBU.email},40)}<span><b>${esc((pr&&pr.name)||FBU.displayName||'You')}</b><small>${pr?'@'+esc(pr.handle):'profile not set up'}</small></span>`:(FBW&&ACC.get()?`${avHTML({photo:ACC.get().p,name:ACC.get().n||ACC.get().e},40)}<span><b>${esc(ACC.get().n||'Signing in')}</b><small>signing in\u2026</small></span>`:`${avHTML({name:'?'},40)}<span><b>Not signed in</b><small>tap to sign in</small></span>`)):`<span><b>P3RL</b><small>social stats</small></span>`;
   $('#pitems').innerHTML=['a','p','l','x','q','h','y'].map((k,i)=>{const t=k=='a'?'Announcements':MD[k][0];return `<button class="pi${k==mSel?' sel':''}" data-go="${k}" data-t="${t}" style="--x:${X[i]}px;--fz:${FZ[i]};--i:${i};--tc:${['#8af1ff','#2fcaf3','#a9eef9','#5df1ff','#3bd0f4'][i%5]}" aria-label="${t}"><span class="pw"><i></i></span><span class="pt" aria-hidden="true">${wv(t)}</span>${bd[k]?`<em>${bd[k]}</em>`:''}</button>`}).join('');
@@ -2170,11 +2279,18 @@ function questList(){const ws=wkStart(),E=S.h.filter(h=>h.t>=ws&&!/^Quest:/.test
 const qClaimed=()=>{const k=wkStart();S.qc=S.qc||{};return S.qc[k]||[]};
 function qClaimable(){try{const c=qClaimed();return questList().filter(q=>q.v>=q.m&&!c.includes(q.id)).length}catch(e){return 0}}
 function questHTML(){const Q=questList(),c=qClaimed(),si=streakInfo(),left=Math.ceil((wkStart()+7*864e5-Date.now())/864e5);
- const rw=q=>q.r.map(([k,v])=>`+${v} ${ST[k].n}`).join(' · ');
- return `<div class="qst"><div class="qsk"><div class="qsn"><b>${si.n}</b><span>DAY${si.n==1?'':'S'}</span></div><div class="qst2"><span class="pt" style="--tc:#5fe3f6">${wv('Streak')}</span><small>${si.today?'You logged something today. Keep it going tomorrow.':si.n?'Log something today to keep your streak.':'Log something today to start a streak.'}</small></div></div>
- <div class="pfsec"><span>WEEKLY QUESTS</span><em>${left} day${left==1?'':'s'} left</em></div>
- <div class="qls">${Q.map((q,i)=>{const done=q.v>=q.m,cl=c.includes(q.id),pc=Math.round(Math.min(1,q.v/q.m)*100);return `<div class="qq${done?' done':''}${cl?' cl':''}" style="--i:${i}"><div class="qqh"><b>${q.n}</b><span>${Math.min(q.v,q.m)} / ${q.m}</span></div><p>${q.d}${q.fb&&!FBU?' (sign in to count hangouts)':''}</p><i><u style="width:${pc}%"></u></i><div class="qqf"><span class="qrw">${rw(q)}</span>${cl?'<span class="qok">CLEARED</span>':done?`<button data-qc="${q.id}">Claim</button>`:''}</div></div>`}).join('')}</div>
- <p class="pfnote">Quests reset every Monday. Claiming plays the Stats Up screen.</p></div>`}
+ if(!Q.some(q=>q.id==RF.qsel))RF.qsel=(Q.find(q=>q.v>=q.m&&!c.includes(q.id))||Q[0]).id;const anim=RF.qin!==mTab+'q';RF.qin=mTab+'q';
+ return `<div class="qx${anim?' qin':''}"><div class="qxbg"></div><div class="qxh">QUEST</div>
+ <div class="qxs"><span class="qxf">${FLAME}<b>${si.n}</b><small>DAY${si.n==1?'':'S'}</small></span><span class="qxw">Resets in <b>${left}</b> day${left==1?'':'s'}</span></div>
+ <div class="qxt"><span>No.</span><span>Quest</span><span>Count</span><span>Status</span></div>
+ <div class="qxl">${Q.map((q,k)=>qRow(q,k,c)).join('')}</div>
+ <div class="qxk" id="qxk">${qTask(Q.find(q=>q.id==RF.qsel),c)}</div>
+ <div class="qxg"><b>Which quest do you want to view?</b><i></i><small>Guide</small></div></div>`}
+function qStat(q,c){const cl=c.includes(q.id),done=q.v>=q.m;return cl?'<span class="qxp dn">Done</span>':done?'<span class="qxp rd">Claim!</span>':'<span class="qxp ip"><svg viewBox="0 0 12 12"><path d="M1.5 6.5l3 3 6-7" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>In Progress</span>'}
+function qRow(q,k,c){const cl=c.includes(q.id);return `<button class="qxr${RF.qsel==q.id?' on':''}${cl?' cl':''}" data-qs="${q.id}" style="--i:${k}"><em>${k+1}</em><b>${esc(q.n)}</b><i>${Math.min(q.v,q.m)}/${q.m}</i>${qStat(q,c)}</button>`}
+function qTask(q,c){if(!q)return '';const cl=c.includes(q.id),done=q.v>=q.m,pc=Math.round(Math.min(1,q.v/q.m)*100);
+ return `<h4>Task</h4><ul><li>${esc(q.d)}${q.fb&&!FBU?' (sign in to count hangouts)':''}</li></ul><div class="qxb"><u style="--w:${pc}%"></u></div><div class="qxa"><span>Reward <b>${q.r.map(([k,v])=>`+${v} ${ST[k].n}`).join(' · ')}</b></span>${cl?'<span class="qxc">CLEARED</span>':done?`<button data-qc="${q.id}">Claim</button>`:`<span class="qxc">${Math.max(0,q.m-q.v)} to go</span>`}</div>`}
+function qSel(id){const Q=questList(),c=qClaimed(),q=Q.find(x=>x.id==id);if(!q)return;RF.qsel=id;uiSnd('sw');document.querySelectorAll('.qxr').forEach(r=>{const on=r.dataset.qs==id;r.classList.toggle('on',on);if(on){r.classList.remove('fl');void r.offsetWidth;r.classList.add('fl')}});const K=$('#qxk');if(K){K.innerHTML=qTask(q,c);K.classList.remove('sw');void K.offsetWidth;K.classList.add('sw')}}
 function qClaim(id){const q=questList().find(x=>x.id==id);if(!q||q.v<q.m)return;const k=wkStart();S.qc=S.qc||{};S.qc[k]=S.qc[k]||[];if(S.qc[k].includes(id))return;S.qc[k].push(id);
  Object.keys(S.qc).forEach(w=>{if(+w<k-28*864e5)delete S.qc[w]});save();menuClose(true);setTimeout(()=>{try{apply({t:'Quest: '+q.n,a:q.r},$('#hub'))}catch(e){}},450)}
 /* ===================== MESSAGES ===================== */
@@ -2384,8 +2500,8 @@ function hSync(){if(HP||HSKIP)return;const M=$('#mns'),w=M.classList.contains('o
 addEventListener('popstate',e=>{const d=(e.state&&e.state.p3)||0;if(HSKIP){HSKIP--;HD=d;if(!HSKIP)hSync();return}HD=d;HP=true;try{
  const sh=['#pfs','#hask'].find(q=>$(q).classList.contains('on'));
  if(sh&&d>=1){$(sh).classList.remove('on')}
- else if($('#mns').classList.contains('on')){uiSnd(d<1?'home':'b1');if(d<4&&mTab=='t'&&RF.tp!=null){RF.tp=null;renderMenu()}if(d<4&&mTab=='s'&&RF.cfc!=null){RF.cfc=null;RF.cfr=null;renderMenu()}if(d<3&&(mTab=='s'||mTab=='t')){mTab='y';renderMenu()}if(d<3&&mTab=='x'&&RF.chat){chClose();renderMenu()}if(d<3&&RF.slv){if(d>=2)slClose();else RF.slv=null}if(d<2&&mTab!='m')pBack();if(d<1)menuClose()}}finally{HP=false}});
-$('#mtab').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.id=='mnx'){uiSnd('home');return menuClose()}if(b.id=='mback'){uiSnd('b1');if(mTab=='x'&&RF.chat&&chTrays())return;if(HD>=2&&!HP){try{history.back();return}catch(z){}}pBack()}};
+ else if($('#mns').classList.contains('on')){uiSnd(d<1?'mc':'b1');if(d<4&&mTab=='t'&&RF.tp!=null){RF.tp=null;renderMenu()}if(d<4&&mTab=='s'&&RF.cfc!=null){RF.cfc=null;RF.cfr=null;renderMenu()}if(d<3&&(mTab=='s'||mTab=='t')){mTab='y';renderMenu()}if(d<3&&mTab=='x'&&RF.chat){chClose();renderMenu()}if(d<3&&RF.slv){if(d>=2)slClose();else RF.slv=null}if(d<2&&mTab!='m')pBack();if(d<1)menuClose()}}finally{HP=false}});
+$('#mtab').onclick=e=>{const b=e.target.closest('button');if(!b)return;if(b.id=='mnx'){uiSnd('mc');return menuClose()}if(b.id=='mback'){uiSnd('b1');if(mTab=='x'&&RF.chat&&chTrays())return;if(HD>=2&&!HP){try{history.back();return}catch(z){}}pBack()}};
 let pGo=0,pDn=null;$('#pitems').addEventListener('pointerdown',e=>{pDn=[e.clientX,e.clientY]});
 $('#pitems').addEventListener('click',e=>{/* the words overlap a little, so use the exact spot the finger went down, not the browser's adjusted target */const h=pDn&&document.elementFromPoint(pDn[0],pDn[1]);const P=pDn,hs=P?[...new Set(document.elementsFromPoint(P[0],P[1]).map(x=>x.closest&&x.closest('.pi')).filter(Boolean))]:[];pDn=null;
  /* the selected word is drawn bigger and overlaps its neighbours, so pick the word whose middle is closest to the finger */
@@ -2407,7 +2523,8 @@ bindPF($('#mnb2'));bindPF($('#onbc'));
 $('#mnb2').onclick=e=>{if(e.target.closest('.chh')&&RF.chat){uiSnd('ok');viewFriend(RF.chat);return}if((RF.gifOn||RF.stkOn)&&e.target.closest('#chm')){chTrays();return}const t=e.target.closest('button');if(!t){const cb=e.target.closest('.cb[data-mid]');if(cb){chMenu(cb.dataset.mid,cb);return}document.querySelectorAll('.cbm').forEach(x=>x.remove());if(e.target.closest('#tpx')){tutFinish();return}const r=e.target.closest('[data-view]');if(r&&RF.prof[r.dataset.view]){uiSnd('ok');viewFriend(r.dataset.view)}return}
  if(t.disabled)return;uiSnd(t.dataset.sln!==undefined||t.dataset.ttn!==undefined||t.dataset.cyc?'sw':t.dataset.tpg=='-1'?'b1':t.dataset.dec||t.classList.contains('del')?'b1':'ok');
  if(sysClick(t))return;
- if(t.dataset.qc){qClaim(t.dataset.qc);return}
+ if(t.dataset.qs){qSel(t.dataset.qs);return}
+ if(t.dataset.qc){const r=document.querySelector(`.qxr[data-qs="${t.dataset.qc}"] .qxp`);if(r){r.className='qxp dn st';r.textContent='Done'}t.disabled=true;uiSnd('ok');setTimeout(()=>qClaim(t.dataset.qc),420);return}
  if(t.dataset.ntf){ntfAsk();return}
  if(t.dataset.cho){chOpen(t.dataset.cho);return}
  if(t.dataset.stk){RF.stkOn=!RF.stkOn;RF.skm=null;RF.gifOn=0;gifUI();stkUI();return}
@@ -2480,7 +2597,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-1958';
+var APPVER='2026.11.22-2133';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
