@@ -1127,6 +1127,11 @@ body:has(#hgs.on) #hgb{opacity:0}
 .anp span{display:flex;flex-direction:column;font:600 12px 'Barlow',sans-serif;color:#5fe8ff;font-style:normal}
 .anp small{color:rgba(255,255,255,.55);font:700 10px 'Barlow',sans-serif;letter-spacing:.06em;text-transform:uppercase}
 .anp b{color:#fff;font:800 italic 14px 'Barlow',sans-serif}
+
+/* taps on pictures, GIFs, stickers and emojis open the message menu */
+.cb img{-webkit-touch-callout:none;-webkit-user-drag:none}
+.cb img.gimg,.cb.stk img,.cb>img,.cb p .emj:not(.cus){pointer-events:none}
+.cb{-webkit-tap-highlight-color:transparent}
 </style>
 </head>
 <body>
@@ -1950,7 +1955,8 @@ let ARCU='';function arcUrl(){if(!ARCU){try{const el=document.getElementById('ar
 const arcOk=a=>Number.isInteger(a)&&a>=0&&a<=21;
 /* card picture: index 0-21 = arcana, 22 = card back */
 const arcCard=(i,w,cls)=>`<span class="arc ${cls||''}" style="width:${w}px;height:${Math.round(w*230/160)}px;background-image:url(${arcUrl()});background-position:${(i/22*100).toFixed(4)}% 0"></span>`;
-const ANB=[{id:'b25',t:new Date(2026,10,22,21,0).getTime(),title:'NEW: Delete messages + fixes',body:'• Delete your own messages: tap a message → Delete → tap again to confirm.\n• Announcements now show who posted them. Tap the name to open their profile.\n\nFixes:\n• The FRIEND tab now opens from the bottom like the NEW tab.\n• Streak numbers no longer overlap, and big streaks like 100 fit.\n• Custom emojis work even when your keyboard adds a capital letter (:Omri: shows the emoji).'},
+const ANB=[{id:'b26',t:new Date(2026,10,22,21,30).getTime(),title:'Fix: delete GIFs, stickers and emojis',body:'• You can now delete any message you sent: GIFs, stickers, pictures and emoji-only messages too. Tap it, then Delete.\n• Tapping a message with a custom emoji opens the full menu (react, reply, delete) plus Add :name: to save the emoji.'},
+{id:'b25',t:new Date(2026,10,22,21,0).getTime(),title:'NEW: Delete messages + fixes',body:'• Delete your own messages: tap a message → Delete → tap again to confirm.\n• Announcements now show who posted them. Tap the name to open their profile.\n\nFixes:\n• The FRIEND tab now opens from the bottom like the NEW tab.\n• Streak numbers no longer overlap, and big streaks like 100 fit.\n• Custom emojis work even when your keyboard adds a capital letter (:Omri: shows the emoji).'},
 {id:'b24',t:new Date(2026,10,22,20,0).getTime(),title:'NEW: Full profiles, followers and shared emojis',body:'• Tap anyone to see their full profile: banner, photo, description, Arcana, Social Stats and friends.\n• Follow and unfollow people, and see Followers and Following counts and lists.\n• In a chat, tap the name at the top to open their profile.\n• Custom emojis are now shared. Make :yourname: and everyone sees it in messages and descriptions. Find them under ★ → Everyone’s.\n• The streak has its own sound and a cleaner animation.\n\nFixes:\n• The GIF menu always closes now (✕, the GIF button, tapping the chat, or B Back).\n• B Back closes an open panel first instead of leaving the chat.\n• The NEW tab no longer pops up the keyboard by itself, and opens from the tab.\n• Send is dark blue, the chat name bar no longer covers MESSAGES, and the menu is back to its old look.\n• Dark boxes behind the menu words on iPhone are gone.'},
 {id:'b23',t:new Date(2026,10,22,19,0).getTime(),title:'NEW: Streaks, side tabs and sharper GIFs',body:'• Daily streak: every activity counts. Your first one each day adds +1 and a new streak scene plays.\n• Your streak now sits in the top-left of the stats screen. A grey flame means you haven’t logged anything today yet.\n• + New and + Friend are now tabs on the edges of the screen: NEW on the right, FRIEND on the left. Tap one and its drawer slides out.\n• GIFs are sharper and show square in chats.\n• The Tutorial has new pages for streaks, messages and quests.'},
 {id:'b22',t:new Date(2026,10,22,18,0).getTime(),title:'NEW: Messages got a big upgrade',body:'• Tap any message to react, reply, edit or copy it.\n• Search GIFs, browse Trending and categories, and save Favorites.\n• Emoji picker, plus your own custom emojis. Tap a friend’s emoji to add it to your set.\n• Make your own stickers from a photo or words.\n• Send a picture with text, and get alerts when friends text you.'},
@@ -2237,8 +2243,8 @@ async function ceSave(im,url){const n=ceName();if(!n)return;let d=url;
 function gePub(n,img){try{if(!FBU||!myId()||GEMO[n]||!img||img.length>60000)return;fdb().collection('emojis').doc(n).set({img,by:myId(),t:Date.now()}).catch(()=>{})}catch(e){}}
 function geSync(){if(gemoSynced)return;gemoSynced=1;CEMO.forEach(x=>{if(!GEMO[x.id])gePub(x.id,x.img)})}
 document.addEventListener('click',e=>{const g=e.target.closest('.cb img.emj.cus');if(g){e.preventDefault();e.stopPropagation();document.querySelectorAll('.cbm').forEach(x=>x.remove());
-  const k=g.alt.replace(/:/g,''),src=g.getAttribute('src'),have=CEMO.some(x=>x.img==src),d=document.createElement('div');d.className='cbm'+(g.closest('.cb').classList.contains('me')?' me':'');
-  d.innerHTML=have?`<div class="cbr"><button disabled>:${esc(k)}: is in your emojis</button></div>`:`<div class="cbr"><button data-cesv="${esc(k)}">Add :${esc(k)}: to my emojis</button></div>`;d._src=src;g.closest('.cb').after(d);return}
+  const k=g.alt.replace(/:/g,'').toLowerCase(),src=g.getAttribute('src'),have=CEMO.some(x=>x.img==src),cb=g.closest('.cb');chMenu(cb.dataset.mid,cb);const d=cb.nextElementSibling;
+  if(d&&d.classList.contains('cbm')){const r=d.querySelector('.cbr');if(r)r.insertAdjacentHTML('beforeend',have?`<button disabled>:${esc(k)}: is in your emojis</button>`:`<button data-cesv="${esc(k)}">Add :${esc(k)}:</button>`);d._src=src}return}
  const sv=e.target.closest('[data-cesv]');if(sv){e.preventDefault();e.stopPropagation();const box=sv.closest('.cbm'),src=box._src,b0=sv.dataset.cesv;let n=b0,i=2;while(CEMO.some(x=>x.id==n)&&i<99)n=b0.slice(0,17)+(i++);
   ceTx('readwrite',st=>st.put({id:n,t:Date.now(),img:src})).then(ceLoad).then(()=>{box.remove();toast(':'+n+': added to your emojis')}).catch(()=>toast('Couldn’t save the emoji'));return}
  const b=e.target.closest('[data-emo]');if(b){e.preventDefault();e.stopPropagation();emoOpen(b.dataset.emo);return}
@@ -2474,7 +2480,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-1950';
+var APPVER='2026.11.22-1958';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
