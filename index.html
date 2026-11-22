@@ -426,7 +426,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 /* ===== Config ===== */
 .pmn.cfgm #mnb2,.pmn.tutm #mnb2{background:linear-gradient(160deg,rgba(18,22,70,.97),rgba(10,13,48,.97) 60%,rgba(24,30,96,.95));}
 .cfg{position:relative;min-height:calc(100% - 10px);padding-bottom:110px}
-.cfi{display:flex;align-items:center;gap:8px;margin:2px 0 18px;color:#5fe8ff;font:600 15px/1.3 'Barlow',sans-serif}
+.cfi{display:flex!important;align-items:center;gap:8px;margin:2px 0 18px;color:#5fe8ff;font:600 15px/1.3 'Barlow',sans-serif}
 .cfi i{flex:none;font:800 italic 11px/1 'Barlow',sans-serif;color:#5fe8ff;border:1.5px solid #5fe8ff;border-radius:20px;padding:2px 9px}
 .cfcat{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
 .cfcat button{background:none!important;border:0;color:#5fe8ff!important;font:700 19px/1.2 'Barlow',sans-serif!important;font-style:normal!important;padding:8px 14px!important;min-height:0!important;text-align:left;position:relative}
@@ -484,6 +484,43 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 /* reduce motion */
 .rmo .rksh{animation-play-state:paused!important}
 .rmo .sys.in .syc,.rmo .sys.in .syt{animation-duration:.01s!important}
+/* ===== watery flowing light on menu text (as in the game) ===== */
+#pitems .pi:not(.sel) .pt,.syi button:not(.on) span,.cfcat button:not(.on),.cfl,.ttl button:not(.on),.cfi{display:inline-block;background-color:transparent!important;background-image:var(--wtx,linear-gradient(transparent,transparent)),var(--wtx,linear-gradient(transparent,transparent)),linear-gradient(var(--tc,#5fe3f6),var(--tc,#5fe3f6))!important;background-size:120px 120px,190px 190px,100% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent;text-shadow:none;animation:wtxf 6.5s linear infinite}
+#pitems .pi:not(.sel) .pt{filter:drop-shadow(0 .045em 0 rgba(14,96,190,.6))}
+.cfr.sel .cfl{-webkit-text-fill-color:#0c1033;background:none!important;animation:none!important}
+.ttl button{display:flex!important}.ttl button i{background:#5fe8ff!important}.ttl button.on i{background:#0c1033!important}
+@keyframes wtxf{from{background-position:0 0,0 0,0 0}to{background-position:120px -120px,-190px -190px,0 0}}
+.rmo #pitems .pi .pt,.rmo .cfl,.rmo .cfcat button,.rmo .ttl button,.rmo .syi span{animation:none!important}
+/* in-place updates on Config / Tutorial: no entrance replay */
+#mnb2.noanim *,#mnb2.noanim>*{animation:none!important}
+#mnb2.noanim .tvp.new{animation:tvp .25s cubic-bezier(.2,.8,.3,1) both!important}
+#mnb2.noanim .ttar.kk svg{animation:slkick .26s!important}
+#mnb2.noanim .cfl,#mnb2.noanim .cfcat button:not(.on),#mnb2.noanim .ttl button:not(.on),#mnb2.noanim .cfi{animation:wtxf 6.5s linear infinite!important}
+.tts button{transition:background .15s,color .15s}
+/* arrows only (phone) */
+.slnav .slar{width:30px!important;height:36px!important}
+.slnav{margin:-8px -4px -6px!important}
+.ttar svg{width:26px!important;height:30px!important}
+/* ===== System (matched to the game capture) ===== */
+.sys{background:#f6f7fb!important}
+.syg text{font:900 166px 'Archivo','Arial Black',sans-serif!important;font-variation-settings:'wdth' 112;letter-spacing:-6px!important;fill:#0a0a10}
+.syg .syh{font:900 italic 30px 'Barlow Condensed','Archivo',sans-serif!important;letter-spacing:-.5px!important;fill:#0a1050;opacity:.55}
+.syg .syc{transform-origin:356px 150px!important}.syg .syt{transform-origin:356px 150px!important}
+.syk path{animation:syk 3.2s calc(var(--k)*.4s) ease-in-out infinite alternate}
+@keyframes syk{to{translate:6px -10px;opacity:.35}}
+.sys.in .syc{animation:syc .5s cubic-bezier(.2,.75,.25,1) both!important}
+.sys.in .syt{animation:syt .55s cubic-bezier(.2,.75,.25,1) both!important}
+@keyframes syc{from{transform:rotate(-38deg) scale(1.25)}to{transform:none}}
+@keyframes syt{from{transform:rotate(-60deg)}to{transform:none}}
+.syi{right:5%!important;top:calc(7% + env(safe-area-inset-top,0px))!important;gap:2px!important;transform:rotate(-9deg)!important}
+.syi button{font:900 italic 48px/1 'Montserrat','Archivo','Arial Black',sans-serif!important;letter-spacing:-.05em!important;scale:.84 1;padding:2px 10px!important;--tc:#62e4ff}
+.syi button:nth-child(2){--tc:#bff6ff}
+.sys.in .syi button{animation:syib .3s calc(.36s + var(--i)*.06s) cubic-bezier(.2,.8,.3,1) both!important}
+@keyframes syib{from{opacity:0;translate:0 -10px}}
+.syi button.on{color:#e8132f!important}
+.syi button.on span{-webkit-text-fill-color:#e8132f;text-shadow:-.06em .07em 0 #05060c!important;background:none}
+.syi button.on::before{left:-30px!important;right:-56px!important;top:-2px!important;bottom:-2px!important;background:#fff!important;clip-path:polygon(0 44%,100% 0,90% 100%,6% 100%)!important;animation:sysel .2s .45s cubic-bezier(.2,.8,.3,1) both!important}
+.syi button.on::after{left:-38px!important;right:-66px!important;top:-9px!important;bottom:-7px!important;background:linear-gradient(90deg,#ff5fa8,#ff2a6a)!important;clip-path:polygon(0 44%,100% 0,90% 100%,6% 100%)!important;opacity:1!important;animation:sysel .2s .45s cubic-bezier(.2,.8,.3,1) both!important}
 .pflash{position:absolute;inset:0;z-index:5;pointer-events:none;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.95) 47%,rgba(140,235,255,.9) 52%,transparent 60%);transform:translateX(-110%);opacity:0}
 .pflash.go{animation:pfl .32s cubic-bezier(.4,0,.2,1)}@keyframes pfl{0%{transform:translateX(-110%);opacity:1}100%{transform:translateX(110%);opacity:1}}
 .pmn.sub .pitems{transform:translateX(-50%) rotate(-11deg) translateX(-60%);opacity:0;pointer-events:none}.pmn.sub .pwal{opacity:0;pointer-events:none}
@@ -1121,7 +1158,7 @@ async function slDelete(uid){const me=myId(),pr=pairId(me,uid),db=fdb();toast('D
  catch(e){toast('Couldn’t delete: '+errMsg(e))}}
 function slDetail(L,i){const x=L[i],pr=x.pr,nm=x.a<99?ARCN[x.a]:'Unknown',need=x.r>=10?0:SLT[x.r]-x.n;
  const txt=x.r>=10?`Your bond with ${pr.name||'your friend'} is at its strongest. Every moment together still counts.`:(x.n?`You’ve hung out ${x.n} time${x.n==1?'':'s'}. ${need} more hangout${need==1?'':'s'} to reach Rank ${x.r+1}.`:`A new bond. Hang out together (+ Friend) to grow this Social Link.`);
- const kk=RF.slk;RF.slk=0;return `<div class="sld in${RF.sldir<0?' nx':''}${kk?' sw':''}"><div class="slnav"><button data-sln="${(i-1+L.length)%L.length}" data-dir="-1" aria-label="Previous" class="slq${RF.slk<0?' kk':''}"><svg class="slar" viewBox="0 0 30 34" aria-hidden="true"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4" stroke-linejoin="miter"/></svg><kbd>Q</kbd></button><button data-sln="${(i+1)%L.length}" data-dir="1" aria-label="Next" class="sle${RF.slk>0?' kk':''}"><kbd>E</kbd><svg class="slar slarr" viewBox="0 0 30 34" aria-hidden="true"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4" stroke-linejoin="miter"/></svg></button></div>
+ const kk=RF.slk;RF.slk=0;return `<div class="sld in${RF.sldir<0?' nx':''}${kk?' sw':''}"><div class="slnav"><button data-sln="${(i-1+L.length)%L.length}" data-dir="-1" aria-label="Previous" class="slq${RF.slk<0?' kk':''}"><svg class="slar" viewBox="0 0 30 34" aria-hidden="true"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4" stroke-linejoin="miter"/></svg></button><button data-sln="${(i+1)%L.length}" data-dir="1" aria-label="Next" class="sle${RF.slk>0?' kk':''}"><svg class="slar slarr" viewBox="0 0 30 34" aria-hidden="true"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4" stroke-linejoin="miter"/></svg></button></div>
  <div class="slp"><div class="slps">@${esc(pr.handle||'')}</div><div class="slpm"><span class="sltg">ARCANA</span><b>${esc(nm)}</b><span class="slrk"><small>RANK</small><em>${x.r>=10?'MAX':x.r}</em></span></div><div class="slst">${'★'.repeat(x.r)}<i>${'★'.repeat(10-x.r)}</i></div></div>
  <p class="sltx">${esc(txt)}</p>
  <div class="slvis"><div class="slcw">${arcCard(x.a<99?x.a:22,118,'slcard')}</div><div class="slav">${avHTML(pr,96)}</div></div>
@@ -1316,7 +1353,8 @@ function fxSparkles(E,target,opt){if(S.dv.fxs===0||RMO())return;opt=opt||{};cons
    let a,sc;if(p.dot){a=Math.sin(Math.PI*k)*.8;sc=1}else{const grow=Math.min(1,k/.16);a=(k<.16?grow:Math.max(0,1-(k-.55)/.45))*(.72+.28*Math.sin(p.t*p.fq+p.ph));sc=(.25+.75*grow)*(k>.6?1-(k-.6)*.9:1)*(.85+.15*Math.sin(p.t*p.fq*.7+p.ph))}
    const spr=fxSprite(p.dot?'dot':'star',p.col),z=p.s*sc*(p.dot?1:2.2);g.globalAlpha=Math.max(0,Math.min(1,a));g.drawImage(spr,p.x-z/2,p.y-z/2,z,z);return true});
   g.globalAlpha=1;g.globalCompositeOperation='source-over';requestAnimationFrame(fr)};requestAnimationFrame(fr)}
-addEventListener('load',()=>setTimeout(()=>{try{mvInit()}catch(e){}},1500));   /* fetch the menu pictures in the background */
+addEventListener('load',()=>setTimeout(()=>{try{mvInit()}catch(e){}},1500));
+try{const c=fxWaterTex();document.documentElement.style.setProperty('--wtx',`url(${c.toDataURL()})`)}catch(e){}   /* fetch the menu pictures in the background */
 /* new bonds: a friendship we haven't celebrated yet */
 function slNew(){if(!FBU)return;S.sl=S.sl||{};if(!S.slT0){S.slT0=Date.now();RF.fr.forEach(f=>S.sl[f.uid]=1);save();return}
  let ch=0;RF.fr.forEach(f=>{if(!S.sl[f.uid]){S.sl[f.uid]=1;ch=1;if((f.t||0)>=S.slT0-6e4)slQ({kind:'new',uid:f.uid})}});if(ch)save()}
@@ -1374,25 +1412,34 @@ const MVF={mvd:'img/menu.webp',mvl:'img/menu2.jpg'},mvP={};
 function mvGet(k){if(mvB[k])return Promise.resolve(mvB[k]);const el=document.getElementById(k),raw=el?el.textContent.trim():'';
  if(raw){try{const t=atob(raw),a=new Uint8Array(t.length);for(let i=0;i<t.length;i++)a[i]=t.charCodeAt(i);mvB[k]=new Blob([a],{type:k=='mvl'?'image/jpeg':'image/webp'});el.textContent=''}catch(e){mvBad=true}return Promise.resolve(mvB[k]||null)}
  return mvP[k]||(mvP[k]=fetch(MVF[k]).then(r=>{if(!r.ok)throw 0;return r.blob()}).then(b=>(mvB[k]=b)).catch(()=>{mvP[k]=null;return null}))}
-function mvInit(){mvGet('mvd');mvGet('mvl')}
+function mvInit(){mvGet('mvl');const L=$('#mns video.pvl');if(L&&S.dv.bgv!==0&&!RMO()&&!L.getAttribute('src')){mvVid(L);L.preload='auto';L.src='img/menu.mp4';try{L.load()}catch(e){}}}
 function mvSet(im,k,cb){mvGet(k).then(b=>{if(!b){if(k=='mvd'){mvBad=true;$('#mns').classList.remove('hasvid')}return}const old=mvU[k];mvU[k]=URL.createObjectURL(b);im.onload=()=>{if(old)URL.revokeObjectURL(old);cb&&cb()};im.onerror=()=>{mvBad=true;$('#mns').classList.remove('hasvid')};im.src=mvU[k]})}
-function mvShow(fromStart){const M=$('#mns'),I=M.querySelector('.pvi'),L=M.querySelector('.pvl');if(mvBad||!I||!L)return;
- if(!fromStart&&mvU.mvd){M.classList.toggle('hasvid',mvOK);if(L.tagName=='VIDEO'&&L.getAttribute('src')&&S.dv.bgv!==0&&!RMO())L.play().catch(()=>{});return}
+/* menu background: ONE clip (img/menu.mp4) - the splash flows straight into the scene, then 6 s..26 s repeats forever (that stretch is seamless) */
+const MVA=6.0;let mvVBad=0;
+function mvVid(L){if(L._mv)return;L._mv=1;L.loop=false;L.muted=true;
+ L.addEventListener('timeupdate',()=>{if(L.currentTime>=MVA+20)L.currentTime-=20});
+ L.addEventListener('ended',()=>{L.currentTime=MVA;L.play().catch(()=>{})});
+ if(L.requestVideoFrameCallback){const f=(n,m)=>{if(m.mediaTime>=MVA+19.97)L.currentTime=m.mediaTime-20;L.requestVideoFrameCallback(f)};L.requestVideoFrameCallback(f)}}
+function mvShow(fromStart){const M=$('#mns'),I=M.querySelector('.pvi'),L=M.querySelector('.pvl');if(!I||!L)return;
+ if(L.tagName=='VIDEO'&&!mvVBad&&S.dv.bgv!==0&&!RMO()){mvVid(L);L.classList.remove('still');L.removeAttribute('poster');
+  if(L.getAttribute('src')!='img/menu.mp4'){L.preload='auto';L.src='img/menu.mp4'}
+  if(fromStart){try{L.currentTime=0}catch(e){}}else if(!L.paused){M.classList.toggle('hasvid',mvOK);return}
+  const ok=()=>{mvOK=true;L.classList.add('rdy');I.classList.remove('rdy');M.classList.add('hasvid')};
+  const p=L.play();if(p&&p.then)p.then(ok).catch(()=>{mvVBad=1;mvShowOld(fromStart)});else ok();return}
+ mvShowOld(fromStart)}
+function mvShowOld(fromStart){const M=$('#mns'),I=M.querySelector('.pvi'),L=M.querySelector('.pvl');if(mvBad||!I||!L)return;
+ if(!fromStart&&mvU.mvd){M.classList.toggle('hasvid',mvOK);return}
  clearTimeout(mvT);L.classList.remove('rdy');I.classList.remove('rdy');
- mvSet(I,'mvd',()=>{mvOK=true;I.classList.add('rdy');M.classList.add('hasvid');
-  /* when the splash is over, start the loop underneath and drop the splash once the loop is showing */
-  mvT=setTimeout(()=>mvLoop(L,()=>{L.classList.add('rdy');setTimeout(()=>I.classList.remove('rdy'),120)}),MV_INTRO-120)})}
-/* the long menu loop (20 s, seamless). Falls back to the still picture when video is off or can't play */
-function mvLoop(L,cb){const still=()=>{mvGet('mvl').then(b=>{if(!b)return;if(!mvU.mvl)mvU.mvl=URL.createObjectURL(b);L.removeAttribute('src');L.poster=mvU.mvl;L.classList.add('still');cb&&cb()})};
- if(L.tagName!='VIDEO'||S.dv.bgv===0||RMO())return still();L.classList.remove('still');let done=0;const go=()=>{if(done)return;done=1;cb&&cb()};
- L.onplaying=go;L.onerror=()=>{if(!done){done=1;still()}};if(!L.getAttribute('src'))L.src='img/menuloop.mp4';L.muted=true;const pp=L.play();if(pp&&pp.catch)pp.catch(()=>{if(!done){done=1;still()}});setTimeout(()=>{if(!done&&L.readyState<2){done=1;still()}},2500)}
+ mvSet(I,'mvd',()=>{mvOK=true;I.classList.add('rdy');M.classList.add('hasvid');mvT=setTimeout(()=>mvLoop(L,()=>{L.classList.add('rdy');setTimeout(()=>I.classList.remove('rdy'),120)}),MV_INTRO-120)})}
+/* still picture (video off, reduce motion, or video can't play) */
+function mvLoop(L,cb){mvGet('mvl').then(b=>{if(!b)return;if(!mvU.mvl)mvU.mvl=URL.createObjectURL(b);try{L.pause()}catch(e){}L.removeAttribute('src');try{L.load()}catch(e){}L.poster=mvU.mvl;L.classList.add('still');cb&&cb()})}
 function menuClose(now){const M=$('#mns');clearTimeout(mvT);try{const V=M.querySelector('video.pvl');if(V)V.pause()}catch(e){}clearTimeout(M._cl);document.body.classList.remove('lock');if(!M.classList.contains('on')){hSync();return}
  if(now===true||RMO()){M.classList.remove('on','pclose');hSync();return}
  M.classList.add('pclose');hSync();M._cl=setTimeout(()=>{M.classList.remove('on','pclose')},330)}
 function pFit(){const N=$('#pitems');N.style.fontSize='';requestAnimationFrame(()=>{const W=innerWidth-36;let r=1;N.querySelectorAll('.pi').forEach(b=>{const x=b.offsetLeft+b.offsetWidth*(b.classList.contains('sel')?.98:.82)+(b.querySelector('em')?34:0);if(x*Math.cos(.19)>W)r=Math.min(r,W/(x*Math.cos(.19)))});if(r<1){const f=parseFloat(getComputedStyle(N.querySelector('.pi')).fontSize);N.querySelectorAll('.pi').forEach(b=>b.style.fontSize=(f*r).toFixed(1)+'px')}})}
 try{document.fonts&&document.fonts.ready.then(()=>{if($('#mns').classList.contains('on')&&mTab=='m')renderMenu()})}catch(e){}
 function pSel(k){const ch=k!=mSel;mSel=k;if(S.dv.cpm!==0&&S.dv.msel!=k){S.dv.msel=k;try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}}document.querySelectorAll('#pitems .pi').forEach(b=>{const on=b.dataset.go==k;b.classList.toggle('sel',on);if(on&&ch){b.classList.remove('pop');void b.offsetWidth;b.classList.add('pop')}});$('#phd').textContent=MD[k][1];$('#phs').textContent='Command'}
-function renderMenu(){if(mTab=='f')mTab='l';{const M0=$('#mns');M0.classList.toggle('sysm',mTab=='y');M0.classList.toggle('cfgm',mTab=='s');M0.classList.toggle('tutm',mTab=='t')}document.body.classList.toggle('rmo',RMO());if(mTab=='l')try{profRefresh()}catch(e){}setTimeout(hSync,0);if(mTab!='l')RF.slv=null;const M=$('#mns'),sub=mTab!='m';M.classList.toggle('sub',sub);$('#mttl').textContent=sub?MD[mTab][0]:'';
+function renderMenu(){if(mTab=='f')mTab='l';{const same=(mTab=='s'||mTab=='t')&&RF.lastTab==mTab;$('#mnb2').classList.toggle('noanim',same);RF.lastTab=mTab}{const M0=$('#mns');M0.classList.toggle('sysm',mTab=='y');M0.classList.toggle('cfgm',mTab=='s');M0.classList.toggle('tutm',mTab=='t')}document.body.classList.toggle('rmo',RMO());if(mTab=='l')try{profRefresh()}catch(e){}setTimeout(hSync,0);if(mTab!='l')RF.slv=null;const M=$('#mns'),sub=mTab!='m';M.classList.toggle('sub',sub);$('#mttl').textContent=sub?MD[mTab][0]:'';
  if(!sub){const pr=RF.me,nf=RF.reqIn.length,na=annUnread(),bd={a:na?'NEW':'',l:nf?String(nf):''},X=[0,58,22,48,14];
   $('#pwal').innerHTML=FB_ON?(FBU?`${avHTML(pr||{photo:FBU.photoURL,name:FBU.displayName||FBU.email},40)}<span><b>${esc((pr&&pr.name)||FBU.displayName||'You')}</b><small>${pr?'@'+esc(pr.handle):'profile not set up'}</small></span>`:(FBW&&ACC.get()?`${avHTML({photo:ACC.get().p,name:ACC.get().n||ACC.get().e},40)}<span><b>${esc(ACC.get().n||'Signing in')}</b><small>signing in\u2026</small></span>`:`${avHTML({name:'?'},40)}<span><b>Not signed in</b><small>tap to sign in</small></span>`)):`<span><b>P3RL</b><small>social stats</small></span>`;
   $('#pitems').innerHTML=['a','p','l','h','y'].map((k,i)=>{const t=k=='a'?'Announcements':MD[k][0];return `<button class="pi${k==mSel?' sel':''}" data-go="${k}" data-t="${t}" style="--x:${X[i]}px;--i:${i}"><span class="pw"><i></i></span><span class="pt">${t}</span>${bd[k]?`<em>${bd[k]}</em>`:''}</button>`}).join('');
@@ -1424,10 +1471,14 @@ function renderMenu(){if(mTab=='f')mTab='l';{const M0=$('#mns');M0.classList.tog
  B.addEventListener('touchend',e=>{if(!st)return;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy,dt=Date.now()-st;st=0;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.6&&dt<600){const b=B.querySelector(dx<0?'.slnav .sle':'.slnav .slq');if(b)b.click()}},{passive:true})})();
 
 /* ===================== SYSTEM: Tutorial + Config (P3R style) ===================== */
-function sysHTML(){const y=RF.ysel||'t',it=[['t','Tutorial'],['s','Config']];
- return `<div class="sys${RF.yin?'':' in'}"><svg class="syg" viewBox="0 0 400 860" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><radialGradient id="sycg" cx=".62" cy=".32" r=".8"><stop offset="0" stop-color="#2a3cff"/><stop offset=".55" stop-color="#1424d6"/><stop offset="1" stop-color="#0a128c"/></radialGradient><clipPath id="sycc"><circle cx="318" cy="196" r="248"/></clipPath><path id="syp" d="M ${318+352*Math.cos(2.95)} ${196+352*Math.sin(2.95)} A 352 352 0 0 0 ${318+352*Math.cos(1.2)} ${196+352*Math.sin(1.2)}"/></defs>
-  <g class="syc"><circle cx="318" cy="196" r="248" fill="url(#sycg)"/><g clip-path="url(#sycc)" opacity=".35"><image href="${mvU.mvl||'img/menu2.jpg'}" x="70" y="-52" width="496" height="882" preserveAspectRatio="xMidYMid slice" style="mix-blend-mode:luminosity"/></g><circle cx="318" cy="196" r="248" fill="none" stroke="#0b0f6a" stroke-width="9"/></g>
-  <g class="syt"><text><textPath href="#syp" startOffset="0">SYSTEM</textPath></text></g></svg>
+function sysHTML(){const y=RF.ysel||'t',it=[['t','Tutorial'],['s','Config']],cx=356,cy=150,r=292,R2=r+122,P=a=>[cx+R2*Math.cos(a*Math.PI/180),cy+R2*Math.sin(a*Math.PI/180)].map(v=>v.toFixed(1)).join(' ');
+ const ghost=['Social Link','History','System'];
+ return `<div class="sys${RF.yin?'':' in'}"><svg class="syg" viewBox="0 0 400 860" preserveAspectRatio="xMidYMin slice" aria-hidden="true"><defs><clipPath id="sycc"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath><path id="syp" d="M ${P(168)} A ${R2} ${R2} 0 0 0 ${P(52)}"/><linearGradient id="syt0" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3cf2"/><stop offset="1" stop-color="#0d17a8"/></linearGradient></defs>
+  <g class="syc"><circle cx="${cx}" cy="${cy}" r="${r}" fill="url(#syt0)"/><g clip-path="url(#sycc)"><image href="${mvU.mvl||'img/menu2.jpg'}" x="${cx-r}" y="${cy-r-40}" width="${2*r}" height="${2*r*1.78}" preserveAspectRatio="xMidYMid slice" opacity=".5" style="mix-blend-mode:luminosity"/><rect x="0" y="0" width="400" height="860" fill="#1424d6" opacity=".38" style="mix-blend-mode:multiply"/>
+   ${ghost.map((g,k)=>`<text class="syh" x="${92+k*6}" y="${44+k*30}" transform="rotate(16 ${92+k*6} ${44+k*30})">${g.toUpperCase()}</text>`).join('')}</g>
+   <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#08105f" stroke-width="13"/></g>
+  <g class="syt"><text><textPath href="#syp" startOffset="1%">SYSTEM</textPath></text></g>
+  <g class="syk">${[[60,520,'#ff4fa0'],[118,612,'#5fe8ff'],[200,668,'#ff2a3a'],[34,430,'#b9a6ff'],[262,700,'#5fe8ff']].map(([x,yy,c],k)=>`<path d="M${x} ${yy} l${10+k*2} -${6+k} l-${4+k} ${14+k}z" fill="${c}" opacity=".75" style="--k:${k}"/>`).join('')}</g></svg>
   <div class="syi">${it.map(([k,n],i)=>`<button data-sys="${k}" class="${k==y?'on':''}" style="--i:${i}"><span>${n}</span></button>`).join('')}</div></div>`}
 const CFGS=[
  {k:'sys',n:'Game System Settings',d:'Change the app’s basic settings',rows:[['cpm','tg','Cursor Position Memory','Remember the last menu option you chose'],['swp','tg','Swipe Between Links','Swipe left or right on a Social Link to switch to the next one'],['dconf','tg','Confirm Removals','Ask once more before a History entry is removed'],['tspd','ch','Text Speed','How fast tutorial text appears',['Slow','Normal','Fast','Instant']],['vib','tg','Vibration','Buzz when you log and rank up (Android)']]},
@@ -1450,7 +1501,7 @@ function cfgHTML(){const c=CFGS.find(x=>x.k==RF.cfc);
  if(c.k=='acc')body=accountHTML()+`<div class="hd">Backup</div><div class="bk"><button data-bk="exp">Copy backup</button><button data-bk="imp">Paste backup</button></div><textarea id="bkt" rows="3" placeholder="Copy this text somewhere safe, or paste a backup here and tap Paste backup." style="margin-top:8px;font-size:12px"></textarea><div class="hd">Progress</div><div class="bk"><button class="danger" data-bk="rst">${rstArm?'Tap again to erase everything':'Reset all progress'}</button></div><p style="opacity:.5;font-size:12px;margin:18px 4px 0">P3RL version ${APPVER}</p>`;
  return `<div class="cfg cfg2"><p class="cfi"><i>Info</i>${esc(r?r[3]:c.d)}</p><div class="cfh">${c.n}</div><div class="cfrows">${body}</div><div class="cfw" aria-hidden="true">CONFIG</div></div>`}
 function cfApply(k){if(k=='vol')setVol(S.dv.vol);if(k=='bgmv'||k=='sev'||k=='vov')busVol();if(k=='hz')hub();if(k=='lz')applyLZ();if(k=='rmo')document.body.classList.toggle('rmo',RMO());
- if(k=='bgv'||k=='rmo'){const V=$('#mns video.pvl');if(V){if(S.dv.bgv===0||RMO()){V.pause();V.removeAttribute('src');V.load();mvLoop(V,()=>V.classList.add('rdy'))}else{V.classList.remove('still');mvLoop(V,()=>V.classList.add('rdy'))}}}}
+ if(k=='bgv'||k=='rmo'){const V=$('#mns video.pvl');if(V){if(S.dv.bgv===0||RMO())mvLoop(V,()=>V.classList.add('rdy'));else{mvVBad=0;mvShow(true)}}}}
 /* ----- tutorial ----- */
 const TUT=()=>{const th=s=>ST[s].t.slice(1).map((t,i)=>`${ST[s].r[i+1]} at ${t}`).join(', ');return [
  {n:'Basics',it:[
@@ -1473,11 +1524,11 @@ const TUT=()=>{const th=s=>ST[s].t.slice(1).map((t,i)=>`${ST[s].r[i+1]} at ${t}`
   {t:'Config',pg:['System › Config holds every setting: sound and the BGM, SE and Voice volumes, text speed, sizes, effects, and your account.','Changes are saved right away.']},
   {t:'Backups and Sync',pg:['When you are signed in, your progress syncs to your account by itself.','Signed out? Use Config › Account & Data › Copy backup to save your progress as text, and Paste backup to bring it back.']}]}]};
 function tutHTML(){const T=TUT(),ti=Math.max(0,Math.min(T.length-1,RF.tt||0)),tab=T[ti];
- const head=`<div class="tth"><button class="ttar" data-ttn="-1" aria-label="Previous tab"><svg viewBox="0 0 30 34"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4"/></svg><kbd>Q</kbd></button><div class="tts">${T.map((x,i)=>`<button data-tt="${i}" class="${i==ti?'on':''}">${x.n}</button>`).join('')}</div><button class="ttar" data-ttn="1" aria-label="Next tab"><kbd>E</kbd><svg viewBox="0 0 30 34" style="transform:scaleX(-1)"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4"/></svg></button></div>`;
+ const head=`<div class="tth"><button class="ttar" data-ttn="-1" aria-label="Previous tab"><svg viewBox="0 0 30 34"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4"/></svg></button><div class="tts">${T.map((x,i)=>`<button data-tt="${i}" class="${i==ti?'on':''}">${x.n}</button>`).join('')}</div><button class="ttar" data-ttn="1" aria-label="Next tab"><svg viewBox="0 0 30 34" style="transform:scaleX(-1)"><path d="M27 3 L6 17 L27 31 L22 17 Z" fill="#fff" stroke="#e5001b" stroke-width="3.4"/></svg></button></div>`;
  if(RF.tp==null){const sel=RF.tsel??0;return `<div class="tut">${head}<div class="ttl">${tab.it.map((x,i)=>`<button data-tp="${i}" class="${i==sel?'on':''}"><i></i>${x.t}</button>`).join('')}</div><div class="ttw" aria-hidden="true">TUTORIAL</div></div>`}
  const x=tab.it[RF.tp]||tab.it[0],pi=Math.max(0,Math.min(x.pg.length-1,RF.tpg||0));
  const ill=x.ill=='stats'?`<div class="tvi">${S3.map(s=>`<span class="tvs ${s}"><b>${rank(s,S.p[s])+1}</b>${ST[s].n}</span>`).join('')}</div>`:x.ill=='card'?`<div class="tvi">${arcCard(arcOk(RF.me&&RF.me.arc)?RF.me.arc:0,66)}</div>`:'';
- return `<div class="tut tv">${head}<div class="tvp"><div class="tvt"><small>${tab.n}</small>${x.t}</div>${ill}<p id="tpx" data-full="${esc(x.pg[pi])}"></p><div class="tvn"><button data-tpg="-1" ${pi==0?'disabled':''}>Prev</button><span>${pi+1} / ${x.pg.length}</span><button data-tpg="1">${pi==x.pg.length-1?'Done':'Next'}</button></div></div><div class="ttw" aria-hidden="true">TUTORIAL</div></div>`}
+ const nw=RF.tvNew;RF.tvNew=0;return `<div class="tut tv">${head}<div class="tvp${nw?' new':''}"><div class="tvt"><small>${tab.n}</small>${x.t}</div>${ill}<p id="tpx" data-full="${esc(x.pg[pi])}"></p><div class="tvn"><button data-tpg="-1" ${pi==0?'disabled':''}>Prev</button><span>${pi+1} / ${x.pg.length}</span><button data-tpg="1">${pi==x.pg.length-1?'Done':'Next'}</button></div></div><div class="ttw" aria-hidden="true">TUTORIAL</div></div>`}
 let tutRAF=0;function tutType(){cancelAnimationFrame(tutRAF);const el=$('#tpx');if(!el)return;const full=el.dataset.full.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'"),cps=[24,55,120,0][S.dv.tspd??1];
  if(!cps){el.textContent=full;return}const t0=performance.now();const step=now=>{if(!el.isConnected)return;const n=Math.min(full.length,Math.floor((now-t0)/1000*cps));el.textContent=full.slice(0,n);if(n<full.length)tutRAF=requestAnimationFrame(step)};tutRAF=requestAnimationFrame(step)}
 function tutFinish(){cancelAnimationFrame(tutRAF);const el=$('#tpx');if(el)el.textContent=el.dataset.full.replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&#39;/g,"'")}
@@ -1489,7 +1540,7 @@ function sysClick(t){
  if(t.dataset.cyc){const k=t.dataset.cyc,r=CFGS.flatMap(x=>x.rows).find(x=>x[0]==k),n=r[4].length,i=(cfVal(r)+(+t.dataset.d)+n)%n;RF.cfr=k;S.dv[k]=r[5]?r[5][i]:i;save();cfApply(k);renderMenu();return true}
  if(t.dataset.tt!==undefined){RF.tt=+t.dataset.tt;RF.tsel=0;renderMenu();return true}
  if(t.dataset.ttn!==undefined){const n=TUT().length;RF.tt=((RF.tt||0)+(+t.dataset.ttn)+n)%n;RF.tsel=0;RF.tp=null;const h=$('#mnb2 .tth');renderMenu();const a=$('#mnb2 .ttar[data-ttn="'+t.dataset.ttn+'"]');if(a){a.classList.add('kk')}return true}
- if(t.dataset.tp!==undefined){const i=+t.dataset.tp;RF.tsel=i;RF.tp=i;RF.tpg=0;renderMenu();return true}
+ if(t.dataset.tp!==undefined){const i=+t.dataset.tp;RF.tsel=i;RF.tp=i;RF.tpg=0;RF.tvNew=1;renderMenu();return true}
  if(t.dataset.tpg!==undefined){const x=TUT()[RF.tt||0].it[RF.tp],d=+t.dataset.tpg,ni=(RF.tpg||0)+d;if(ni>=x.pg.length){RF.tp=null;renderMenu();return true}RF.tpg=Math.max(0,ni);renderMenu();return true}
  return false}
 document.getElementById('mnb2').addEventListener('input',e=>{const k=e.target.dataset&&e.target.dataset.cv;if(!k)return;S.dv[k]=+e.target.value;const b=$('#cv'+k);if(b)b.textContent=e.target.value;RF.cfr=k;cfApply(k)});
@@ -1579,7 +1630,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-0713';
+var APPVER='2026.11.22-0736';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
