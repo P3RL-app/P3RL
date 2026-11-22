@@ -2037,7 +2037,7 @@ document.addEventListener('click',e=>{const g=e.target.closest('.cb img.emj.cus'
 (()=>{let ht=0;document.addEventListener('pointerdown',e=>{const p=e.target.closest('[data-emc]');if(!p)return;ht=setTimeout(()=>{ht=0;if(confirm('Delete :'+p.dataset.emc+':?'))ceTx('readwrite',st=>st.delete(p.dataset.emc)).then(ceLoad).then(emoSheet)},650)});['pointerup','pointercancel'].forEach(k=>document.addEventListener(k,()=>clearTimeout(ht)))})();
 
 /* ===== GIFs: search, trending, categories, favorites, recent (Powered by GIPHY) ===== */
-const GKEY='';
+const GKEY='VDfkOWywohDFdKPK67Icwmo5leX0O9YI';
 const GCAT=['Reactions','LOL','Happy','Sad','Love','Wow','Dance','Anime','Persona','Cats','Thumbs up','Hype','Facepalm','Good night'];
 let GF={tab:'tr',q:'',items:[],off:0,busy:0,end:0};
 const gifLS=(k,v)=>{try{if(v===undefined)return JSON.parse(localStorage.getItem(k)||'[]');localStorage.setItem(k,JSON.stringify(v.slice(0,120)))}catch(e){return []}};
@@ -2258,7 +2258,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-1749';
+var APPVER='2026.11.22-1804';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
