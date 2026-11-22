@@ -822,7 +822,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .pmn .pvid{image-rendering:auto}
 /* ===== profile stat bars (dark, P3R) ===== */
 .pfs{background:rgba(5,6,12,.74)!important;color:#fff!important;border-left:4px solid var(--sc,#5fe8ff);clip-path:polygon(0 0,100% 0,97% 100%,0 100%)}
-.pfs.c{--sc:#ff5fb4}.pfs.g{--sc:#4f8bff}.pfs.a{--sc:#36e0f0}
+.pfs.c{--sc:#2a45d6}.pfs.g{--sc:#4f8bff}.pfs.a{--sc:#36e0f0}
 .pfsn{font:900 italic 24px/1 'Montserrat','Arial Black',sans-serif!important}
 .pfsn .wvw{scale:.8 1;transform:skewX(-6deg)}
 .pfs.c .pfsn .wl,.pfs.g .pfsn .wl,.pfs.a .pfsn .wl{--tc:#5fe3f6}
@@ -914,6 +914,39 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .skr button,.skb{flex:1;min-height:0!important;padding:8px!important;font:800 italic 13px 'Barlow',sans-serif!important;text-align:center;background:#1c1f38;color:#fff;cursor:pointer;border:0}
 .skr .skv{background:#ff2f5f!important;color:#fff!important}
 #skt{height:38px;font-size:16px}
+
+/* ===== Update 21 ===== */
+.chsb{background:#1d3bbd!important}
+.chsb::after{border-color:#5fe8ff}
+/* emojis */
+.emj{width:1.3em;height:1.3em;vertical-align:-.3em;margin:0 .04em;object-fit:contain}
+.cb p.jumbo .emj{width:44px;height:44px;vertical-align:middle}
+.emob{display:inline-flex!important;align-items:center;gap:6px;margin-top:6px;min-height:0!important;padding:6px 12px!important;background:#05060c!important;color:#5fe8ff!important;border:1.5px solid #3a3d63!important;font:800 italic 13px 'Barlow',sans-serif!important}
+.emob svg{width:18px;height:18px}
+.emos{position:fixed;left:8px;right:8px;bottom:calc(8px + env(safe-area-inset-bottom,0px));z-index:90;max-width:520px;margin:0 auto;background:#0b0d1d;border:1.5px solid #3a3d63;box-shadow:0 12px 40px rgba(0,0,0,.6);transform:translateY(calc(100% + 20px));transition:transform .22s cubic-bezier(.2,.8,.3,1);visibility:hidden}
+.emos.on{transform:none;visibility:visible}
+.emt{display:flex;gap:2px;padding:4px;border-bottom:1.5px solid #3a3d63;overflow-x:auto}
+.emt button{flex:1;min-width:38px;min-height:0!important;height:38px;padding:0!important;background:none!important;border:0!important;color:#ffd84a!important;font:900 20px/1 sans-serif!important;border-bottom:3px solid transparent!important}
+.emt button.on{border-bottom-color:#5fe8ff!important;background:rgba(95,232,255,.08)!important}
+.emt button img{width:22px;height:22px}
+.emt button[data-emx]{flex:none;color:#fff!important;font-size:16px!important}
+.emb{max-height:min(42vh,300px);overflow:auto;padding:6px}
+.emg{display:grid;grid-template-columns:repeat(auto-fill,minmax(42px,1fr));gap:2px}
+.emg button{aspect-ratio:1;min-height:0!important;padding:5px!important;background:none!important;border:0!important}
+.emg button:active{background:rgba(95,232,255,.15)!important}
+.emg img{width:100%;height:100%;object-fit:contain}
+.emg .emn{font:900 italic 13px 'Barlow',sans-serif!important;color:#5fe8ff!important;border:2px dashed #5fe8ff!important}
+.cea{display:flex;flex-direction:column;gap:6px}.cea input{height:40px;font-size:16px}
+/* Config & Tutorial in the game's menu type */
+.pmn .cfcat.mpl .pi{font:900 italic 20px/1.1 'Montserrat','Arial Black',sans-serif!important;letter-spacing:-.04em!important;text-transform:uppercase!important}
+.pmn .cfl,.cfg .cfl,.cfg2 .cfl{font:800 italic 15px/1.1 'Montserrat','Arial Black',sans-serif!important;letter-spacing:-.03em!important;text-transform:uppercase!important}
+.pmn .cfh,.cfg .cfh{font:900 italic 26px/1 'Montserrat','Arial Black',sans-serif!important;letter-spacing:-.05em!important;text-transform:uppercase!important}
+.cfo button,.cfc span,.cfs b,.tvn span{font-family:'Montserrat','Arial Black',sans-serif!important;font-style:italic!important;font-weight:800!important;letter-spacing:-.02em}
+.cfi,.cfv,#tpx{font-family:'Montserrat',sans-serif!important;font-weight:600!important;font-style:normal}
+.tvt small{font:800 italic 12px 'Montserrat',sans-serif!important}
+.tvn button{font:900 italic 15px/1 'Montserrat','Arial Black',sans-serif!important;text-transform:uppercase;letter-spacing:-.03em}
+/* iPhone: textured letters drew as dark boxes on the menu; keep the motion, drop the texture there */
+@supports (-webkit-touch-callout:none){#pitems .pi .wl,.mpl .pi .wl{background:none!important;-webkit-text-fill-color:currentColor!important;color:var(--tc,#5fe3f6)}}
 </style>
 </head>
 <body>
@@ -966,7 +999,7 @@ const P=[['c','Charm',['Hung out with friends|c2','Met someone new|c2','Went on 
 ['m','Combos',['Study group at a café|a2c1','Part-time job shift|g1c1','Group workout|g2c1','Joined a club meeting|c2g1','Volunteered|g1c2','Taught someone something|a2c1']]];
 let S={p:{c:0,g:0,a:0},u:[],prev:null,h:[],f:[],bu:[],dev:0,dv:{clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1,hz:100,oz:100,lz:100,bgmv:100,sev:100,vov:100,tspd:1,rmo:0,bgv:1,fxs:1,fxw:1,cpm:1,swp:1,dconf:1,mix:1,ntf:1,msel:'a'}},busy=0,R={},CL=[],SN=[],UID=0,lastTest=null,rsArm=0;
 try{const j=JSON.parse(localStorage.getItem('p3s')||'{}');Object.assign(S,j);S.dv=Object.assign({clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1,hz:100,oz:100,lz:100,bgmv:100,sev:100,vov:100,tspd:1,rmo:0,bgv:1,fxs:1,fxw:1,cpm:1,swp:1,dconf:1,mix:1,ntf:1,msel:'a'},j.dv||{});if(!S.h)S.h=[];if(!S.f)S.f=[];if(!S.bu)S.bu=[];(S.u||[]).forEach(u=>(u.a||[]).forEach(x=>x[1]=Math.min(3,x[1])))}catch(e){}
-let CREF=null,cBusy=0,cDirty=0,cTm=0;   /* account copy of the save (only when signed in to Claude) */
+let CREF=null,cBusy=0,cDirty=0,cTm=0;   /* account copy of the save */
 const applyLZ=()=>document.documentElement.style.setProperty('--lz',(S.dv.lz||100)/100);
 const save=()=>{S.t=Date.now();try{typeof pushRanks=='function'&&pushRanks()}catch(e){}try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}cloudPush()};
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist().catch(()=>{})}catch(e){}   /* ask the phone not to wipe it */
@@ -1307,8 +1340,8 @@ const avHTML=(pr,sz)=>{const ph=pr&&(pr.av||pr.photo),n=(pr&&pr.name||'?').trim(
 const arcLine=pr=>arcOk(pr&&pr.arc)?`<div class="parc">${arcCard(pr.arc,34)}<span><i>Arcana</i>${ROM[pr.arc]} ${ARCN[pr.arc]}</span></div>`:'';
 const rkHTML=r=>`<div class="prk">${S3.map(s=>`<span class="${s}"><b>${(r&&r[s])||1}</b>${ST[s].n}<i>${ST[s].r[((r&&r[s])||1)-1]}</i></span>`).join('')}</div>`;
 function cardHTML(pr,own,uid){uid=uid||(own?myId():'');const bn=banBG(banOf(uid,pr));
- if(own)return `<div class="pcard ed"><label class="pban" data-ban-of="${uid}" style="background:${bn}"><input type="file" id="pqban" accept="image/*" hidden><span class="cam">${(pr.hasBan||pr.bannerImg)?'Tap to change banner':'Tap to add a banner'}</span></label><label class="pav">${avHTML(pr,84)}<input type="file" id="pqav" accept="image/*" hidden><span class="cam2">✎</span></label><div class="pinfo"><b>${esc(pr.name||'')}</b><span class="hdl">@${esc(pr.handle||'')}</span>${pr.bio?`<p>${esc(pr.bio)}</p>`:''}${arcLine(pr)}${rkHTML(pr.ranks)}</div></div>`;
- return `<div class="pcard"><div class="pban" data-ban-of="${uid}" style="background:${bn}"></div><div class="pav">${avHTML(pr,84)}</div><div class="pinfo"><b>${esc(pr.name||'')}</b><span class="hdl">@${esc(pr.handle||'')}</span>${pr.bio?`<p>${esc(pr.bio)}</p>`:''}${arcLine(pr)}${rkHTML(pr.ranks)}</div></div>`}
+ if(own)return `<div class="pcard ed"><label class="pban" data-ban-of="${uid}" style="background:${bn}"><input type="file" id="pqban" accept="image/*" hidden><span class="cam">${(pr.hasBan||pr.bannerImg)?'Tap to change banner':'Tap to add a banner'}</span></label><label class="pav">${avHTML(pr,84)}<input type="file" id="pqav" accept="image/*" hidden><span class="cam2">✎</span></label><div class="pinfo"><b>${esc(pr.name||'')}</b><span class="hdl">@${esc(pr.handle||'')}</span>${pr.bio?`<p>${emoHTML(pr.bio)}</p>`:''}${arcLine(pr)}${rkHTML(pr.ranks)}</div></div>`;
+ return `<div class="pcard"><div class="pban" data-ban-of="${uid}" style="background:${bn}"></div><div class="pav">${avHTML(pr,84)}</div><div class="pinfo"><b>${esc(pr.name||'')}</b><span class="hdl">@${esc(pr.handle||'')}</span>${pr.bio?`<p>${emoHTML(pr.bio)}</p>`:''}${arcLine(pr)}${rkHTML(pr.ranks)}</div></div>`}
 let rrQ=0;function rr(){if(rrQ)return;rrQ=requestAnimationFrame(()=>{rrQ=0;rrNow()})}
 function typing(el){const a=document.activeElement;return a&&el.contains(a)&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)}
 function rrNow(){if($('#mns').classList.contains('on')&&(mTab=='f'||mTab=='p'||mTab=='m'||mTab=='l'||mTab=='q'||(mTab=='x'&&!RF.chat))&&!RF.edit&&!typing($('#mns')))renderMenu();badge();if(HG&&!typing($('#hgs')))hgRender();showAsk()}
@@ -1340,10 +1373,10 @@ async function dbProbe(){const P=FBC.projectId,u=`https://firestore.googleapis.c
   if(r.status==403)return{c:'rules',m};
   if(r.status==400&&/Datastore Mode|datastore mode/i.test(m))return{c:'dsmode',m};
   return{c:'http',m:r.status+' '+m}}catch(e){return{c:'blocked'}}}
-const DIAG={nodb:'Found it: your Firestore database was never created. In Firebase go to Build → Firestore Database → Create database → pick a location → Production mode → Create. Then paste the rules from Claude into the Rules tab and Publish.',
+const DIAG={nodb:'Found it: your Firestore database was never created. In Firebase go to Build → Firestore Database → Create database → pick a location → Production mode → Create. Then paste your security rules into the Rules tab and Publish.',
  api:'Found it: the Firestore service is switched off for this project. In Firebase open Build → Firestore Database and create the database, then try again.',
  dsmode:'Found it: the database was created in “Datastore mode”. It has to be “Native mode”. Create a new Firebase project database in Native mode.',
- rules:'Found it: the database is there but the rules block it. In Firebase → Firestore Database → Rules, paste the rules from Claude and tap Publish.',
+ rules:'Found it: the database is there but the rules block it. In Firebase → Firestore Database → Rules, paste your security rules and tap Publish.',
  blocked:'Found it: this phone or network is blocking Google’s database (an ad blocker, content blocker, VPN or private DNS). Turn it off for this site or try on mobile data.',
  ok:'The database itself answers fine, only the live connection failed. Tap “Switch connection & reload” below.'};
 async function dbDiagnose(){RF.diag='Checking what’s wrong…';rr();const r=await dbProbe();RF.diagC=r.c;RF.diag=DIAG[r.c]||('Database answered: '+(r.m||r.c));rr();return r}
@@ -1399,7 +1432,7 @@ function formHTML(onb){const m=RF.me||{name:FBU.displayName||(FBU.email||'').spl
  <label class="pav" id="pfapl"><span id="pfap">${avHTML({av:a,photo:FBU.photoURL,name:m.name},84)}</span><input type="file" id="pfav" accept="image/*" hidden><span class="cam2">✎</span></label><button type="button" class="px ax" data-avx="" ${a?'':'hidden'} aria-label="Remove picture">✕</button><div class="pinfo" style="padding-top:50px"><small style="opacity:.7">Tap the circle or the banner to change them.</small></div></div>
  <div class="hd">Display name</div><input id="pfn" maxlength="24" value="${esc(m.name)}" autocomplete="nickname">
  <div class="hd">Username</div><input id="pfh" maxlength="15" autocapitalize="none" autocorrect="off" spellcheck="false" value="${esc(m.handle)}"><div class="ucm" id="ucm"></div><div class="sugs" id="sugs"></div>
- <div class="hd">Description</div><textarea id="pfb" rows="3" maxlength="150" placeholder="A few words about you">${esc(m.bio||'')}</textarea>
+ <div class="hd">Description</div><textarea id="pfb" rows="3" maxlength="150" placeholder="A few words about you">${esc(m.bio||'')}</textarea><button class="emob" data-emo="pfb" type="button"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.3" fill="currentColor"/><circle cx="15" cy="10" r="1.3" fill="currentColor"/><path d="M8 14.5c2.2 2.2 5.8 2.2 8 0" fill="none" stroke="currentColor" stroke-width="2"/></svg><span>Emoji</span></button>
  ${arcPickHTML(RF.earc!==undefined?RF.earc:m.arc)}
  <p class="pkm" id="pfm"></p><div class="bk">${onb?'<button data-pf="later">Later</button>':'<button data-pf="cancel">Cancel</button>'}<button data-pf="save" style="background:var(--cy);color:#000">${onb?'Let’s go':'Save profile'}</button></div>`}
 function formInit(root){phUpdate(root);ucheck(root)}
@@ -1462,7 +1495,7 @@ function pf2HTML(){const pr=RF.me,uid=myId(),bn=banBG(banOf(uid,pr)),a=arcOk(pr.
  <div class="pfh"><label class="pban" data-ban-of="${uid}" style="background:${bn}"><input type="file" id="pqban" accept="image/*" hidden><span class="cam">${(pr.hasBan||pr.bannerImg)?'Change banner':'Add a banner'}</span></label>
   <label class="pav pfav">${avHTML(pr,92)}<input type="file" id="pqav" accept="image/*" hidden><span class="cam2">✎</span></label>
   <div class="pfn"><b><span class="wvw">${wv(pr.name||'')}</span></b><span>@${esc(pr.handle||'')}</span></div></div>
- ${pr.bio?`<p class="pfb">${esc(pr.bio)}</p>`:''}
+ ${pr.bio?`<p class="pfb">${emoHTML(pr.bio)}</p>`:''}
  <div class="pfsec"><span>ARCANA</span></div>
  <div class="pfa">${a!=null?`<div class="pfac">${arcCard(a,86)}</div><div class="pfat"><small>${ROM[a]}</small><b>${ARCN[a]}</b><span>Your Arcana</span></div>`:`<div class="pfat"><b>None yet</b><button data-pf="edit">Choose Arcana</button></div>`}</div>
  <div class="pfsec"><span>SOCIAL STATS</span></div>
@@ -1897,12 +1930,63 @@ function chUnread(){try{if(!RF.chats)return 0;const me=myId();return Object.valu
 function msgHTML(){if(!FB_ON)return '<p class="nores">Messages work on the P3RL app.</p>';if(!FBU)return signInHTML('Sign in to message your friends.');
  if(RF.chat){const pr=RF.prof[RF.chat]||{};return `<div class="cht"><div class="chh">${avHTML(pr,38)}<b>${esc(pr.name||'')}</b><small>@${esc(pr.handle||'')}</small></div><div class="chm" id="chm"></div>
   <div class="chq" id="chq" hidden></div><div class="stkp" id="stkp" hidden></div>
-  <div class="chc"><label class="chi" aria-label="Attach a picture or GIF"><input type="file" id="chf" accept="image/*" hidden><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="2" fill="currentColor"/><path d="M4 17l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="2"/></svg></label><button class="chi chk" data-stk="1" aria-label="Stickers"><svg viewBox="0 0 24 24"><path d="M5 3h10l6 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 3v6h6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="11" r="1.3" fill="currentColor"/><circle cx="14" cy="11" r="1.3" fill="currentColor"/><path d="M8.5 15c1.8 1.6 4.2 1.6 6 0" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><input id="cht" maxlength="500" placeholder="Message" autocomplete="off" enterkeyhint="send"><button class="chsb" data-chs="1" aria-label="Send"><span>SEND</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4l18 8-18 8 3-8z"/></svg></button></div></div></div>`}
+  <div class="chc"><label class="chi" aria-label="Attach a picture or GIF"><input type="file" id="chf" accept="image/*" hidden><svg viewBox="0 0 24 24"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="2" fill="currentColor"/><path d="M4 17l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="2"/></svg></label><button class="chi chk" data-emo="cht" aria-label="Emoji"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="10" r="1.3" fill="currentColor"/><circle cx="15" cy="10" r="1.3" fill="currentColor"/><path d="M8 14.5c2.2 2.2 5.8 2.2 8 0" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><button class="chi chk" data-stk="1" aria-label="Stickers"><svg viewBox="0 0 24 24"><path d="M5 3h10l6 6v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 3v6h6" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="11" r="1.3" fill="currentColor"/><circle cx="14" cy="11" r="1.3" fill="currentColor"/><path d="M8.5 15c1.8 1.6 4.2 1.6 6 0" fill="none" stroke="currentColor" stroke-width="2"/></svg></button><input id="cht" maxlength="500" placeholder="Message" autocomplete="off" enterkeyhint="send"><button class="chsb" data-chs="1" aria-label="Send"><span>SEND</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4l18 8-18 8 3-8z"/></svg></button></div></div></div>`}
  const me=myId(),L=RF.fr.map(f=>{const c=(RF.chats||{})[chPid(f.uid)]||{};return {uid:f.uid,pr:RF.prof[f.uid]||{},c,t:(c.last&&c.last.t)||0}}).sort((a,b)=>b.t-a.t);
  const nb=('Notification' in window)&&Notification.permission=='default'?'<button class="chnt" data-ntf="1">Turn on message notifications</button>':'';
  if(!L.length)return nb+'<p class="nores">Add friends on the Social Link page to start messaging.</p>';
  return nb+`<div class="chl">${L.map((x,i)=>{const un=x.c.last&&x.c.last.from!=me&&x.c.last.t>((x.c.rd||{})[me]||0),lt=x.c.last?(x.c.last.from==me?'You: ':'')+(x.c.last.txt||'Picture'):'Say hi!';
   return `<button class="chr${un?' un':''}" data-cho="${x.uid}" style="--i:${i}">${avHTML(x.pr,44)}<span><b>${esc(x.pr.name||'')}</b><small>${esc(lt)}</small></span>${un?'<em>NEW</em>':''}</button>`}).join('')}</div>`}
+
+/* ===== emojis (Discord-style Twemoji art) + your own custom emojis ===== */
+const EMOS={'Smileys':'😀 😃 😄 😁 😆 😅 🤣 😂 🙂 🙃 😉 😊 😇 🥰 😍 🤩 😘 😋 😛 😜 🤪 😝 🤑 🤗 🤭 🤫 🤔 🤐 🤨 😐 😑 😶 😏 😒 🙄 😬 😌 😔 😪 🤤 😴 😷 🤒 🤕 🤢 🤮 🥵 🥶 🥴 😵 🤯 🤠 🥳 😎 🤓 🧐 😕 😟 🙁 😮 😯 😲 😳 🥺 😦 😧 😨 😰 😥 😢 😭 😱 😖 😣 😞 😓 😩 😫 🥱 😤 😡 😠 🤬 😈 👿 💀 ☠️ 💩 🤡 👹 👺 👻 👽 🤖',
+ 'People':'👋 🤚 ✋ 🖖 👌 🤏 ✌️ 🤞 🤟 🤘 🤙 👈 👉 👆 👇 ☝️ 👍 👎 ✊ 👊 🤛 🤜 👏 🙌 👐 🤲 🙏 ✍️ 💪 🦾 👀 👁️ 🧠 🫡 🫶 🙋 🙇 🤦 🤷 💃 🕺 🏃 🧍',
+ 'Hearts':'❤️ 🧡 💛 💚 💙 💜 🖤 🤍 🤎 💔 ❣️ 💕 💞 💓 💗 💖 💘 💝 💟 💯 💢 💥 💫 💦 💨 💤 💬 🗯️ 💭',
+ 'Nature':'🐶 🐱 🐭 🐹 🐰 🦊 🐻 🐼 🐨 🐯 🦁 🐮 🐷 🐸 🐵 🐔 🐧 🐦 🦉 🦋 🐌 🐞 🐢 🐍 🐙 🐬 🐳 🦈 🌸 🌹 🌻 🌙 ⭐ 🌟 ✨ ⚡ 🔥 🌈 ☀️ ☁️ ❄️ 🌊',
+ 'Food':'🍎 🍊 🍋 🍌 🍉 🍇 🍓 🍒 🍑 🥭 🍍 🥑 🍔 🍟 🍕 🌭 🌮 🍜 🍣 🍙 🍦 🍩 🍪 🎂 🍫 🍿 ☕ 🧋 🥤 🍺',
+ 'Things':'⚽ 🏀 🏈 🎮 🕹️ 🎲 🎯 🎧 🎤 🎸 🎹 📚 ✏️ 📝 💡 📱 💻 ⌚ 📷 🎬 🎉 🎊 🎁 🏆 🥇 👑 💎 🔑 🗡️ 🛡️ 🔫 💊 🃏 🎴 🌕 🕛 ⏰ 📅 ✅ ❌ ❓ ❗ ⚠️ 🚫 🔴 🔵 ⬆️ ➡️'};
+const EMRX=/(?:\p{Regional_Indicator}{2}|\p{Extended_Pictographic}(?:️|[\u{1F3FB}-\u{1F3FF}])?(?:‍\p{Extended_Pictographic}(?:️|[\u{1F3FB}-\u{1F3FF}])?)*)/gu;
+function twUrl(e){const z=e.includes('‍')?e:e.replace(/️/g,'');return 'https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/'+[...z].map(c=>c.codePointAt(0).toString(16)).join('-')+'.svg'}
+let CEMO=[];const CEDB=()=>new Promise((ok,no)=>{const r=indexedDB.open('p3rl-emo',1);r.onupgradeneeded=()=>r.result.createObjectStore('e',{keyPath:'id'});r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)});
+const ceTx=(mode,fn)=>CEDB().then(db=>new Promise((ok,no)=>{const t=db.transaction('e',mode),r=fn(t.objectStore('e'));t.oncomplete=()=>ok(r&&r.result);t.onerror=()=>no(t.error)}));
+const ceLoad=()=>ceTx('readonly',st=>st.getAll()).then(a=>{CEMO=(a||[]).sort((x,y)=>x.t-y.t)}).catch(()=>{CEMO=[]});try{ceLoad()}catch(e){}
+const ceMap=()=>{const o={};CEMO.forEach(x=>o[x.id]=x.img);return o};
+function emoPack(t){const mine=ceMap(),o={};let n=0;(t.match(/:[a-z0-9_]{2,20}:/g)||[]).forEach(k=>{k=k.slice(1,-1);if(mine[k]&&!o[k]&&n<8){o[k]=mine[k];n++}});return n?o:null}
+function emoHTML(t,cus){const C=Object.assign({},ceMap(),cus||{});let h=esc(t||'');
+ h=h.replace(EMRX,e=>`<img class="emj" src="${twUrl(e)}" alt="${e}" draggable="false" onerror="this.outerHTML=this.alt">`);
+ return h.replace(/:([a-z0-9_]{2,20}):/g,(m,k)=>C[k]?`<img class="emj cus" src="${esc(C[k])}" alt=":${k}:" title=":${k}:" draggable="false">`:m)}
+function emoOnly(t,cus){const C=Object.assign({},ceMap(),cus||{});const r=(t||'').replace(EMRX,'\u0001').replace(/:([a-z0-9_]{2,20}):/g,(m,k)=>C[k]?'\u0001':m).replace(/\s/g,'');return r.length>0&&r.length<=6&&/^\u0001+$/.test(r)}
+let EMT=null,EMTAB='Smileys';
+function emoSheet(){let W=document.getElementById('emos');if(!W){W=document.createElement('div');W.id='emos';W.className='emos';document.body.appendChild(W);
+  W.addEventListener('click',emoClick);W.addEventListener('change',e=>{if(e.target.id=='cef'){const f=e.target.files&&e.target.files[0];e.target.value='';if(f)ceFile(f)}})}
+ const tabs=['Custom',...Object.keys(EMOS)],ic={Custom:'★',Smileys:'😀',People:'👋',Hearts:'❤️',Nature:'🌸',Food:'🍔',Things:'🎮'};
+ let body;if(EMTAB=='Custom'){body=W.dataset.add?`<div class="cea"><input id="cen" maxlength="20" placeholder="name (letters, numbers, _)" autocomplete="off" autocapitalize="off"><input id="ceu" placeholder="Image link (optional)" autocomplete="off" autocapitalize="off"><div class="skr"><label class="skb"><input type="file" id="cef" accept="image/*" hidden>Upload image</label><button data-ceu="1">Use link</button></div><div class="skr"><button data-cec="1">Cancel</button></div><p class="skh">Type :name: in a message to use it. Friends see it too.</p></div>`
+   :`<div class="emg">${CEMO.map(x=>`<button data-emc="${x.id}" aria-label=":${x.id}:"><img src="${esc(x.img)}" alt=""></button>`).join('')}<button class="emn" data-cea="1">+ Add</button></div><p class="skh">${CEMO.length?'Tap to insert. Hold to delete.':'Make your own emoji from a picture.'}</p>`}
+ else body=`<div class="emg">${EMOS[EMTAB].split(' ').map(e=>`<button data-emi="${e}" aria-label="${e}"><img src="${twUrl(e)}" alt="${e}" loading="lazy" draggable="false" onerror="this.outerHTML=this.alt"></button>`).join('')}</div>`;
+ W.innerHTML=`<div class="emt">${tabs.map(k=>`<button data-emt="${k}" class="${k==EMTAB?'on':''}" aria-label="${k}">${k=='Custom'?'★':`<img src="${twUrl(ic[k])}" alt="${ic[k]}" onerror="this.outerHTML=this.alt">`}</button>`).join('')}<button data-emx="1" aria-label="Close">✕</button></div><div class="emb">${body}</div>`;W.classList.add('on')}
+function emoOpen(id){EMT=id;const W=document.getElementById('emos');if(W&&W.classList.contains('on')&&W.dataset.for==id){emoClose();return}emoSheet();const W2=document.getElementById('emos');W2.dataset.for=id;emoPlace();try{uiSnd('ok')}catch(e){}}
+function emoPlace(){const W=document.getElementById('emos'),I=document.getElementById(EMT);if(!W||!I)return;const r=I.getBoundingClientRect(),h=Math.min(innerHeight*.42,300)+50;
+ if(r.top>h+16){W.style.top='';W.style.bottom=(innerHeight-r.top+8)+'px'}else{W.style.bottom='auto';W.style.top=Math.min(r.bottom+8,innerHeight-h-8)+'px'}}
+addEventListener('resize',()=>{try{emoPlace()}catch(e){}});
+function emoClose(){const W=document.getElementById('emos');if(W){W.classList.remove('on');delete W.dataset.add}}
+function emoIns(v){const I=document.getElementById(EMT);if(!I)return;const a=I.selectionStart??I.value.length,b=I.selectionEnd??a;if((I.value.length+v.length)>(+I.maxLength>0?+I.maxLength:500))return;I.value=I.value.slice(0,a)+v+I.value.slice(b);const c=a+v.length;try{I.setSelectionRange(c,c)}catch(e){}I.dispatchEvent(new Event('input',{bubbles:true}))}
+function emoClick(e){const t=e.target.closest('button');if(!t)return;const W=document.getElementById('emos');
+ if(t.dataset.emx){emoClose();return}
+ if(t.dataset.emt){EMTAB=t.dataset.emt;delete W.dataset.add;emoSheet();return}
+ if(t.dataset.emi){emoIns(t.dataset.emi);return}
+ if(t.dataset.emc){emoIns(':'+t.dataset.emc+': ');return}
+ if(t.dataset.cea){W.dataset.add=1;emoSheet();return}
+ if(t.dataset.cec){delete W.dataset.add;emoSheet();return}
+ if(t.dataset.ceu){const u=($('#ceu').value||'').trim();if(!/^https:\/\/\S+$/i.test(u)){toast('Paste an https:// image link');return}const im=new Image();im.crossOrigin='anonymous';im.onload=()=>ceSave(im,u);im.onerror=()=>toast('Couldn’t load that image link');im.src=u}}
+function ceName(){const n=($('#cen').value||'').trim().toLowerCase().replace(/^:|:$/g,'');if(!/^[a-z0-9_]{2,20}$/.test(n)){toast('Name: 2–20 letters, numbers or _');return null}if(badText(n.replace(/_/g,' '))){toast('That name isn’t allowed.');return null}return n}
+function ceFile(f){const u=URL.createObjectURL(f),im=new Image();im.onload=()=>ceSave(im,null);im.onerror=()=>toast('Couldn’t open that picture');im.src=u}
+async function ceSave(im,url){const n=ceName();if(!n)return;let d=url;
+ try{const c=document.createElement('canvas');c.width=c.height=96;const g=c.getContext('2d'),k=Math.min(96/im.width,96/im.height);g.drawImage(im,(96-im.width*k)/2,(96-im.height*k)/2,im.width*k,im.height*k);const w=c.toDataURL('image/webp',.85);d=w.startsWith('data:image/webp')?w:c.toDataURL('image/png')}catch(e){/* link blocks copying: keep the link itself */}
+ if(!d){toast('Couldn’t use that image');return}
+ if(d.startsWith('data:')&&await badImg(d)){toast('That picture isn’t allowed.');return}
+ ceTx('readwrite',st=>st.put({id:n,t:Date.now(),img:d})).then(ceLoad).then(()=>{const W=document.getElementById('emos');delete W.dataset.add;EMTAB='Custom';emoSheet();toast(':'+n+': added')}).catch(()=>toast('Couldn’t save the emoji'))}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-emo]');if(b){e.preventDefault();e.stopPropagation();emoOpen(b.dataset.emo);return}
+ const W=document.getElementById('emos');if(W&&W.classList.contains('on')&&!W.contains(e.target)&&!e.target.closest('input,textarea'))emoClose()},true);
+(()=>{let ht=0;document.addEventListener('pointerdown',e=>{const p=e.target.closest('[data-emc]');if(!p)return;ht=setTimeout(()=>{ht=0;if(confirm('Delete :'+p.dataset.emc+':?'))ceTx('readwrite',st=>st.delete(p.dataset.emc)).then(ceLoad).then(emoSheet)},650)});['pointerup','pointercancel'].forEach(k=>document.addEventListener(k,()=>clearTimeout(ht)))})();
 let chUn=null,chLast=0;
 /* stickers you make: saved on this phone (IndexedDB), sent like a picture */
 const STDB=()=>new Promise((ok,no)=>{const r=indexedDB.open('p3rl-stk',1);r.onupgradeneeded=()=>r.result.createObjectStore('s',{keyPath:'id'});r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)});
@@ -1936,14 +2020,14 @@ function ntfAsk(){if(!('Notification' in window)){toast('This browser can’t sh
 function chOpen(uid){chClose();RF.chat=uid;RF.chm=[];if((RF.chats||{})[chPid(uid)])chSub();renderMenu();chRead()}
 function chSub(){if(chUn||!RF.chat)return;const pid=chPid(RF.chat);
  try{chUn=fdb().collection('chats').doc(pid).collection('msgs').orderBy('t').limitToLast(80).onSnapshot(q=>{RF.chm=q.docs.map(d=>({id:d.id,...d.data()}));chPaint(1);chRead()},()=>{toast('Messages need the new database rules (see the update notes).')})}catch(e){}}
-function chClose(){if(chUn){try{chUn()}catch(e){}chUn=null}RF.chat=null;RF.chm=[];RF.chRe=null;RF.chEd=null;RF.chAtt=null;RF.stkOn=0}
+function chClose(){if(chUn){try{chUn()}catch(e){}chUn=null}RF.chat=null;RF.chm=[];RF.chRe=null;RF.chEd=null;RF.chAtt=null;RF.stkOn=0;try{emoClose()}catch(e){}}
 function chRead(){if(!RF.chat)return;const pid=chPid(RF.chat),me=myId(),c=(RF.chats||{})[pid];if(!c||!c.last||((c.rd||{})[me]||0)>=c.last.t)return;
  fdb().collection('chats').doc(pid).set({rd:{[me]:Date.now()}},{merge:true}).catch(()=>{})}
 function chPaint(force){const B=document.getElementById('chm');if(!B||!RF.chat)return;const me=myId(),atEnd=B.scrollHeight-B.scrollTop-B.clientHeight<80,by={};(RF.chm||[]).forEach(m=>by[m.id]=m);
  const nm=u=>u==me?'You':((RF.prof[u]||{}).name||'Friend');
  B.innerHTML=(RF.chm||[]).length?RF.chm.map(m=>{const q=m.re?`<div class="cbq"><b>${esc(nm(m.re.from))}</b>${esc(m.re.txt||'Picture')}</div>`:'';
   if(m.stk&&!m.txt)return `<div class="cb stk${m.from==me?' me':''}" data-mid="${m.id}">${q}<img src="${m.img}" alt="Sticker" loading="lazy"><small>${new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>`;
-  return `<div class="cb${m.from==me?' me':''}${RF.chSel==m.id?' pick':''}" data-mid="${m.id}">${q}${m.img?`<img src="${m.img}" alt="${m.gif?'GIF':'Picture'}" loading="lazy">`:''}${m.txt?`<p>${esc(m.txt)}</p>`:''}<small>${m.ed?'edited · ':''}${new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>`}).join(''):'<p class="che">No messages yet. Say hi!</p>';
+  return `<div class="cb${m.from==me?' me':''}${RF.chSel==m.id?' pick':''}" data-mid="${m.id}">${q}${m.img?`<img src="${m.img}" alt="${m.gif?'GIF':'Picture'}" loading="lazy">`:''}${m.txt?`<p${emoOnly(m.txt,m.emo)?' class="jumbo"':''}>${emoHTML(m.txt,m.emo)}</p>`:''}<small>${m.ed?'edited · ':''}${new Date(m.t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})}</small></div>`}).join(''):'<p class="che">No messages yet. Say hi!</p>';
  if(force||atEnd)B.scrollTop=B.scrollHeight;chBar()}
 /* reply / edit / attachment strip above the message box */
 function chBar(){const Q=document.getElementById('chq');if(!Q)return;const me=myId(),parts=[];
@@ -1957,11 +2041,12 @@ function chMenu(id,el){const m=(RF.chm||[]).find(x=>x.id==id);if(!m)return;docum
 async function chSend(txt,img,gif,stk){if(!RF.chat)return;const now=Date.now();if(now-chLast<700)return;txt=(txt||'').trim().slice(0,500);
  if(!img&&RF.chAtt&&!stk){img=RF.chAtt.img;gif=RF.chAtt.gif}
  if(RF.chEd&&!stk&&!img){if(!txt)return;if(badText(txt)){toast('That message has a word that isn’t allowed.');return false}
-  const id=RF.chEd.id;RF.chEd=null;chBar();try{await fdb().collection('chats').doc(chPid(RF.chat)).collection('msgs').doc(id).update({txt,ed:true});return true}catch(e){toast('Couldn’t edit: '+errMsg(e));return false}}
+  const id=RF.chEd.id;RF.chEd=null;chBar();try{await fdb().collection('chats').doc(chPid(RF.chat)).collection('msgs').doc(id).update(Object.assign({txt,ed:true},emoPack(txt)?{emo:emoPack(txt)}:{}));return true}catch(e){toast('Couldn’t edit: '+errMsg(e));return false}}
  if(!txt&&!img)return;
  if(badText(txt)){toast('That message has a word that isn’t allowed.');return false}
  if(img&&!stk){toast('Checking picture…');if(await badImg(img)){toast('That picture isn’t allowed.');return false}}
  chLast=now;const me=myId(),pid=chPid(RF.chat),db=fdb(),m={from:me,t:now};if(txt)m.txt=txt;if(img){m.img=img;if(gif)m.gif=true;if(stk)m.stk=true}
+ if(txt){const em=emoPack(txt);if(em)m.emo=em}
  if(RF.chRe&&!stk){m.re={id:RF.chRe.id,from:RF.chRe.from,txt:(RF.chRe.txt||(RF.chRe.stk?'Sticker':'Picture')).slice(0,80)}}
  const sum=txt?txt.slice(0,80):(stk?'Sticker':gif?'GIF':'Picture');
  try{await db.collection('chats').doc(pid).set({members:[me,RF.chat].sort(),last:{t:now,from:me,txt:sum},rd:{[me]:now}},{merge:true});
@@ -2066,11 +2151,10 @@ let hotN=0,hotT=0;
 document.addEventListener('pointerup',e=>{if(e.target.id!=='hot')return;const n=Date.now();hotN=n-hotT<1500?hotN+1:1;hotT=n;
  if(hotN>=6){hotN=0;if(S.dev){S.dev=0;save();ownerUI();toast('Owner tools off')}else pkOpen()}});
 let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!busy)hub()},150)});
-/* ---- account save: newest copy wins (this phone vs. your Claude account) ---- */
+/* ---- account save: newest copy wins ---- */
 const cPack=()=>({p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,sl:S.sl||{},slT0:S.slT0||0,hd:(S.hd||[]).slice(-200),bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,bgmv:S.dv.bgmv,sev:S.dv.sev,vov:S.dv.vov,tspd:S.dv.tspd,rmo:S.dv.rmo,bgv:S.dv.bgv,fxs:S.dv.fxs,fxw:S.dv.fxw,cpm:S.dv.cpm,swp:S.dv.swp,dconf:S.dv.dconf,mix:S.dv.mix,mus:S.dv.mus,musv:S.dv.musv,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
 function cloudPush(now){if(!CREF)return;cDirty=1;clearTimeout(cTm);cTm=setTimeout(async()=>{if(cBusy){cloudPush();return}cBusy=1;cDirty=0;try{await CREF.set(cPack())}catch(e){}cBusy=0;if(cDirty)cloudPush()},now?0:700)}
-async function cloudInit(){try{if(IN_PV||!window.claude||!claude.use)return;const [db,us]=await Promise.all([claude.use('db'),claude.use('user')]);if(!db||!us)return;
- const id=await us.id();if(!id)return;await cloudUse(db.doc('data/users/'+id+'/save'))}catch(e){}}
+async function cloudInit(){}
 /* newest copy wins: this phone vs. the online save */
 async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=snap.exists?snap.data():null;
  if(c&&c.p&&(c.t||0)>(S.t||0)){S.p={...c.p};S.u=(c.u||[]).map(x=>({...x}));S.h=(c.h||[]).map(x=>({...x}));S.f=(c.f||S.f||[]).map(x=>({...x}));S.bu=[...(c.bu||S.bu||[])];S.hd=[...new Set([...(S.hd||[]),...(c.hd||[])])];S.sl=Object.assign({},c.sl||{},S.sl||{});S.slT0=Math.min(S.slT0||Infinity,c.slT0||Infinity);if(S.slT0===Infinity)S.slT0=0;S.prev=c.prev?{...c.prev}:null;S.dev=c.dev||0;S.dv=Object.assign(S.dv,c.dv||{});S.t=c.t;
@@ -2079,7 +2163,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-1639';
+var APPVER='2026.11.22-1716';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
@@ -2107,7 +2191,7 @@ function signInHTML(lead){return `${lead?`<p class="nores" style="margin:8px 0 1
  <div class="bk" style="margin-top:0"><button data-bk="ein" style="background:var(--cy);color:#000">Continue</button></div><button class="lnk" data-bk="erst">Forgot password?</button>
  <p style="opacity:.6;font-size:12px;font-style:normal;margin:6px 4px">New email? Your account is created automatically.${FBE?`<br><b style="color:#ff7aa8">${esc(FBE)}</b>`:''}</p>`}
 function fbSignOut(){ACC.set(null);if(window.firebase&&firebase.auth)firebase.auth().signOut().then(()=>{CREF=null;toast('Signed out. Your progress stays on this phone.');renderMenu()})}
-function accountHTML(){if(!FB_ON)return '<div class="hd">Account</div><p style="opacity:.6;font-size:13px;font-style:normal;margin:4px">Here your progress backs up to your Claude account automatically.</p>';
+function accountHTML(){if(!FB_ON)return '<div class="hd">Account</div><p style="opacity:.6;font-size:13px;font-style:normal;margin:4px">Here your progress backs up automatically.</p>';
  if(!FBU&&FBW&&ACC.get())return `<div class="hd">Account</div>`+waitHTML();
  if(FBU)return `<div class="hd">Account</div><div class="st2"><div>${esc(FBU.displayName||'Signed in')}<small>${esc(FBU.email||'')} · progress is saved to your account</small></div><button data-bk="gout" style="flex:none;background:#2e3157;padding:10px 14px;font-weight:800">Sign out</button></div>`;
  return `<div class="hd">Account</div>`+signInHTML('Sign in so your progress is saved and never lost.')}

@@ -1,0 +1,13 @@
+# keep chats, prompts and personal notes local
+*.jsonl
+*transcript*
+*prompt*
+*chat-log*
+*chatlog*
+notes/
+*.notes.md
+NOTES*.md
+.claude/
+CLAUDE.md
+.env
+.DS_Store
