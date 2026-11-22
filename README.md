@@ -76,6 +76,9 @@ README.md	This page
 
 Keep the folders next to index.html.
 
+👋 Follow me
+Want to follow me? My username is @yanaibenda_. Search it in Menu → Social Link and tap Follow on my profile.
+
 ⚠️ Note
 
 This is a free, non-commercial fan project. It is not made by, sponsored by or connected to ATLUS or SEGA. Persona 3 Reload and its artwork, sounds and style belong to © ATLUS © SEGA.
