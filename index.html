@@ -1866,9 +1866,9 @@ function msgHTML(){if(!FB_ON)return '<p class="nores">Messages work on the P3RL 
  return `<div class="chl">${L.map((x,i)=>{const un=x.c.last&&x.c.last.from!=me&&x.c.last.t>((x.c.rd||{})[me]||0),lt=x.c.last?(x.c.last.from==me?'You: ':'')+(x.c.last.txt||'Picture'):'Say hi!';
   return `<button class="chr${un?' un':''}" data-cho="${x.uid}" style="--i:${i}">${avHTML(x.pr,44)}<span><b>${esc(x.pr.name||'')}</b><small>${esc(lt)}</small></span>${un?'<em>NEW</em>':''}</button>`}).join('')}</div>`}
 let chUn=null,chLast=0;
-function chOpen(uid){chClose();RF.chat=uid;RF.chm=[];const pid=chPid(uid);
- try{chUn=fdb().collection('chats').doc(pid).collection('msgs').orderBy('t').limitToLast(80).onSnapshot(q=>{RF.chm=q.docs.map(d=>({id:d.id,...d.data()}));chPaint(1);chRead()},()=>{toast('Messages need the new database rules (see the update notes).')})}catch(e){}
- renderMenu();chRead()}
+function chOpen(uid){chClose();RF.chat=uid;RF.chm=[];if((RF.chats||{})[chPid(uid)])chSub();renderMenu();chRead()}
+function chSub(){if(chUn||!RF.chat)return;const pid=chPid(RF.chat);
+ try{chUn=fdb().collection('chats').doc(pid).collection('msgs').orderBy('t').limitToLast(80).onSnapshot(q=>{RF.chm=q.docs.map(d=>({id:d.id,...d.data()}));chPaint(1);chRead()},()=>{toast('Messages need the new database rules (see the update notes).')})}catch(e){}}
 function chClose(){if(chUn){try{chUn()}catch(e){}chUn=null}RF.chat=null;RF.chm=[]}
 function chRead(){if(!RF.chat)return;const pid=chPid(RF.chat),me=myId(),c=(RF.chats||{})[pid];if(!c||!c.last||((c.rd||{})[me]||0)>=c.last.t)return;
  fdb().collection('chats').doc(pid).set({rd:{[me]:Date.now()}},{merge:true}).catch(()=>{})}
@@ -1880,7 +1880,7 @@ async function chSend(txt,img,gif){if(!RF.chat)return;const now=Date.now();if(no
  if(img){toast('Checking picture…');if(await badImg(img)){toast('That picture isn’t allowed.');return false}}
  chLast=now;const me=myId(),pid=chPid(RF.chat),db=fdb(),m={from:me,t:now};if(txt)m.txt=txt;if(img){m.img=img;if(gif)m.gif=true}
  try{await db.collection('chats').doc(pid).set({members:[me,RF.chat].sort(),last:{t:now,from:me,txt:txt?txt.slice(0,80):(gif?'GIF':'Picture')},rd:{[me]:now}},{merge:true});
-  await db.collection('chats').doc(pid).collection('msgs').doc().set(m);return true}catch(e){toast('Couldn’t send: '+errMsg(e));return false}}
+  await db.collection('chats').doc(pid).collection('msgs').doc().set(m);chSub();return true}catch(e){toast('Couldn’t send: '+errMsg(e));return false}}
 function chPic(f){if(!f)return;const gif=/gif/i.test(f.type);
  if(gif){if(f.size>560000){toast('That GIF is too big (max 550 KB).');return}const r=new FileReader();r.onload=()=>chSend('',r.result,1);r.readAsDataURL(f);return}
  const u=URL.createObjectURL(f),im=new Image();im.onload=()=>{const k=Math.min(1,960/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);
@@ -2003,7 +2003,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.22-1608';
+var APPVER='2026.11.22-1612';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
