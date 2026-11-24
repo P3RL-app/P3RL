@@ -308,7 +308,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .rk.out .rkbgd,.rk.out .rkcol,.rk.out .rkband,.rk.out .rklow{transition:opacity .25s .45s;opacity:0}
 .rk.skip .rkup::after,.rk.skip .rkflash{display:none}.rk.skip .rkinfo,.rk.skip .rkbar,.rk.skip .rknum{animation-delay:0s!important;animation-duration:.01s!important}.rk.skip .rks.w,.rk.skip .rks.nw{animation-delay:0s,.35s,0s,0s!important}
 /* ===== rank screen, matched to the game capture ===== */
-.rksh{animation-name:rksh,rkflow!important;animation-timing-function:cubic-bezier(.2,.75,.3,1),linear!important;animation-iteration-count:1,infinite!important;animation-fill-mode:both,both!important}
+.rksh{animation-name:rksh,rkflow!important;animation-timing-function:cubic-bezier(.2,.75,.3,1),linear!important;animation-iteration-count:1,1!important;animation-fill-mode:both,forwards!important}
 @keyframes rkflow{0%{translate:0 0;rotate:var(--r0);scale:.35}14%{scale:1}100%{translate:1450px var(--dy);rotate:var(--r1);scale:1.1}}
 /* stars: thick grey outline, dark fill, no inner star; earned ones solid white */
 .rks{fill:#262a66;stroke:#b4b5c6;stroke-width:2.7;stroke-linejoin:round}
@@ -352,7 +352,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 @keyframes wtr1{to{transform:translate(260px,-260px)}}@keyframes wtr2{to{transform:translate(-300px,-300px)}}
 .rkcard{position:relative}
 /* background shapes: slow, steady drift to the right (no pop / snap back) */
-@keyframes rkflow{0%{translate:0 0;rotate:var(--r0)}100%{translate:3200px var(--dy);rotate:var(--r1)}}
+@keyframes rkflow{0%{translate:0 0;rotate:var(--r0)}100%{translate:38400px calc(var(--dy) * 12);rotate:var(--r1)}}
 /* OK prompt: green circled A + white OK, placed where the game puts it */
 .rk .rkok{position:absolute!important;left:auto!important;top:auto!important;right:calc(22px + env(safe-area-inset-right,0px))!important;bottom:calc(18px + env(safe-area-inset-bottom,0px))!important;z-index:30;gap:0!important;padding:0!important;font:900 italic clamp(30px,6.2vmin,58px)/1 'Archivo','Arial Black',sans-serif!important;font-variation-settings:'wdth' 100;color:#fff!important;-webkit-text-stroke:0!important;letter-spacing:-.03em;text-shadow:0 2px 8px rgba(0,0,30,.35)}
 .rk .rkok .rkx{width:1.02em!important;height:1.02em!important;margin:0 -.24em 0 0!important;border:.055em solid #8ff03c!important;border-radius:50%!important;background:none!important;box-shadow:none!important;position:relative}
@@ -1270,8 +1270,7 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .rk.max.mxd .rknum,.rk.max.mxd .rkinfo,.rk.max.mxd .rkbar{translate:0 56px}
 .rk.max.mxd .rks .so{fill:#fff!important}
 /* romance hearts */
-.rks.hrt .so{fill:#c9cbd6}.rks.hrt .si{fill:#fff;fill-opacity:.25}
-.rks.hrt.w .so{fill:#fff}
+.rks.hrt .so{fill:#aeafb7}.rks.hrt .si{fill:#fff;fill-opacity:.25}
 /* MAX scene text layout (5 lines, as in the game) */
 .mxs .iatt p.l0{left:99px;top:96px}
 .mxs .iatt p.l1{left:251px;top:146px}
@@ -1341,8 +1340,7 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .slgt{position:absolute;left:6px;top:10px;font:900 italic 60px/1 'Montserrat','Arial Black',sans-serif;letter-spacing:-.06em;color:#fff;white-space:nowrap;transform:scaleX(.88);transform-origin:0 50%;text-shadow:0 2px 6px rgba(0,20,90,.25)}
 .slgb{position:absolute;left:0;right:0;top:58px;height:50px;background:#fff;clip-path:polygon(0 0,95.3% 0,93.5% 100%,0 100%)}
 .slgo1,.slgo2{position:absolute;left:0;right:0;top:108px;pointer-events:none}
-.slgo1{height:65px;background:#05060c;clip-path:polygon(0 0,calc(92.6% + 2px) 0,calc(90.3% + 2px) 100%,0 100%)}
-.slgo2{height:68px;background:#fff;clip-path:polygon(0 0,calc(92.6% + 5px) 0,calc(90.3% + 5px) 100%,0 100%)}
+.slgo2{height:66px;background:#fff;clip-path:polygon(0 0,calc(92.6% + 3px) 0,calc(90.3% + 3px) 100%,0 100%)}
 .slgb::before{content:'';position:absolute;left:0;right:0;top:3px;bottom:0;background:#05060c;clip-path:polygon(0 0,94.4% 0,92.6% 100%,0 100%)}
 .slgb span{position:absolute;z-index:1;left:0;right:13%;top:3px;bottom:0;display:flex;align-items:center;justify-content:center;color:#f2f2f2;font:600 20px/1 'Fira Sans Condensed','Barlow',sans-serif;letter-spacing:.01em;white-space:nowrap;overflow:hidden}
 .slgw{position:absolute;left:0;right:0;top:108px;height:63px;background:#fff;clip-path:polygon(0 0,92.6% 0,90.3% 100%,0 100%)}
@@ -1364,7 +1362,7 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .sld.in .slg{animation:slpin .32s cubic-bezier(.2,.8,.3,1) both}
 .sld.sw .slg{animation:slsw .2s cubic-bezier(.2,.8,.3,1) both!important}
 /* MAX sits right behind the 10 */
-.rk.max .rkmax{left:395px!important}
+.rk.max .rkmax{left:318px!important}
 </style>
 </head>
 <body>
@@ -1582,7 +1580,7 @@ function pre(el,go,tier){const sn=S.dv.sfx?BS.tr:null;
  so.done.then(()=>fin(),()=>fin(1))}
 function apply(sc,el){if(busy)return;busy=1;const b={...S.p};S.prev=b;sc.a.forEach(([s,n])=>S.p[s]+=n);
  const sk0=streakInfo();S.h.push({t:Date.now(),n:sc.t,a:sc.a});const sk1=streakInfo();if(!/^Quest:/.test(sc.t||'')&&sk1.n>sk0.n)STKP={from:sk0.n,to:sk1.n};if(S.h.length>200)S.h.shift();save();
- try{S.dv.vib&&navigator.vibrate&&navigator.vibrate(15)}catch(e){}
+ try{S.dv.vib&&HAPT(15)}catch(e){}
  pre(el,()=>play(b,{...S.p},sc),Math.min(3,sc.a.reduce((m,x)=>m+x[1],0)))}
 /* ---- the stat screen: closing-in circles -> rank flip -> slow pulses + rings ---- */
 const GO=1000,C0=1280,GAP=650,CD=520;
@@ -1630,7 +1628,7 @@ function play(b,a,sc){
     nu.dataset.n=l+1;nu.setAttribute('d',DGT[l+1].p);nu.setAttribute('transform',dgT(s,l+1));
     rw.innerHTML=rtH(s,l+1);
     sv.querySelectorAll(`.lbl.${s},.stp.${s}`).forEach(e=>e.classList.add('yl'));
-    try{S.dv.vib&&navigator.vibrate&&navigator.vibrate([30,50,30])}catch(x){}},Lc+660);   /* new rank + yellow text appear as the gold ring fades (like the game) */
+    try{S.dv.vib&&HAPT([30,50,30])}catch(x){}},Lc+660);   /* new rank + yellow text appear as the gold ring fades (like the game) */
    T(()=>{q(s,'.dot').classList.remove('fy')},Lc+700)}
   T(()=>{const g=q(s,'.glo');g.classList.remove('lf');if(S.dv.pm=='game')g.classList.add('gm');g.classList.add('pu')},P0);
   ring(s,Lc+650);RS=Math.min(RS,Lc+650);   /* rings start ~0.65 s after the last hit (as in the game) */
@@ -1937,7 +1935,7 @@ function pf2HTML(){const pr=RF.me,uid=myId(),bn=banBG(banOf(uid,pr)),a=arcOk(pr.
 function slDetail(L,i){const x=L[i],hrt=false,pr=x.pr,nm=x.a<99?ARCN[x.a]:'Unknown',need=x.r>=10?0:SLT[x.r]-x.n;
  const txt=x.r>=10?`Your bond with ${pr.name||'your friend'} is at its strongest. Every moment together still counts.`:(x.n?`You’ve hung out ${x.n} time${x.n==1?'':'s'}. ${need} more hangout${need==1?'':'s'} to reach Rank ${x.r+1}.`:`A new bond. Hang out together (FRIEND tab on the left edge) to grow this Social Link.`);
  const kk=RF.slk;RF.slk=0;return `<div class="sld in${RF.sldir<0?' nx':''}${kk?' sw':''}"><div class="slnav"><button data-sln="${(i-1+L.length)%L.length}" data-dir="-1" aria-label="Previous" class="slq${RF.slk<0?' kk':''}"><svg class="slar" viewBox="0 0 26 36" aria-hidden="true"><path d="M21 2 L3 18 L21 34 L25 29.5 L12 18 L25 6.5 Z" fill="#e5002b" stroke="#fff" stroke-width="2.6" stroke-linejoin="miter"/></svg></button><button data-sln="${(i+1)%L.length}" data-dir="1" aria-label="Next" class="sle${RF.slk>0?' kk':''}"><svg class="slar slarr" viewBox="0 0 26 36" aria-hidden="true"><path d="M21 2 L3 18 L21 34 L25 29.5 L12 18 L25 6.5 Z" fill="#e5002b" stroke="#fff" stroke-width="2.6" stroke-linejoin="miter"/></svg></button></div>
- <div class="slg"><div class="slgt">SOCIAL LINK</div><div class="slgb"><span>${esc(pr.name||'@'+(pr.handle||''))}</span></div><span class="slgtag"><i>ARCANA</i></span><i class="slgo2"></i><i class="slgo1"></i><div class="slgw"><b class="slga">${esc(nm)}</b><span class="slgr">RANK</span><div class="slgs${hrt?' hrt':''}">${Array.from({length:10},(_,k)=>`<span class="${k<x.r?'on':''}"><svg viewBox="0 0 20 20"><path d="${hrt?'M10 18.2C5 14.3 1.4 11.2 1.4 7.2 1.4 4.3 3.6 2.2 6.1 2.2 7.9 2.2 9.3 3.2 10 4.7 10.7 3.2 12.1 2.2 13.9 2.2 16.4 2.2 18.6 4.3 18.6 7.2 18.6 11.2 15 14.3 10 18.2Z':'M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6l-5.2 2.9 1.2-5.8-4.4-4 5.9-.7z'}"/></svg></span>`).join('')}</div></div><em class="slgk${x.r>=10?' mx':''}" data-n="${x.r>=10?'MAX':x.r}">${x.r>=10?'MAX':x.r}</em></div>
+ <div class="slg"><div class="slgt">SOCIAL LINK</div><div class="slgb"><span>${esc(pr.name||'@'+(pr.handle||''))}</span></div><span class="slgtag"><i>ARCANA</i></span><i class="slgo2"></i><div class="slgw"><b class="slga">${esc(nm)}</b><span class="slgr">RANK</span><div class="slgs${hrt?' hrt':''}">${Array.from({length:10},(_,k)=>`<span class="${k<x.r?'on':''}"><svg viewBox="0 0 20 20"><path d="${hrt?'M10 18.2C5 14.3 1.4 11.2 1.4 7.2 1.4 4.3 3.6 2.2 6.1 2.2 7.9 2.2 9.3 3.2 10 4.7 10.7 3.2 12.1 2.2 13.9 2.2 16.4 2.2 18.6 4.3 18.6 7.2 18.6 11.2 15 14.3 10 18.2Z':'M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6l-5.2 2.9 1.2-5.8-4.4-4 5.9-.7z'}"/></svg></span>`).join('')}</div></div><em class="slgk${x.r>=10?' mx':''}" data-n="${x.r>=10?'MAX':x.r}">${x.r>=10?'MAX':x.r}</em></div>
  <p class="sltx">${esc(txt)}</p>
  <div class="slvis"><div class="slcw">${arcCard(x.a<99?x.a:22,118,'slcard')}</div><div class="slav">${avHTML(pr,96)}</div></div>
  <div class="slfp"><b>${esc(pr.name||'')}</b><p>${esc(pr.bio||'A friend of yours on P3RL.')}</p></div>
@@ -2054,9 +2052,9 @@ function slPlayBuf(sn,vol,loop,when){const c=actx();if(!c||!sn)return Promise.re
 /* music: starts with the scene (or later, after a delay) and keeps playing from I am thou into the rank screen */
 function slBgmStart(delay,k){musDuck=1;musVol();if(slBgm||!S.dv.sfx)return;clearTimeout(slBgmT);const tok={pending:1};slBgm=tok;const go=()=>{if(slBgm!==tok)return;slPlayBuf(SLC[k||'bgm'],k=='mbgm'?.13:.36,true).then(o=>{if(slBgm===tok&&o){slBgm=o}else if(o){try{o.src.stop()}catch(e){}}})};if(delay)slBgmT=setTimeout(go,delay);else go()}
 function slBgmStop(){musDuck=0;setTimeout(musVol,900);clearTimeout(slBgmT);const o=slBgm;slBgm=null;if(!o||o.pending)return;try{const t=o.c.currentTime;o.g.gain.setValueAtTime(o.g.gain.value,t);o.g.gain.linearRampToValueAtTime(0,t+1.2);o.src.stop(t+1.3)}catch(e){}}
-function slSound(k,a,mb){slStop();if(!S.dv.sfx)return;
+let slStarAt=3.45;function slSound(k,a,mb){slStop();if(!S.dv.sfx)return;
  slBgmStart(0,(k=='max'||mb)?'mbgm':'bgm');if(k=='max')slKillAll();   /* music starts with the screen (and carries on from I am thou into the rank screen) */
- clearTimeout(slStarT);if(k=='rk')slStarT=setTimeout(()=>{if(slSrc)slPlayBuf(SLC.star,.9)},3440);   /* the chime as the new star lights up */
+ clearTimeout(slStarT);if(k=='rk')slStarT=setTimeout(()=>{if(slSrc)slPlayBuf(SLC.star,.9)},Math.round((slStarAt||3.45)*1000)-10);   /* the chime as the new star lights up */
  if(k=='iat')slKillAll();   /* a new I am thou never plays over an old one */
  const sn=k=='iat'?SLV(a):k=='max'?SLMX(a):SLC.rk;if(!sn)return;const me={};slSrc=me;slPlayBuf(sn,1).then(o=>{if(slSrc===me&&o)Object.assign(me,o);else if(o)o.src.stop()})}
 function slPress(){if(!S.dv.sfx)return;slPlayBuf(SLP,1)}
@@ -2122,6 +2120,7 @@ function slPlay(x){if(x.kind=='max'){const pr0=RF.prof[x.uid]||{},a0=x.a!=null?x
   const SP=[[144,52,52,.3],[407,72,26,.5],[520,172,30,.9],[510,295,26,1.4],[540,280,44,2],[370,560,52,.6],[435,540,40,1.7],[208,525,34,2.4],[340,520,26,1.1],[401,72,52,.3],[322,148,40,.5],[377,180,46,.2],[450,213,34,.9],[19,163,52,.4],[47,213,62,1.2],[44,292,46,.7],[120,250,38,1.5],[100,58,34,1],[480,140,40,.6],[230,40,32,1.3],[30,520,42,.8],[200,560,36,1.1],[395,385,44,.35],[160,200,30,1.7],[300,30,34,2.1],[60,420,32,1.9],[520,300,28,2.4],[250,300,40,.15],[180,120,36,2.6],[340,250,30,1.05],[90,480,34,2.2]];
   const DT=Array.from({length:30},(_,k)=>[10+((k*97)%560),10+((k*61)%560),(k*.43%6).toFixed(2)]);
   const HO='M0,10.5 C-6.5,5.4 -11.6,1.2 -11.6,-4.1 C-11.6,-8.1 -8.6,-10.8 -5.4,-10.8 C-2.9,-10.8 -1,-9.3 0,-7.2 C1,-9.3 2.9,-10.8 5.4,-10.8 C8.6,-10.8 11.6,-8.1 11.6,-4.1 C11.6,1.2 6.5,5.4 0,10.5Z',HI='M0,5.2 C-3.4,2.6 -6,.5 -6,-2.1 C-6,-4.2 -4.4,-5.6 -2.8,-5.6 C-1.5,-5.6 -.5,-4.8 0,-3.7 C.5,-4.8 1.5,-5.6 2.8,-5.6 C4.4,-5.6 6,-4.2 6,-2.1 C6,.5 3.4,2.6 0,5.2Z';
+  const SLW=n=>Math.max(3.45,1.25+(n-1)*.26);slStarAt=SLW(Math.min(10,x.rank));
   const starSVG=(x,y,sz,r,d,dx,dy)=>`<svg class="rks${rom?' hrt':''}" viewBox="-12 -12 24 24" style="left:${x}px;top:${y}px;--s:${sz}px;--r:${r}deg;--d:${d}s;--dx:${dx}px;--dy:${dy}px">${rom?`<path class="so" d="${HO}"/><path class="si" d="${HI}"/>`:'<path class="so" d="M0,-11.6 L2.9,-3.9 11.2,-3.6 4.7,1.4 6.9,9.4 0,4.9 -6.9,9.4 -4.7,1.4 -11.2,-3.6 -2.9,-3.9Z"/><path class="si" d="M.2,-5.6 L1.6,-1.8 5.6,-1.6 2.4,.8 3.5,4.6 .2,2.4 -3.1,4.6 -2,.8 -5.2,-1.6 -1.2,-1.8Z"/>'}</svg>`;
   const PT=false;
   if(PT){const q=v=>[Math.round(v[0]*1.25-50),Math.round(v[1]*1.25+75)];ST.forEach(v=>{[v[0],v[1]]=q(v);v[2]=Math.round(v[2]*1.2)});SP.forEach(v=>{[v[0],v[1]]=q(v)});DT.forEach(v=>{[v[0],v[1]]=q(v)});
@@ -2129,11 +2128,11 @@ function slPlay(x){if(x.kind=='max'){const pr0=RF.prof[x.uid]||{},a0=x.a!=null?x
   const rom=!!x.rom&&x.rank>=9;if(mx)need=5600;
   E.className='iat rk'+(mx?' max':'')+(rom?' rom':'');
   E.innerHTML=`<div class="rkst${PT?' pt':''}"><i class="rkwipe"></i><i class="rkbgd"></i><i class="rkcol"></i><i class="rkband"></i><i class="rklow"></i>
-  <div class="rkshw">${Array.from({length:24},(_,k)=>{const C=['#0a14e0','#0610c4','#1426f0','#0508a6','#0c1ad6','#1a2cff'],y=200+((k*83)%380),w=170+((k*53)%170),h=130+((k*71)%190),du=46+((k*37)%30),ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="left:-1100px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?1:-1)*(720+(k%3)*360)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${du.toFixed(1)}s"></i>`}).join('')}</div>
+  <div class="rkshw">${Array.from({length:24},(_,k)=>{const C=['#0a14e0','#0610c4','#1426f0','#0508a6','#0c1ad6','#1a2cff'],y=200+((k*83)%380),w=170+((k*53)%170),h=130+((k*71)%190),du=46+((k*37)%30),ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="left:-1100px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?1:-1)*12*(720+(k%3)*360)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${(du*12).toFixed(1)}s"></i>`}).join('')}</div>
   ${mx?'<div class="rkmax">MAX</div>':''}
   
   <div class="rkcw"><div class="rkcard">${arcCard(a,236)}<i class="wtr"></i></div></div>
-  ${ST.map((v,k)=>{const h=starSVG(...v),n=Math.min(10,x.rank),nw=k==n-1;if(k>=n)return h;const w=nw?3.45:3.45-(n-1-k)*.19;return h.replace('class="rks"','class="rks w'+(nw?' nw':'')+'"').replace('style="','style="--w:'+w.toFixed(2)+'s;')+(nw?`<svg class="rkghost" viewBox="-12 -12 24 24" style="left:${v[0]}px;top:${v[1]}px;--s:${v[2]}px;--w:${w}s"><path d="${rom?HO:'M0,-10.5 L2.6,-3.6 10,-3.3 4.2,1.3 6.2,8.5 0,4.4 -6.2,8.5 -4.2,1.3 -10,-3.3 -2.6,-3.6Z'}"/></svg>`:'')}).join('')}
+  ${ST.map((v,k)=>{const h=starSVG(...v),n=Math.min(10,x.rank),nw=k==n-1;if(k>=n)return h;const w=nw?SLW(n):1.25+k*.26;return h.replace('class="rks','class="rks w'+(nw?' nw':'')+' ').replace('style="','style="--w:'+w.toFixed(2)+'s;')+(nw?`<svg class="rkghost" viewBox="-12 -12 24 24" style="left:${v[0]}px;top:${v[1]}px;--s:${v[2]}px;--w:${w}s"><path d="${rom?HO:'M0,-10.5 L2.6,-3.6 10,-3.3 4.2,1.3 6.2,8.5 0,4.4 -6.2,8.5 -4.2,1.3 -10,-3.3 -2.6,-3.6Z'}"/></svg>`:'')}).join('')}
   
   <div class="rkup" data-t="RANK UP!">RANK UP!</div><i class="rkflash"></i>
   <div class="rkbar"><span><em>${esc((pr.name||'?')[0])}</em>${esc((pr.name||'your friend').slice(1))}</span></div>
@@ -2146,7 +2145,7 @@ function slPlay(x){if(x.kind=='max'){const pr0=RF.prof[x.uid]||{},a0=x.a!=null?x
  }
  try{E.querySelectorAll('.wtr').forEach(w=>fxWater(w));if(x.kind=='new'||x.kind=='max')fxSparkles(E,()=>E.querySelector('.iatc'),{delay:1.5,until:5.25,rate:26,drate:12,pad:.4,scale:1});else fxSparkles(E,()=>E.querySelector('.rkcw'),{delay:.35,rate:8,drate:6,pad:1.1,area:1.05,scale:.8,still:1})}catch(e){}
  slSound(x.kind=='new'?'iat':x.kind=='max'?'max':'rk',x.kind=='max'?x.key:a,x.mb);
- E.classList.remove('on');void E.offsetWidth;E.classList.add('on');document.body.classList.add('lock');try{if(S.dv.vib&&navigator.vibrate)navigator.vibrate(x.kind=='new'?[30,60,30]:[20,40,60])}catch(e){}
+ E.classList.remove('on');void E.offsetWidth;E.classList.add('on');document.body.classList.add('lock');try{if(S.dv.vib)HAPT(x.kind=='new'?[30,60,30]:[20,40,60])}catch(e){}
  let fin=0;const done=()=>{if(fin)return;fin=1;slStop();slPress();clearTimeout(E._mxd);if(x.kind=='rank'&&!SLQ.length)slBgmStop();if(x.kind=='new'||x.kind=='max'){E.style.background='rgba(24,28,60,.96)';E.classList.add('xf');SLQ.unshift(x.kind=='max'?{kind:'rank',uid:x.uid,rank:10,rom:x.rom,a:x.a,mb:1}:{kind:'rank',uid:x.uid,rank:1});setTimeout(()=>{E.innerHTML='';E._fit=null;slPlay(SLQ.shift())},420);return}
  E.classList.add('out');setTimeout(()=>{E.className='iat';E.style.background='';E.innerHTML='';E._fit=null;document.body.classList.remove('lock');slTick()},520)};
  const ok=E.querySelector('.iatok');let t0=Date.now();
@@ -2231,7 +2230,8 @@ let ARCU='';function arcUrl(){if(!ARCU){try{const el=document.getElementById('ar
 const arcOk=a=>Number.isInteger(a)&&a>=0&&a<=21;
 /* card picture: index 0-21 = arcana, 22 = card back */
 const arcCard=(i,w,cls)=>`<span class="arc ${cls||''}" style="width:${w}px;height:${Math.round(w*230/160)}px;background-image:url(${arcUrl()});background-position:${(i/22*100).toFixed(4)}% 0"></span>`;
-const ANB=[{id:'b31',t:new Date(2026,10,24,17,0).getTime(),title:'Visual and sound fixes',body:'Sharper menu and scenes, cleaner cards, smoother rank-up animations, and audio fixes.'},
+const ANB=[{id:'b32',t:new Date(2026,10,24,17,40).getTime(),title:'Rank-up and vibration fixes',body:'iPhone vibrations, smoother rank-up animations and small visual fixes.'},
+{id:'b31',t:new Date(2026,10,24,17,0).getTime(),title:'Visual and sound fixes',body:'Sharper menu and scenes, cleaner cards, smoother rank-up animations, and audio fixes.'},
 {id:'b30',t:new Date(2026,10,24,16,30).getTime(),title:'Social Link page fixes',body:'The Social Link page looks closer to the game, plus a sound fix.'},
 {id:'b29',t:new Date(2026,10,24,15,0).getTime(),title:'Fixes',body:'Social Link, rank screen and sound fixes.'},
 {id:'b28',t:new Date(2026,10,24,18,0).getTime(),title:'NEW: MAX scenes and Romance',body:'MAX rank scenes, Romance Social Links, and activities that raise more than one stat.'},
@@ -2286,6 +2286,9 @@ function mvGet(k){if(mvB[k])return Promise.resolve(mvB[k]);const el=document.get
 function mvInit(){mvGet('mvl');const L=$('#mns video.pvl');if(L&&S.dv.bgv!==0&&!RMO()&&!L.getAttribute('src')){mvVid(L);L.preload='auto';L.src=MVS();try{L.load()}catch(e){}}}
 function mvSet(im,k,cb){mvGet(k).then(b=>{if(!b){if(k=='mvd'){mvBad=true;$('#mns').classList.remove('hasvid')}return}const old=mvU[k];mvU[k]=URL.createObjectURL(b);im.onload=()=>{if(old)URL.revokeObjectURL(old);cb&&cb()};im.onerror=()=>{mvBad=true;$('#mns').classList.remove('hasvid')};im.src=mvU[k]})}
 /* menu background: ONE clip (img/menu.mp4) - the splash flows straight into the scene, then 6 s..26 s repeats forever (that stretch is seamless) */
+/* vibration: Android vibrates, iPhone (no vibrate API) gets the system haptic tick from a hidden switch */
+let hapL=null;function hapTick(){try{if(!hapL){hapL=document.createElement('label');hapL.setAttribute('aria-hidden','true');hapL.style.cssText='position:fixed;left:-99px;top:0;width:1px;height:1px;opacity:0;pointer-events:none;overflow:hidden';const i=document.createElement('input');i.type='checkbox';i.setAttribute('switch','');i.tabIndex=-1;hapL.appendChild(i);document.body.appendChild(hapL)}hapL.click()}catch(e){}}
+function HAPT(p){try{if(navigator.vibrate){navigator.vibrate(p);return}}catch(e){}const a=Array.isArray(p)?p:[p];let t=0;a.forEach((v,k)=>{if(k%2==0){if(t==0)hapTick();else setTimeout(hapTick,t)}t+=v})}
 const MVA=6.0;const MVS=()=>S.dv.mq===0?'img/menu.mp4':'img/menu_hq.mp4';let mvVBad=0;
 function mvVid(L){if(L._mv)return;L._mv=1;L.loop=false;L.muted=true;
  L.addEventListener('timeupdate',()=>{if(L.currentTime>=MVA+20)L.currentTime-=20});
@@ -2432,7 +2435,7 @@ const FLAME='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.6 1.8c.5 3
 function stkPend(){if(!STKP)return;const x=STKP;STKP=null;setTimeout(()=>streakFx(x.from,x.to),180)}
 function streakFx(from,to){document.querySelectorAll('.skov').forEach(o=>o.remove());const o=document.createElement('div');o.className='skov';
  o.innerHTML=`<div class="sqp"><div class="sqt"><span class="sqfi">${FLAME}</span>STREAK</div><div class="sqn"><span class="o">${from}</span><span class="n">${to}</span></div><div class="sqd">${to==1?'DAY':'DAYS'}</div></div>`;
- document.body.appendChild(o);setTimeout(()=>{if(!o.isConnected)return;o.classList.add('up');try{uiSnd('stk')}catch(e){}try{S.dv.vib&&navigator.vibrate&&navigator.vibrate(14)}catch(e){}},520);
+ document.body.appendChild(o);setTimeout(()=>{if(!o.isConnected)return;o.classList.add('up');try{uiSnd('stk')}catch(e){}try{S.dv.vib&&HAPT(14)}catch(e){}},520);
  let done=false;const end=()=>{if(done)return;done=true;o.classList.add('out');setTimeout(()=>o.remove(),260);try{hub()}catch(e){}};
  setTimeout(()=>o.addEventListener('click',end),300);setTimeout(end,2300)}
 function stkHud(){const H=document.getElementById('hub');if(!H)return;let b=H.querySelector('.stkh');if(!b){b=document.createElement('div');b.className='stkh';H.appendChild(b)}
@@ -2597,7 +2600,7 @@ function chNotify(old){const me=myId();Object.entries(RF.chats).forEach(([pid,c]
 function chGo(uid){if(!$('#mns').classList.contains('on'))menu('x');else{mTab='x';}chOpen(uid)}
 let chBT=0;function chBanner(uid,nm,tx,pr){let B=document.getElementById('chbn');if(!B){B=document.createElement('button');B.id='chbn';document.body.appendChild(B);B.onclick=()=>{B.classList.remove('on');chGo(B.dataset.u)}}
  B.dataset.u=uid;B.innerHTML=`${avHTML(pr,40)}<span><small>NEW MESSAGE</small><b>${esc(nm)}</b><i>${esc(tx)}</i></span>`;B.classList.remove('on');void B.offsetWidth;B.classList.add('on');
- try{S.dv.vib&&navigator.vibrate&&navigator.vibrate([20,40,20])}catch(e){}try{uiSnd('sw')}catch(e){}clearTimeout(chBT);chBT=setTimeout(()=>B.classList.remove('on'),4500)}
+ try{S.dv.vib&&HAPT([20,40,20])}catch(e){}try{uiSnd('sw')}catch(e){}clearTimeout(chBT);chBT=setTimeout(()=>B.classList.remove('on'),4500)}
 function ntfAsk(){if(!('Notification' in window)){toast('This browser can’t show notifications. On iPhone, add P3RL to your Home Screen first.');return}
  Notification.requestPermission().then(p=>{toast(p=='granted'?'Notifications on':'Notifications are blocked in your phone settings');S.dv.ntf=p=='granted'?1:0;save();renderMenu()})}
 function chOpen(uid){chClose();RF.chat=uid;RF.chm=[];if((RF.chats||{})[chPid(uid)])chSub();renderMenu();chRead()}
@@ -2774,7 +2777,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.24-1716';
+var APPVER='2026.11.24-1728';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
