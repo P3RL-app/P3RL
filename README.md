@@ -45,7 +45,7 @@ Social Link: your friends as Social Links, with their Arcana and rank
 Messages: chat with your friends
 Quests: this week's goals and your streak
 History: everything you logged, day by day
-Calendar: the game's calendar, where you can write your own plans on any day
+Calendar: the game's calendar, where you can write your own plans on any day, plus your Part-Time Jobs (pay, currency, day or night, photo and color)
 System: the Tutorial and Config (sound, volumes, text speed, sizes, effects, your account and backups)
 👥 Friends, Social Links and hangouts
 Open Menu → System → Config → Account & Data and sign in with Google or with email and a password. A new email creates an account automatically.

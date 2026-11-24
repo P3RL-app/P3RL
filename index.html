@@ -1408,11 +1408,11 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .pmn.calm .pbtn button{color:#0b0b12!important;text-shadow:none!important}
 .pmn.calm .pbtn i{background:#0b0b12;color:#fff}
 .calp{position:relative;min-height:100%;background:#9fd2fb;overflow:hidden;padding:0 0 128px;color:#fff;font-style:normal}
-.calc{position:absolute;left:-67vw;top:calc(170px + env(safe-area-inset-top,0px) - 105vw);width:210vw;height:210vw;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 62% 22%,rgba(99,214,248,.5) 0%,rgba(58,166,242,.56) 18%,rgba(35,115,230,.64) 38%,rgba(26,79,217,.72) 60%,rgba(15,47,191,.8) 100%);box-shadow:0 0 0 3px rgba(255,255,255,.6)}
+.calc{position:absolute;left:-67vw;top:calc(170px + env(safe-area-inset-top,0px) - 105vw);width:210vw;height:210vw;border-radius:50%;overflow:hidden;background:rgba(28,96,232,.42);box-shadow:0 0 0 3px rgba(255,255,255,.6)}
 .calc i{display:none}
 .calbg{position:absolute;left:0;right:0;top:0;height:max(100%,100vh);background:#1b46c8 50% 18%/cover no-repeat;filter:saturate(.85)}
-.calbt{position:absolute;left:0;right:0;top:0;height:max(100%,100vh);background:linear-gradient(180deg,rgba(150,210,255,.5) 0%,rgba(128,196,255,.46) 50%,rgba(170,220,255,.6) 100%)}
-.calc::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(100deg,rgba(255,255,255,.07) 0 3px,transparent 3px 46px),radial-gradient(ellipse at 40% 10%,rgba(255,255,255,.28),transparent 45%)}
+.calbt{position:absolute;left:0;right:0;top:0;height:max(100%,100vh);background:rgba(120,190,255,.26)}
+.calc::after{display:none}
 .calsh{position:absolute;right:6%;top:calc(560px + env(safe-area-inset-top,0px));width:34px;height:26px;background:rgba(140,210,255,.42);clip-path:polygon(0 30%,70% 0,100% 64%,26% 100%);transform:rotate(18deg);pointer-events:none}
 .calsh.s2{right:22%;top:calc(612px + env(safe-area-inset-top,0px));width:20px;height:16px;transform:rotate(-30deg);background:rgba(120,200,255,.32)}
 .calsh.s3{right:2%;top:calc(660px + env(safe-area-inset-top,0px));width:26px;height:20px;transform:rotate(64deg)}
@@ -1445,13 +1445,13 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .cd.vac::before,.cd.fm::before{content:'';position:absolute;left:50%;top:50%;width:38px;height:38px;margin:-19px 0 0 -19px;border-radius:50%;z-index:-2;pointer-events:none}
 .cd.vac::before{background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.45)}
 .cd.fm::before{border:2px solid rgba(240,204,96,.9);background:rgba(190,150,38,.8)}
-.ctri{position:absolute;left:50%;top:50%;width:48px;height:42px;margin:-24px 0 0 -22px;z-index:-3;pointer-events:none}
-.ctri::before{content:'';position:absolute;inset:0;background:#f23fc4;clip-path:polygon(58% 0,100% 86%,0 100%);transform-origin:54% 62%;animation:ctw 1.05s ease-in-out infinite}
-@keyframes ctw{0%,100%{transform:rotate(-7deg) scale(1,1)}50%{transform:rotate(8deg) scale(1.05,.95)}}
-.ctri.in{animation:ctin .14s ease-out both}.ctri.out{animation:ctout .14s ease-in both}
-@keyframes ctin{from{opacity:0;transform:scale(.55) rotate(-24deg)}}@keyframes ctout{to{opacity:0;transform:scale(.85)}}
-#mnb2.noanim .ctri::before{animation:ctw 1.05s ease-in-out infinite!important}#mnb2.noanim .ctri.in{animation:ctin .14s ease-out both!important}#mnb2.noanim .ctri.out{animation:ctout .14s ease-in both!important}
-.cd.cur b{color:#10123a;text-shadow:none;opacity:1}
+.ctri{position:absolute;left:50%;top:50%;width:60px;height:49px;margin:-29px 0 0 -27px;z-index:-3;pointer-events:none}
+.ctri::before{content:'';position:absolute;inset:0;background:#f23fc4;clip-path:polygon(54.7% 0,100% 65%,0 100%);animation:ctb .35s linear infinite}
+@keyframes ctb{0%,14%{transform:translate(0,0)}40%,47%{transform:translate(-8px,5.5px)}100%{transform:translate(0,0)}}
+.ctri.in{animation:ctin .1s linear both}.ctri.out{animation:ctout .08s linear both}
+@keyframes ctin{from{opacity:0}}@keyframes ctout{to{opacity:0}}
+#mnb2.noanim .ctri::before{animation:ctb .35s linear infinite!important}#mnb2.noanim .ctri.in{animation:ctin .1s linear both!important}#mnb2.noanim .ctri.out{animation:ctout .08s linear both!important}
+.cd.cur b{color:#0f0f1a;text-shadow:none;opacity:1}
 .cd small{position:absolute;top:-1px;font:800 8.5px/1 'Archivo',sans-serif;letter-spacing:.06em;color:#fff;text-shadow:0 1px 0 rgba(8,20,100,.5)}
 .cd .dot{position:absolute;bottom:2px;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 0 1px rgba(8,20,100,.25)}
 .cd.cur .dot{background:#10123a;bottom:4px}
@@ -1492,6 +1492,55 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .schadd #schvn{grid-column:1/-1}
 .schadd label{display:flex;flex-direction:column;gap:4px;font:700 12px/1 'Archivo',sans-serif;opacity:.9}
 .schadd button{grid-column:1/-1;border:0;background:#5ff0ff;color:#0c1150;font:800 15px/1 'Archivo',sans-serif;padding:11px;transform:skewX(-10deg)}
+
+/* ===== part-time jobs ===== */
+.cjobs{position:relative;z-index:4;margin:26px 0 0;padding:26px 12px 22px;background:#fbec2e;clip-path:polygon(0 22px,100% 0,100% 100%,0 100%);color:#0c1150;font-style:normal}
+.cjh{display:flex;align-items:flex-end;justify-content:flex-end;gap:8px;margin:0 2px 12px}
+.cjh span{font:800 15px/1 'Archivo',sans-serif;font-stretch:90%;color:#0c1150;padding-bottom:8px}
+.cjh b{font:900 italic 64px/.8 'Montserrat',sans-serif;letter-spacing:-.05em;color:#0c1150;padding-right:.05em}
+.jcard{position:relative;display:block;width:100%;height:76px;margin:0 0 9px;padding:0;border:0;overflow:hidden;color:#fff;text-align:left;font-style:normal;background:var(--jc);box-shadow:0 3px 0 rgba(12,17,80,.25);-webkit-tap-highlight-color:transparent}
+.jcard:active{transform:scale(.985)}
+.jcard .jph{position:absolute;right:0;top:0;bottom:0;width:74%}
+.jcard .jtn{position:absolute;inset:0;background:var(--jc);opacity:.38}
+.jcard .jwd{position:absolute;inset:0;background:var(--jc);clip-path:polygon(0 0,38% 0,24% 100%,0 100%)}
+.jcard .jic{position:absolute;left:10px;top:50%;transform:translateY(-50%);display:flex;gap:2px}
+.jcard .jic span{width:28px;height:28px;opacity:.38;filter:grayscale(1)}
+.jcard .jic span.on{opacity:1;filter:none}
+.jcard .jic svg{width:100%;height:100%;display:block}
+.jsun circle{fill:#ffe23b}.jmoon path{fill:#fff}
+.jcard .jtx{position:absolute;left:84px;right:8px;top:8px;display:flex;flex-direction:column;gap:5px}
+.jcard .jtx b{font:600 italic 25px/1.05 'Fira Sans Condensed','Archivo',sans-serif;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-shadow:0 1px 2px rgba(0,0,0,.45)}
+.jpay{display:flex;align-items:center;gap:4px;font:700 italic 16px/1 'Archivo',sans-serif;text-shadow:0 1px 2px rgba(0,0,0,.5);white-space:nowrap}
+.jpay i{font:700 13px/1 'Archivo',sans-serif;font-style:normal;background:#fff;color:#111;padding:3px 5px;border-radius:3px;text-shadow:none}
+.jpay small{font:600 12px/1 'Archivo',sans-serif;opacity:.85;margin-left:2px}
+.jnone{margin:2px 4px 12px;font:600 14px/1.4 'Archivo',sans-serif;color:#2a2f55}
+.jadd{display:block;width:100%;border:0;background:#0c1150;color:#fff;font:800 italic 16px/1 'Archivo',sans-serif;padding:14px;transform:skewX(-8deg);margin-top:4px}
+.jed{display:flex;flex-direction:column;gap:12px}
+.jprev .jcard{margin:0;pointer-events:none}
+.jf{display:flex;flex-direction:column;gap:6px}
+.jf>span,.jf label>span{font:800 12px/1 'Archivo',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#0c1150}
+.jf input,.jf select{width:100%;min-width:0;border:2px solid #0c1150;background:#fff;color:#0c1150;font:600 16px/1.2 'Archivo',sans-serif;padding:10px;border-radius:0}
+.jf input.err{border-color:#e1203c;background:#ffe8ec}
+.jrow{flex-direction:row;gap:8px}.jrow label{flex:1;display:flex;flex-direction:column;gap:6px;min-width:0}
+.jseg{display:flex;gap:6px}
+.jseg button{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;border:2px solid #0c1150;background:#fff;color:#0c1150;font:700 14px/1.1 'Archivo',sans-serif;padding:9px 6px;transform:skewX(-8deg)}
+.jseg button svg{width:20px;height:20px}
+.jseg button .jmoon path{fill:#0c1150}
+.jseg button.on{background:#0c1150;color:#fff}.jseg button.on .jmoon path{fill:#fff}
+.jimgs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.jimgs>*{position:relative;display:flex;flex-direction:column;gap:4px;border:0;background:none;padding:0;color:#0c1150;cursor:pointer}
+.jimgs i{display:flex;align-items:center;justify-content:center;height:50px;border:3px solid transparent;background:#0c1150;color:#fff;font:700 24px/1 sans-serif;font-style:normal}
+.jimgs .on i{border-color:#e5007a;box-shadow:0 0 0 2px #fff inset}
+.jimgs small{font:700 11px/1 'Archivo',sans-serif;text-align:center}
+.jcols{display:flex;flex-wrap:wrap;gap:8px}
+.jcols>*{width:36px;height:36px;border:3px solid #fff;outline:2px solid transparent;padding:0;transform:skewX(-8deg)}
+.jcols>.on{outline-color:#e5007a}
+.jcc{position:relative;overflow:hidden;background:conic-gradient(#f33,#ff3,#3f3,#3ff,#33f,#f3f,#f33)}
+.jcc input{position:absolute;inset:-6px;width:calc(100% + 12px);height:calc(100% + 12px);opacity:0;border:0;padding:0}
+.jbtns{display:flex;gap:8px;flex-wrap:wrap}
+.jbtns button{flex:1;border:0;background:#fff;color:#0c1150;font:800 italic 15px/1 'Archivo',sans-serif;padding:13px 10px;transform:skewX(-8deg);box-shadow:0 2px 0 rgba(12,17,80,.3)}
+.jbtns button.go{background:#0c1150;color:#fff}
+.jbtns button.x{background:#e1203c;color:#fff}
 </style>
 </head>
 <body>
@@ -1805,7 +1854,7 @@ function renderDev(){const d=S.dv,chip=(on,act,k,v,t)=>`<button class="chip${on?
  <div class="r2"><button class="go" data-act="tdp">Play time change</button><button data-act="tdn">Next time of day</button><button data-act="tdreal">Real change (as if the clock moved)</button></div>
  <div class="r2"><label>Badge shows <select id="tdh"><option value="">Real time</option>${TODO.map(k=>`<option value="${k}"${RF.todFake&&RF.todFake.k==k?' selected':''}>${PHN[k]}</option>`).join('')}</select></label><label>Moon <select id="tdm"><option value="">Real</option>${[[0,'New'],[.25,'First quarter'],[.5,'Full'],[.75,'Last quarter'],[.4,'Waxing']].map(([v,n])=>`<option value="${v}"${RF.todFake&&RF.todFake.m===v?' selected':''}>${n}</option>`).join('')}</select></label><label><input type="checkbox" id="tdo"${RF.todFake&&RF.todFake.off?' checked':''}> Day off</label></div>
  <div class="r2"><button class="go" data-act="tdhud">Show on badge</button><button data-act="tdclr">Back to real time</button></div>
- <div class="r2"><button data-act="cal">Open Calendar</button><button data-act="schs">Schedule Settings</button></div>
+ <div class="r2"><button data-act="cal">Open Calendar</button><button data-act="jobs">Part-Time Jobs</button><button data-act="schs">Schedule Settings</button></div>
  <h4>Social Link animations</h4>
  <div class="r2"><label>Friend <select id="slf"><option value="">Test card</option>${(typeof RF!='undefined'?RF.fr:[]).map(f=>`<option value="${f.uid}">${esc((RF.prof[f.uid]||{}).name||'Friend')}</option>`).join('')}</select></label><label>Arcana <select id="sla">${ARCN.map((n,i)=>`<option value="${i}"${i==13?' selected':''}>${ROM[i]} ${n}</option>`).join('')}</select></label></div>
  <div class="r2"><label>Rank <select id="slr">${[1,2,3,4,5,6,7,8,9,10].map(n=>`<option${n==2?' selected':''}>${n}</option>`).join('')}</select></label><button class="go" data-act="sln">Play “I am thou”</button><button class="go" data-act="slrk">Play rank up</button></div>
@@ -1824,6 +1873,7 @@ function dvAct(e){const t=e.target.closest('[data-act]');if(!t)return;const act=
  if(act=='tdreal'){const cur=phaseAt(new Date());S.todK=TODO[(TODO.indexOf(cur)+7)%TODO.length];S.todD=ymd(new Date());$('#dvs').classList.remove('on');menuClose(true);setTimeout(()=>todTick(),600);return}
  if(act=='tdhud'){const k=($('#tdh')||{}).value||null,m=($('#tdm')||{}).value;RF.todFake={k,m:m===''||m==null?null:+m,off:!!($('#tdo')||{}).checked};$('#dvs').classList.remove('on');menuClose(true);setTimeout(todHud,100);return}
  if(act=='tdclr'){RF.todFake=null;$('#dvs').classList.remove('on');menuClose(true);setTimeout(todHud,100);return}
+ if(act=='jobs'){$('#dvs').classList.remove('on');setTimeout(()=>{menu('c');setTimeout(()=>{const e=$('#cjob');if(e)e.scrollIntoView({block:'start'})},450)},200);return}
  if(act=='cal'){$('#dvs').classList.remove('on');setTimeout(()=>menu('c'),200);return}
  if(act=='schs'){$('#dvs').classList.remove('on');setTimeout(()=>{menu('s');RF.cfk='sch';RF.cfc='sch';RF.cfr='tod';renderMenu()},200);return}
  if(act=='mxs'||act=='mxr10'||act=='mx9'){const a=+(($('#mxa')||{}).value||6),rom=!!($('#mxr')||{}).checked;RF.prof['__t']={name:'Test Friend',arc:a};$('#dvs').classList.remove('on');menuClose(true);setTimeout(()=>slQ(act=='mxs'?{kind:'max',uid:'__t',a,rom}:{kind:'rank',uid:'__t',a,rom,rank:act=='mx9'?9:10}),300);return}
@@ -2375,7 +2425,8 @@ let ARCU='';function arcUrl(){if(!ARCU){try{const el=document.getElementById('ar
 const arcOk=a=>Number.isInteger(a)&&a>=0&&a<=21;
 /* card picture: index 0-21 = arcana, 22 = card back */
 const arcCard=(i,w,cls)=>`<span class="arc ${cls||''}" style="width:${w}px;height:${Math.round(w*230/160)}px;background-image:url(${arcUrl()});background-position:${(i/22*100).toFixed(4)}% 0"></span>`;
-const ANB=[{id:'b36',t:new Date(2026,10,24,23,50).getTime(),title:'Calendar fixes',body:'The Calendar no longer overlaps, has the game’s moving cursor, and the date badge moved so it doesn’t cover your stats.'},
+const ANB=[{id:'b37',t:new Date(2026,10,25,0,10).getTime(),title:'NEW: Part-Time Jobs',body:'Add your part-time jobs at the bottom of the Calendar, with pay, currency, day or night, a photo and a color. The Calendar cursor now moves like the game.'},
+{id:'b36',t:new Date(2026,10,24,23,50).getTime(),title:'Calendar fixes',body:'The Calendar no longer overlaps, has the game’s moving cursor, and the date badge moved so it doesn’t cover your stats.'},
 {id:'b35',t:new Date(2026,10,24,23,30).getTime(),title:'NEW: Calendar and Time of Day',body:'A game-style Calendar where you can write plans, the time of day with its time change scene, and your school schedule in Config.'},
 {id:'b34',t:new Date(2026,10,24,18,40).getTime(),title:'Bug fixes and speed-ups',body:'Smoother rank-up screen, text that fits every screen size, lighter memory use and many small fixes.'},
 {id:'b33',t:new Date(2026,10,24,18,0).getTime(),title:'Polish and fixes',body:'Cleaner Arcana cards, smoother rank-up screen and small layout fixes.'},
@@ -2413,7 +2464,7 @@ const fmtT=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'
 function dayLabel(t){const d=new Date(t),n=new Date(),y=new Date(Date.now()-864e5);if(d.toDateString()==n.toDateString())return 'Today';if(d.toDateString()==y.toDateString())return 'Yesterday';return d.toLocaleDateString([],{weekday:'short',day:'numeric',month:'short'})}
 const MD={a:['Announcements','Read the latest news'],p:['Profile','View and edit your profile'],l:['Social Link','Whose S. Link do you want to view?'],f:['Social Link','Whose S. Link do you want to view?'],h:['History','See everything you logged'],s:['Config','Which do you want to change?'],x:['Messages','Who do you want to talk to?'],q:['Quests','This week’s goals'],y:['System','View settings and tutorials'],t:['Tutorial','Which tutorial do you want to view?'],c:['Calendar','Which plans do you want to view?']};let mSel=(S.dv.cpm!==0&&S.dv.msel&&'aplxqhcy'.includes(S.dv.msel))?S.dv.msel:'a';
 const RMO=()=>S.dv.rmo==1||matchMedia('(prefers-reduced-motion: reduce)').matches;
-function menu(t){RF.qin=null;RF.cym=null;RF.cds=null;RF.cale=null;RF.fromCal=0;if(RF.chat&&t!='x')chClose();mTab=t||'m';if(mTab=='m'&&S.dv.cpm===0)mSel='a';RF.cfc=null;RF.cfr=null;RF.tp=null;if(mTab=='l'||mTab=='f')try{profRefresh(1)}catch(e){}try{RF.slv=null;RF.sldel=null}catch(e){}$('#mnb2').scrollTop=0;delArm=null;rstArm=0;RF.edit=0;renderMenu();const m=$('#mns');const an=RMO()?'fade':(mvOK||!mvBad)?'vid':menuAnim(),oc={splash:'op',slide:'op2',fade:'op3',vid:'op4'}[an];clearTimeout(m._cl);m.classList.remove('on','op','op2','op3','op4','pclose');void m.offsetWidth;m.classList.add('on');mvShow(mTab=='m');if(oc&&mTab=='m')m.classList.add(oc);clearTimeout(m._op);m._op=setTimeout(()=>m.classList.remove('op','op2','op3','op4'),1000);document.body.classList.add('lock')}
+function menu(t){RF.qin=null;RF.cym=null;RF.cds=null;RF.cale=null;RF.fromCal=0;RF.jd=null;RF.jdel=0;if(RF.chat&&t!='x')chClose();mTab=t||'m';if(mTab=='m'&&S.dv.cpm===0)mSel='a';RF.cfc=null;RF.cfr=null;RF.tp=null;if(mTab=='l'||mTab=='f')try{profRefresh(1)}catch(e){}try{RF.slv=null;RF.sldel=null}catch(e){}$('#mnb2').scrollTop=0;delArm=null;rstArm=0;RF.edit=0;renderMenu();const m=$('#mns');const an=RMO()?'fade':(mvOK||!mvBad)?'vid':menuAnim(),oc={splash:'op',slide:'op2',fade:'op3',vid:'op4'}[an];clearTimeout(m._cl);m.classList.remove('on','op','op2','op3','op4','pclose');void m.offsetWidth;m.classList.add('on');mvShow(mTab=='m');if(oc&&mTab=='m')m.classList.add(oc);clearTimeout(m._op);m._op=setTimeout(()=>m.classList.remove('op','op2','op3','op4'),1000);document.body.classList.add('lock')}
 /* menu opening animation: the owner picks it; the pick is shared with everyone through config/app */
 var CFG={};const MANIMS=[['splash','P3R splash'],['slide','Slide'],['fade','Fade'],['none','None']];
 function menuAnim(){const v=S.dv.man||'splash';return MANIMS.some(x=>x[0]==v)?v:'splash'}
@@ -2556,7 +2607,8 @@ const TUT=()=>{const th=s=>ST[s].t.slice(1).map((t,i)=>`${ST[s].r[i+1]} at ${t}`
  {n:'Calendar',it:[
   {t:'Time of Day',pg:['Like in the game, your day is split into Early Morning, Morning, Lunchtime, Afternoon, After School, Daytime, Evening and Late Night. The time of day shows in the top-right of the stats screen, with the date and the moon.','When the time of day changes while the app is open, the time change scene plays. Tap it to skip. You can turn it off in Config › Schedule Settings › Time Changes.']},
   {t:'Your School Schedule',pg:['Set your school days in Config › Schedule Settings. Pick a week like Mon–Fri or Sun–Thu, or tap single days. On days off, the afternoon is Daytime instead of Afternoon and After School.','Set when morning classes start, your breaks (Lunchtime), when afternoon classes start and when school ends. Turn off Same times every school day to give each day its own times. Add vacations so those days count as days off.']},
-  {t:'Writing Plans',pg:['Open Menu › Calendar, or tap the date on the stats screen. Use L and R, or swipe, to change the month. Tap a day to see it.','Write a plan in the box under the calendar and tap Add. Days with plans get a dot. Tap a plan to change or delete it. Gold circles are full moon days, and red days are days off.']}]},
+  {t:'Writing Plans',pg:['Open Menu › Calendar, or tap the date on the stats screen. Use L and R, or swipe, to change the month. Tap a day to see it.','Write a plan in the box under the calendar and tap Add. Days with plans get a dot. Tap a plan to change or delete it. Gold circles are full moon days, and red days are days off.']},
+  {t:'Part-Time Jobs',pg:['Scroll down in the Calendar to the yellow Part-Time JOBS list. Tap + Add a part-time job.','Write the name, pick if you work in the day, at night or both, and how you get paid: every time you work, or monthly. Write how much and pick your currency.','Choose a background from the presets or your own photo, and a color for the card. Tap a job card to change or delete it.']}]},
  {n:'System',it:[
   {t:'The Menu',pg:['Tap ☰ to open the menu: Announcements, Profile, Social Link, Messages, Quests, History and System.','Back goes back one screen. Close returns straight to your stats.']},
   {t:'Config',pg:['System › Config holds every setting: sound and the BGM, SE and Voice volumes, text speed, sizes, effects, and your account.','Changes are saved right away.']},
@@ -2686,20 +2738,20 @@ function calPanelHTML(){const c=SCH(),sel=ymdD(RF.cds),sd=schDay(sel),t=sd.t,N=c
   <div class="caladd"><input id="calin" maxlength="120" placeholder="Write a plan for this day" aria-label="New plan" enterkeyhint="done"><button data-cal="add">Add</button></div><button class="calsch" data-cal="sch">Edit school days and times</button>`}
 function calHTML(){calInit();setTimeout(calFit,0);
  return `<div class="calp"><i class="calbg" aria-hidden="true" style="background-image:url('${mvU.mvl||'img/menu2.jpg'}')"></i><i class="calbt" aria-hidden="true"></i><div class="calc" aria-hidden="true"><i></i></div><i class="calsh" aria-hidden="true"></i><i class="calsh s2" aria-hidden="true"></i><i class="calsh s3" aria-hidden="true"></i>
- <div class="calh">${calHeadHTML()}</div><div class="calg" id="calg">${calCellsHTML()}</div><div class="calpn">${calPanelHTML()}</div></div>`}
+ <div class="calh">${calHeadHTML()}</div><div class="calg" id="calg">${calCellsHTML()}</div><div class="calpn">${calPanelHTML()}</div><div class="cjobs" id="cjob">${jobsHTML()}</div></div>`}
 /* the big month number always fits between the L and R groups */
 function calFit(){const r=$('#mnb2 .calrow'),mo=$('#mnb2 .calmo span');if(!r||!mo)return;mo.style.fontSize='';const l=r.querySelector('.caln.l'),R=r.querySelector('.caln.r'),room=R.getBoundingClientRect().left-l.getBoundingClientRect().right-8,w=mo.getBoundingClientRect().width;if(w>room&&room>20)mo.style.fontSize=(parseFloat(getComputedStyle(mo).fontSize)*room/w).toFixed(1)+'px'}
 function calPanel(){const p=$('#mnb2 .calpn');if(p)p.innerHTML=calPanelHTML()}
 /* move the pink cursor like the game: the old one fades away, the new one pops in and keeps wobbling */
 function calSel(k){if(k==RF.cds)return;const old=$(`#mnb2 .cd[data-cd="${RF.cds}"]`),nw=$(`#mnb2 .cd[data-cd="${k}"]`);RF.cds=k;RF.cale=null;
- if(old){old.classList.remove('cur');const tr=old.querySelector('.ctri');if(tr){tr.classList.add('out');setTimeout(()=>tr.remove(),160)}}
+ if(old){old.classList.remove('cur');const tr=old.querySelector('.ctri');if(tr){tr.classList.add('out');setTimeout(()=>tr.remove(),100)}}
  if(nw){nw.classList.add('cur');const tr=document.createElement('i');tr.className='ctri in';nw.insertBefore(tr,nw.querySelector('b'))}
  calPanel()}
 function calMonth(d){const c=RF.cym;let m=c.m+d,y=c.y;if(m<0){m=11;y--}if(m>11){m=0;y++}RF.cym={y,m};RF.cdir=d>0?'r':'l';RF.cale=null;const td=new Date();RF.cds=(td.getFullYear()==y&&td.getMonth()==m)?ymd(td):ymd(new Date(y,m,1,12));
  const h=$('#mnb2 .calh'),g=$('#calg');if(h)h.innerHTML=calHeadHTML();if(g){g.innerHTML=calCellsHTML();g.classList.remove('dr','dl');void g.offsetWidth;g.classList.add('d'+RF.cdir)}calPanel();calFit();RF.cdir=null}
 function calSave(){save();try{todHud()}catch(e){}}
 function calDots(k){const b=$(`#mnb2 .cd[data-cd="${k}"]`);if(!b)return;const n=calNotes(k).length;let d=b.querySelector('.dot');if(n&&!d){d=document.createElement('i');d.className='dot';b.appendChild(d)}else if(!n&&d)d.remove()}
-function calClick(t){if(mTab!='c')return false;
+function calClick(t){if(mTab!='c')return false;if(jobClick(t))return true;
  if(t.dataset.cmo){calMonth(+t.dataset.cmo);return true}
  if(t.dataset.cd){calSel(t.dataset.cd);return true}
  const a=t.dataset.cal;if(!a)return false;const k=RF.cds;S.cal=S.cal||{};
@@ -2742,6 +2794,53 @@ document.getElementById('mnb2').addEventListener('change',e=>{const el=e.target;
  if(el.dataset.scht){T()[el.dataset.scht]=el.value||T()[el.dataset.scht];schSet()}
  else if(el.dataset.schbr!=null){const x=T();x.br[+el.dataset.schbr][+el.dataset.e]=el.value;schSet()}
  else if(el.dataset.schg){c[el.dataset.schg]=el.value||c[el.dataset.schg];schSet()}});
+
+/* ===== PART-TIME JOBS (bottom of the Calendar) ===== */
+const JCUR=[['ILS','₪'],['USD','$'],['EUR','€'],['GBP','£'],['JPY','¥'],['CNY','¥'],['KRW','₩'],['INR','₹'],['CAD','$'],['AUD','$'],['NZD','$'],['CHF','CHF'],['SEK','kr'],['NOK','kr'],['DKK','kr'],['PLN','zł'],['CZK','Kč'],['HUF','Ft'],['RON','lei'],['RUB','₽'],['UAH','₴'],['TRY','₺'],['BRL','R$'],['MXN','$'],['ARS','$'],['CLP','$'],['COP','$'],['PEN','S/'],['ZAR','R'],['NGN','₦'],['EGP','E£'],['MAD','DH'],['AED','AED'],['SAR','SAR'],['QAR','QAR'],['JOD','JD'],['SGD','$'],['HKD','$'],['TWD','NT$'],['THB','฿'],['PHP','₱'],['IDR','Rp'],['MYR','RM'],['VND','₫']];
+const JCOL=['#4d4e3e','#0d4aa8','#7a1f3d','#13695a','#55288a','#b4462a','#1e2130','#c13a7d'];
+const JIMG=[['job1','Café','url(img/job1.jpg)'],['job2','Neon bar','url(img/job2.jpg)'],['gnt','City night','radial-gradient(circle at 70% 30%,rgba(255,220,120,.55) 0 2px,transparent 3px) 0 0/22px 18px,radial-gradient(circle at 30% 70%,rgba(140,220,255,.5) 0 2px,transparent 3px) 0 0/30px 24px,linear-gradient(160deg,#0a1440,#142a74 55%,#1b0f3c)'],['gsun','Sunset','linear-gradient(170deg,#ffcf6b 0%,#ff7a59 45%,#a8327a 100%)'],['gpl','Plain','linear-gradient(120deg,rgba(255,255,255,.12),rgba(0,0,0,.25))']];
+function jCurDef(){try{const z=Intl.DateTimeFormat().resolvedOptions().timeZone||'';if(/Jerusalem|Tel_Aviv/.test(z))return 'ILS';const r=(new Intl.Locale(navigator.language||'en-US').maximize().region)||'US';const M={US:'USD',GB:'GBP',JP:'JPY',CN:'CNY',KR:'KRW',IN:'INR',CA:'CAD',AU:'AUD',NZ:'NZD',CH:'CHF',SE:'SEK',NO:'NOK',DK:'DKK',PL:'PLN',CZ:'CZK',HU:'HUF',RO:'RON',RU:'RUB',UA:'UAH',TR:'TRY',BR:'BRL',MX:'MXN',AR:'ARS',CL:'CLP',CO:'COP',PE:'PEN',ZA:'ZAR',NG:'NGN',EG:'EGP',MA:'MAD',AE:'AED',SA:'SAR',QA:'QAR',JO:'JOD',SG:'SGD',HK:'HKD',TW:'TWD',TH:'THB',PH:'PHP',ID:'IDR',MY:'MYR',VN:'VND',IL:'ILS'};if(M[r])return M[r];if(['DE','FR','IT','ES','NL','BE','AT','IE','PT','FI','GR','SK','SI','EE','LV','LT','LU','MT','CY','HR'].includes(r))return 'EUR'}catch(e){}return 'USD'}
+function jMoney(a,c){const n=+a||0;try{return new Intl.NumberFormat(undefined,{style:'currency',currency:c,currencyDisplay:'narrowSymbol',maximumFractionDigits:n%1?2:0}).format(n)}catch(e){const s=(JCUR.find(x=>x[0]==c)||['','$'])[1];return s+n.toLocaleString()}}
+const JSUN='<svg viewBox="0 0 40 40" class="jsun" aria-hidden="true"><circle cx="20" cy="20" r="8.5"/>'+[0,45,90,135,180,225,270,315].map(a=>`<circle cx="${(20+14.5*Math.cos(a*Math.PI/180)).toFixed(1)}" cy="${(20+14.5*Math.sin(a*Math.PI/180)).toFixed(1)}" r="2.3"/>`).join('')+'</svg>';
+const JMOON='<svg viewBox="0 0 40 40" class="jmoon" aria-hidden="true"><path d="M26 6a14.5 14.5 0 1 0 9 22.5A12 12 0 0 1 26 6z"/></svg>';
+function jBg(j){if(j.img=='up'&&j.ph)return `url('${j.ph}') center/cover no-repeat`;const p=JIMG.find(x=>x[0]==j.img)||JIMG[0];return p[2].startsWith('url(')?p[2]+' center/cover no-repeat':p[2]}
+function jCard(j,tag,attr){return `<${tag} class="jcard" ${attr||''} style="--jc:${esc(j.col||JCOL[0])}"><i class="jph" style="background:${jBg(j)}"></i><i class="jtn"></i><i class="jwd"></i>
+ <span class="jic"><span class="${j.d?'on':''}">${JSUN}</span><span class="${j.nt?'on':''}">${JMOON}</span></span>
+ <span class="jtx"><b>${esc(j.n||'New job')}</b><span class="jpay"><i>Pay</i>${jMoney(j.amt,j.cur)}+<small>${j.ty=='m'?'a month':'a shift'}</small></span></span></${tag}>`}
+function jobsHTML(){const L=S.jobs||[],d=RF.jd;
+ let h=`<div class="cjh"><span>Part-Time</span><b>JOBS</b></div>`;
+ if(d){const cur=d.cur||jCurDef();
+  h+=`<div class="jed"><div class="jprev" id="jprev">${jCard(d,'div','aria-hidden="true"')}</div>
+  <label class="jf"><span>Job name</span><input data-jf="n" maxlength="40" value="${esc(d.n||'')}" placeholder="Like Chagall Café"></label>
+  <div class="jf"><span>When do you work?</span><div class="jseg"><button data-jw="d" class="${d.d?'on':''}">${JSUN}Day</button><button data-jw="nt" class="${d.nt?'on':''}">${JMOON}Night</button></div></div>
+  <div class="jf"><span>How you get paid</span><div class="jseg"><button data-jty="s" class="${d.ty!='m'?'on':''}">Every time I work</button><button data-jty="m" class="${d.ty=='m'?'on':''}">Monthly</button></div></div>
+  <div class="jf jrow"><label><span>How much</span><input data-jf="amt" type="number" min="0" step="any" inputmode="decimal" value="${esc(d.amt??'')}" placeholder="0"></label><label><span>Currency</span><select data-jf="cur">${JCUR.map(([c,s])=>`<option value="${c}"${c==cur?' selected':''}>${s} ${c}</option>`).join('')}</select></label></div>
+  <div class="jf"><span>Background</span><div class="jimgs">${JIMG.map(([k,n,bg])=>`<button data-jim="${k}" class="${d.img==k?'on':''}" aria-label="${n}"><i style="background:${bg.startsWith('url(')?bg+' center/cover':bg},#3a4066"></i><small>${n}</small></button>`).join('')}<label class="jup${d.img=='up'?' on':''}"><i style="${d.ph?`background:url('${d.ph}') center/cover`:''}">${d.ph?'':'+'}</i><small>Your photo</small><input type="file" id="jbup" accept="image/*" hidden></label></div></div>
+  <div class="jf"><span>Color</span><div class="jcols">${JCOL.map(c=>`<button data-jco="${c}" class="${(d.col||JCOL[0])==c?'on':''}" style="background:${c}" aria-label="Color ${c}"></button>`).join('')}<label class="jcc${JCOL.includes(d.col||JCOL[0])?'':' on'}" aria-label="Your own color"><input type="color" data-jcc="1" value="${esc(d.col||JCOL[0])}"></label></div></div>
+  <div class="jbtns"><button data-jsave="1" class="go">Save</button><button data-jcancel="1">Cancel</button>${d.id?`<button data-jdel="1" class="x">${RF.jdel?'Tap again to delete':'Delete'}</button>`:''}</div></div>`}
+ else{h+=L.length?L.map((j,i)=>jCard(j,'button',`data-job="${i}" aria-label="${esc(j.n)}, ${jMoney(j.amt,j.cur)} ${j.ty=='m'?'a month':'a shift'}, ${[j.d?'day':'',j.nt?'night':''].filter(Boolean).join(' and ')}"`)).join(''):'<p class="jnone">No part-time jobs yet. Add the places you work and how much they pay.</p>';
+  h+=`<button class="jadd" data-jadd="1">+ Add a part-time job</button>`}
+ return h}
+function jobsPaint(){const e=$('#cjob');if(e)e.innerHTML=jobsHTML()}
+function jPrev(){const p=$('#jprev');if(p&&RF.jd)p.innerHTML=jCard(RF.jd,'div','aria-hidden="true"')}
+function jobClick(t){if(mTab!='c')return false;const D=t.dataset;
+ if(D.jadd){RF.jd={n:'',ty:'s',amt:'',cur:jCurDef(),d:1,nt:0,img:'job1',col:JCOL[0]};RF.jdel=0;jobsPaint();setTimeout(()=>{const e=$('#cjob');if(e)e.scrollIntoView({block:'start',behavior:'smooth'})},30);return true}
+ if(D.job!=null){const j=(S.jobs||[])[+D.job];if(!j)return true;RF.jd={...j};RF.jdel=0;jobsPaint();setTimeout(()=>{const e=$('#cjob');if(e)e.scrollIntoView({block:'start',behavior:'smooth'})},30);return true}
+ const d=RF.jd;if(!d)return false;
+ if(D.jw){d[D.jw]=d[D.jw]?0:1;if(!d.d&&!d.nt)d[D.jw=='d'?'nt':'d']=1;t.parentNode.querySelectorAll('button').forEach(b=>b.classList.toggle('on',!!d[b.dataset.jw]));jPrev();return true}
+ if(D.jty){d.ty=D.jty;t.parentNode.querySelectorAll('button').forEach(b=>b.classList.toggle('on',b==t));jPrev();return true}
+ if(D.jim){d.img=D.jim;document.querySelectorAll('.jimgs>*').forEach(b=>b.classList.toggle('on',b==t));jPrev();return true}
+ if(D.jco){d.col=D.jco;document.querySelectorAll('.jcols>*').forEach(b=>b.classList.toggle('on',b==t));const c=$('.jcc input');if(c)c.value=D.jco;jPrev();return true}
+ if(D.jcancel){RF.jd=null;RF.jdel=0;jobsPaint();return true}
+ if(D.jdel){if(!RF.jdel){RF.jdel=1;t.textContent='Tap again to delete';return true}S.jobs=(S.jobs||[]).filter(x=>x.id!=d.id);RF.jd=null;RF.jdel=0;save();jobsPaint();return true}
+ if(D.jsave){const n=(d.n||'').trim();if(!n){const e=$('#mnb2 [data-jf="n"]');if(e){e.focus();e.classList.add('err');setTimeout(()=>e.classList.remove('err'),800)}return true}
+  const j={id:d.id||('j'+Date.now().toString(36)),n,ty:d.ty=='m'?'m':'s',amt:Math.max(0,+d.amt||0),cur:d.cur||jCurDef(),d:d.d?1:0,nt:d.nt?1:0,img:d.img||'job1',ph:d.img=='up'?d.ph||'':'',col:d.col||JCOL[0]};
+  S.jobs=S.jobs||[];const i=S.jobs.findIndex(x=>x.id==j.id);if(i>=0)S.jobs[i]=j;else S.jobs.push(j);RF.jd=null;save();jobsPaint();return true}
+ return false}
+document.getElementById('mnb2').addEventListener('input',e=>{const el=e.target;if(mTab!='c'||!RF.jd||!el.dataset)return;if(el.dataset.jf){RF.jd[el.dataset.jf]=el.value;jPrev()}else if(el.dataset.jcc){RF.jd.col=el.value;document.querySelectorAll('.jcols>*').forEach(b=>b.classList.toggle('on',b.classList.contains('jcc')));jPrev()}});
+document.getElementById('mnb2').addEventListener('change',e=>{const el=e.target;if(mTab!='c'||!RF.jd)return;
+ if(el.dataset&&el.dataset.jf=='cur'){RF.jd.cur=el.value;jPrev();return}
+ if(el.id=='jbup'&&el.files&&el.files[0]){const f=el.files[0],u=URL.createObjectURL(f),im=new Image();im.onload=()=>{const W=640,sc=Math.min(1,W/im.width),w=Math.round(im.width*sc),h=Math.round(Math.min(im.height*sc,420)),c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');g.drawImage(im,0,(im.height*sc-h)/-2/sc*sc,w,im.height*sc);URL.revokeObjectURL(u);RF.jd.ph=c.toDataURL('image/jpeg',.74);RF.jd.img='up';jobsPaint()};im.onerror=()=>{URL.revokeObjectURL(u);try{toast('That photo could not be opened')}catch(z){}};im.src=u}});
 
 /* ===================== WEEKLY QUESTS + STREAK ===================== */
 /* ===== daily streak: cutscene when it goes up + badge on the stats screen ===== */
@@ -3088,18 +3187,18 @@ document.addEventListener('pointerup',e=>{if(e.target.id!=='hot')return;const n=
  if(hotN>=6){hotN=0;if(S.dev){S.dev=0;save();ownerUI();toast('Owner tools off')}else pkOpen()}});
 let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!busy)hub()},150)});
 /* ---- account save: newest copy wins ---- */
-const cPack=()=>({cal:S.cal||{},sch:S.sch||null,p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,sl:S.sl||{},slT0:S.slT0||0,hd:(S.hd||[]).slice(-200),bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,bgmv:S.dv.bgmv,sev:S.dv.sev,vov:S.dv.vov,tspd:S.dv.tspd,rmo:S.dv.rmo,bgv:S.dv.bgv,mq:S.dv.mq,fxs:S.dv.fxs,fxw:S.dv.fxw,cpm:S.dv.cpm,swp:S.dv.swp,dconf:S.dv.dconf,mix:S.dv.mix,mus:S.dv.mus,musv:S.dv.musv,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
+const cPack=()=>({cal:S.cal||{},sch:S.sch||null,jobs:S.jobs||[],p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,sl:S.sl||{},slT0:S.slT0||0,hd:(S.hd||[]).slice(-200),bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,bgmv:S.dv.bgmv,sev:S.dv.sev,vov:S.dv.vov,tspd:S.dv.tspd,rmo:S.dv.rmo,bgv:S.dv.bgv,mq:S.dv.mq,fxs:S.dv.fxs,fxw:S.dv.fxw,cpm:S.dv.cpm,swp:S.dv.swp,dconf:S.dv.dconf,mix:S.dv.mix,mus:S.dv.mus,musv:S.dv.musv,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
 function cloudPush(now){if(!CREF)return;cDirty=1;clearTimeout(cTm);cTm=setTimeout(async()=>{if(cBusy){cloudPush();return}cBusy=1;cDirty=0;try{await CREF.set(cPack())}catch(e){}cBusy=0;if(cDirty)cloudPush()},now?0:700)}
 async function cloudInit(){}
 /* newest copy wins: this phone vs. the online save */
 async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=snap.exists?snap.data():null;
- if(c&&c.p&&(c.t||0)>(S.t||0)){S.p={...c.p};S.u=(c.u||[]).map(x=>({...x}));S.h=(c.h||[]).map(x=>({...x}));S.f=(c.f||S.f||[]).map(x=>({...x}));S.bu=[...(c.bu||S.bu||[])];S.hd=[...new Set([...(S.hd||[]),...(c.hd||[])])];S.sl=Object.assign({},c.sl||{},S.sl||{});S.slT0=Math.min(S.slT0||Infinity,c.slT0||Infinity);if(S.slT0===Infinity)S.slT0=0;S.prev=c.prev?{...c.prev}:null;S.dev=c.dev||0;if(c.cal)S.cal=c.cal;if(c.sch)S.sch=c.sch;S.dv=Object.assign(S.dv,c.dv||{});S.t=c.t;
+ if(c&&c.p&&(c.t||0)>(S.t||0)){S.p={...c.p};S.u=(c.u||[]).map(x=>({...x}));S.h=(c.h||[]).map(x=>({...x}));S.f=(c.f||S.f||[]).map(x=>({...x}));S.bu=[...(c.bu||S.bu||[])];S.hd=[...new Set([...(S.hd||[]),...(c.hd||[])])];S.sl=Object.assign({},c.sl||{},S.sl||{});S.slT0=Math.min(S.slT0||Infinity,c.slT0||Infinity);if(S.slT0===Infinity)S.slT0=0;S.prev=c.prev?{...c.prev}:null;S.dev=c.dev||0;if(c.cal)S.cal=c.cal;if(c.sch)S.sch=c.sch;if(c.jobs)S.jobs=c.jobs;S.dv=Object.assign(S.dv,c.dv||{});S.t=c.t;
   try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}if(!busy){hub();lst();ownerUI()}}
  else if(!c||(S.t||0)>(c.t||0))cloudPush(1)}catch(e){}}
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.24-2345';
+var APPVER='2026.11.25-0001';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
