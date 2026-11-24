@@ -267,7 +267,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .pt .rkinfo{left:52px;top:800px}.pt .rkinfo b{font-size:36px}.pt .rkinfo span{font-size:100px}
 .pt .rkbar{left:0;top:936px;width:600px;height:60px}.pt .rkbar span{left:56px;top:14px;font-size:27px}
 .pt .rkmax{left:150px;top:470px;font-size:240px}
-.rk.skip .rkup{display:none}.rk.skip *{animation-delay:0s!important}.rk.skip .rkcard,.rk.skip .rksh,.rk.skip .rkbar,.rk.skip .rknum,.rk.skip .rkinfo,.rk.skip .rkmax,.rk.skip .rkok{animation-duration:.01s!important}
+.rk.skip .rkup{display:none}.rk.skip *{animation-delay:0s!important}.rk.skip .rkcard,.rk.skip .rkbar,.rk.skip .rknum,.rk.skip .rkinfo,.rk.skip .rkmax,.rk.skip .rkok{animation-duration:.01s!important}
 /* ===== rank screen: game typography (Archivo grotesque) + extra motion ===== */
 .rkup{font-family:'Archivo','Arial Black',sans-serif!important;font-weight:900!important;font-variation-settings:'wdth' 82;letter-spacing:-.035em!important;font-size:176px!important;top:318px!important;left:360px!important;transform:scaleX(.9)!important;animation:rkup2 1.75s 1.45s both!important}
 @keyframes rkup2{0%{opacity:0;translate:90px 0;text-shadow:24px 0 0 rgba(255,255,255,.4),48px 0 0 rgba(255,255,255,.18)}12%{opacity:1;translate:0 0;text-shadow:0 0 0 rgba(255,255,255,0),0 0 0 rgba(255,255,255,0)}16%{translate:-6px 0}22%,80%{opacity:1;translate:0 0}100%{opacity:0;translate:-70px 0}}
@@ -1270,7 +1270,7 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .rk.max.mxd .rknum,.rk.max.mxd .rkinfo,.rk.max.mxd .rkbar{translate:0 56px}
 .rk.max.mxd .rks .so{fill:#fff!important}
 /* romance hearts */
-.rks.hrt .so{fill:#aeafb7}.rks.hrt .si{fill:#fff;fill-opacity:.25}
+.rks.hrt .so{fill:#5c5e70}.rks.hrt .si{fill:#fff;fill-opacity:.25}
 /* MAX scene text layout (5 lines, as in the game) */
 .mxs .iatt p.l0{left:99px;top:96px}
 .mxs .iatt p.l1{left:251px;top:146px}
@@ -1362,7 +1362,7 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .sld.in .slg{animation:slpin .32s cubic-bezier(.2,.8,.3,1) both}
 .sld.sw .slg{animation:slsw .2s cubic-bezier(.2,.8,.3,1) both!important}
 /* MAX sits right behind the 10 */
-.rk.max .rkmax{left:318px!important}
+.rk.max .rkmax{left:395px!important}
 </style>
 </head>
 <body>
@@ -1459,7 +1459,7 @@ function svg(p,hub,bt,fin,vb){
   h+=`<g class="st ${s}" transform="translate(${x} ${y})"><g class="sz"><circle class="dot" r="${r}" fill="${FILL[s]}" style="--bc:${FILL[s]}"/><circle class="glo" r="${r}"/></g>`+(hub?'':Array.from({length:Math.max(0,Math.min(5,6-o[s].f))},(_,k)=>`<circle class="rs" r="${(f+23+26.5*k).toFixed(1)}" style="--k:${k}"/>`).join('')+`<g class="rg"></g>`)+`</g>`});
  h+=(hub?'':'<g class="yfx"></g>')+`</g><g transform="translate(1097 550)"><g class="tri"><clipPath id="tc${u}"><polygon points="20,-129 -123,43 102,86"/></clipPath><filter id="tb${u}" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter><filter id="tm${u}"><feGaussianBlur stdDeviation="1.1"/></filter><clipPath id="to${u}" clip-rule="evenodd"><path clip-rule="evenodd" d="M-400,-400H400V400H-400Z M20,-129 L-123,43 L102,86Z"/></clipPath><g clip-path="url(#tc${u})"><g transform="translate(-1097 -550)"><rect x="900" y="380" width="360" height="300" fill="#a8a58f"/>${["a","g","c"].map(s=>`<circle class="tgc ${s}" cx="${CIR[s][0]}" cy="${CIR[s][1]}" r="${rad(o[s].l)}" fill="${GLS[s]}" fill-opacity=".65"/>`).join("")}</g><polygon points="20,-129 -123,43 102,86" fill="#fff" opacity=".07"/><polygon points="20,-129 -123,43 102,86" fill="none" stroke="#fff" stroke-width="34" opacity=".75" filter="url(#tb${u})"/></g><g clip-path="url(#to${u})"><polygon points="20,-129 -123,43 102,86" fill="none" stroke="#ff3fa0" stroke-width="7" stroke-linejoin="miter" transform="translate(-4.5 .5)" opacity=".75"/></g><g clip-path="url(#to${u})"><polygon points="20,-129 -123,43 102,86" fill="none" stroke="#40f2ff" stroke-width="7" stroke-linejoin="miter" transform="translate(4 2.5)" opacity=".7"/></g><polygon points="20,-129 -123,43 102,86" fill="none" stroke="#f6fcfc" stroke-width="10" stroke-linejoin="miter" stroke-miterlimit="3"/></g></g>`;
  S3.forEach(s=>{const [nx,ny]=NUM[s],l=o[s].l,[mx,my,ma,ml,md]=NM[s],w=DW[l];
-  h+=`<g class="lbl ${s}"><path class="nu" data-n="${l}" d="${DGT[l].p}" fill-rule="evenodd" transform="${dgT(s,l)}"/><path class="nm" d="${WP['n'+s]}" fill-rule="evenodd"/>${l==6?[0,1,2].map(i=>`<path class="mx" d="${WP['m'+s+i]}" fill-rule="evenodd"/>`).join(''):''}</g>`});
+  h+=`<g class="lbl ${s}"><path class="nu" data-n="${l}" d="${DGT[l].p}" fill-rule="evenodd" transform="${dgT(s,l)}"/><path class="nm" d="${WP['n'+s]}" fill-rule="evenodd"${s=='a'?' transform="translate(2 -20)"':''}/>${l==6?[0,1,2].map(i=>`<path class="mx" d="${WP['m'+s+i]}" fill-rule="evenodd"${s=='a'?' transform="translate(2 -20)"':''}/>`).join(''):''}</g>`});
  S3.forEach(s=>{const q=SP[s],l=o[s].l,t=ST[s].r[l-1],[tx,ty,ta]=q.t,c=q.i.split(' '),tri=`${c[0]} ${c[1]} ${c[3]}`,band=`${c[0]} ${q.r} ${c[3]}`;
   h+=`<g class="stp ${s}"><clipPath id="k${s}${u}"><polygon points="${band}"/></clipPath><clipPath id="t${s}${u}"><polygon points="${tri}"/></clipPath>`+
    `<polygon points="${band}" fill="#000"/><polygon points="${tri}" fill="#005ac9"/>`+
@@ -2120,7 +2120,7 @@ function slPlay(x){if(x.kind=='max'){const pr0=RF.prof[x.uid]||{},a0=x.a!=null?x
   const SP=[[144,52,52,.3],[407,72,26,.5],[520,172,30,.9],[510,295,26,1.4],[540,280,44,2],[370,560,52,.6],[435,540,40,1.7],[208,525,34,2.4],[340,520,26,1.1],[401,72,52,.3],[322,148,40,.5],[377,180,46,.2],[450,213,34,.9],[19,163,52,.4],[47,213,62,1.2],[44,292,46,.7],[120,250,38,1.5],[100,58,34,1],[480,140,40,.6],[230,40,32,1.3],[30,520,42,.8],[200,560,36,1.1],[395,385,44,.35],[160,200,30,1.7],[300,30,34,2.1],[60,420,32,1.9],[520,300,28,2.4],[250,300,40,.15],[180,120,36,2.6],[340,250,30,1.05],[90,480,34,2.2]];
   const DT=Array.from({length:30},(_,k)=>[10+((k*97)%560),10+((k*61)%560),(k*.43%6).toFixed(2)]);
   const HO='M0,10.5 C-6.5,5.4 -11.6,1.2 -11.6,-4.1 C-11.6,-8.1 -8.6,-10.8 -5.4,-10.8 C-2.9,-10.8 -1,-9.3 0,-7.2 C1,-9.3 2.9,-10.8 5.4,-10.8 C8.6,-10.8 11.6,-8.1 11.6,-4.1 C11.6,1.2 6.5,5.4 0,10.5Z',HI='M0,5.2 C-3.4,2.6 -6,.5 -6,-2.1 C-6,-4.2 -4.4,-5.6 -2.8,-5.6 C-1.5,-5.6 -.5,-4.8 0,-3.7 C.5,-4.8 1.5,-5.6 2.8,-5.6 C4.4,-5.6 6,-4.2 6,-2.1 C6,.5 3.4,2.6 0,5.2Z';
-  const SLW=n=>Math.max(3.45,1.25+(n-1)*.26);slStarAt=SLW(Math.min(10,x.rank));
+  const SLW=n=>3.45;slStarAt=SLW(Math.min(10,x.rank));
   const starSVG=(x,y,sz,r,d,dx,dy)=>`<svg class="rks${rom?' hrt':''}" viewBox="-12 -12 24 24" style="left:${x}px;top:${y}px;--s:${sz}px;--r:${r}deg;--d:${d}s;--dx:${dx}px;--dy:${dy}px">${rom?`<path class="so" d="${HO}"/><path class="si" d="${HI}"/>`:'<path class="so" d="M0,-11.6 L2.9,-3.9 11.2,-3.6 4.7,1.4 6.9,9.4 0,4.9 -6.9,9.4 -4.7,1.4 -11.2,-3.6 -2.9,-3.9Z"/><path class="si" d="M.2,-5.6 L1.6,-1.8 5.6,-1.6 2.4,.8 3.5,4.6 .2,2.4 -3.1,4.6 -2,.8 -5.2,-1.6 -1.2,-1.8Z"/>'}</svg>`;
   const PT=false;
   if(PT){const q=v=>[Math.round(v[0]*1.25-50),Math.round(v[1]*1.25+75)];ST.forEach(v=>{[v[0],v[1]]=q(v);v[2]=Math.round(v[2]*1.2)});SP.forEach(v=>{[v[0],v[1]]=q(v)});DT.forEach(v=>{[v[0],v[1]]=q(v)});
@@ -2132,7 +2132,7 @@ function slPlay(x){if(x.kind=='max'){const pr0=RF.prof[x.uid]||{},a0=x.a!=null?x
   ${mx?'<div class="rkmax">MAX</div>':''}
   
   <div class="rkcw"><div class="rkcard">${arcCard(a,236)}<i class="wtr"></i></div></div>
-  ${ST.map((v,k)=>{const h=starSVG(...v),n=Math.min(10,x.rank),nw=k==n-1;if(k>=n)return h;const w=nw?SLW(n):1.25+k*.26;return h.replace('class="rks','class="rks w'+(nw?' nw':'')+' ').replace('style="','style="--w:'+w.toFixed(2)+'s;')+(nw?`<svg class="rkghost" viewBox="-12 -12 24 24" style="left:${v[0]}px;top:${v[1]}px;--s:${v[2]}px;--w:${w}s"><path d="${rom?HO:'M0,-10.5 L2.6,-3.6 10,-3.3 4.2,1.3 6.2,8.5 0,4.4 -6.2,8.5 -4.2,1.3 -10,-3.3 -2.6,-3.6Z'}"/></svg>`:'')}).join('')}
+  ${ST.map((v,k)=>{const h=starSVG(...v),n=Math.min(10,x.rank),nw=k==n-1;if(k>=n)return h;const w=nw?SLW(n):SLW(n)-(n-1-k)*.13;return h.replace('class="rks','class="rks w'+(nw?' nw':'')+' ').replace('style="','style="--w:'+w.toFixed(2)+'s;')+(nw?`<svg class="rkghost" viewBox="-12 -12 24 24" style="left:${v[0]}px;top:${v[1]}px;--s:${v[2]}px;--w:${w}s"><path d="${rom?HO:'M0,-10.5 L2.6,-3.6 10,-3.3 4.2,1.3 6.2,8.5 0,4.4 -6.2,8.5 -4.2,1.3 -10,-3.3 -2.6,-3.6Z'}"/></svg>`:'')}).join('')}
   
   <div class="rkup" data-t="RANK UP!">RANK UP!</div><i class="rkflash"></i>
   <div class="rkbar"><span><em>${esc((pr.name||'?')[0])}</em>${esc((pr.name||'your friend').slice(1))}</span></div>
@@ -2151,8 +2151,8 @@ function slPlay(x){if(x.kind=='max'){const pr0=RF.prof[x.uid]||{},a0=x.a!=null?x
  const ok=E.querySelector('.iatok');let t0=Date.now();
  /* tap anywhere: skip to the end (the voice / sound stops too). Only the OK button closes the screen */
  const JUMP=15.2;   /* where sentence 3 starts in the voice clip (s) */
- const skip=()=>{if(E.classList.contains('skip'))return;if(x.kind=='max'){E.classList.add('skip');return}if(x.kind=='rank'&&x.rank>=10)E.classList.add('mxd');
-  if(x.kind=='new')return;   /* the voice always plays through; OK appears at the end */   /* already at the last sentences: show the rest, the voice keeps going */
+ const skip=()=>{if(E.classList.contains('skip'))return;if(x.kind=='max')return;   /* the MAX scene always plays in full */if(x.kind=='rank'&&x.rank>=10)E.classList.add('mxd');
+  if(x.kind=='new'){E.classList.add('skip');return}   /* show all the lines and OK at once; the voice keeps playing (never cut) */
   E.classList.add('skip');slStop()};
  E.onclick=e=>{if(Date.now()-t0<need)skip()};ok.onclick=e=>{e.stopPropagation();if(!E.classList.contains('skip')&&Date.now()-t0<need)return skip();done()}}
 /* ===== card water + P3R sparkles, drawn on canvas so they move smoothly at the screen's frame rate ===== */
@@ -2226,11 +2226,12 @@ const ROM=['0','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XI
 const SLT=[0,1,2,4,6,8,11,14,17,20];/* hangouts needed for rank 1..10 (10 = MAX) */
 const slRank=n=>{let r=0;SLT.forEach((v,i)=>{if(n>=v)r=i+1});return r};
 const slCount=uid=>{const pr=pairId(myId(),uid);return [...RF.hgIn,...RF.hgOut].filter(h=>h.status=='ok'&&h.pair==pr).length};
-let ARCU='';function arcUrl(){if(!ARCU){try{const el=document.getElementById('arcd'),raw=el?el.textContent.trim():'';if(!raw){ARCU='img/arc2.webp';return ARCU}const t=atob(raw),a=new Uint8Array(t.length);for(let i=0;i<t.length;i++)a[i]=t.charCodeAt(i);ARCU=URL.createObjectURL(new Blob([a],{type:'image/webp'}))}catch(e){}}return ARCU}
+let ARCU='';function arcUrl(){if(!ARCU){try{const el=document.getElementById('arcd'),raw=el?el.textContent.trim():'';if(!raw){ARCU='img/arc3.webp';return ARCU}const t=atob(raw),a=new Uint8Array(t.length);for(let i=0;i<t.length;i++)a[i]=t.charCodeAt(i);ARCU=URL.createObjectURL(new Blob([a],{type:'image/webp'}))}catch(e){}}return ARCU}
 const arcOk=a=>Number.isInteger(a)&&a>=0&&a<=21;
 /* card picture: index 0-21 = arcana, 22 = card back */
 const arcCard=(i,w,cls)=>`<span class="arc ${cls||''}" style="width:${w}px;height:${Math.round(w*230/160)}px;background-image:url(${arcUrl()});background-position:${(i/22*100).toFixed(4)}% 0"></span>`;
-const ANB=[{id:'b32',t:new Date(2026,10,24,17,40).getTime(),title:'Rank-up and vibration fixes',body:'iPhone vibrations, smoother rank-up animations and small visual fixes.'},
+const ANB=[{id:'b33',t:new Date(2026,10,24,18,0).getTime(),title:'Polish and fixes',body:'Cleaner Arcana cards, smoother rank-up screen and small layout fixes.'},
+{id:'b32',t:new Date(2026,10,24,17,40).getTime(),title:'Rank-up and vibration fixes',body:'iPhone vibrations, smoother rank-up animations and small visual fixes.'},
 {id:'b31',t:new Date(2026,10,24,17,0).getTime(),title:'Visual and sound fixes',body:'Sharper menu and scenes, cleaner cards, smoother rank-up animations, and audio fixes.'},
 {id:'b30',t:new Date(2026,10,24,16,30).getTime(),title:'Social Link page fixes',body:'The Social Link page looks closer to the game, plus a sound fix.'},
 {id:'b29',t:new Date(2026,10,24,15,0).getTime(),title:'Fixes',body:'Social Link, rank screen and sound fixes.'},
@@ -2777,7 +2778,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.24-1728';
+var APPVER='2026.11.24-1747';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
