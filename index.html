@@ -1369,15 +1369,14 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .rk.max .rkmax{left:395px!important}
 
 /* ===== date / time of day / moon badge (stats screen) ===== */
-.todh{position:absolute;right:8px;bottom:8px;z-index:6;width:214px;height:62px;transform-origin:100% 100%;scale:.86;rotate:-4deg;border:0;padding:0;margin:0;background:none;color:#fff;cursor:pointer;font-style:normal;text-align:left;isolation:isolate;-webkit-tap-highlight-color:transparent;animation:todhin .45s cubic-bezier(.2,.8,.3,1) both}
+.todh{position:absolute;right:4px;bottom:6px;z-index:6;width:214px;height:62px;transform-origin:100% 100%;scale:.86;border:0;padding:0;margin:0;background:none;color:#fff;cursor:pointer;font-style:normal;text-align:left;isolation:isolate;-webkit-tap-highlight-color:transparent;animation:todhin .45s cubic-bezier(.2,.8,.3,1) both}
 @keyframes todhin{from{opacity:0;transform:translateX(30px)}}
-.todh .thw{display:none;position:absolute;left:-6px;top:-10px;font:900 italic 54px/1 'Montserrat',sans-serif;letter-spacing:-.06em;color:#13209a;opacity:.95;white-space:nowrap;pointer-events:none;z-index:-2}
-.todh .thr{position:absolute;left:6px;right:0;top:2px;bottom:2px;background:#05060c;transform:skewX(-12deg);z-index:-1;box-shadow:3px 3px 0 rgba(95,232,255,.85)}
+.todh .thw{position:absolute;left:-6px;top:-10px;font:900 italic 54px/1 'Montserrat',sans-serif;letter-spacing:-.06em;color:#13209a;opacity:.95;white-space:nowrap;pointer-events:none;z-index:-2}
+.todh .thr{position:absolute;left:-12px;right:-6px;top:15px;height:31px;background:linear-gradient(90deg,rgba(29,82,230,0) 0%,#1d52e6 16%,#3a8bf3 52%,#2563ea 74%,rgba(27,71,220,.55) 100%);transform:skewY(-2.5deg);z-index:-1;box-shadow:0 2px 0 rgba(8,22,110,.35)}
 .todh .thd{position:absolute;left:16px;top:5px;display:flex;align-items:flex-start;gap:2px;isolation:isolate}
 .todh .thd b{font:800 32px/1 'Archivo','Arial',sans-serif;font-stretch:88%;letter-spacing:-.02em;color:#fff;-webkit-text-stroke:2.2px #0a1250;paint-order:stroke fill}
-.todh .thx{position:relative;display:block;padding:3px 4px;margin-top:1px;font:800 14px/1 'Archivo',sans-serif;font-stretch:90%;font-style:normal;color:#5ef3ff}
-.todh.hol .thx{color:#ff4b6e}
-.todh .thx::before{display:none;content:'';position:absolute;left:-1px;right:-1px;top:4px;bottom:0;background:#07070c;clip-path:polygon(0 0,100% 0,50% 100%);z-index:-1}
+.todh .thx{position:relative;display:block;padding:3px 5px 11px;margin-top:1px;font:800 14px/1 'Archivo',sans-serif;font-stretch:90%;font-style:normal;color:#fff;-webkit-text-stroke:1.6px #0a1250;paint-order:stroke fill}
+.todh .thx::before{content:'';position:absolute;left:-1px;right:-1px;top:4px;bottom:0;background:#07070c;clip-path:polygon(0 0,100% 0,50% 100%);z-index:-1}
 .todh.hol .thx::before{background:#e1203c}
 .todh .thp{position:absolute;left:19px;top:38px;font:800 17px/1 'Archivo',sans-serif;font-stretch:92%;color:#5ef3ff;-webkit-text-stroke:2.2px #0a1450;paint-order:stroke fill;font-style:normal;white-space:nowrap;letter-spacing:-.01em}
 .todh .thl{position:absolute;right:46px;top:7px;text-align:center;font-style:normal}
@@ -2690,34 +2689,33 @@ function todPlay(from,to,done){if(todBusy)return;todBusy=1;const W=innerWidth,H=
  const outK=e=>P([[-s-bw-10,0],[e+s,0],[e,H],[-s-bw-10,H]]),outB=e=>P([[e+s,0],[e+s+bw,0],[e+bw,H],[e,H]]);
  [BD,LB,LN,SW].forEach(e=>e&&(e.style.opacity=0));
  /* 1. black sweeps in from the right (0.45 s) */
- A(K,[{clipPath:inK(W+bw)},{clipPath:inK(-s-bw)}],{duration:450,easing:'cubic-bezier(.45,0,.6,1)'});A(KB,[{clipPath:inB(W+bw)},{clipPath:inB(-s-bw)}],{duration:450,easing:'cubic-bezier(.45,0,.6,1)'});
+ A(K,[{clipPath:inK(W+bw)},{clipPath:inK(-s-bw)}],{duration:540,easing:'cubic-bezier(.55,0,.35,1)'});A(KB,[{clipPath:inB(W+bw)},{clipPath:inB(-s-bw)}],{duration:540,easing:'cubic-bezier(.55,0,.35,1)'});
  let t=1250;
  /* 2. after a beat of black, the old time comes in on a bar from the left, the bar runs across, the words slide off */
  if(OB){const sp=OB.querySelector('span');OB.style.opacity=0;const cut=f=>`polygon(0 0,${f}% 0,calc(${f}% + ${bh*.7}px) 100%,0 100%)`;
-  at(t,()=>{OB.style.opacity=1;A(OB,[{clipPath:cut(0)},{clipPath:cut(42)}],{duration:150,easing:'ease-out'})});
-  at(t+150,()=>A(OB,[{clipPath:cut(42)},{clipPath:cut(108)}],{duration:200,easing:'ease-in-out'}));
-  at(t+620,()=>A(sp,[{transform:'translate(0,-50%)',opacity:1},{transform:`translate(${W*.6}px,-50%)`,opacity:0}],{duration:260,easing:'ease-in'}));
-  at(t+1000,()=>{OB.style.visibility='hidden'});t+=1000}
+  at(t,()=>{OB.style.opacity=1;A(OB,[{clipPath:cut(0),easing:'cubic-bezier(.2,.7,.3,1)'},{clipPath:cut(42),offset:.45,easing:'cubic-bezier(.4,0,.2,1)'},{clipPath:cut(108)}],{duration:460,easing:'linear'});A(sp,[{opacity:0,transform:'translate(-14px,-50%)'},{opacity:1,transform:'translate(0,-50%)'}],{duration:260,easing:'cubic-bezier(.2,.7,.3,1)'})});
+  at(t+600,()=>A(sp,[{transform:'translate(0,-50%)',opacity:1},{transform:`translate(${W*.6}px,-50%)`,opacity:0}],{duration:360,easing:'cubic-bezier(.5,0,.75,.4)'}));
+  t+=1000}
  /* 3. the bar tips over, swings round and lands as the slanted band (0.3 s) */
- at(t,()=>{SW.style.cssText+=`;left:${W/2-tw/2}px;top:${OB?by:H*.59}px;width:${tw}px;opacity:1`;A(SW,[{transform:'rotate(0deg)'},{transform:'rotate(14deg)',offset:.3},{transform:'rotate(68deg)',offset:.6},{transform:'rotate(116deg)',offset:.85},{transform:`rotate(${180+cf.a}deg)`}],{duration:320,easing:'linear'})});
- t+=320;
+ at(t,()=>{SW.style.cssText+=`;left:${W/2-tw/2}px;top:${OB?by:H*.59}px;width:${tw}px;opacity:1`;if(OB)OB.style.visibility='hidden';A(SW,[{transform:'rotate(0deg)'},{transform:`rotate(${180+cf.a}deg)`}],{duration:420,easing:'cubic-bezier(.45,.05,.3,1)'})});
+ t+=420;
  /* 4. the new time lands, half on the band, half off it; the thin line ticks like a clock hand every ~2.4 s */
  const HOLD=2800;
  at(t,()=>{SW.getAnimations().forEach(x=>x.cancel());SW.style.visibility='hidden';BD.style.opacity=1;LB.style.opacity=1;LN.style.opacity=1;
-  const dx=Math.cos(a)*-40,dy=Math.sin(a)*-40;A(BD,[{transform:`translate(${dx}px,${dy}px) rotate(${cf.a}deg) scaleY(.6)`},{transform:`rotate(${cf.a}deg)`}],{duration:220,easing:'cubic-bezier(.2,.8,.3,1)'});
-  A(LB,[{opacity:0,transform:'translate(0,-50%) translateX(18px)'},{opacity:1,transform:'translate(0,-50%)'}],{duration:220});
-  const step=(l1-l0)*3.2;LN.style.transform=`rotate(${l0}deg)`;
-  T.push(setTimeout(()=>{if(skip)return;A(LN,[{transform:`rotate(${l0}deg)`},{transform:`rotate(${l0+step}deg)`}],{duration:90,easing:'cubic-bezier(.2,1.6,.4,1)'})},2400));
+  const dx=Math.cos(a)*-40,dy=Math.sin(a)*-40;A(BD,[{transform:`translate(${dx}px,${dy}px) rotate(${cf.a}deg) scaleY(.6)`},{transform:`rotate(${cf.a}deg)`}],{duration:340,easing:'cubic-bezier(.16,1,.3,1)'});
+  A(LB,[{opacity:0,transform:'translate(0,-50%) translateX(22px)'},{opacity:1,transform:'translate(0,-50%)'}],{duration:360,easing:'cubic-bezier(.16,1,.3,1)'});A(q('.tlw'),[{opacity:0},{opacity:1}],{duration:300});
+  const step=(l1-l0)*1.3;LN.style.transform=`rotate(${l0}deg)`;A(LN,[{opacity:0},{opacity:1}],{duration:260,fill:'none'});
+  for(let k=1;k*1000<HOLD;k++)T.push(setTimeout(()=>{if(skip)return;A(LN,[{transform:`rotate(${l0+step*(k-1)}deg)`},{transform:`rotate(${l0+step*k}deg)`}],{duration:180,easing:'cubic-bezier(.3,1.35,.5,1)'})},k*1000));
   try{S.dv.vib!==0&&HAPT(12)}catch(e){}});
  t+=HOLD;
  /* 5. the band slides off, a beat of black, then the screen comes back from the right */
- const out=()=>{A(LB,[{color:'#2443e8',opacity:1},{color:'#0b1a80',opacity:0}],{duration:200});A(q('.tlw'),[{opacity:1},{opacity:0}],{duration:200});
-  A(BD,[{transform:`rotate(${cf.a}deg)`},{transform:`translate(${-Math.sin(a)*th*1.4}px,${Math.cos(a)*th*1.4}px) rotate(${cf.a}deg) scaleY(.15)`,opacity:.8}],{duration:280,delay:100,easing:'ease-in'});
-  A(LN,[{opacity:1},{opacity:0}],{duration:300,delay:220})};
+ const out=()=>{A(LB,[{color:'#2443e8',opacity:1},{color:'#0b1a80',opacity:0}],{duration:300,easing:'ease-in-out'});A(q('.tlw'),[{opacity:1},{opacity:0}],{duration:300,easing:'ease-in-out'});
+  A(BD,[{transform:`rotate(${cf.a}deg)`},{transform:`translate(${-Math.sin(a)*th*1.4}px,${Math.cos(a)*th*1.4}px) rotate(${cf.a}deg) scaleY(.15)`,opacity:0}],{duration:420,delay:120,easing:'cubic-bezier(.55,0,.7,.3)'});
+  A(LN,[{opacity:1},{opacity:0}],{duration:420,delay:200,easing:'ease-in-out'})};
  const fin=()=>{if(ended)return;ended=1;[OB,SW,BD,LB,LN].forEach(e=>e&&(e.style.visibility='hidden'));
-  A(K,[{clipPath:outK(W+bw)},{clipPath:outK(-s-bw)}],{duration:420,easing:'cubic-bezier(.4,0,.6,1)'});A(KB,[{clipPath:outB(W+bw)},{clipPath:outB(-s-bw)}],{duration:420,easing:'cubic-bezier(.4,0,.6,1)'});
-  setTimeout(()=>{o.remove();todBusy=0;done&&done()},440)};
- at(t,out);at(t+900,fin);
+  A(K,[{clipPath:outK(W+bw)},{clipPath:outK(-s-bw)}],{duration:560,easing:'cubic-bezier(.55,0,.35,1)'});A(KB,[{clipPath:outB(W+bw)},{clipPath:outB(-s-bw)}],{duration:560,easing:'cubic-bezier(.55,0,.35,1)'});
+  setTimeout(()=>{o.remove();todBusy=0;done&&done()},580)};
+ at(t,out);at(t+1000,fin);
  o.onclick=()=>{if(skip)return;skip=1;T.forEach(clearTimeout);fin()}}
 /* check the clock; when the time of day has changed, play the change once the screen is free */
 function todTick(force){if(S.dv.todh===0&&S.dv.tod===0)return;const d=new Date(),k=phaseAt(d),dk=ymd(d);
@@ -3205,7 +3203,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.25-0021';
+var APPVER='2026.11.25-0032';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
