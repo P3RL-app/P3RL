@@ -36,6 +36,7 @@ Your own activities: tap the NEW tab on the right edge of the screen. A drawer s
 Rank up: enough points raises a stat to the next rank, up to rank 6, with the big rank-up animation.
 Daily streak: every activity counts. Your first one each day adds +1 to your streak and the streak scene plays. Your streak is shown in the top-left of the stats screen. A grey flame means you haven't logged anything today yet.
 Weekly quests: Menu → Quests has new goals every Monday. Finish one and tap Claim for bonus points.
+Time of day: like the game, your day goes from Early Morning to Late Night. The date, time of day and moon show in the top-right of the stats screen, and the time change scene plays when it changes. Set your school days, class times, breaks and vacations in Menu → System → Config → Schedule Settings.
 Undo: made a mistake? Tap Undo last on the main screen, or remove any entry in Menu → History.
 Menu (☰ top right):
 Announcements: news and updates about the app
@@ -44,6 +45,7 @@ Social Link: your friends as Social Links, with their Arcana and rank
 Messages: chat with your friends
 Quests: this week's goals and your streak
 History: everything you logged, day by day
+Calendar: the game's calendar, where you can write your own plans on any day
 System: the Tutorial and Config (sound, volumes, text speed, sizes, effects, your account and backups)
 👥 Friends, Social Links and hangouts
 Open Menu → System → Config → Account & Data and sign in with Google or with email and a password. A new email creates an account automatically.
