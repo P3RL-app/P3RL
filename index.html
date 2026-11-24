@@ -1369,14 +1369,15 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .rk.max .rkmax{left:395px!important}
 
 /* ===== date / time of day / moon badge (stats screen) ===== */
-.todh{position:absolute;right:4px;bottom:6px;z-index:6;width:214px;height:62px;transform-origin:100% 100%;scale:.86;border:0;padding:0;margin:0;background:none;color:#fff;cursor:pointer;font-style:normal;text-align:left;isolation:isolate;-webkit-tap-highlight-color:transparent;animation:todhin .45s cubic-bezier(.2,.8,.3,1) both}
+.todh{position:absolute;right:8px;bottom:8px;z-index:6;width:214px;height:62px;transform-origin:100% 100%;scale:.86;rotate:-4deg;border:0;padding:0;margin:0;background:none;color:#fff;cursor:pointer;font-style:normal;text-align:left;isolation:isolate;-webkit-tap-highlight-color:transparent;animation:todhin .45s cubic-bezier(.2,.8,.3,1) both}
 @keyframes todhin{from{opacity:0;transform:translateX(30px)}}
-.todh .thw{position:absolute;left:-6px;top:-10px;font:900 italic 54px/1 'Montserrat',sans-serif;letter-spacing:-.06em;color:#13209a;opacity:.95;white-space:nowrap;pointer-events:none;z-index:-2}
-.todh .thr{position:absolute;left:-12px;right:-6px;top:15px;height:31px;background:linear-gradient(90deg,rgba(29,82,230,0) 0%,#1d52e6 16%,#3a8bf3 52%,#2563ea 74%,rgba(27,71,220,.55) 100%);transform:skewY(-2.5deg);z-index:-1;box-shadow:0 2px 0 rgba(8,22,110,.35)}
+.todh .thw{display:none;position:absolute;left:-6px;top:-10px;font:900 italic 54px/1 'Montserrat',sans-serif;letter-spacing:-.06em;color:#13209a;opacity:.95;white-space:nowrap;pointer-events:none;z-index:-2}
+.todh .thr{position:absolute;left:6px;right:0;top:2px;bottom:2px;background:#05060c;transform:skewX(-12deg);z-index:-1;box-shadow:3px 3px 0 rgba(95,232,255,.85)}
 .todh .thd{position:absolute;left:16px;top:5px;display:flex;align-items:flex-start;gap:2px;isolation:isolate}
 .todh .thd b{font:800 32px/1 'Archivo','Arial',sans-serif;font-stretch:88%;letter-spacing:-.02em;color:#fff;-webkit-text-stroke:2.2px #0a1250;paint-order:stroke fill}
-.todh .thx{position:relative;display:block;padding:3px 5px 11px;margin-top:1px;font:800 14px/1 'Archivo',sans-serif;font-stretch:90%;font-style:normal;color:#fff;-webkit-text-stroke:1.6px #0a1250;paint-order:stroke fill}
-.todh .thx::before{content:'';position:absolute;left:-1px;right:-1px;top:4px;bottom:0;background:#07070c;clip-path:polygon(0 0,100% 0,50% 100%);z-index:-1}
+.todh .thx{position:relative;display:block;padding:3px 4px;margin-top:1px;font:800 14px/1 'Archivo',sans-serif;font-stretch:90%;font-style:normal;color:#5ef3ff}
+.todh.hol .thx{color:#ff4b6e}
+.todh .thx::before{display:none;content:'';position:absolute;left:-1px;right:-1px;top:4px;bottom:0;background:#07070c;clip-path:polygon(0 0,100% 0,50% 100%);z-index:-1}
 .todh.hol .thx::before{background:#e1203c}
 .todh .thp{position:absolute;left:19px;top:38px;font:800 17px/1 'Archivo',sans-serif;font-stretch:92%;color:#5ef3ff;-webkit-text-stroke:2.2px #0a1450;paint-order:stroke fill;font-style:normal;white-space:nowrap;letter-spacing:-.01em}
 .todh .thl{position:absolute;right:46px;top:7px;text-align:center;font-style:normal}
@@ -1387,7 +1388,9 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .todh:active{transform:scale(.97)}
 /* ===== time of day change ===== */
 .tod{position:fixed;inset:0;z-index:110;overflow:hidden;cursor:pointer;font-style:normal;-webkit-user-select:none;user-select:none;touch-action:none}
-.tod .tk{position:absolute;inset:0;background:#000;clip-path:polygon(130% 0,160% 0,140% 100%,110% 100%)}
+.tod .tk,.tod .tkb{position:absolute;inset:0;clip-path:polygon(200% 0,210% 0,210% 100%,200% 100%)}
+.tod .tk{background:#000}
+.tod .tkb{background:rgba(26,40,140,.55)}
 .tod .tob{position:absolute;left:0;right:0;background:#1531d2;clip-path:polygon(0 0,0 0,0 100%,0 100%)}
 .tod .tob span,.tod .tlb,.tod .tlw{font-weight:700;font-family:'Archivo','Helvetica Neue',Arial,sans-serif;font-stretch:96%;white-space:nowrap;letter-spacing:-.015em;line-height:1}
 .tod .tob span{position:absolute;left:22px;top:50%;transform:translate(0,-50%);color:#fff}
@@ -1403,17 +1406,14 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 /* ===== CALENDAR ===== */
 .pmn.calm .pghost{display:none}
 .pmn.calm #mnb2{padding:0!important}
-.pmn.calm .phint{z-index:8;background:linear-gradient(0deg,#cfeaff 0%,rgba(207,234,255,.96) 58%,rgba(207,234,255,0) 100%)}
-.pmn.calm .phd b,.pmn.calm .phd small{color:#0b0b12!important;text-shadow:none!important;border-color:#0b0b12!important}
-.pmn.calm .pbtn button{color:#0b0b12!important;text-shadow:none!important}
-.pmn.calm .pbtn i{background:#0b0b12;color:#fff}
-.calp{position:relative;min-height:100%;background:#9fd2fb;overflow:hidden;padding:0 0 128px;color:#fff;font-style:normal}
-.calc{position:absolute;left:-67vw;top:calc(170px + env(safe-area-inset-top,0px) - 105vw);width:210vw;height:210vw;border-radius:50%;overflow:hidden;background:rgba(28,96,232,.42);box-shadow:0 0 0 3px rgba(255,255,255,.6)}
+.pmn.calm .phint{z-index:8}
+.calp{position:relative;min-height:100%;background:transparent;overflow:hidden;padding:0 0 128px;color:#fff;font-style:normal}
+.calc{position:absolute;left:-67vw;top:calc(170px + env(safe-area-inset-top,0px) - 105vw);width:210vw;height:210vw;border-radius:50%;overflow:hidden;background:rgba(30,96,228,.82);box-shadow:0 0 0 3px rgba(255,255,255,.6)}
 .calc i{display:none}
 .calbg{position:absolute;left:0;right:0;top:0;height:max(100%,100vh);background:#1b46c8 50% 18%/cover no-repeat;filter:saturate(.85)}
 .calbt{position:absolute;left:0;right:0;top:0;height:max(100%,100vh);background:rgba(120,190,255,.26)}
 .calc::after{display:none}
-.calsh{position:absolute;right:6%;top:calc(560px + env(safe-area-inset-top,0px));width:34px;height:26px;background:rgba(140,210,255,.42);clip-path:polygon(0 30%,70% 0,100% 64%,26% 100%);transform:rotate(18deg);pointer-events:none}
+.calsh{display:none;position:absolute;right:6%;top:calc(560px + env(safe-area-inset-top,0px));width:34px;height:26px;background:rgba(140,210,255,.42);clip-path:polygon(0 30%,70% 0,100% 64%,26% 100%);transform:rotate(18deg);pointer-events:none}
 .calsh.s2{right:22%;top:calc(612px + env(safe-area-inset-top,0px));width:20px;height:16px;transform:rotate(-30deg);background:rgba(120,200,255,.32)}
 .calsh.s3{right:2%;top:calc(660px + env(safe-area-inset-top,0px));width:26px;height:20px;transform:rotate(64deg)}
 .calh{position:relative;z-index:3;padding:calc(8px + env(safe-area-inset-top,0px)) 8px 0}
@@ -2674,43 +2674,50 @@ const TDV={em:{a:-18,y:.42,l:[.30,1,-78,-66]},mo:{a:-26,y:.40,l:[.36,1,-80,-68]}
 let todBusy=0;
 function todCan(){return document.visibilityState=='visible'&&!todBusy&&!$('#mns').classList.contains('on')&&!$('#iat').classList.contains('on')&&!document.querySelector('.ov,.skov,.sh.on')&&!document.body.classList.contains('lock')}
 function todPlay(from,to,done){if(todBusy)return;todBusy=1;const W=innerWidth,H=innerHeight,m=Math.min(W,H),cf=TDV[to]||TDV.dt,o=document.createElement('div');o.className='tod';o.setAttribute('aria-label',PHN[to]);
- const fs=Math.max(20,Math.min(44,m*.075)),bh=Math.round(fs*1.75),by=Math.round(H*(from=='as'||from=='af'?.16:.56)),th=Math.round(m*.15),a=cf.a*Math.PI/180;
- const Ly=H*cf.y,Lx=W*.86,tw=2.6*Math.hypot(W,H);   /* band's top edge passes through the label */
- const cx=Lx-Math.sin(a)*th/2,cy=Ly+Math.cos(a)*th/2;   /* band centre, half a thickness below the top edge */
- const [lx,ly,l0,l1]=cf.l;
- o.innerHTML=`<i class="tk"></i>${from?`<div class="tob" style="top:${by}px;height:${bh}px"><span style="font-size:${fs}px">${PHN[from]}</span></div>`:''}<i class="tsw" style="height:${Math.round(bh*1.1)}px"></i>
+ const fs=Math.max(20,Math.min(44,m*.075)),bh=Math.round(fs*1.75),by=Math.round(H*.59-bh/2),th=Math.round(m*.15),a=cf.a*Math.PI/180;
+ const Ly=H*cf.y,tw=2.6*Math.hypot(W,H),[lx,ly,l0,l1]=cf.l;
+ o.innerHTML=`<i class="tk"></i><i class="tkb"></i>${from?`<div class="tob" style="top:${by}px;height:${bh}px"><span style="font-size:${fs}px">${PHN[from]}</span></div>`:''}<i class="tsw" style="height:${Math.round(bh*1.1)}px"></i>
   <i class="tln" style="left:${lx*W}px;top:${ly*H}px;width:${1.6*Math.hypot(W,H)}px"></i>
-  <div class="tbd" style="left:${cx-tw/2}px;top:${cy-th/2}px;width:${tw}px;height:${th}px;transform:rotate(${cf.a}deg)"><div class="tin" style="width:${W}px;height:${H}px;left:${-(cx-tw/2)}px;top:${-(cy-th/2)}px;transform-origin:${cx}px ${cy}px;transform:rotate(${-cf.a}deg)"><b class="tlw" style="font-size:${fs*1.05}px;right:${W-Lx-W*.1}px;top:${Ly}px">${PHN[to]}</b></div></div>
-  <b class="tlb" style="font-size:${fs*1.05}px;right:${W-Lx-W*.1}px;top:${Ly}px">${PHN[to]}</b>`;
+  <div class="tbd" style="width:${tw}px;height:${th}px"><div class="tin" style="width:${W}px;height:${H}px"><b class="tlw" style="font-size:${fs*1.05}px;top:${Ly}px">${PHN[to]}</b></div></div>
+  <b class="tlb" style="font-size:${fs*1.05}px;top:${Ly}px">${PHN[to]}</b>`;
  document.body.appendChild(o);const q=s=>o.querySelector(s),A=(el,k,op)=>el?el.animate(k,Object.assign({fill:'both',easing:'cubic-bezier(.3,.6,.3,1)'},op)):null;
- {const lb=q('.tlb'),lw=lb.offsetWidth,mx=W*.96-lw/2,my=Ly+fs*.12,bx=mx-Math.sin(a)*th/2,by2=my+Math.cos(a)*th/2,bd=q('.tbd'),tn=q('.tin');bd.style.left=(bx-tw/2)+'px';bd.style.top=(by2-th/2)+'px';tn.style.left=(-(bx-tw/2))+'px';tn.style.top=(-(by2-th/2))+'px';tn.style.transformOrigin=bx+'px '+by2+'px';q('.tlw').style.right=lb.style.right=(W*.04)+'px';q('.tlw').style.right=(W*.04)+'px'}
- const K=q('.tk'),OB=q('.tob'),SW=q('.tsw'),BD=q('.tbd'),LB=q('.tlb'),LN=q('.tln');let skip=0;const T=[];const at=(ms,f)=>T.push(setTimeout(()=>{if(!skip)f()},ms));
- /* 1. black sweeps in from the right */
- A(K,[{clipPath:'polygon(130% 0,160% 0,140% 100%,110% 100%)'},{clipPath:'polygon(-40% 0,160% 0,140% 100%,-60% 100%)'}],{duration:380,easing:'cubic-bezier(.5,0,.6,1)'});
+ /* lay the band so its top edge runs through the middle of the new words */
+ {const lb=q('.tlb'),lw=lb.offsetWidth,mx=W*.96-lw/2,my=Ly+fs*.12,bx=mx-Math.sin(a)*th/2,by2=my+Math.cos(a)*th/2,bd=q('.tbd'),tn=q('.tin');bd.style.left=(bx-tw/2)+'px';bd.style.top=(by2-th/2)+'px';bd.style.transform=`rotate(${cf.a}deg)`;tn.style.left=(-(bx-tw/2))+'px';tn.style.top=(-(by2-th/2))+'px';tn.style.transformOrigin=bx+'px '+by2+'px';tn.style.transform=`rotate(${-cf.a}deg)`;q('.tlw').style.right=lb.style.right=(W*.04)+'px'}
+ const K=q('.tk'),KB=q('.tkb'),OB=q('.tob'),SW=q('.tsw'),BD=q('.tbd'),LB=q('.tlb'),LN=q('.tln');let skip=0,ended=0;const T=[];const at=(ms,f)=>T.push(setTimeout(()=>{if(!skip)f()},ms));
+ /* the screen-wide wipe: a slanted black edge with a see-through navy band on the screen side */
+ const s=Math.min(H*.6,W*.9),bw=W*.16,P=(pts)=>`polygon(${pts.map(([x,y])=>x.toFixed(1)+'px '+y.toFixed(1)+'px').join(',')})`;
+ const inK=e=>P([[e+s,0],[W+s+bw+10,0],[W+s+bw+10,H],[e,H]]),inB=e=>P([[e+s-bw,0],[e+s,0],[e,H],[e-bw,H]]);
+ const outK=e=>P([[-s-bw-10,0],[e+s,0],[e,H],[-s-bw-10,H]]),outB=e=>P([[e+s,0],[e+s+bw,0],[e+bw,H],[e,H]]);
  [BD,LB,LN,SW].forEach(e=>e&&(e.style.opacity=0));
- let t=520;
- /* 2. the old time on a bar from the left, the bar runs across, the words slide off */
- if(OB){const sp=OB.querySelector('span');OB.style.opacity=0;at(t,()=>{OB.style.opacity=1;A(OB,[{clipPath:'polygon(0 0,0 0,0 100%,0 100%)'},{clipPath:`polygon(0 0,52% 0,calc(52% + ${bh*.7}px) 100%,0 100%)`}],{duration:190,easing:'ease-out'})});
-  at(t+330,()=>A(OB,[{clipPath:`polygon(0 0,52% 0,calc(52% + ${bh*.7}px) 100%,0 100%)`},{clipPath:`polygon(0 0,100% 0,calc(100% + ${bh*.7}px) 100%,0 100%)`}],{duration:170,easing:'ease-out'}));
-  at(t+640,()=>A(sp,[{transform:'translate(0,-50%)',opacity:1},{transform:`translate(${W*.55}px,-50%)`,opacity:0}],{duration:300,easing:'ease-in'}));
-  at(t+900,()=>{A(OB,[{transform:'translateY(0) rotate(0deg)',opacity:1},{transform:`translateY(${-H*.12}px) rotate(12deg)`,opacity:0}],{duration:170,easing:'ease-in'})});t+=1050}
- /* 3. a bar swings round and turns into the slanted band */
- at(t,()=>{SW.style.cssText+=`;left:${W/2-tw/2}px;top:${H*.4}px;width:${tw}px;opacity:1`;A(SW,[{transform:'rotate(14deg)'},{transform:'rotate(70deg)',offset:.4},{transform:'rotate(118deg)',offset:.75},{transform:`rotate(${180+cf.a}deg)`,opacity:.9}],{duration:300,easing:'linear'})});
- t+=300;
- /* 4. the new time lands, half in the band and half out of it; a thin line drifts */
+ /* 1. black sweeps in from the right (0.45 s) */
+ A(K,[{clipPath:inK(W+bw)},{clipPath:inK(-s-bw)}],{duration:450,easing:'cubic-bezier(.45,0,.6,1)'});A(KB,[{clipPath:inB(W+bw)},{clipPath:inB(-s-bw)}],{duration:450,easing:'cubic-bezier(.45,0,.6,1)'});
+ let t=1250;
+ /* 2. after a beat of black, the old time comes in on a bar from the left, the bar runs across, the words slide off */
+ if(OB){const sp=OB.querySelector('span');OB.style.opacity=0;const cut=f=>`polygon(0 0,${f}% 0,calc(${f}% + ${bh*.7}px) 100%,0 100%)`;
+  at(t,()=>{OB.style.opacity=1;A(OB,[{clipPath:cut(0)},{clipPath:cut(42)}],{duration:150,easing:'ease-out'})});
+  at(t+150,()=>A(OB,[{clipPath:cut(42)},{clipPath:cut(108)}],{duration:200,easing:'ease-in-out'}));
+  at(t+620,()=>A(sp,[{transform:'translate(0,-50%)',opacity:1},{transform:`translate(${W*.6}px,-50%)`,opacity:0}],{duration:260,easing:'ease-in'}));
+  at(t+1000,()=>{OB.style.visibility='hidden'});t+=1000}
+ /* 3. the bar tips over, swings round and lands as the slanted band (0.3 s) */
+ at(t,()=>{SW.style.cssText+=`;left:${W/2-tw/2}px;top:${OB?by:H*.59}px;width:${tw}px;opacity:1`;A(SW,[{transform:'rotate(0deg)'},{transform:'rotate(14deg)',offset:.3},{transform:'rotate(68deg)',offset:.6},{transform:'rotate(116deg)',offset:.85},{transform:`rotate(${180+cf.a}deg)`}],{duration:320,easing:'linear'})});
+ t+=320;
+ /* 4. the new time lands, half on the band, half off it; the thin line ticks like a clock hand every ~2.4 s */
+ const HOLD=2800;
  at(t,()=>{SW.getAnimations().forEach(x=>x.cancel());SW.style.visibility='hidden';BD.style.opacity=1;LB.style.opacity=1;LN.style.opacity=1;
   const dx=Math.cos(a)*-40,dy=Math.sin(a)*-40;A(BD,[{transform:`translate(${dx}px,${dy}px) rotate(${cf.a}deg) scaleY(.6)`},{transform:`rotate(${cf.a}deg)`}],{duration:220,easing:'cubic-bezier(.2,.8,.3,1)'});
   A(LB,[{opacity:0,transform:'translate(0,-50%) translateX(18px)'},{opacity:1,transform:'translate(0,-50%)'}],{duration:220});
-  A(LN,[{transform:`rotate(${l0}deg)`,opacity:.9},{transform:`rotate(${l0+(l1-l0)*1.6}deg)`,opacity:.9}],{duration:2400,easing:'steps(8,start)'});
+  const step=(l1-l0)*3.2;LN.style.transform=`rotate(${l0}deg)`;
+  T.push(setTimeout(()=>{if(skip)return;A(LN,[{transform:`rotate(${l0}deg)`},{transform:`rotate(${l0+step}deg)`}],{duration:90,easing:'cubic-bezier(.2,1.6,.4,1)'})},2400));
   try{S.dv.vib!==0&&HAPT(12)}catch(e){}});
- t+=1950;
- /* 5. the band slides off and the screen comes back from the right */
+ t+=HOLD;
+ /* 5. the band slides off, a beat of black, then the screen comes back from the right */
  const out=()=>{A(LB,[{color:'#2443e8',opacity:1},{color:'#0b1a80',opacity:0}],{duration:200});A(q('.tlw'),[{opacity:1},{opacity:0}],{duration:200});
-  A(BD,[{transform:`rotate(${cf.a}deg)`},{transform:`translate(${-Math.sin(a)*th*1.4}px,${Math.cos(a)*th*1.4}px) rotate(${cf.a}deg) scaleY(.15)`,opacity:.8}],{duration:280,delay:120,easing:'ease-in'});
-  A(LN,[{opacity:.9},{opacity:0}],{duration:420,delay:150})};
- const fin=()=>{A(K,[{clipPath:'polygon(-40% 0,160% 0,140% 100%,-60% 100%)'},{clipPath:'polygon(-40% 0,-10% 0,-30% 100%,-60% 100%)'}],{duration:420,easing:'cubic-bezier(.4,0,.6,1)'});
-  [OB,SW,BD,LB,LN].forEach(e=>e&&(e.style.visibility='hidden'));setTimeout(()=>{o.remove();todBusy=0;done&&done()},440)};
- at(t,out);at(t+460,fin);
+  A(BD,[{transform:`rotate(${cf.a}deg)`},{transform:`translate(${-Math.sin(a)*th*1.4}px,${Math.cos(a)*th*1.4}px) rotate(${cf.a}deg) scaleY(.15)`,opacity:.8}],{duration:280,delay:100,easing:'ease-in'});
+  A(LN,[{opacity:1},{opacity:0}],{duration:300,delay:220})};
+ const fin=()=>{if(ended)return;ended=1;[OB,SW,BD,LB,LN].forEach(e=>e&&(e.style.visibility='hidden'));
+  A(K,[{clipPath:outK(W+bw)},{clipPath:outK(-s-bw)}],{duration:420,easing:'cubic-bezier(.4,0,.6,1)'});A(KB,[{clipPath:outB(W+bw)},{clipPath:outB(-s-bw)}],{duration:420,easing:'cubic-bezier(.4,0,.6,1)'});
+  setTimeout(()=>{o.remove();todBusy=0;done&&done()},440)};
+ at(t,out);at(t+900,fin);
  o.onclick=()=>{if(skip)return;skip=1;T.forEach(clearTimeout);fin()}}
 /* check the clock; when the time of day has changed, play the change once the screen is free */
 function todTick(force){if(S.dv.todh===0&&S.dv.tod===0)return;const d=new Date(),k=phaseAt(d),dk=ymd(d);
@@ -2737,7 +2744,7 @@ function calPanelHTML(){const c=SCH(),sel=ymdD(RF.cds),sd=schDay(sel),t=sd.t,N=c
   <ul class="caln2">${N.length?N.map((x,i)=>RF.cale===i?`<li class="ed"><input id="cale" maxlength="120" value="${esc(x.t)}" aria-label="Edit plan"><button data-cal="save" data-i="${i}">Save</button><button data-cal="del" data-i="${i}" class="x">Delete</button></li>`:`<li><button class="cnt" data-cal="edit" data-i="${i}">${esc(x.t)}</button></li>`).join(''):'<li class="none">Nothing in particular</li>'}</ul>
   <div class="caladd"><input id="calin" maxlength="120" placeholder="Write a plan for this day" aria-label="New plan" enterkeyhint="done"><button data-cal="add">Add</button></div><button class="calsch" data-cal="sch">Edit school days and times</button>`}
 function calHTML(){calInit();setTimeout(calFit,0);
- return `<div class="calp"><i class="calbg" aria-hidden="true" style="background-image:url('${mvU.mvl||'img/menu2.jpg'}')"></i><i class="calbt" aria-hidden="true"></i><div class="calc" aria-hidden="true"><i></i></div><i class="calsh" aria-hidden="true"></i><i class="calsh s2" aria-hidden="true"></i><i class="calsh s3" aria-hidden="true"></i>
+ return `<div class="calp"><div class="calc" aria-hidden="true"><i></i></div><i class="calsh" aria-hidden="true"></i><i class="calsh s2" aria-hidden="true"></i><i class="calsh s3" aria-hidden="true"></i>
  <div class="calh">${calHeadHTML()}</div><div class="calg" id="calg">${calCellsHTML()}</div><div class="calpn">${calPanelHTML()}</div><div class="cjobs" id="cjob">${jobsHTML()}</div></div>`}
 /* the big month number always fits between the L and R groups */
 function calFit(){const r=$('#mnb2 .calrow'),mo=$('#mnb2 .calmo span');if(!r||!mo)return;mo.style.fontSize='';const l=r.querySelector('.caln.l'),R=r.querySelector('.caln.r'),room=R.getBoundingClientRect().left-l.getBoundingClientRect().right-8,w=mo.getBoundingClientRect().width;if(w>room&&room>20)mo.style.fontSize=(parseFloat(getComputedStyle(mo).fontSize)*room/w).toFixed(1)+'px'}
@@ -3198,7 +3205,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.25-0001';
+var APPVER='2026.11.25-0021';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
