@@ -379,7 +379,7 @@ input,select,textarea{width:100%;padding:13px;background:#12131f;border:2px soli
 .wtrc{position:absolute;inset:0;width:100%;height:100%}
 .rk.out .fxc,.iat.xf .fxc{opacity:0;transition:opacity .35s}
 .rkup,.rknum,.rkinfo,.rkbar{backface-visibility:hidden;-webkit-backface-visibility:hidden}
-.iat .iatt p{backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.iatt p.dn{animation:none!important;opacity:1!important;transform:none!important;filter:none!important}
 .rksh{will-change:translate}
 .rk .rkok2{width:clamp(96px,19vmin,190px)!important;height:auto!important;font-size:0!important;padding:0!important;gap:0!important}
 .rk .rkok2 svg{display:block;width:100%;height:auto;overflow:visible}
@@ -1339,8 +1339,9 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 #mns.sldt #mttl{visibility:hidden}
 .slg{position:relative;height:180px;margin:-4px -16px 14px -16px;overflow:visible}
 .slgt{position:absolute;left:6px;top:10px;font:900 italic 60px/1 'Montserrat','Arial Black',sans-serif;letter-spacing:-.06em;color:#fff;white-space:nowrap;transform:scaleX(.88);transform-origin:0 50%;text-shadow:0 2px 6px rgba(0,20,90,.25)}
-.slgb{position:absolute;left:0;right:0;top:61px;height:47px;background:#05060c;clip-path:polygon(0 0,94.4% 0,92.6% 100%,0 100%)}
-.slgb span{position:absolute;left:0;right:13%;top:0;bottom:0;display:flex;align-items:center;justify-content:center;color:#f2f2f2;font:600 20px/1 'Fira Sans Condensed','Barlow',sans-serif;letter-spacing:.01em;white-space:nowrap;overflow:hidden}
+.slgb{position:absolute;left:0;right:0;top:58px;height:50px;background:#fff;clip-path:polygon(0 0,95.3% 0,93.5% 100%,0 100%)}
+.slgb::before{content:'';position:absolute;left:0;right:0;top:3px;bottom:0;background:#05060c;clip-path:polygon(0 0,94.4% 0,92.6% 100%,0 100%)}
+.slgb span{position:absolute;z-index:1;left:0;right:13%;top:3px;bottom:0;display:flex;align-items:center;justify-content:center;color:#f2f2f2;font:600 20px/1 'Fira Sans Condensed','Barlow',sans-serif;letter-spacing:.01em;white-space:nowrap;overflow:hidden}
 .slgw{position:absolute;left:0;right:0;top:108px;height:63px;background:#fff;clip-path:polygon(0 0,92.6% 0,90.3% 100%,0 100%)}
 .slgtag{position:absolute;left:30px;top:104px;z-index:3;width:56px;height:18px;background:#05060c;transform:rotate(-9deg) skewX(-22deg);display:flex;align-items:center;justify-content:center}
 .slgtag i{font:800 italic 10px/1 'Montserrat','Arial',sans-serif;color:#fff;letter-spacing:.01em;transform:skewX(22deg)}
@@ -1360,7 +1361,7 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 .sld.in .slg{animation:slpin .32s cubic-bezier(.2,.8,.3,1) both}
 .sld.sw .slg{animation:slsw .2s cubic-bezier(.2,.8,.3,1) both!important}
 /* MAX sits right behind the 10 */
-.rk.max .rkmax{left:208px!important}
+.rk.max .rkmax{left:395px!important}
 </style>
 </head>
 <body>
@@ -1410,8 +1411,8 @@ const P=[['c','Charm',['Hung out with friends|c2','Met someone new|c2','Went on 
 ['g','Courage',['Talked to a stranger|g3','Did something that scared me|g3','Asked someone out|g3','Gave a presentation or spoke in public|g3','Spoke up in a meeting or class|g2','Set a boundary or said no|g2','Had a hard, honest conversation|g3','Hit the gym|g2','Ran or did cardio|g2','Took a cold shower|g1','Tried something new|g2','Went somewhere new alone|g2','Sang karaoke|g2','Asked for something I wanted|g2','Watched a horror movie|g1','Tried an unusual food|g1','Applied for something I might not get|g3','Admitted I was wrong|g2','Apologized first|g2','Went to the doctor or dentist|g1','Finished a hard workout|g3','Stood up for someone|g3','Shared my work with others|g2','Tried a new sport|g2','Woke up early without snoozing|g1','Took a long walk or hike|g1','Faced a fear (heights, spiders…)|g3']],
 ['a','Academics',['Studied 30+ minutes|a1','Deep study session (2 hrs)|a3','Studied at the library|a2','Finished homework or an assignment|a2','Paid attention the whole class|a1','Reviewed my notes|a1','Read a chapter|a1','Finished a book|a3','Watched a lecture or documentary|a1','Practiced a language|a1','Practiced a skill (code, music, craft)|a2','Wrote an essay or report|a2','Aced a test or quiz|a3','Visited a museum or library|a2','Learned something and wrote it down|a1','Made flashcards|a1','Did practice problems|a2','Taught myself something online|a2','Organized my study space|a1','Planned my week|a1','Asked a teacher a question|a1','Studied with no phone|a2','Took an online course lesson|a2','Read the news|a1','Solved a puzzle or brain game|a1']],
 ['m','Combos',['Study group at a café|a2c1','Part-time job shift|g1c1','Group workout|g2c1','Joined a club meeting|c2g1','Volunteered|g1c2','Taught someone something|a2c1','Debate or discussion club|a2g1','Led a group project|g2a1','Played a sport with friends|g2c1','Cooked a new recipe for friends|c2g1','Spoke a new language with someone|a1g2','Went to a workshop|a2c1']]];
-let S={p:{c:0,g:0,a:0},u:[],prev:null,h:[],f:[],bu:[],dev:0,dv:{clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1,hz:100,oz:100,lz:100,bgmv:100,sev:100,vov:100,tspd:1,rmo:0,bgv:1,fxs:1,fxw:1,cpm:1,swp:1,dconf:1,mix:1,ntf:1,msel:'a'}},busy=0,R={},CL=[],SN=[],UID=0,lastTest=null,rsArm=0;
-try{const j=JSON.parse(localStorage.getItem('p3s')||'{}');Object.assign(S,j);S.dv=Object.assign({clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1,hz:100,oz:100,lz:100,bgmv:100,sev:100,vov:100,tspd:1,rmo:0,bgv:1,fxs:1,fxw:1,cpm:1,swp:1,dconf:1,mix:1,ntf:1,msel:'a'},j.dv||{});if(!S.h)S.h=[];if(!S.f)S.f=[];if(!S.bu)S.bu=[];(S.u||[]).forEach(u=>(u.a||[]).forEach(x=>x[1]=Math.min(3,x[1])))}catch(e){}
+let S={p:{c:0,g:0,a:0},u:[],prev:null,h:[],f:[],bu:[],dev:0,dv:{clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1,hz:100,oz:100,lz:100,bgmv:100,sev:100,vov:100,tspd:1,rmo:0,bgv:1,mq:1,fxs:1,fxw:1,cpm:1,swp:1,dconf:1,mix:1,ntf:1,msel:'a'}},busy=0,R={},CL=[],SN=[],UID=0,lastTest=null,rsArm=0;
+try{const j=JSON.parse(localStorage.getItem('p3s')||'{}');Object.assign(S,j);S.dv=Object.assign({clip:null,bg:1,pip:0,spd:1,snd:null,sfx:1,pm:'smooth',tsrc:'game',vol:80,vib:1,hz:100,oz:100,lz:100,bgmv:100,sev:100,vov:100,tspd:1,rmo:0,bgv:1,mq:1,fxs:1,fxw:1,cpm:1,swp:1,dconf:1,mix:1,ntf:1,msel:'a'},j.dv||{});if(!S.h)S.h=[];if(!S.f)S.f=[];if(!S.bu)S.bu=[];(S.u||[]).forEach(u=>(u.a||[]).forEach(x=>x[1]=Math.min(3,x[1])))}catch(e){}
 let CREF=null,cBusy=0,cDirty=0,cTm=0;   /* account copy of the save */
 const applyLZ=()=>document.documentElement.style.setProperty('--lz',(S.dv.lz||100)/100);
 const save=()=>{S.t=Date.now();try{typeof pushRanks=='function'&&pushRanks()}catch(e){}try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}cloudPush()};
@@ -1930,7 +1931,7 @@ function pf2HTML(){const pr=RF.me,uid=myId(),bn=banBG(banOf(uid,pr)),a=arcOk(pr.
  <div class="pffl">${fr}</div>
  <div class="bk"><button data-pf="edit">Edit profile</button><button data-pfgo="l">Add friends</button></div>
  <p class="pfnote">Friends see your photo, name, @username, description, Arcana and ranks.</p></div>`}
-function slDetail(L,i){const x=L[i],hrt=x.r>=9&&romOn(x.uid)&&ROMA.includes(x.a),pr=x.pr,nm=x.a<99?ARCN[x.a]:'Unknown',need=x.r>=10?0:SLT[x.r]-x.n;
+function slDetail(L,i){const x=L[i],hrt=false,pr=x.pr,nm=x.a<99?ARCN[x.a]:'Unknown',need=x.r>=10?0:SLT[x.r]-x.n;
  const txt=x.r>=10?`Your bond with ${pr.name||'your friend'} is at its strongest. Every moment together still counts.`:(x.n?`You’ve hung out ${x.n} time${x.n==1?'':'s'}. ${need} more hangout${need==1?'':'s'} to reach Rank ${x.r+1}.`:`A new bond. Hang out together (FRIEND tab on the left edge) to grow this Social Link.`);
  const kk=RF.slk;RF.slk=0;return `<div class="sld in${RF.sldir<0?' nx':''}${kk?' sw':''}"><div class="slnav"><button data-sln="${(i-1+L.length)%L.length}" data-dir="-1" aria-label="Previous" class="slq${RF.slk<0?' kk':''}"><svg class="slar" viewBox="0 0 26 36" aria-hidden="true"><path d="M21 2 L3 18 L21 34 L25 29.5 L12 18 L25 6.5 Z" fill="#e5002b" stroke="#fff" stroke-width="2.6" stroke-linejoin="miter"/></svg></button><button data-sln="${(i+1)%L.length}" data-dir="1" aria-label="Next" class="sle${RF.slk>0?' kk':''}"><svg class="slar slarr" viewBox="0 0 26 36" aria-hidden="true"><path d="M21 2 L3 18 L21 34 L25 29.5 L12 18 L25 6.5 Z" fill="#e5002b" stroke="#fff" stroke-width="2.6" stroke-linejoin="miter"/></svg></button></div>
  <div class="slg"><div class="slgt">SOCIAL LINK</div><div class="slgb"><span>${esc(pr.name||'@'+(pr.handle||''))}</span></div><span class="slgtag"><i>ARCANA</i></span><div class="slgw"><b class="slga">${esc(nm)}</b><span class="slgr">RANK</span><div class="slgs${hrt?' hrt':''}">${Array.from({length:10},(_,k)=>`<span class="${k<x.r?'on':''}"><svg viewBox="0 0 20 20"><path d="${hrt?'M10 18.2C5 14.3 1.4 11.2 1.4 7.2 1.4 4.3 3.6 2.2 6.1 2.2 7.9 2.2 9.3 3.2 10 4.7 10.7 3.2 12.1 2.2 13.9 2.2 16.4 2.2 18.6 4.3 18.6 7.2 18.6 11.2 15 14.3 10 18.2Z':'M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6l-5.2 2.9 1.2-5.8-4.4-4 5.9-.7z'}"/></svg></span>`).join('')}</div></div><em class="slgk${x.r>=10?' mx':''}" data-n="${x.r>=10?'MAX':x.r}">${x.r>=10?'MAX':x.r}</em></div>
@@ -2036,7 +2037,7 @@ $('#hask').onclick=e=>{const t=e.target.closest('button');if(!t||!RF.ask)return;
 const SLQ=[];let slT=0;
 /* Social Link sounds: each Arcana's own "I am thou" voice, Strength of Heart under both screens,
    the rank-up sound effect, and the confirm sound when the player presses OK */
-const SLVC={};const SLV=a=>a>=0&&a<=21?(SLVC[a]=SLVC[a]||{id:'sl-v'+a,url:'snd/sl/iat/'+a+'.mp3'}):null;
+const SLVC={};const SLV=a=>a>=0&&a<=21?(SLVC[a]=SLVC[a]||{id:'sl-v'+a,url:'snd/sl/iat2/'+a+'.mp3'}):null;
 const SLC={rk:{id:'sl-rk',url:'snd/sl/rk.mp3'},bgm:{id:'sl-bgm',url:'snd/sl/bgm.mp3'},star:{id:'sl-star',url:'snd/sl/star.mp3'}};let slStarT=0;const SLP={id:'slpress',url:'snd/sl/press.mp3'};
 let slSrc=null,slBgm=null,slBgmT=0;
 /* MAX scenes: per-Arcana voice (5 lines), times (s) when each line starts + when the voice ends. r = romance version */
@@ -2080,7 +2081,7 @@ function slPlay(x){if(x.kind=='max'){const pr0=RF.prof[x.uid]||{},a0=x.a!=null?x
   /* fit: long Arcana names (Temperance, Hanged Man) move the last line left, then the whole block is scaled to the screen */
   const T=E.querySelector('.iatt'),fitT=()=>{const ps=[...T.querySelectorAll('p')];ps.forEach(pp=>{pp.style.left='';pp.style.scale=''});
    let lo=1e9,hi=0;ps.forEach(pp=>{let L=pp.offsetLeft,Wd=pp.firstChild.getBoundingClientRect().width/(parseFloat(T.style.getPropertyValue('--k'))||.45);if(L+Wd>860){L=Math.max(20,860-Wd);pp.style.left=L+'px';if(L+Wd>860)pp.style.scale=((840)/Wd).toFixed(3)+' 1'}lo=Math.min(lo,L);hi=Math.max(hi,Math.min(860,L+Wd))});
-   const k=Math.min((innerWidth-32)/(hi-lo+70),innerHeight/491*.92);T.style.setProperty('--k',k.toFixed(4));T.style.marginLeft=(-440-((lo+hi)/2-440)*k)+'px'};
+   const k=Math.min((innerWidth-32)/(hi-lo+70),innerHeight/491*.92);T.style.setProperty('--k',k.toFixed(4));if(window.CSS&&CSS.supports('zoom','2')){T.style.zoom=k;T.style.transform='none';T.style.margin='0';T.style.left=(innerWidth/2/k-(lo+hi)/2).toFixed(1)+'px';T.style.top=(innerHeight/2/k-245).toFixed(1)+'px'}else T.style.marginLeft=(-440-((lo+hi)/2-440)*k)+'px'};T.addEventListener('animationend',ev=>{if(ev.animationName=='iline'&&ev.target.tagName=='P')ev.target.classList.add('dn')});
   E._fit=fitT;try{document.fonts.ready.then(()=>{if(E._fit===fitT)fitT()})}catch(e){}
   /* one ring per line, where the game puts it: start of lines 1 and 3, end of lines 2 and 4 */
   requestAnimationFrame(()=>{fitT();T.querySelectorAll('p').forEach((pp,k)=>{const wd=pp.firstChild.scrollWidth*.82*(parseFloat(pp.style.scale)||1),x=pp.offsetLeft+(k%2?wd-30:20),y=pp.offsetTop+pp.offsetHeight*.5;const g=document.createElement('i');g.className='iring';g.style.left=x+'px';g.style.top=y+'px';g.style.animationDelay=(LT[k]+700)+'ms';T.appendChild(g)})});
@@ -2107,7 +2108,7 @@ function slPlay(x){if(x.kind=='max'){const pr0=RF.prof[x.uid]||{},a0=x.a!=null?x
   <button class="iatok rkok" style="animation-delay:${need}ms"><i class="rkx"></i>OK</button>`;
   const T=E.querySelector('.iatt'),fitT=()=>{const ps=[...T.querySelectorAll('p')];ps.forEach(pp=>{pp.style.left='';pp.style.scale=''});
    let lo=1e9,hi=0;ps.forEach(pp=>{let L=pp.offsetLeft,Wd=pp.firstChild.getBoundingClientRect().width/(parseFloat(T.style.getPropertyValue('--k'))||.45);if(L+Wd>860){L=Math.max(20,860-Wd);pp.style.left=L+'px';if(L+Wd>860)pp.style.scale=((840)/Wd).toFixed(3)+' 1'}lo=Math.min(lo,L);hi=Math.max(hi,Math.min(860,L+Wd))});
-   const k=Math.min((innerWidth-32)/(hi-lo+70),innerHeight/491*.92);T.style.setProperty('--k',k.toFixed(4));T.style.marginLeft=(-440-((lo+hi)/2-440)*k)+'px'};
+   const k=Math.min((innerWidth-32)/(hi-lo+70),innerHeight/491*.92);T.style.setProperty('--k',k.toFixed(4));if(window.CSS&&CSS.supports('zoom','2')){T.style.zoom=k;T.style.transform='none';T.style.margin='0';T.style.left=(innerWidth/2/k-(lo+hi)/2).toFixed(1)+'px';T.style.top=(innerHeight/2/k-245).toFixed(1)+'px'}else T.style.marginLeft=(-440-((lo+hi)/2-440)*k)+'px'};T.addEventListener('animationend',ev=>{if(ev.animationName=='iline'&&ev.target.tagName=='P')ev.target.classList.add('dn')});
   E._fit=fitT;try{document.fonts.ready.then(()=>{if(E._fit===fitT)fitT()})}catch(e){}
   requestAnimationFrame(()=>{fitT();T.querySelectorAll('p').forEach((pp,k)=>{if(k>0&&rows[k][1]==rows[k-1][1])return;const wd=pp.firstChild.scrollWidth*.82*(parseFloat(pp.style.scale)||1),xx=pp.offsetLeft+(k%2?wd-30:20),y=pp.offsetTop+pp.offsetHeight*.5;const g=document.createElement('i');g.className='iring';g.style.left=xx+'px';g.style.top=y+'px';g.style.animationDelay=(LT[k]+700)+'ms';T.appendChild(g)})});
  }else{
@@ -2125,11 +2126,11 @@ function slPlay(x){if(x.kind=='max'){const pr0=RF.prof[x.uid]||{},a0=x.a!=null?x
   const rom=!!x.rom&&x.rank>=9;if(mx)need=5600;
   E.className='iat rk'+(mx?' max':'')+(rom?' rom':'');
   E.innerHTML=`<div class="rkst${PT?' pt':''}"><i class="rkwipe"></i><i class="rkbgd"></i><i class="rkcol"></i><i class="rkband"></i><i class="rklow"></i>
-  <div class="rkshw">${Array.from({length:24},(_,k)=>{const C=['#0a14e0','#0610c4','#1426f0','#0508a6','#0c1ad6','#1a2cff'],y=200+((k*83)%380),w=170+((k*53)%170),h=130+((k*71)%190),du=46+((k*37)%30),ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="left:-1100px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?40:-40)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${du.toFixed(1)}s"></i>`}).join('')}</div>
+  <div class="rkshw">${Array.from({length:24},(_,k)=>{const C=['#0a14e0','#0610c4','#1426f0','#0508a6','#0c1ad6','#1a2cff'],y=200+((k*83)%380),w=170+((k*53)%170),h=130+((k*71)%190),du=46+((k*37)%30),ph=-((k*1.618)%1)*du,r0=-30+((k*47)%60),q=[[0,8+(k*13)%20],[100,(k*7)%18],[88+(k*5)%12,100],[(k*11)%16,92]].map(v=>v[0]+'% '+v[1]+'%').join(',');return `<i class="rksh" style="left:-1100px;top:${y}px;width:${w}px;height:${h}px;background:${C[k%6]};clip-path:polygon(${q});--r0:${r0}deg;--r1:${r0+(k%2?1:-1)*(720+(k%3)*360)}deg;--dy:${((k%5)-2)*30}px;animation-delay:${(k*.02).toFixed(2)}s,${ph.toFixed(2)}s;animation-duration:.42s,${du.toFixed(1)}s"></i>`}).join('')}</div>
   ${mx?'<div class="rkmax">MAX</div>':''}
   
   <div class="rkcw"><div class="rkcard">${arcCard(a,236)}<i class="wtr"></i></div></div>
-  ${ST.map((v,k)=>{const h=starSVG(...v),n=Math.min(10,x.rank),nw=k==n-1;if(k>=n)return h;const w=nw?3.45:2.95+k*.07;return h.replace('class="rks"','class="rks w'+(nw?' nw':'')+'"').replace('style="','style="--w:'+w.toFixed(2)+'s;')+(nw?`<svg class="rkghost" viewBox="-12 -12 24 24" style="left:${v[0]}px;top:${v[1]}px;--s:${v[2]}px;--w:${w}s"><path d="${rom?HO:'M0,-10.5 L2.6,-3.6 10,-3.3 4.2,1.3 6.2,8.5 0,4.4 -6.2,8.5 -4.2,1.3 -10,-3.3 -2.6,-3.6Z'}"/></svg>`:'')}).join('')}
+  ${ST.map((v,k)=>{const h=starSVG(...v),n=Math.min(10,x.rank),nw=k==n-1;if(k>=n)return h;const w=nw?3.45:3.45-(n-1-k)*.19;return h.replace('class="rks"','class="rks w'+(nw?' nw':'')+'"').replace('style="','style="--w:'+w.toFixed(2)+'s;')+(nw?`<svg class="rkghost" viewBox="-12 -12 24 24" style="left:${v[0]}px;top:${v[1]}px;--s:${v[2]}px;--w:${w}s"><path d="${rom?HO:'M0,-10.5 L2.6,-3.6 10,-3.3 4.2,1.3 6.2,8.5 0,4.4 -6.2,8.5 -4.2,1.3 -10,-3.3 -2.6,-3.6Z'}"/></svg>`:'')}).join('')}
   
   <div class="rkup" data-t="RANK UP!">RANK UP!</div><i class="rkflash"></i>
   <div class="rkbar"><span><em>${esc((pr.name||'?')[0])}</em>${esc((pr.name||'your friend').slice(1))}</span></div>
@@ -2149,10 +2150,7 @@ function slPlay(x){if(x.kind=='max'){const pr0=RF.prof[x.uid]||{},a0=x.a!=null?x
  /* tap anywhere: skip to the end (the voice / sound stops too). Only the OK button closes the screen */
  const JUMP=15.2;   /* where sentence 3 starts in the voice clip (s) */
  const skip=()=>{if(E.classList.contains('skip'))return;if(x.kind=='max'){E.classList.add('skip');return}if(x.kind=='rank'&&x.rank>=10)E.classList.add('mxd');
-  if(x.kind=='new'){const el=(Date.now()-t0)/1000;if(el<JUMP-.3){const dl=JUMP-el;t0-=dl*1000;
-    try{E.getAnimations({subtree:true}).forEach(an=>{try{an.currentTime=(an.currentTime||0)+dl*1000}catch(z){}})}catch(z){}
-    slSeek(JUMP);return}
-   E.classList.add('skip');return}   /* already at the last sentences: show the rest, the voice keeps going */
+  if(x.kind=='new')return;   /* the voice always plays through; OK appears at the end */   /* already at the last sentences: show the rest, the voice keeps going */
   E.classList.add('skip');slStop()};
  E.onclick=e=>{if(Date.now()-t0<need)skip()};ok.onclick=e=>{e.stopPropagation();if(!E.classList.contains('skip')&&Date.now()-t0<need)return skip();done()}}
 /* ===== card water + P3R sparkles, drawn on canvas so they move smoothly at the screen's frame rate ===== */
@@ -2226,19 +2224,21 @@ const ROM=['0','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XI
 const SLT=[0,1,2,4,6,8,11,14,17,20];/* hangouts needed for rank 1..10 (10 = MAX) */
 const slRank=n=>{let r=0;SLT.forEach((v,i)=>{if(n>=v)r=i+1});return r};
 const slCount=uid=>{const pr=pairId(myId(),uid);return [...RF.hgIn,...RF.hgOut].filter(h=>h.status=='ok'&&h.pair==pr).length};
-let ARCU='';function arcUrl(){if(!ARCU){try{const el=document.getElementById('arcd'),raw=el?el.textContent.trim():'';if(!raw){ARCU='img/arc.webp';return ARCU}const t=atob(raw),a=new Uint8Array(t.length);for(let i=0;i<t.length;i++)a[i]=t.charCodeAt(i);ARCU=URL.createObjectURL(new Blob([a],{type:'image/webp'}))}catch(e){}}return ARCU}
+let ARCU='';function arcUrl(){if(!ARCU){try{const el=document.getElementById('arcd'),raw=el?el.textContent.trim():'';if(!raw){ARCU='img/arc2.webp';return ARCU}const t=atob(raw),a=new Uint8Array(t.length);for(let i=0;i<t.length;i++)a[i]=t.charCodeAt(i);ARCU=URL.createObjectURL(new Blob([a],{type:'image/webp'}))}catch(e){}}return ARCU}
 const arcOk=a=>Number.isInteger(a)&&a>=0&&a<=21;
 /* card picture: index 0-21 = arcana, 22 = card back */
 const arcCard=(i,w,cls)=>`<span class="arc ${cls||''}" style="width:${w}px;height:${Math.round(w*230/160)}px;background-image:url(${arcUrl()});background-position:${(i/22*100).toFixed(4)}% 0"></span>`;
-const ANB=[{id:'b30',t:new Date(2026,10,24,22,0).getTime(),title:'Fixes: Social Link header, MAX, menu sound',body:'• The Social Link page header now matches the game: big SOCIAL LINK title, red arrows on the black bar, the name in the bar, the black ARCANA tag, and the big outlined rank number across both panels.\n• At Rank 10 the header shows MAX next to RANK, and on the rank screen MAX sits right behind the 10.\n• The leftover sound after opening the menu is cut off for good.'},{id:'b29',t:new Date(2026,10,24,19,0).getTime(),title:'Fixes: Social Link page, MAX screen, sounds',body:'• The Social Link page is redone: the Arcana name sits in a taller black box, a short white line joins it to the title, and the big outlined rank number sits across the box edge.\n• On the rank screen, MAX now sits right behind the 10 and the Arcana name, like the game.\n• The extra sound at the end of the menu-open effect is gone.\n• The MAX scene no longer starts with the “ah” voice sound.\n• Romance invites only appear for Lovers, Empress, Priestess, Justice, Strength and Aeon.'},
-{id:'b28',t:new Date(2026,10,24,18,0).getTime(),title:'NEW: MAX scenes, Romance and multi-stat activities',body:'• Reaching Rank 10 now plays a full MAX scene for your friend’s Arcana, with its own voice and music, then the 10 / MAX screen.\n• Romance: invite a friend from their Social Link page. If you both accept, you see your partner’s romance MAX scene for Lovers, Empress, Priestess, Justice, Strength and Aeon, and stars turn into hearts at ranks 9 and 10.\n• NEW activities can now give several stats at once (like +1 Academics and +2 Charm), and there are lots more built-in activities.\n• The rings around the stat circles show how many levels are left until max.\n• The rank-up screen shows the page you were on behind it.\n\nFixes:\n• Menu words no longer disappear after backing out of Config or Tutorial, and the buttons are easier to hit.\n• The Back sound plays once, and the menu click no longer has an extra blip at the end.\n• “I am thou” starts cleanly, the card flips once, and the OK button waits for the last sentence.\n• Your Friends, Followers and Following show on your own Profile page.\n• Cut-off letters on the menu, streak and labels are fixed, and the Arcana cards lost their white borders.\n• “Posted by” always opens the poster’s profile.'},
-{id:'b27',t:new Date(2026,10,22,23,0).getTime(),title:'NEW: Quest screen, Social Link look, menu sounds',body:'• Quests have a new look, like the Quest screen in the game: tap a quest to see its task and claim your reward.\n• Social Link pages are redone: taller Arcana box, a big outlined rank number, new arrows and stars.\n• The menu has its own sounds when it opens and closes.\n• Menu text has a smoother, calmer water shine.\n• "Posted by" on announcements always opens the poster’s profile.'},
-{id:'b26',t:new Date(2026,10,22,21,30).getTime(),title:'Fix: delete GIFs, stickers and emojis',body:'• You can now delete any message you sent: GIFs, stickers, pictures and emoji-only messages too. Tap it, then Delete.\n• Tapping a message with a custom emoji opens the full menu (react, reply, delete) plus Add :name: to save the emoji.'},
-{id:'b25',t:new Date(2026,10,22,21,0).getTime(),title:'NEW: Delete messages + fixes',body:'• Delete your own messages: tap a message → Delete → tap again to confirm.\n• Announcements now show who posted them. Tap the name to open their profile.\n\nFixes:\n• The FRIEND tab now opens from the bottom like the NEW tab.\n• Streak numbers no longer overlap, and big streaks like 100 fit.\n• Custom emojis work even when your keyboard adds a capital letter (:Omri: shows the emoji).'},
-{id:'b24',t:new Date(2026,10,22,20,0).getTime(),title:'NEW: Full profiles, followers and shared emojis',body:'• Tap anyone to see their full profile: banner, photo, description, Arcana, Social Stats and friends.\n• Follow and unfollow people, and see Followers and Following counts and lists.\n• In a chat, tap the name at the top to open their profile.\n• Custom emojis are now shared. Make :yourname: and everyone sees it in messages and descriptions. Find them under ★ → Everyone’s.\n• The streak has its own sound and a cleaner animation.\n\nFixes:\n• The GIF menu always closes now (✕, the GIF button, tapping the chat, or B Back).\n• B Back closes an open panel first instead of leaving the chat.\n• The NEW tab no longer pops up the keyboard by itself, and opens from the tab.\n• Send is dark blue, the chat name bar no longer covers MESSAGES, and the menu is back to its old look.\n• Dark boxes behind the menu words on iPhone are gone.'},
-{id:'b23',t:new Date(2026,10,22,19,0).getTime(),title:'NEW: Streaks, side tabs and sharper GIFs',body:'• Daily streak: every activity counts. Your first one each day adds +1 and a new streak scene plays.\n• Your streak now sits in the top-left of the stats screen. A grey flame means you haven’t logged anything today yet.\n• + New and + Friend are now tabs on the edges of the screen: NEW on the right, FRIEND on the left. Tap one and its drawer slides out.\n• GIFs are sharper and show square in chats.\n• The Tutorial has new pages for streaks, messages and quests.'},
-{id:'b22',t:new Date(2026,10,22,18,0).getTime(),title:'NEW: Messages got a big upgrade',body:'• Tap any message to react, reply, edit or copy it.\n• Search GIFs, browse Trending and categories, and save Favorites.\n• Emoji picker, plus your own custom emojis. Tap a friend’s emoji to add it to your set.\n• Make your own stickers from a photo or words.\n• Send a picture with text, and get alerts when friends text you.'},
-{id:'b14',t:new Date(2026,10,21,17,0).getTime(),title:'NEW: Social Links!',body:'Every friend is now a Social Link, just like in P3R.\n\n• Pick your Arcana in Profile (new players choose it when they sign up). Your friends see your card.\n• Add a friend and you’ll see the “I am thou” scene as a new bond is born.\n• Every confirmed hangout with that friend grows your Social Link. Rank up and the card scene plays again, all the way to MAX at Rank 10.\n• See all your bonds in Menu → Social Link. Tap one to see its rank, stars and how many hangouts are left to the next rank.'}];
+const ANB=[{id:'b31',t:new Date(2026,10,24,17,0).getTime(),title:'Visual and sound fixes',body:'Sharper menu and scenes, cleaner cards, smoother rank-up animations, and audio fixes.'},
+{id:'b30',t:new Date(2026,10,24,16,30).getTime(),title:'Social Link page fixes',body:'The Social Link page looks closer to the game, plus a sound fix.'},
+{id:'b29',t:new Date(2026,10,24,15,0).getTime(),title:'Fixes',body:'Social Link, rank screen and sound fixes.'},
+{id:'b28',t:new Date(2026,10,24,18,0).getTime(),title:'NEW: MAX scenes and Romance',body:'MAX rank scenes, Romance Social Links, and activities that raise more than one stat.'},
+{id:'b27',t:new Date(2026,10,22,23,0).getTime(),title:'NEW: Quests and menu updates',body:'A new Quest screen, menu sounds and Social Link updates.'},
+{id:'b26',t:new Date(2026,10,22,21,30).getTime(),title:'Fix: deleting messages',body:'You can now delete any kind of message.'},
+{id:'b25',t:new Date(2026,10,22,21,0).getTime(),title:'NEW: Delete messages',body:'You can delete your messages, plus small fixes.'},
+{id:'b24',t:new Date(2026,10,22,20,0).getTime(),title:'NEW: Profiles and followers',body:'Full profiles, followers and shared emojis.'},
+{id:'b23',t:new Date(2026,10,22,19,0).getTime(),title:'NEW: Streaks',body:'Daily streaks, new side tabs and better GIFs.'},
+{id:'b22',t:new Date(2026,10,22,18,0).getTime(),title:'NEW: Messages upgrade',body:'Replies, edits, emojis, GIFs and stickers in messages.'},
+{id:'b14',t:new Date(2026,10,21,17,0).getTime(),title:'NEW: Social Links!',body:'Every friend is now a Social Link. Hang out to rank up.'}];
 var AN=[...ANB];const annUnread=()=>AN.length&&AN[0].t>(S.an||0)?AN.filter(a=>a.t>(S.an||0)).length:0;
 function hasNew(){try{return !!annUnread()||(typeof RF!='undefined'&&(RF.reqIn.length>0||chUnread()>0))||qClaimable()>0}catch(e){return false}}
 function annStart(){if(annStart.on)return;annStart.on=1;try{fdb().collection('announcements').where('pub','==',true).onSnapshot(q=>{AN=[...q.docs.map(d=>({id:d.id,...d.data()})),...ANB].sort((a,b)=>b.t-a.t).slice(0,30);
@@ -2280,17 +2280,17 @@ const MVF={mvd:'img/menu.webp',mvl:'img/menu2.jpg'},mvP={};
 function mvGet(k){if(mvB[k])return Promise.resolve(mvB[k]);const el=document.getElementById(k),raw=el?el.textContent.trim():'';
  if(raw){try{const t=atob(raw),a=new Uint8Array(t.length);for(let i=0;i<t.length;i++)a[i]=t.charCodeAt(i);mvB[k]=new Blob([a],{type:k=='mvl'?'image/jpeg':'image/webp'});el.textContent=''}catch(e){mvBad=true}return Promise.resolve(mvB[k]||null)}
  return mvP[k]||(mvP[k]=(window.BOOTF&&BOOTF[MVF[k]]?BOOTF[MVF[k]].then(ab=>{if(!ab)throw 0;return new Blob([ab],{type:k=='mvl'?'image/jpeg':'image/webp'})}).catch(()=>fetch(MVF[k]).then(r=>{if(!r.ok)throw 0;return r.blob()})):fetch(MVF[k]).then(r=>{if(!r.ok)throw 0;return r.blob()})).then(b=>(mvB[k]=b)).catch(()=>{mvP[k]=null;return null}))}
-function mvInit(){mvGet('mvl');const L=$('#mns video.pvl');if(L&&S.dv.bgv!==0&&!RMO()&&!L.getAttribute('src')){mvVid(L);L.preload='auto';L.src='img/menu.mp4';try{L.load()}catch(e){}}}
+function mvInit(){mvGet('mvl');const L=$('#mns video.pvl');if(L&&S.dv.bgv!==0&&!RMO()&&!L.getAttribute('src')){mvVid(L);L.preload='auto';L.src=MVS();try{L.load()}catch(e){}}}
 function mvSet(im,k,cb){mvGet(k).then(b=>{if(!b){if(k=='mvd'){mvBad=true;$('#mns').classList.remove('hasvid')}return}const old=mvU[k];mvU[k]=URL.createObjectURL(b);im.onload=()=>{if(old)URL.revokeObjectURL(old);cb&&cb()};im.onerror=()=>{mvBad=true;$('#mns').classList.remove('hasvid')};im.src=mvU[k]})}
 /* menu background: ONE clip (img/menu.mp4) - the splash flows straight into the scene, then 6 s..26 s repeats forever (that stretch is seamless) */
-const MVA=6.0;let mvVBad=0;
+const MVA=6.0;const MVS=()=>S.dv.mq===0?'img/menu.mp4':'img/menu_hq.mp4';let mvVBad=0;
 function mvVid(L){if(L._mv)return;L._mv=1;L.loop=false;L.muted=true;
  L.addEventListener('timeupdate',()=>{if(L.currentTime>=MVA+20)L.currentTime-=20});
  L.addEventListener('ended',()=>{L.currentTime=MVA;L.play().catch(()=>{})});
  if(L.requestVideoFrameCallback){const f=(n,m)=>{if(m.mediaTime>=MVA+19.97)L.currentTime=m.mediaTime-20;L.requestVideoFrameCallback(f)};L.requestVideoFrameCallback(f)}}
 function mvShow(fromStart){const M=$('#mns'),I=M.querySelector('.pvi'),L=M.querySelector('.pvl');if(!I||!L)return;
  if(L.tagName=='VIDEO'&&!mvVBad&&S.dv.bgv!==0&&!RMO()){mvVid(L);L.classList.remove('still');L.removeAttribute('poster');
-  if(L.getAttribute('src')!='img/menu.mp4'){L.preload='auto';L.src='img/menu.mp4'}
+  if(L.getAttribute('src')!=MVS()){L.preload='auto';L.src=MVS()}
   if(fromStart){try{L.currentTime=0}catch(e){}}else if(!L.paused){M.classList.toggle('hasvid',mvOK);return}
   const ok=()=>{mvOK=true;L.classList.add('rdy');I.classList.remove('rdy');M.classList.add('hasvid')};
   const p=L.play();if(p&&p.then)p.then(ok).catch(()=>{mvVBad=1;mvShowOld(fromStart)});else ok();return}
@@ -2351,7 +2351,7 @@ const CFGS=[
  {k:'sys',n:'Game System Settings',d:'Change the app’s basic settings',rows:[['cpm','tg','Cursor Position Memory','Remember the last menu option you chose'],['swp','tg','Swipe Between Links','Swipe left or right on a Social Link to switch to the next one'],['dconf','tg','Confirm Removals','Ask once more before a History entry is removed'],['tspd','ch','Text Speed','How fast tutorial text appears',['Slow','Normal','Fast','Instant']],['vib','tg','Vibration','Buzz when you log and rank up (Android)']]},
  {k:'snd',n:'Sound Settings',d:'Change all volume settings',rows:[['sfx','tg','Sound','Turn every sound in the app on or off'],['ntf','tg','Message Alerts','Show a banner, and a phone notification when the app is in the background, when a friend texts you'],['mix','tg','Play With My Music','Keep your own music playing while the app makes sounds (iPhone: sounds follow the silent switch)'],['vol','sl','Master Volume','Volume of everything together'],['bgmv','sl','BGM Volume','Music in the Social Link scenes'],['sev','sl','SE Volume','Menu, button and stat sound effects'],['vov','sl','Voice Volume','The “I am thou” voice']]},
  {k:'dsp',n:'Display Settings',d:'Change sizes and the stat glow',rows:[['hz','sz','Stat Panel Size','The circles on the main screen'],['lz','sz','Activity List Size','Search bar and activity buttons'],['oz','sz','Stats Up Size','The cutscene after an activity'],['pm','ch','Cyan Pulse','The glow on the circle you raised',['Smooth','Game'],['smooth','game']]]},
- {k:'gfx',n:'Animation Settings',d:'Change effects and motion',rows:[['bgv','tg','Menu Background Video','The moving menu background. Turn off to save battery'],['fxs','tg','Sparkle Effects','Sparkles in the Social Link scenes'],['fxw','tg','Card Shimmer','The watery light flowing over Arcana cards'],['rmo','tg','Reduce Motion','Calmer transitions and fewer moving effects']]},
+ {k:'gfx',n:'Animation Settings',d:'Change effects and motion',rows:[['bgv','tg','Menu Background Video','The moving menu background. Turn off to save battery'],['mq','tg','High Quality Menu','Sharper menu background. Turn off for the lighter, lower quality version'],['fxs','tg','Sparkle Effects','Sparkles in the Social Link scenes'],['fxw','tg','Card Shimmer','The watery light flowing over Arcana cards'],['rmo','tg','Reduce Motion','Calmer transitions and fewer moving effects']]},
  {k:'acc',n:'Account & Data',d:'Your account, backups and progress',rows:[]}];
 const cfVal=(r)=>{const v=S.dv[r[0]];if(r[1]=='ch')return r[5]?Math.max(0,r[5].indexOf(v)):(v??1);return v};
 function cfRow(r){const [k,ty,n]=r,v=S.dv[k],sel=RF.cfr==k;let c='';
@@ -2368,6 +2368,7 @@ function cfgHTML(){const c=CFGS.find(x=>x.k==RF.cfc);
  if(c.k=='acc')body=accountHTML()+`<div class="hd">Backup</div><div class="bk"><button data-bk="exp">Copy backup</button><button data-bk="imp">Paste backup</button></div><textarea id="bkt" rows="3" placeholder="Copy this text somewhere safe, or paste a backup here and tap Paste backup." style="margin-top:8px;font-size:12px"></textarea><div class="hd">Progress</div><div class="bk"><button class="danger" data-bk="rst">${rstArm?'Tap again to erase everything':'Reset all progress'}</button></div><p style="opacity:.5;font-size:12px;margin:18px 4px 0">P3RL version ${APPVER}</p>`;
  return `<div class="cfg cfg2"><p class="cfi"><i>Info</i>${esc(r?r[3]:c.d)}</p><div class="cfh"><span class="wvw">${wv(c.n)}</span></div><div class="cfrows">${body}</div><div class="cfw" aria-hidden="true">CONFIG</div></div>`}
 function cfApply(k){if(k=='ntf'&&S.dv.ntf==1&&'Notification' in window&&Notification.permission=='default')ntfAsk();if(k=='mix')audSess();if(k=='sfx')musVol();if(k=='vol')setVol(S.dv.vol);if(k=='bgmv'||k=='sev'||k=='vov')busVol();if(k=='hz')hub();if(k=='lz')applyLZ();if(k=='rmo')document.body.classList.toggle('rmo',RMO());
+ if(k=='mq'){const V=$('#mns video.pvl');if(V&&S.dv.bgv!==0&&!RMO()){V.removeAttribute('src');mvVBad=0;mvShow(true)}}
  if(k=='bgv'||k=='rmo'){const V=$('#mns video.pvl');if(V){if(S.dv.bgv===0||RMO())mvLoop(V,()=>V.classList.add('rdy'));else{mvVBad=0;mvShow(true)}}}}
 /* ----- tutorial ----- */
 const TUT=()=>{const th=s=>ST[s].t.slice(1).map((t,i)=>`${ST[s].r[i+1]} at ${t}`).join(', ');return [
@@ -2759,7 +2760,7 @@ document.addEventListener('pointerup',e=>{if(e.target.id!=='hot')return;const n=
  if(hotN>=6){hotN=0;if(S.dev){S.dev=0;save();ownerUI();toast('Owner tools off')}else pkOpen()}});
 let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!busy)hub()},150)});
 /* ---- account save: newest copy wins ---- */
-const cPack=()=>({p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,sl:S.sl||{},slT0:S.slT0||0,hd:(S.hd||[]).slice(-200),bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,bgmv:S.dv.bgmv,sev:S.dv.sev,vov:S.dv.vov,tspd:S.dv.tspd,rmo:S.dv.rmo,bgv:S.dv.bgv,fxs:S.dv.fxs,fxw:S.dv.fxw,cpm:S.dv.cpm,swp:S.dv.swp,dconf:S.dv.dconf,mix:S.dv.mix,mus:S.dv.mus,musv:S.dv.musv,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
+const cPack=()=>({p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,sl:S.sl||{},slT0:S.slT0||0,hd:(S.hd||[]).slice(-200),bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,bgmv:S.dv.bgmv,sev:S.dv.sev,vov:S.dv.vov,tspd:S.dv.tspd,rmo:S.dv.rmo,bgv:S.dv.bgv,mq:S.dv.mq,fxs:S.dv.fxs,fxw:S.dv.fxw,cpm:S.dv.cpm,swp:S.dv.swp,dconf:S.dv.dconf,mix:S.dv.mix,mus:S.dv.mus,musv:S.dv.musv,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
 function cloudPush(now){if(!CREF)return;cDirty=1;clearTimeout(cTm);cTm=setTimeout(async()=>{if(cBusy){cloudPush();return}cBusy=1;cDirty=0;try{await CREF.set(cPack())}catch(e){}cBusy=0;if(cDirty)cloudPush()},now?0:700)}
 async function cloudInit(){}
 /* newest copy wins: this phone vs. the online save */
@@ -2770,7 +2771,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.24-1629';
+var APPVER='2026.11.24-1710';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
