@@ -1403,13 +1403,15 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 /* ===== CALENDAR ===== */
 .pmn.calm .pghost{display:none}
 .pmn.calm #mnb2{padding:0!important}
-.pmn.calm .phint{z-index:8;background:linear-gradient(0deg,#fff 0%,rgba(255,255,255,.96) 58%,rgba(255,255,255,0) 100%)}
+.pmn.calm .phint{z-index:8;background:linear-gradient(0deg,#cfeaff 0%,rgba(207,234,255,.96) 58%,rgba(207,234,255,0) 100%)}
 .pmn.calm .phd b,.pmn.calm .phd small{color:#0b0b12!important;text-shadow:none!important;border-color:#0b0b12!important}
 .pmn.calm .pbtn button{color:#0b0b12!important;text-shadow:none!important}
 .pmn.calm .pbtn i{background:#0b0b12;color:#fff}
-.calp{position:relative;min-height:100%;background:#f3f6fb;overflow:hidden;padding:0 0 128px;color:#fff;font-style:normal}
-.calc{position:absolute;left:-67vw;top:calc(170px + env(safe-area-inset-top,0px) - 105vw);width:210vw;height:210vw;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 62% 22%,#63d6f8 0%,#3aa6f2 18%,#2373e6 38%,#1a4fd9 60%,#0f2fbf 100%);box-shadow:0 0 0 3px rgba(255,255,255,.6)}
-.calc i{position:absolute;inset:0;background:url(img/menu2.jpg) 50% 30%/62% auto no-repeat;opacity:.22;mix-blend-mode:luminosity;filter:blur(1.5px)}
+.calp{position:relative;min-height:100%;background:#9fd2fb;overflow:hidden;padding:0 0 128px;color:#fff;font-style:normal}
+.calc{position:absolute;left:-67vw;top:calc(170px + env(safe-area-inset-top,0px) - 105vw);width:210vw;height:210vw;border-radius:50%;overflow:hidden;background:radial-gradient(circle at 62% 22%,rgba(99,214,248,.5) 0%,rgba(58,166,242,.56) 18%,rgba(35,115,230,.64) 38%,rgba(26,79,217,.72) 60%,rgba(15,47,191,.8) 100%);box-shadow:0 0 0 3px rgba(255,255,255,.6)}
+.calc i{display:none}
+.calbg{position:absolute;left:0;right:0;top:0;height:max(100%,100vh);background:#1b46c8 50% 18%/cover no-repeat;filter:saturate(.85)}
+.calbt{position:absolute;left:0;right:0;top:0;height:max(100%,100vh);background:linear-gradient(180deg,rgba(150,210,255,.5) 0%,rgba(128,196,255,.46) 50%,rgba(170,220,255,.6) 100%)}
 .calc::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(100deg,rgba(255,255,255,.07) 0 3px,transparent 3px 46px),radial-gradient(ellipse at 40% 10%,rgba(255,255,255,.28),transparent 45%)}
 .calsh{position:absolute;right:6%;top:calc(560px + env(safe-area-inset-top,0px));width:34px;height:26px;background:rgba(140,210,255,.42);clip-path:polygon(0 30%,70% 0,100% 64%,26% 100%);transform:rotate(18deg);pointer-events:none}
 .calsh.s2{right:22%;top:calc(612px + env(safe-area-inset-top,0px));width:20px;height:16px;transform:rotate(-30deg);background:rgba(120,200,255,.32)}
@@ -2647,7 +2649,7 @@ function todPlay(from,to,done){if(todBusy)return;todBusy=1;const W=innerWidth,H=
  at(t,()=>{SW.getAnimations().forEach(x=>x.cancel());SW.style.visibility='hidden';BD.style.opacity=1;LB.style.opacity=1;LN.style.opacity=1;
   const dx=Math.cos(a)*-40,dy=Math.sin(a)*-40;A(BD,[{transform:`translate(${dx}px,${dy}px) rotate(${cf.a}deg) scaleY(.6)`},{transform:`rotate(${cf.a}deg)`}],{duration:220,easing:'cubic-bezier(.2,.8,.3,1)'});
   A(LB,[{opacity:0,transform:'translate(0,-50%) translateX(18px)'},{opacity:1,transform:'translate(0,-50%)'}],{duration:220});
-  A(LN,[{transform:`rotate(${l0}deg)`,opacity:.9},{transform:`rotate(${l1}deg)`,opacity:.9}],{duration:2400,easing:'linear'});
+  A(LN,[{transform:`rotate(${l0}deg)`,opacity:.9},{transform:`rotate(${l0+(l1-l0)*1.6}deg)`,opacity:.9}],{duration:2400,easing:'steps(8,start)'});
   try{S.dv.vib!==0&&HAPT(12)}catch(e){}});
  t+=1950;
  /* 5. the band slides off and the screen comes back from the right */
@@ -2683,7 +2685,7 @@ function calPanelHTML(){const c=SCH(),sel=ymdD(RF.cds),sd=schDay(sel),t=sd.t,N=c
   <ul class="caln2">${N.length?N.map((x,i)=>RF.cale===i?`<li class="ed"><input id="cale" maxlength="120" value="${esc(x.t)}" aria-label="Edit plan"><button data-cal="save" data-i="${i}">Save</button><button data-cal="del" data-i="${i}" class="x">Delete</button></li>`:`<li><button class="cnt" data-cal="edit" data-i="${i}">${esc(x.t)}</button></li>`).join(''):'<li class="none">Nothing in particular</li>'}</ul>
   <div class="caladd"><input id="calin" maxlength="120" placeholder="Write a plan for this day" aria-label="New plan" enterkeyhint="done"><button data-cal="add">Add</button></div><button class="calsch" data-cal="sch">Edit school days and times</button>`}
 function calHTML(){calInit();setTimeout(calFit,0);
- return `<div class="calp"><div class="calc" aria-hidden="true"><i></i></div><i class="calsh" aria-hidden="true"></i><i class="calsh s2" aria-hidden="true"></i><i class="calsh s3" aria-hidden="true"></i>
+ return `<div class="calp"><i class="calbg" aria-hidden="true" style="background-image:url('${mvU.mvl||'img/menu2.jpg'}')"></i><i class="calbt" aria-hidden="true"></i><div class="calc" aria-hidden="true"><i></i></div><i class="calsh" aria-hidden="true"></i><i class="calsh s2" aria-hidden="true"></i><i class="calsh s3" aria-hidden="true"></i>
  <div class="calh">${calHeadHTML()}</div><div class="calg" id="calg">${calCellsHTML()}</div><div class="calpn">${calPanelHTML()}</div></div>`}
 /* the big month number always fits between the L and R groups */
 function calFit(){const r=$('#mnb2 .calrow'),mo=$('#mnb2 .calmo span');if(!r||!mo)return;mo.style.fontSize='';const l=r.querySelector('.caln.l'),R=r.querySelector('.caln.r'),room=R.getBoundingClientRect().left-l.getBoundingClientRect().right-8,w=mo.getBoundingClientRect().width;if(w>room&&room>20)mo.style.fontSize=(parseFloat(getComputedStyle(mo).fontSize)*room/w).toFixed(1)+'px'}
@@ -3097,7 +3099,7 @@ async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=sna
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.24-2337';
+var APPVER='2026.11.24-2345';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
