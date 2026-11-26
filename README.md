@@ -35,17 +35,17 @@ Log an activity: tap any activity in the list (search it, or filter by Charm, Co
 Your own activities: tap the NEW tab on the right edge of the screen. A drawer slides out where you write what happened, pick the stat and choose 1 to 3 points.
 Rank up: enough points raises a stat to the next rank, up to rank 6, with the big rank-up animation.
 Daily streak: every activity counts. Your first one each day adds +1 to your streak and the streak scene plays. Your streak is shown in the top-left of the stats screen. A grey flame means you haven't logged anything today yet.
-Weekly quests: Menu → Quests has new goals every Monday. Finish one and tap Claim for bonus points.
+Weekly quests: Menu → Quests has new goals every Monday. Finish one and tap Report for bonus points. Sort them by status with the Sort button.
 Time of day: like the game, your day goes from Early Morning to Late Night. The date, time of day and moon show in the top-right of the stats screen, and the time change scene plays when it changes. Set your school days, class times, breaks and vacations in Menu → System → Config → Schedule Settings.
 Undo: made a mistake? Tap Undo last on the main screen, or remove any entry in Menu → History.
 Menu (☰ top right):
 Announcements: news and updates about the app
-Profile: your picture, banner, name, @username, description, ranks and friends
+Profile: your picture, banner, name, @username, description, ranks, and your Friends, Followers and Following
 Social Link: your friends as Social Links, with their Arcana and rank
 Messages: chat with your friends
 Quests: this week's goals and your streak
 History: everything you logged, day by day
-Calendar: the game's calendar, where you can write your own plans on any day, plus your Part-Time Jobs (pay, currency, day or night, photo and color)
+Calendar: the game's calendar, where you can write your own plans on any day or repeat them every week, plus your Part-Time Jobs (pay, currency, day or night, work days, photo and color). Your work days show on the calendar.
 System: the Tutorial and Config (sound, volumes, text speed, sizes, effects, your account and backups)
 👥 Friends, Social Links and hangouts
 Open Menu → System → Config → Account & Data and sign in with Google or with email and a password. A new email creates an account automatically.
@@ -56,7 +56,7 @@ Did something together? Tap the FRIEND tab on the left edge of the screen, pick 
 💬 Messages
 Menu → Messages: tap a friend to open your chat. You get a banner when someone texts you.
 Tap any message to react, reply, edit your own message or copy it.
-+ adds a picture. Inside the message box are GIFs (search, Trending, categories, Favorites and Recent), stickers you make yourself, and emojis, including your own custom emojis. Tap a friend's custom emoji to add it to your set.
++ adds a picture. Inside the message box are GIFs (search, Trending, categories, Favorites and Recent), stickers you make yourself, and emojis, including Favorites (hold any emoji to add it) and your own custom emojis. When you make one you can share it to Community Emojis so everyone can use it. Tap a friend's custom emoji to add it to your set.
 💾 Your progress
 Your progress is saved on your phone and stays after you close the app.
 Sign in and it's also saved to your account. If you change phones or delete the app, just sign in again and everything comes back.
