@@ -41,7 +41,7 @@ Undo: made a mistake? Tap Undo last on the main screen, or remove any entry in M
 Menu (☰ top right):
 Announcements: news and updates about the app
 Profile: your picture, banner, name, @username, description, ranks, and your Friends, Followers and Following
-Social Link: your friends as Social Links, with their Arcana and rank
+Social Link: your friends as Social Links, with their Arcana and rank, including friends who don't use the app
 Messages: chat with your friends
 Quests: this week's goals and your streak
 History: everything you logged, day by day
@@ -53,6 +53,7 @@ Set up your profile: tap the circle to add a profile picture, tap the banner to 
 Pick your Arcana card in Menu → Profile.
 Go to Menu → Social Link, search your friend's @username and tap Add. They accept it on their own phone, and the "I am thou" scene plays as your new Social Link begins.
 Did something together? Tap the FRIEND tab on the left edge of the screen, pick the friend and what you did, and tap Send. Your friend gets a pop-up on their phone and taps Confirm. Then you both get the activity plus a +2 Charm bonus. Invites run out after 15 minutes. Every confirmed hangout grows your Social Link, up to MAX at Rank 10.
+Friends not on P3RL: in Menu → Social Link, tap + New Social Link to add someone who doesn't use the app. Pick their name, picture and Arcana. Hangouts with them count right away, no confirming needed, and their Social Link ranks up just the same. Tap Edit on their Social Link to change or delete them.
 💬 Messages
 Menu → Messages: tap a friend to open your chat. You get a banner when someone texts you.
 Tap any message to react, reply, edit your own message or copy it.

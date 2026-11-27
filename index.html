@@ -1615,6 +1615,7 @@ body.bg #pitems .ww,body.bg .mpl .ww{animation-play-state:paused}
 #mns.qtab .qxh{margin-top:-20px;margin-bottom:0}
 .qxr b{line-height:1.3;padding:.08em 0}
 .qxk h4{line-height:1.15;padding:.06em .12em .06em 0}
+.olt{font-style:normal;font-size:10px;letter-spacing:.06em;background:#5fe8ff;color:#0c1150;padding:1px 5px;margin-left:6px;vertical-align:1px;font-weight:700}.olh{opacity:.8;font-size:13px;margin:4px 2px 8px}.olav{position:relative;display:block;width:88px;height:88px;margin:8px auto 2px;cursor:pointer}.olav>b{position:absolute;right:-2px;bottom:-2px;width:28px;height:28px;border-radius:50%;background:#5fe8ff;color:#0c1150;display:flex;align-items:center;justify-content:center;font-size:15px;box-shadow:2px 2px 0 #000}.olx{background:none!important;border:0!important;color:#5fe8ff!important;text-decoration:underline;padding:0 4px!important;font-size:13px;min-height:0!important;width:auto!important}
 </style>
 </head>
 <body>
@@ -2165,14 +2166,38 @@ function profileHTML(){if(!FB_ON)return '<p class="nores">Profiles and friends w
  return (arcOk(RF.me.arc)?'':'<div class="slwarn">Pick your Arcana to start your Social Links.<button data-pf="edit">Choose Arcana</button></div>')+pf2HTML()+'';
  return cardHTML(RF.me,1)+`<div class="bk"><button data-pf="edit">Edit profile</button></div><p style="opacity:.6;font-size:12px;font-style:normal;margin:10px 4px">Friends see your photo, name, @username, description and ranks. ${RF.fr.length} friend${RF.fr.length==1?'':'s'}.</p>${(()=>{RF.fol=RF.fol||{};const me=myId(),F=RF.fol[me];if(!F){RF.fol[me]={ers:[],ing:[],ld:1};folLoad(me)}const G=RF.fol[me];return `<div class="pfc3"><button data-opl="fr"><b>${RF.fr.length}</b>Friends</button><button data-opl="ers"><b>${G.ld?'…':G.ers.length}</b>Followers</button><button data-opl="ing"><b>${G.ld?'…':G.ing.length}</b>Following</button></div>`})()}<div class="bk"><button data-vf="${myId()}">View my full profile</button></div>`}
 /* friends */
-function slHTML(){if(!FB_ON)return '<p class="nores">Social Links work on the P3RL app at p3rl-app.github.io.</p>';
- if(!FBU&&FBW&&ACC.get())return waitHTML();if(!FBU)return signInHTML('Sign in to start your Social Links.');
- if(!RF.me)return '<p class="nores">Set up your profile first.</p><div class="bk"><button data-pf="go" style="background:var(--cy);color:#000">Set up my profile</button></div>';
- const L=RF.fr.map(f=>{const pr=RF.prof[f.uid]||{},n=slCount(f.uid);return {uid:f.uid,pr,a:arcOk(pr.arc)?pr.arc:99,n,r:slRank(n)}}).sort((x,y)=>x.a-y.a||y.r-x.r);
- const warn=arcOk(RF.me.arc)?'':'<div class="slwarn">You haven’t picked your Arcana yet.<button data-pf="edit" data-gop="1">Choose Arcana</button></div>';
+function slList(){olSync();return RF.fr.map(f=>{const pr=RF.prof[f.uid]||{},n=slCount(f.uid);return {uid:f.uid,pr,a:arcOk(pr.arc)?pr.arc:99,n,r:slRank(n)}}).concat(olAll().map(o=>{const uid=OLP+o.id,n=o.n|0;return {uid,pr:RF.prof[uid],a:arcOk(o.arc)?o.arc:99,n,r:slRank(n),ol:1}})).sort((x,y)=>x.a-y.a||y.r-x.r)}
+function slHTML(){olSync();if(RF.ole)return olEditHTML();
+ const fbMsg=!FB_ON?'<p class="nores">Friends who use P3RL can be added on the P3RL app at p3rl-app.github.io.</p>':(!FBU&&FBW&&ACC.get())?waitHTML():!FBU?signInHTML('Sign in to add friends who use P3RL.'):!RF.me?'<p class="nores">Set up your profile to add friends who use P3RL.</p><div class="bk"><button data-pf="go" style="background:var(--cy);color:#000">Set up my profile</button></div>':'';
+ const L=slList();
+ const warn=RF.me&&!fbMsg&&!arcOk(RF.me.arc)?'<div class="slwarn">You haven’t picked your Arcana yet.<button data-pf="edit" data-gop="1">Choose Arcana</button></div>':'';
  if(RF.slv){const i=L.findIndex(x=>x.uid==RF.slv);if(i<0)RF.slv=null;else return warn+slDetail(L,i)}
- if(!L.length)return warn+slReqHTML()+'<div class="sltag">LIST</div><p class="nores">No Social Links yet. Add a friend below to forge your first bond.</p>'+slAddHTML();
- return warn+slReqHTML()+'<div class="slside" aria-hidden="true">SOCIAL LINK</div><div class="sltag">LIST</div><div class="sll">'+L.map(x=>{const nm=x.a<99?ARCN[x.a]:'Unknown';return `<button class="slr${RF.sls==x.uid?' on':''}" data-slv="${x.uid}"><span class="slt"><span class="slno">${x.a<99?ROM[x.a]:'?'}</span><span class="sla">${esc(nm)}</span><span class="slk">${x.r>=10?'<b>MAX</b>':`<small>RANK</small><b>${x.r}</b>`}</span></span><span class="slsub">${romOn(x.uid)?'♥ ':''}${esc(x.pr.name||'…')}</span></button>`}).join('')+'</div>'+slAddHTML()}
+ const top=fbMsg?'':warn+slReqHTML(),add=(fbMsg?'<div class="hd">Friends on P3RL</div>'+fbMsg:slAddHTML())+olAddHTML();
+ if(!L.length)return top+'<div class="sltag">LIST</div><p class="nores">No Social Links yet. Add a friend below to forge your first bond.</p>'+add;
+ return top+'<div class="slside" aria-hidden="true">SOCIAL LINK</div><div class="sltag">LIST</div><div class="sll">'+L.map(x=>{const nm=x.a<99?ARCN[x.a]:'Unknown';return `<button class="slr${RF.sls==x.uid?' on':''}" data-slv="${x.uid}"><span class="slt"><span class="slno">${x.a<99?ROM[x.a]:'?'}</span><span class="sla">${esc(nm)}</span><span class="slk">${x.r>=10?'<b>MAX</b>':`<small>RANK</small><b>${x.r}</b>`}</span></span><span class="slsub">${romOn(x.uid)?'♥ ':''}${esc(x.pr.name||'…')}${x.ol?' <i class="olt">NOT ON P3RL</i>':''}</span></button>`}).join('')+'</div>'+add}
+function olAddHTML(){return `<div class="hd">Friends not on P3RL</div><p class="olh">Add someone who doesn’t use the app. You choose their name, picture and Arcana. Hangouts with them count right away, no confirming needed.</p><div class="bk" style="margin-top:0"><button data-ole="new" style="background:var(--cy);color:#000">+ New Social Link</button></div>`}
+function olEditHTML(){const d=RF.olE||{},isNew=RF.ole=='new';
+ return `<div class="olfm"><div class="hd">${isNew?'New Social Link':'Edit Social Link'}</div>
+ <label class="olav"><span>${avHTML({av:d.av,name:d.name||'?'},88)}</span><input type="file" id="olav" accept="image/*" hidden><b>✎</b></label>
+ <p class="olh" style="text-align:center">Tap the circle to pick their picture.${d.av?' <button type="button" class="olx" data-olavx="1">Remove picture</button>':''}</p>
+ <div class="hd">Name</div><input id="oln" maxlength="24" value="${esc(d.name||'')}" placeholder="Their name" autocomplete="off">
+ <div class="hd">About them (optional)</div><input id="olb" maxlength="80" value="${esc(d.bio||'')}" placeholder="Best friend since school" autocomplete="off">
+ <div class="hd">Their Arcana</div><p class="arcn">${arcOk(d.arc)?`<b>${ROM[d.arc]}</b> ${ARCN[d.arc]}`:'Tap a card to choose their Arcana'}</p><div class="arcs">${ARCN.map((n,i)=>`<button type="button" class="arcb${i===d.arc?' on':''}" data-ola="${i}" aria-label="${n}">${arcCard(i,52)}</button>`).join('')}</div>
+ <div class="bk"><button data-olc="1">Cancel</button><button data-ols="1" style="background:var(--cy);color:#000">${isNew?'Create':'Save'}</button></div>
+ ${isNew?'':`<div class="bk"><button class="danger" data-old="${RF.ole}">${RF.oldel==RF.ole?'Tap again to delete':'Delete Social Link'}</button></div>`}</div>`}
+function olRead(){const n=$('#oln'),b=$('#olb');if(!RF.olE)return;if(n)RF.olE.name=n.value;if(b)RF.olE.bio=b.value}
+function olImg(f){return new Promise((res,rej)=>{const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=()=>{const z=160,c=document.createElement('canvas');c.width=c.height=z;const x=c.getContext('2d'),m=Math.min(im.width,im.height);x.drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,z,z);res(c.toDataURL('image/jpeg',.8))};im.onerror=rej;im.src=r.result};r.onerror=rej;r.readAsDataURL(f)})}
+document.addEventListener('change',e=>{const f=e.target;if(!f||f.id!='olav'||!f.files||!f.files[0]||!RF.olE)return;olRead();olImg(f.files[0]).then(u=>{if(!RF.olE)return;RF.olE.av=u;const B=$('#mnb2'),y=B.scrollTop;renderMenu();B.scrollTop=y}).catch(()=>toast('Couldn’t open that picture'))});
+function olSave(){const d=RF.olE||{},name=(d.name||'').trim().slice(0,24),bio=(d.bio||'').trim().slice(0,80);if(!name)return toast('Give them a name');if(!arcOk(d.arc))return toast('Pick their Arcana');
+ const isNew=RF.ole=='new';let o;if(isNew){o={id:Date.now().toString(36),name,av:d.av||'',arc:d.arc,bio,n:0,t:Date.now()};olAll().push(o)}else{o=olGet(RF.ole);if(!o){RF.ole=null;return renderMenu()}Object.assign(o,{name,av:d.av||'',arc:d.arc,bio})}
+ const uid=OLP+o.id;RF.ole=null;RF.olE=null;RF.oldel=null;save();olSync();RF.slv=uid;RF.sls=uid;RF.sldir=1;
+ if(isNew){renderMenu();menuClose(true);slQ({kind:'new',uid})}else{toast('Saved');renderMenu()}}
+function olDel(u){S.ol=olAll().filter(o=>OLP+o.id!=u);delete RF.prof[u];RF.oldel=null;RF.ole=null;RF.olE=null;RF.slv=null;RF.sls=null;save();toast('Social Link deleted');renderMenu()}
+/* a hangout with someone who isn't on the app counts at once: activity + 2 Charm, and the Social Link moves forward */
+function olHang(u,sc){const o=olGet(u);if(!o)return;if(busy)return toast('One moment…');const r1=slRank(o.n|0);o.n=(o.n|0)+1;o.last=Date.now();const r2=slRank(o.n);
+ const a=sc.a.map(x=>[x[0],x[1]]),c=a.find(x=>x[0]=='c');if(c)c[1]+=2;else a.push(['c',2]);olSync();menuClose(true);
+ apply({t:`${sc.t} with ${o.name}`,a},{getBoundingClientRect:()=>({left:innerWidth/2-1,top:innerHeight*.62,width:2,height:2})});
+ if(r2>r1)slQ(r2>=10?{kind:'max',uid:u,rom:false}:{kind:'rank',uid:u,rank:r2,rom:false})}
 /* owner: remove a Social Link completely so the animations can be tested again */
 async function slDelete(uid){const me=myId(),pr=pairId(me,uid),db=fdb();toast('Deleting Social Link…');
  try{const hs=[...RF.hgIn,...RF.hgOut].filter(h=>h.pair==pr&&h.status=='ok');for(const h of hs)await db.collection('hangouts').doc(h.id).update({status:'reset'});
@@ -2184,7 +2209,7 @@ async function slDelete(uid){const me=myId(),pr=pairId(me,uid),db=fdb();toast('D
 function pf2HTML(){const pr=RF.me,uid=myId(),bn=banBG(banOf(uid,pr)),a=arcOk(pr.arc)?pr.arc:null;
  const stat=k=>{const p=S.p[k]||0,r=rank(k,p),T=ST[k].t,mx=r>=T.length-1,pc=mx?100:Math.round(Math.max(0,Math.min(1,(p-T[r])/(T[r+1]-T[r])))*100);
   return `<div class="pfs ${k}"><span class="pfsn"><span class="wvw">${wv(ST[k].n)}</span></span><b>${mx?'MAX':r+1}</b><span class="pfst">${esc(ST[k].r[r])}</span><i><u style="width:${pc}%"></u></i><small>${mx?'Highest rank':`${T[r+1]-p} to next`}</small></div>`};
- const L=RF.fr.map(f=>{const q=RF.prof[f.uid]||{},n=slCount(f.uid);return {uid:f.uid,q,a:arcOk(q.arc)?q.arc:99,r:slRank(n)}}).sort((x,y)=>y.r-x.r||x.a-y.a);
+ const L=slList().map(x=>({uid:x.uid,q:x.pr||{},a:x.a,r:x.r})).sort((x,y)=>y.r-x.r||x.a-y.a);
  const fr=L.length?L.map((x,i)=>`<button class="pff" data-pfsl="${x.uid}" style="--i:${i}">${avHTML(x.q,42)}<span class="pffn"><b>${esc(x.q.name||'')}</b><small>${x.a<99?ROM[x.a]+' '+ARCN[x.a]:'No Arcana yet'}</small></span><span class="pffr"><em>${x.r>=10?'MAX':x.r}</em><small>RANK</small></span></button>`).join(''):`<p class="pfe">No Social Links yet. Find friends on the Social Link page.</p>`;
  return `<div class="pf2">
  <div class="pfh"><label class="pban" data-ban-of="${uid}" style="background:${bn}"><input type="file" id="pqban" accept="image/*" hidden><span class="cam">${(pr.hasBan||pr.bannerImg)?'Change banner':'Add a banner'}</span></label>
@@ -2206,8 +2231,8 @@ function slDetail(L,i){const x=L[i],hrt=false,pr=x.pr,nm=x.a<99?ARCN[x.a]:'Unkno
  <div class="slg"><div class="slgt">SOCIAL LINK</div><div class="slgb"><span>${esc(pr.name||'@'+(pr.handle||''))}</span></div><span class="slgtag"><i>ARCANA</i></span><i class="slgo2"></i><div class="slgw"><b class="slga">${esc(nm)}</b><span class="slgr">RANK</span><div class="slgs${hrt?' hrt':''}">${Array.from({length:10},(_,k)=>`<span class="${k<x.r?'on':''}"><svg viewBox="0 0 20 20"><path d="${hrt?'M10 18.2C5 14.3 1.4 11.2 1.4 7.2 1.4 4.3 3.6 2.2 6.1 2.2 7.9 2.2 9.3 3.2 10 4.7 10.7 3.2 12.1 2.2 13.9 2.2 16.4 2.2 18.6 4.3 18.6 7.2 18.6 11.2 15 14.3 10 18.2Z':'M10 1.6l2.5 5.4 5.9.7-4.4 4 1.2 5.8L10 14.6l-5.2 2.9 1.2-5.8-4.4-4 5.9-.7z'}"/></svg></span>`).join('')}</div></div><em class="slgk${x.r>=10?' mx':''}" data-n="${x.r>=10?'MAX':x.r}">${x.r>=10?'MAX':x.r}</em></div>
  <p class="sltx">${esc(txt)}</p>
  <div class="slvis"><div class="slcw">${arcCard(x.a<99?x.a:22,118,'slcard')}</div><div class="slav">${avHTML(pr,96)}</div></div>
- <div class="slfp"><b>${esc(pr.name||'')}</b><p>${pr.bio?emoHTML(pr.bio):'A friend of yours on P3RL.'}</p></div>
- <div class="bk"><button data-fhang="${x.uid}" style="background:var(--cy);color:#000">Hang out</button><button data-vf="${x.uid}">Profile</button></div>${romHTML(x)}${S.dev?`<div class="hd">Owner \u00b7 Testing</div><div class="bk" style="margin-top:0"><button data-slt="new" data-u="${x.uid}">Play \u201cI am thou\u201d</button><button data-slt="rank" data-u="${x.uid}">Play rank up</button></div><div class="bk" style="margin-top:0"><button data-slt="max" data-u="${x.uid}">Play MAX</button><button data-slt="rmax" data-u="${x.uid}">Play romance MAX</button></div><div class="bk" style="margin-top:0"><button data-slt="r9" data-u="${x.uid}">Rank 9 hearts</button><button class="danger" data-sldel="${x.uid}">${RF.sldel==x.uid?'Tap again to delete':'Delete Social Link'}</button></div><p style="opacity:.6;font-size:12px;margin:6px 4px">Only you see this. Delete removes the friendship and resets its rank for both of you. Add each other again to see the new-bond scene.</p>`:''}</div>`}
+ <div class="slfp"><b>${esc(pr.name||'')}</b><p>${pr.bio?(x.ol?esc(pr.bio):emoHTML(pr.bio)):(x.ol?'Not on P3RL. Hangouts with them count right away.':'A friend of yours on P3RL.')}</p></div>
+ <div class="bk"><button data-fhang="${x.uid}" style="background:var(--cy);color:#000">Hang out</button>${x.ol?`<button data-ole="${x.uid}">Edit</button>`:`<button data-vf="${x.uid}">Profile</button>`}</div>${romHTML(x)}${S.dev&&!x.ol?`<div class="hd">Owner \u00b7 Testing</div><div class="bk" style="margin-top:0"><button data-slt="new" data-u="${x.uid}">Play \u201cI am thou\u201d</button><button data-slt="rank" data-u="${x.uid}">Play rank up</button></div><div class="bk" style="margin-top:0"><button data-slt="max" data-u="${x.uid}">Play MAX</button><button data-slt="rmax" data-u="${x.uid}">Play romance MAX</button></div><div class="bk" style="margin-top:0"><button data-slt="r9" data-u="${x.uid}">Rank 9 hearts</button><button class="danger" data-sldel="${x.uid}">${RF.sldel==x.uid?'Tap again to delete':'Delete Social Link'}</button></div><p style="opacity:.6;font-size:12px;margin:6px 4px">Only you see this. Delete removes the friendship and resets its rank for both of you. Add each other again to see the new-bond scene.</p>`:''}</div>`}
 /* friend tools, shown on the Social Link page: requests on top, add a friend + sent requests under the list */
 const frRow=(uid,btns,sub)=>{const pr=RF.prof[uid]||{name:'…'};return `<div class="fr" data-view="${uid}">${avHTML(pr,44)}<div class="n">${esc(pr.name||'')}<small>@${esc(pr.handle||'')}${sub?' · '+sub:''}</small></div>${btns}</div>`};
 function romHTML(x){try{const me=myId(),f=RF.fr.find(z=>z.uid==x.uid);if(!f)return '';const r=f.rom||{},mi=!!r[me],th=!!r[x.uid],nm=esc(x.pr.name||'your friend');if(!ROMA.includes(x.a)&&!th&&!mi)return '';
@@ -2273,14 +2298,15 @@ $('#pfs').onclick=e=>{const t=e.target.closest('button');if(e.target.id=='pfs'||
 /* synced hangout: you send it, your friend confirms on their phone, then both phones get the activity + 2 Charm */
 let HG=null;
 function hgActs(){const o=[];const add=(id,sc)=>o.push({id,sc});S.u.forEach((u,i)=>add('u'+i,u));P.forEach(([k,n,rows])=>rows.forEach((x,i)=>add(k+i,parse(x))));return o}
-function hgOpen(uid){if(!FB_ON||!FBU||!RF.me){menu(FB_ON&&FBU?'p':'l');return toast(FB_ON&&FBU?'Make your profile first':'Sign in with Google to hang out with friends')}
- HG={st:1,uid:uid||(RF.fr.length==1?RF.fr[0].uid:null),act:'c0'};hgRender();$('#hgs').classList.add('on')}
+const hgPeople=()=>[...(FB_ON&&FBU&&RF.me?RF.fr.map(f=>f.uid):[]),...olAll().map(o=>OLP+o.id)];
+function hgOpen(uid){if((!FB_ON||!FBU||!RF.me)&&!olAll().length){menu(FB_ON&&FBU?'p':'l');return toast(FB_ON&&FBU?'Make your profile first':'Add a Social Link first')}
+ olSync();const pp=hgPeople();HG={st:1,uid:uid||(pp.length==1?pp[0]:null),act:'c0'};hgRender();$('#hgs').classList.add('on')}
 function hgClose(){HG=null;$('#hgs').classList.remove('on')}
 const actById=id=>(hgActs().find(x=>x.id==id)||{sc:parse('Hung out with friends|c2')}).sc;
 function hgRender(){if(!HG)return;const C=$('#hgc');
  if(HG.st==1){const acts=hgActs(),grp=[['u','Yours'],['c','Charm'],['g','Courage'],['a','Academics'],['m','Combos']];
-  C.innerHTML=`<h3>Hang out with a friend<small>They confirm it on their phone, then you both get it, plus +2 Charm.</small></h3>
-  <div class="hd">Who are you with?</div>${RF.fr.length?`<div class="fch">${RF.fr.map(f=>{const pr=RF.prof[f.uid]||{};return `<button data-u="${f.uid}" class="${f.uid==HG.uid?'on':''}">${avHTML(pr,26)} ${esc(pr.name||'…')}</button>`}).join('')}</div>`:'<p class="nores" style="margin:8px 0">Add friends first in ☰ → Social Link.</p>'}
+  const pp=hgPeople();C.innerHTML=`<h3>Hang out with a friend<small>${isOL(HG.uid)?'They’re not on P3RL, so it counts right away, plus +2 Charm.':'They confirm it on their phone, then you both get it, plus +2 Charm.'}</small></h3>
+  <div class="hd">Who are you with?</div>${pp.length?`<div class="fch">${pp.map(u=>{const pr=RF.prof[u]||{};return `<button data-u="${u}" class="${u==HG.uid?'on':''}">${avHTML(pr,26)} ${esc(pr.name||'…')}</button>`}).join('')}</div>`:'<p class="nores" style="margin:8px 0">Add friends first in ☰ → Social Link.</p>'}
   <div class="hd">What did you do together?</div><select id="hgact" style="width:100%">${grp.map(([k,n])=>{const it=acts.filter(a=>a.id[0]==k);return it.length?`<optgroup label="${n}">${it.map(a=>`<option value="${a.id}" ${a.id==HG.act?'selected':''}>${esc(a.sc.t)} (${a.sc.a.map(([s,v])=>'+'+v+' '+ST[s].n).join(', ')})</option>`).join('')}</optgroup>`:''}).join('')}</select>
   <div class="row"><button data-h="x">Cancel</button><button data-h="send" style="background:var(--cy);color:#000">Send</button></div>`}
  else{const pr=RF.prof[HG.uid]||{},h=RF.hgOut.find(x=>x.id==HG.id),st=h&&h.status;
@@ -2291,7 +2317,7 @@ $('#hgs').onclick=async e=>{if(e.target.id=='hgs'&&HG&&HG.st==1){uiSnd('b1');ret
  if(t.dataset.u){HG.uid=t.dataset.u;return hgRender()}const a=$('#hgact');if(a)HG.act=a.value;const h=t.dataset.h;
  if(h=='x')return hgClose();
  if(h=='cancel'){if(HG.id)fdb().collection('hangouts').doc(HG.id).update({status:'cancel'}).catch(()=>{});return hgClose()}
- if(h=='send'){if(!HG.uid)return toast('Pick a friend first');const sc=actById(HG.act),ref=fdb().collection('hangouts').doc();
+ if(h=='send'){if(!HG.uid)return toast('Pick a friend first');if(isOL(HG.uid)){const u=HG.uid,sc=actById(HG.act);hgClose();return olHang(u,sc)}const sc=actById(HG.act),ref=fdb().collection('hangouts').doc();
   try{await ref.set({from:myId(),to:HG.uid,pair:pairId(myId(),HG.uid),act:{t:sc.t,a:sc.a.map(x=>x[0]+x[1]).join(',')},fromName:RF.me.name,status:'pending',t:Date.now()});HG.st=2;HG.id=ref.id;hgRender()}
   catch(e){toast('Couldn’t send. Check your internet.')}}};
 /* the friend's phone: confirm popup */
@@ -2496,12 +2522,15 @@ const ARCN=['Fool','Magician','Priestess','Empress','Emperor','Hierophant','Love
 const ROM=['0','I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI','XVII','XVIII','XIX','XX','XX'];
 const SLT=[0,1,2,4,6,8,11,14,17,20];/* hangouts needed for rank 1..10 (10 = MAX) */
 const slRank=n=>{let r=0;SLT.forEach((v,i)=>{if(n>=v)r=i+1});return r};
-const slCount=uid=>{const pr=pairId(myId(),uid);return [...RF.hgIn,...RF.hgOut].filter(h=>h.status=='ok'&&h.pair==pr).length};
+/* Social Links with people who don't use the app: kept on this phone (and in the account backup). Hangouts with them count right away */
+const OLP='ol_',isOL=u=>typeof u=='string'&&u.indexOf(OLP)==0,olAll=()=>(S.ol=S.ol||[]),olGet=u=>olAll().find(o=>OLP+o.id==u);
+function olSync(){olAll().forEach(o=>{RF.prof[OLP+o.id]={name:o.name,av:o.av||'',arc:arcOk(o.arc)?o.arc:null,bio:o.bio||'',ol:1}})}
+const slCount=uid=>{if(isOL(uid)){const o=olGet(uid);return o?o.n|0:0}const pr=pairId(myId(),uid);return [...RF.hgIn,...RF.hgOut].filter(h=>h.status=='ok'&&h.pair==pr).length};
 let ARCU='';function arcUrl(){if(!ARCU){try{const el=document.getElementById('arcd'),raw=el?el.textContent.trim():'';if(!raw){ARCU='img/arc3.webp';return ARCU}const t=atob(raw),a=new Uint8Array(t.length);for(let i=0;i<t.length;i++)a[i]=t.charCodeAt(i);ARCU=URL.createObjectURL(new Blob([a],{type:'image/webp'}))}catch(e){}}return ARCU}
 const arcOk=a=>Number.isInteger(a)&&a>=0&&a<=21;
 /* card picture: index 0-21 = arcana, 22 = card back */
 const arcCard=(i,w,cls)=>`<span class="arc ${cls||''}" style="width:${w}px;height:${Math.round(w*230/160)}px;background-image:url(${arcUrl()});background-position:${(i/22*100).toFixed(4)}% 0"></span>`;
-const ANB=[{id:'b39',t:new Date(2026,10,26,14,30).getTime(),title:'NEW: Quests',body:'Quests now work like Elizabeth’s requests. Tap Available to accept one, finish it, tap Report, and a harder quest appears. Plus new emoji menu icons, and custom emojis in your description now show for everyone.'},
+const ANB=[{id:'b40',t:new Date(2026,10,27,10,40).getTime(),title:'NEW: Friends not on P3RL',body:'Idea from a fan: you can now add Social Links with people who don’t use the app. Open Social Link and tap + New Social Link. Pick their name, picture and Arcana. Hangouts with them count right away, no confirming needed.'},{id:'b39',t:new Date(2026,10,26,14,30).getTime(),title:'NEW: Quests',body:'Quests now work like Elizabeth’s requests. Tap Available to accept one, finish it, tap Report, and a harder quest appears. Plus new emoji menu icons, and custom emojis in your description now show for everyone.'},
 {id:'b38',t:new Date(2026,10,26,15,0).getTime(),title:'Update 26',body:'Smoother time changes, weekly plans and work days on the Calendar, Favorites and Community Emojis, a Status sort in Quests, Friends and Followers on your profile, and rank-up fixes.'},
 {id:'b37',t:new Date(2026,10,25,0,10).getTime(),title:'NEW: Part-Time Jobs',body:'Add your part-time jobs at the bottom of the Calendar, with pay, currency, day or night, a photo and a color. The Calendar cursor now moves like the game.'},
 {id:'b36',t:new Date(2026,10,24,23,50).getTime(),title:'Calendar fixes',body:'The Calendar no longer overlaps, has the game’s moving cursor, and the date badge moved so it doesn’t cover your stats.'},
@@ -2542,7 +2571,7 @@ const fmtT=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'
 function dayLabel(t){const d=new Date(t),n=new Date(),y=new Date(Date.now()-864e5);if(d.toDateString()==n.toDateString())return 'Today';if(d.toDateString()==y.toDateString())return 'Yesterday';return d.toLocaleDateString([],{weekday:'short',day:'numeric',month:'short'})}
 const MD={a:['Announcements','Read the latest news'],p:['Profile','View and edit your profile'],l:['Social Link','Whose S. Link do you want to view?'],f:['Social Link','Whose S. Link do you want to view?'],h:['History','See everything you logged'],s:['Config','Which do you want to change?'],x:['Messages','Who do you want to talk to?'],q:['Quests','Take on quests'],y:['System','View settings and tutorials'],t:['Tutorial','Which tutorial do you want to view?'],c:['Calendar','Which plans do you want to view?']};let mSel=(S.dv.cpm!==0&&S.dv.msel&&'aplxqhcy'.includes(S.dv.msel))?S.dv.msel:'a';
 const RMO=()=>S.dv.rmo==1||matchMedia('(prefers-reduced-motion: reduce)').matches;
-function menu(t){RF.qin=null;RF.cym=null;RF.cds=null;RF.cale=null;RF.fromCal=0;RF.jd=null;RF.jdel=0;if(RF.chat&&t!='x')chClose();mTab=t||'m';if(mTab=='m'&&S.dv.cpm===0)mSel='a';RF.cfc=null;RF.cfr=null;RF.tp=null;if(mTab=='l'||mTab=='f')try{profRefresh(1)}catch(e){}try{RF.slv=null;RF.sldel=null}catch(e){}$('#mnb2').scrollTop=0;delArm=null;rstArm=0;RF.edit=0;renderMenu();const m=$('#mns');const an=RMO()?'fade':(mvOK||!mvBad)?'vid':menuAnim(),oc={splash:'op',slide:'op2',fade:'op3',vid:'op4'}[an];clearTimeout(m._cl);m.classList.remove('on','op','op2','op3','op4','pclose');void m.offsetWidth;m.classList.add('on');mvShow(mTab=='m');if(oc&&mTab=='m')m.classList.add(oc);clearTimeout(m._op);m._op=setTimeout(()=>m.classList.remove('op','op2','op3','op4'),1000);document.body.classList.add('lock')}
+function menu(t){RF.qin=null;RF.cym=null;RF.cds=null;RF.cale=null;RF.fromCal=0;RF.jd=null;RF.jdel=0;if(RF.chat&&t!='x')chClose();mTab=t||'m';if(mTab=='m'&&S.dv.cpm===0)mSel='a';RF.cfc=null;RF.cfr=null;RF.tp=null;if(mTab=='l'||mTab=='f')try{profRefresh(1)}catch(e){}try{RF.ole=null;RF.olE=null;RF.slv=null;RF.sldel=null}catch(e){}$('#mnb2').scrollTop=0;delArm=null;rstArm=0;RF.edit=0;renderMenu();const m=$('#mns');const an=RMO()?'fade':(mvOK||!mvBad)?'vid':menuAnim(),oc={splash:'op',slide:'op2',fade:'op3',vid:'op4'}[an];clearTimeout(m._cl);m.classList.remove('on','op','op2','op3','op4','pclose');void m.offsetWidth;m.classList.add('on');mvShow(mTab=='m');if(oc&&mTab=='m')m.classList.add(oc);clearTimeout(m._op);m._op=setTimeout(()=>m.classList.remove('op','op2','op3','op4'),1000);document.body.classList.add('lock')}
 /* menu opening animation: the owner picks it; the pick is shared with everyone through config/app */
 var CFG={};const MANIMS=[['splash','P3R splash'],['slide','Slide'],['fade','Fade'],['none','None']];
 function menuAnim(){const v=S.dv.man||'splash';return MANIMS.some(x=>x[0]==v)?v:'splash'}
@@ -2672,6 +2701,7 @@ const TUT=()=>{const th=s=>ST[s].t.slice(1).map((t,i)=>`${ST[s].r[i+1]} at ${t}`
  {n:'Social Links',it:[
   {t:'Your Arcana',ill:'card',pg:['Pick your Arcana card in Menu › Profile. You need one before your Social Links can start.','Each friend appears as a Social Link under the Arcana they picked, with its own rank from 1 to MAX.']},
   {t:'Adding Friends',pg:['Sign in, then open Menu › Social Link. Under your list, search your friend’s @username and tap Add.','When they accept, a new bond forms and the “I am thou” scene plays, followed by Rank 1. Requests you receive show at the top of the Social Link page.']},
+  {t:'Friends Not on P3RL',ill:'card',pg:['Not everyone you know uses P3RL. Open Menu › Social Link and tap + New Social Link under Friends not on P3RL. Give them a name, a picture and an Arcana.','Hangouts with them count right away, no confirming needed. Pick them in the FRIEND tab or tap Hang out on their Social Link. Tap Edit to change them later.']},
   {t:'Hanging Out',pg:['Tap the FRIEND tab on the left edge of the main screen, or Hang out on a Social Link. Pick your friend and what you did together, then send it.','Your friend confirms on their phone. Then you both get the activity plus +2 Charm, and the hangout counts toward your Social Link.']},
   {t:'Social Link Ranks',ill:'card',pg:['Every confirmed hangout with a friend moves your Social Link forward. When it ranks up, the Rank Up screen plays.',`Hangouts needed: ${SLT.slice(1).map((n,i)=>`Rank ${i+2==10?'MAX':i+2} at ${n}`).join(', ')}.`]},
   {t:'Switching Links',pg:['Open a Social Link from the list. Use the arrows at the top to move to the previous or next one.','You can also swipe left or right. Turn swiping off in Config › Game System Settings.']}]},
@@ -3299,8 +3329,14 @@ $('#mnb2').onclick=e=>{if(e.target.closest('.chh')&&RF.chat){uiSnd('ok');viewFri
    if(t.dataset.fhang){menuClose();return hgOpen(t.dataset.fhang)}
  if(t.dataset.slt){const u=t.dataset.u,k=t.dataset.slt,r=slRank(slCount(u));menuClose(true);slQ(k=='new'?{kind:'new',uid:u}:k=='max'?{kind:'max',uid:u}:k=='rmax'?{kind:'max',uid:u,rom:true}:k=='r9'?{kind:'rank',uid:u,rank:9,rom:true}:{kind:'rank',uid:u,rank:Math.min(10,Math.max(1,r+1)),rom:romOn(u)&&ROMA.includes((RF.prof[u]||{}).arc)});return}
  if(t.dataset.sldel){const u=t.dataset.sldel;if(RF.sldel!=u){RF.sldel=u;return renderMenu()}RF.sldel=null;slDelete(u);return}
+ if(t.dataset.ole){const u=t.dataset.ole,o=olGet(u);RF.ole=u;RF.oldel=null;RF.olE=o?{name:o.name,av:o.av||'',arc:o.arc,bio:o.bio||''}:{name:'',av:'',arc:null,bio:''};$('#mnb2').scrollTop=0;return renderMenu()}
+ if(t.dataset.ola!==undefined){olRead();RF.olE.arc=+t.dataset.ola;const B=$('#mnb2'),y=B.scrollTop;renderMenu();B.scrollTop=y;return}
+ if(t.dataset.olavx){olRead();RF.olE.av='';const B=$('#mnb2'),y=B.scrollTop;renderMenu();B.scrollTop=y;return}
+ if(t.dataset.olc){RF.ole=null;RF.olE=null;RF.oldel=null;return renderMenu()}
+ if(t.dataset.ols){olRead();return olSave()}
+ if(t.dataset.old){const u=t.dataset.old;olRead();if(RF.oldel!=u){RF.oldel=u;const B=$('#mnb2'),y=B.scrollTop;renderMenu();B.scrollTop=y;return}return olDel(u)}
  if(t.dataset.slv){const u=t.dataset.slv;RF.sls=u;t.classList.add('on');setTimeout(()=>{RF.slv=u;RF.sldir=1;$('#mnb2').scrollTop=0;renderMenu()},140);return}
- if(t.dataset.sln!==undefined){RF.sldir=+t.dataset.dir||1;RF.slk=RF.sldir;const L=[...$('#mnb2').querySelectorAll('[data-sln]')];const i=+t.dataset.sln;const us=RF.fr.map(f=>{const pr=RF.prof[f.uid]||{};return{uid:f.uid,a:arcOk(pr.arc)?pr.arc:99,r:slRank(slCount(f.uid))}}).sort((x,y)=>x.a-y.a||y.r-x.r);if(us[i]){RF.slv=us[i].uid;RF.sls=us[i].uid;renderMenu()}return}
+ if(t.dataset.sln!==undefined){RF.sldir=+t.dataset.dir||1;RF.slk=RF.sldir;const L=[...$('#mnb2').querySelectorAll('[data-sln]')];const i=+t.dataset.sln;const us=slList();if(us[i]){RF.slv=us[i].uid;RF.sls=us[i].uid;renderMenu()}return}
  if(t.dataset.fs!==undefined)return findFriend($('#fsq').value);
  if(t.dataset.anp!==undefined)return annPost();
  if(t.dataset.adel){const id=t.dataset.adel;if(RF.adel!=id){RF.adel=id;return renderMenu()}RF.adel=null;fdb().collection('announcements').doc(id).delete().catch(()=>toast('Couldn\u2019t delete'));return}
@@ -3332,18 +3368,18 @@ document.addEventListener('pointerup',e=>{if(e.target.id!=='hot')return;const n=
  if(hotN>=6){hotN=0;if(S.dev){S.dev=0;save();ownerUI();toast('Owner tools off')}else pkOpen()}});
 let rz=0;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{if(!busy)hub()},150)});
 /* ---- account save: newest copy wins ---- */
-const cPack=()=>({qx:S.qx||null,cal:S.cal||{},calw:S.calw||[],efav:S.efav||[],sch:S.sch||null,jobs:S.jobs||[],p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,sl:S.sl||{},slT0:S.slT0||0,hd:(S.hd||[]).slice(-200),bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,bgmv:S.dv.bgmv,sev:S.dv.sev,vov:S.dv.vov,tspd:S.dv.tspd,rmo:S.dv.rmo,bgv:S.dv.bgv,mq:S.dv.mq,fxs:S.dv.fxs,fxw:S.dv.fxw,cpm:S.dv.cpm,swp:S.dv.swp,dconf:S.dv.dconf,mix:S.dv.mix,mus:S.dv.mus,musv:S.dv.musv,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
+const cPack=()=>({qx:S.qx||null,ol:S.ol||[],cal:S.cal||{},calw:S.calw||[],efav:S.efav||[],sch:S.sch||null,jobs:S.jobs||[],p:S.p,u:S.u,h:S.h.slice(-200),f:S.f,sl:S.sl||{},slT0:S.slT0||0,hd:(S.hd||[]).slice(-200),bu:S.bu.slice(-60),prev:S.prev,dev:S.dev,dv:{spd:S.dv.spd,sfx:S.dv.sfx,pm:S.dv.pm,vol:S.dv.vol,vib:S.dv.vib,bgmv:S.dv.bgmv,sev:S.dv.sev,vov:S.dv.vov,tspd:S.dv.tspd,rmo:S.dv.rmo,bgv:S.dv.bgv,mq:S.dv.mq,fxs:S.dv.fxs,fxw:S.dv.fxw,cpm:S.dv.cpm,swp:S.dv.swp,dconf:S.dv.dconf,mix:S.dv.mix,mus:S.dv.mus,musv:S.dv.musv,hz:S.dv.hz,oz:S.dv.oz,lz:S.dv.lz,bg:S.dv.bg,pip:S.dv.pip,clip:S.dv.clip,snd:S.dv.snd,tsrc:S.dv.tsrc},t:S.t||0});
 function cloudPush(now){if(!CREF)return;cDirty=1;clearTimeout(cTm);cTm=setTimeout(async()=>{if(cBusy){cloudPush();return}cBusy=1;cDirty=0;try{await CREF.set(cPack())}catch(e){}cBusy=0;if(cDirty)cloudPush()},now?0:700)}
 async function cloudInit(){}
 /* newest copy wins: this phone vs. the online save */
 async function cloudUse(ref){try{const snap=await ref.get();CREF=ref;const c=snap.exists?snap.data():null;
- if(c&&c.p&&(c.t||0)>(S.t||0)){S.p={...c.p};S.u=(c.u||[]).map(x=>({...x}));S.h=(c.h||[]).map(x=>({...x}));S.f=(c.f||S.f||[]).map(x=>({...x}));S.bu=[...(c.bu||S.bu||[])];S.hd=[...new Set([...(S.hd||[]),...(c.hd||[])])];S.sl=Object.assign({},c.sl||{},S.sl||{});S.slT0=Math.min(S.slT0||Infinity,c.slT0||Infinity);if(S.slT0===Infinity)S.slT0=0;S.prev=c.prev?{...c.prev}:null;S.dev=c.dev||0;if(c.qx)S.qx=c.qx;if(c.cal)S.cal=c.cal;if(c.calw)S.calw=c.calw;if(c.efav)S.efav=c.efav;if(c.sch)S.sch=c.sch;if(c.jobs)S.jobs=c.jobs;S.dv=Object.assign(S.dv,c.dv||{});S.t=c.t;
+ if(c&&c.p&&(c.t||0)>(S.t||0)){S.p={...c.p};S.u=(c.u||[]).map(x=>({...x}));S.h=(c.h||[]).map(x=>({...x}));S.f=(c.f||S.f||[]).map(x=>({...x}));S.bu=[...(c.bu||S.bu||[])];S.hd=[...new Set([...(S.hd||[]),...(c.hd||[])])];S.sl=Object.assign({},c.sl||{},S.sl||{});S.slT0=Math.min(S.slT0||Infinity,c.slT0||Infinity);if(S.slT0===Infinity)S.slT0=0;S.prev=c.prev?{...c.prev}:null;S.dev=c.dev||0;if(c.qx)S.qx=c.qx;if(c.ol)S.ol=c.ol;if(c.cal)S.cal=c.cal;if(c.calw)S.calw=c.calw;if(c.efav)S.efav=c.efav;if(c.sch)S.sch=c.sch;if(c.jobs)S.jobs=c.jobs;S.dv=Object.assign(S.dv,c.dv||{});S.t=c.t;
   try{localStorage.setItem('p3s',JSON.stringify(S))}catch(e){}if(!busy){hub();lst();ownerUI()}}
  else if(!c||(S.t||0)>(c.t||0))cloudPush(1)}catch(e){}}
 /* ---- Google sign-in (Firebase) - only on the published GitHub site ---- */
 const FBC={apiKey:"AIzaSyDJv57ZTUQzcPfAPHQDe4sg1izlg7lxVew",authDomain:"p3rl-f2bd4.firebaseapp.com",projectId:"p3rl-f2bd4",storageBucket:"p3rl-f2bd4.firebasestorage.app",messagingSenderId:"468458530384",appId:"1:468458530384:web:d4a160a4b832c679d8d355"};
 const FB_ON=/github\.io$/.test(location.hostname)||/[?&]fbtest\b/.test(location.search);
-var APPVER='2026.11.26-1401';
+var APPVER='2026.11.27-1044';
 /* auto-update: phones (especially home-screen apps) keep an old copy of the page. Check version.txt on open and when coming back to the app; if a newer version is online, reload it */
 function updCheck(){if(!/github\.io$/.test(location.hostname)||APPVER=='dev')return;fetch('version.txt?t='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.text():'').then(v=>{v=(v||'').trim();if(!v||v==APPVER)return;
  const k='p3upd';let last='';try{last=sessionStorage.getItem(k)||''}catch(e){}if(last==v)return;try{sessionStorage.setItem(k,v)}catch(e){}
