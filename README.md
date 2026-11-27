@@ -36,6 +36,9 @@ Open the file. If Android says it can't install unknown apps, tap Settings, turn
 Tap Install, then Open.
 The APK opens the same website inside an app window, so it always shows the newest version. Your phone may warn that the app is from an unknown developer. That's normal for apps from outside Google Play.
 Tip: in the APK, sign in with email and password. Google sign-in may not open inside it.
+🌐 Languages
+P3RL comes in English, Español, Português and 日本語. It picks your phone's language by itself. To change it, open Menu → System → Config → Game System Settings → Language.
+
 🎮 How to use it
 New here? Menu → System → Tutorial explains everything step by step.
 Log an activity: tap any activity in the list (search it, or filter by Charm, Courage or Academics). The Stats Up screen plays and your points go up. Tap OK to go back.
