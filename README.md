@@ -29,6 +29,13 @@ Tap the ⋮ menu in the top-right corner.
 Tap Add to Home screen (on some phones it says Install app).
 Tap Add or Install.
 Open P3RL from your home screen.
+
+Android APK (optional)
+Prefer an app file? Download P3RL.apk from this repository: https://github.com/P3RL-app/P3RL/raw/main/P3RL.apk
+Open the file. If Android says it can't install unknown apps, tap Settings, turn on Allow from this source, and go back.
+Tap Install, then Open.
+The APK opens the same website inside an app window, so it always shows the newest version. Your phone may warn that the app is from an unknown developer. That's normal for apps from outside Google Play.
+Tip: in the APK, sign in with email and password. Google sign-in may not open inside it.
 🎮 How to use it
 New here? Menu → System → Tutorial explains everything step by step.
 Log an activity: tap any activity in the list (search it, or filter by Charm, Courage or Academics). The Stats Up screen plays and your points go up. Tap OK to go back.
