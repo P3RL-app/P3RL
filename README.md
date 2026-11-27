@@ -72,6 +72,9 @@ No account? Use Menu → System → Config → Account & Data → Copy backup to
 
 What friends can see: your picture, banner, name, @username, description and your three ranks. Your points and your history stay private.
 
+💙 Support P3RL
+P3RL is free and made by one person. If it helps you, you can leave a tip at https://paypal.me/P3RLL. It's optional and nothing in the app is locked behind it. You can also find the Support P3RL button at the top of Menu → Announcements.
+
 ❓ Something not working?
 Menu or new features missing: fully close the app and open it again. If you added it to your home screen, close it from the app switcher. The newest version number is shown at the bottom of Config.
 Sign-in doesn't open (iPhone): sign in once in Safari, then add the app to your home screen again.
