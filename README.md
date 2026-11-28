@@ -37,7 +37,10 @@ Tap Install, then Open.
 The APK opens the same website inside an app window, so it always shows the newest version. Your phone may warn that the app is from an unknown developer. That's normal for apps from outside Google Play.
 Tip: in the APK, sign in with email and password. Google sign-in may not open inside it.
 🌐 Languages
-P3RL comes in English, Español, Português and 日本語. It picks your phone's language by itself. To change it, open Menu → System → Config → Game System Settings → Language.
+P3RL comes in English, Español, Português, Français, Deutsch, Filipino, 日本語 and 한국어. It picks your phone's language by itself. To change it, open Menu → System → Config → Game System Settings → Language.
+
+🖼️ Profile pictures
+When you pick a profile picture, drag it to move and pinch or use the slider to zoom, then tap Use picture.
 
 🎮 How to use it
 New here? Menu → System → Tutorial explains everything step by step.
